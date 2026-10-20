@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Box Studios | Recording Studio — New Orleans</title>
-<meta name="description" content="The Box Studios at 7367 Chef Menteur Hwy, New Orleans: a working recording studio — recording, production and archive work on owned ground in New Orleans East. Doors: sales@leasethebox.com or the Lease The Box chat.">
+<meta name="description" content="The Box Studios at 7367 Chef Menteur Hwy, New Orleans: a working recording studio — recording, production and archive work on owned ground in New Orleans East. Doors: sales@leasethebox.com or Lease the Bot.">
 <link rel="canonical" href="https://theboxstudiosofneworleans.com/">
 <meta property="og:title" content="The Box Studios | Recording Studio — New Orleans">
-<meta property="og:description" content="The Box Studios at 7367 Chef Menteur Hwy, New Orleans: a working recording studio — recording, production and archive work on owned ground in New Orleans East. Doors: sales@leasethebox.com or the Lease The Box chat.">
+<meta property="og:description" content="The Box Studios at 7367 Chef Menteur Hwy, New Orleans: a working recording studio — recording, production and archive work on owned ground in New Orleans East. Doors: sales@leasethebox.com or Lease the Bot.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://theboxstudiosofneworleans.com/">
 <meta property="og:site_name" content="The Box Studios">
@@ -16,7 +16,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The Box Studios | Recording Studio — New Orleans">
-<meta name="twitter:description" content="The Box Studios at 7367 Chef Menteur Hwy, New Orleans: a working recording studio — recording, production and archive work on owned ground in New Orleans East. Doors: sales@leasethebox.com or the Lease The Box chat.">
+<meta name="twitter:description" content="The Box Studios at 7367 Chef Menteur Hwy, New Orleans: a working recording studio — recording, production and archive work on owned ground in New Orleans East. Doors: sales@leasethebox.com or Lease the Bot.">
 <meta name="twitter:image" content="https://theboxstudiosofneworleans.com/assets/og-card.png">
 <script type="application/ld+json">
 {
@@ -190,6 +190,19 @@
     font-family:'Cormorant Garamond',Georgia,serif; font-size:1.5rem; line-height:1.25; color:var(--platinum);
   }
   .scrolls-card:hover .cap-title{color:var(--gold-hi)}
+  /* ROUND 2 PANELS — designed graphics drawn locally in the Capital
+     Command system: gold line art on the card field, an inline SVG
+     figure with an accessible name (role="img" + aria-label), and the
+     mono micro-label caption treatment used across the site. Sections
+     without a panel carry an empty figure, which never renders. */
+  .panel-art{margin:2rem 0 0; max-width:44rem; border:1px solid var(--gold-deep); background:var(--card); padding:1.1rem 1.1rem .9rem}
+  .panel-art:empty{display:none}
+  .panel-art svg{display:block; width:100%; height:auto}
+  .panel-art figcaption{
+    margin-top:.8rem;
+    font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+    font-size:.78rem; letter-spacing:.22em; text-transform:uppercase; color:var(--zinc);
+  }
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto}
     *{transition:none !important; animation:none !important}
@@ -220,6 +233,7 @@
     <p>The Box Studios is a working recording studio: tracking, overdubs, mixing, and archive-grade delivery for music, spoken word, and documentary work. Sessions are arranged through the studio's door, and the equipment used is itemized on the record of each session.</p>
     <p>The studio is also a production base. Video capture, livestream recording, and archive preparation run through the same room and the same standard: the work made here is documented here, and the work made here stays owned here.</p>
     <p></p>
+    <figure class="panel-art"></figure>
   </section>
 
     <section aria-labelledby="h-sign">
@@ -227,13 +241,15 @@
     <p>The building carries the studio's name. A permitted pole sign on Chef Menteur Highway marks the premises, and the building itself is the signage — a working studio on the highway in New Orleans East.</p>
     <p>Behind the building, a garden lot carries the Tranquility Garden of Serenity and the house's exhibition ground. The <a href="the-ground.html">Ground page</a> describes the premises in full.</p>
     <p></p>
+    <figure class="panel-art"></figure>
   </section>
 
     <section aria-labelledby="h-door">
     <div class="sec-head"><span class="sec-num">03</span><h2 id="h-door">Two doors</h2></div>
-    <p>The studio keeps two doors, and only two. Email: <a href="mailto:sales@leasethebox.com">sales@leasethebox.com</a>. And the Lease The Box chat — the agency service's chat boxes, where leased work is communicated and created. No phone, no form, no other door. The studio answers from the record.</p>
+    <p>The studio keeps two doors, and only two. Email: <a href="mailto:sales@leasethebox.com">sales@leasethebox.com</a>. And Lease the Bot — the Lease The Box chat, the agency service's own channel, where leased work is communicated and created. No phone, no form, no other door. The studio answers from the record.</p>
     <p></p>
     <p></p>
+    <figure class="panel-art"></figure>
   </section>
 
     <section aria-labelledby="h-press">
@@ -241,6 +257,7 @@
     <p>The house publishes through two presses. <a href="https://newmusic.press">NewMusic Press</a> covers the music — its daily review series and the industry record. <a href="https://repeatable.press">Repeatable Press</a> carries the essays, the reviews, and the credits record.</p>
     <p></p>
     <p></p>
+    <figure class="panel-art"></figure>
   </section>
 
     <section aria-labelledby="h-world-scrolls">
@@ -248,6 +265,7 @@
     <p>The house's daily comic runs on Repeatable Press: The World Scrolls, a micro soap opera with a daily comic strip, hosted by Mnemo, the AI in the mixing room at New Olympus Co. Every episode and strip stands in <a href="https://repeatable.press/category/the-world-scrolls/">The World Scrolls archive</a>.</p>
     <p><span class="scrolls-mount" id="world-scrolls-latest" hidden></span></p>
     <p></p>
+    <figure class="panel-art"></figure>
   </section>
 
 
@@ -260,8 +278,8 @@
 
 <footer>
   <div class="footer-in">
-    <p class="next-step">Next step: email the studio — sales@leasethebox.com — or open the Lease The Box chat.</p>
-    <p>The Box Studios — two doors only: <a href="mailto:sales@leasethebox.com">sales@leasethebox.com</a> · the Lease The Box chat<br>7367 Chef Menteur Hwy · New Orleans, LA 70126</p>
+    <p class="next-step">Next step: email the studio — sales@leasethebox.com — or open Lease the Bot — the Lease The Box chat.</p>
+    <p>The Box Studios — two doors only: <a href="mailto:sales@leasethebox.com">sales@leasethebox.com</a> · Lease the Bot — the Lease The Box chat<br>7367 Chef Menteur Hwy · New Orleans, LA 70126</p>
     <p class="press-line">Press — <a href="https://newmusic.press">NewMusic Press</a> · <a href="https://repeatable.press">Repeatable Press</a></p>
     <p>Rendering by the Byron Jupiter Agency, with Renaissance Instruments<br>© Byron Jupiter — sales@leasethebox.com</p>
     <p><a href="legal.html">Legal</a> · <a href="#main">Back to the top</a></p>

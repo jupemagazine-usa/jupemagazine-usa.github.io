@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Not Found | The Box Studios — New Orleans</title>
-<meta name="description" content="That page is not on the record. The Box Studios, New Orleans — the studio, the room, the ground, visit, lease, legal. Doors: sales@leasethebox.com or the Lease The Box chat.">
+<meta name="description" content="That page is not on the record. The Box Studios, New Orleans — the studio, the room, the ground, visit, lease, legal. Doors: sales@leasethebox.com or Lease the Bot.">
 <meta property="og:title" content="Not Found | The Box Studios — New Orleans">
-<meta property="og:description" content="That page is not on the record. The Box Studios, New Orleans — the studio, the room, the ground, visit, lease, legal. Doors: sales@leasethebox.com or the Lease The Box chat.">
+<meta property="og:description" content="That page is not on the record. The Box Studios, New Orleans — the studio, the room, the ground, visit, lease, legal. Doors: sales@leasethebox.com or Lease the Bot.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The Box Studios">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Not Found | The Box Studios — New Orleans">
-<meta name="twitter:description" content="That page is not on the record. The Box Studios, New Orleans — the studio, the room, the ground, visit, lease, legal. Doors: sales@leasethebox.com or the Lease The Box chat.">
+<meta name="twitter:description" content="That page is not on the record. The Box Studios, New Orleans — the studio, the room, the ground, visit, lease, legal. Doors: sales@leasethebox.com or Lease the Bot.">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
@@ -141,6 +141,19 @@
     font-family:'Cormorant Garamond',Georgia,serif; font-size:1.5rem; line-height:1.25; color:var(--platinum);
   }
   .scrolls-card:hover .cap-title{color:var(--gold-hi)}
+  /* ROUND 2 PANELS — designed graphics drawn locally in the Capital
+     Command system: gold line art on the card field, an inline SVG
+     figure with an accessible name (role="img" + aria-label), and the
+     mono micro-label caption treatment used across the site. Sections
+     without a panel carry an empty figure, which never renders. */
+  .panel-art{margin:2rem 0 0; max-width:44rem; border:1px solid var(--gold-deep); background:var(--card); padding:1.1rem 1.1rem .9rem}
+  .panel-art:empty{display:none}
+  .panel-art svg{display:block; width:100%; height:auto}
+  .panel-art figcaption{
+    margin-top:.8rem;
+    font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+    font-size:.78rem; letter-spacing:.22em; text-transform:uppercase; color:var(--zinc);
+  }
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto}
     *{transition:none !important; animation:none !important}
@@ -168,9 +181,10 @@
 
     <section aria-labelledby="h-way-back">
     <div class="sec-head"><span class="sec-num">01</span><h2 id="h-way-back">The way back</h2></div>
-    <p>Return to the <a href="/index.html">home page</a>, or go straight to the <a href="/visit.html">Visit page</a> — agents only. The doors are two: the email, <a href="mailto:sales@leasethebox.com">sales@leasethebox.com</a>, and the Lease The Box chat.</p>
+    <p>Return to the <a href="/index.html">home page</a>, or go straight to the <a href="/visit.html">Visit page</a> — agents only. The doors are two: the email, <a href="mailto:sales@leasethebox.com">sales@leasethebox.com</a>, and Lease the Bot, the Lease The Box chat.</p>
     <p></p>
     <p></p>
+    <figure class="panel-art"></figure>
   </section>
 
     <section aria-labelledby="h-">
@@ -178,6 +192,7 @@
     <p></p>
     <p></p>
     <p></p>
+    <figure class="panel-art"></figure>
   </section>
 
     <section aria-labelledby="h-">
@@ -185,6 +200,7 @@
     <p></p>
     <p></p>
     <p></p>
+    <figure class="panel-art"></figure>
   </section>
 
     <section aria-labelledby="h-">
@@ -192,6 +208,7 @@
     <p></p>
     <p></p>
     <p></p>
+    <figure class="panel-art"></figure>
   </section>
 
     <section aria-labelledby="h-">
@@ -199,6 +216,7 @@
     <p></p>
     <p></p>
     <p></p>
+    <figure class="panel-art"></figure>
   </section>
 
 
@@ -211,8 +229,8 @@
 
 <footer>
   <div class="footer-in">
-    <p class="next-step">Next step: email the studio — sales@leasethebox.com — or open the Lease The Box chat.</p>
-    <p>The Box Studios — two doors only: <a href="mailto:sales@leasethebox.com">sales@leasethebox.com</a> · the Lease The Box chat<br>7367 Chef Menteur Hwy · New Orleans, LA 70126</p>
+    <p class="next-step">Next step: email the studio — sales@leasethebox.com — or open Lease the Bot — the Lease The Box chat.</p>
+    <p>The Box Studios — two doors only: <a href="mailto:sales@leasethebox.com">sales@leasethebox.com</a> · Lease the Bot — the Lease The Box chat<br>7367 Chef Menteur Hwy · New Orleans, LA 70126</p>
     <p class="press-line">Press — <a href="https://newmusic.press">NewMusic Press</a> · <a href="https://repeatable.press">Repeatable Press</a></p>
     <p>Rendering by the Byron Jupiter Agency, with Renaissance Instruments<br>© Byron Jupiter — sales@leasethebox.com</p>
     <p><a href="legal.html">Legal</a> · <a href="#main">Back to the top</a></p>
