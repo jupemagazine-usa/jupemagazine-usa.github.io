@@ -11,9 +11,13 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://theboxstudiosofneworleans.com/">
 <meta property="og:site_name" content="The Box Studios">
+<meta property="og:image" content="https://theboxstudiosofneworleans.com/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The Box Studios | Recording Studio — New Orleans">
 <meta name="twitter:description" content="The Box Studios at 7367 Chef Menteur Hwy, New Orleans: a working recording studio — recording, production and archive work on owned ground in New Orleans East. Door: sales@leasethebox.com.">
+<meta name="twitter:image" content="https://theboxstudiosofneworleans.com/assets/og-card.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -34,10 +38,22 @@
       "url": "https://theboxstudiosofneworleans.com/"
     },
     {
+      "@id": "https://theboxstudiosofneworleans.com/#website",
+      "@type": "WebSite",
+      "name": "The Box Studios",
+      "publisher": {
+        "@id": "https://theboxstudiosofneworleans.com/#studio"
+      },
+      "url": "https://theboxstudiosofneworleans.com/"
+    },
+    {
       "@id": "https://theboxstudiosofneworleans.com/",
       "@type": "WebPage",
-      "isPartOf": {
+      "about": {
         "@id": "https://theboxstudiosofneworleans.com/#studio"
+      },
+      "isPartOf": {
+        "@id": "https://theboxstudiosofneworleans.com/#website"
       },
       "name": "The Box Studios | Recording Studio — New Orleans",
       "url": "https://theboxstudiosofneworleans.com/"
@@ -45,6 +61,12 @@
   ]
 }
 </script>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#030610">
 <style>
   /* THEME — Capital Command design tokens, read from the live app's own
      stylesheet (capital-command-nola.base44.app, /assets/index-MvkYsNiO.css,
@@ -60,7 +82,12 @@
   :root{
     --obsidian:#030610; --card:#080c17; --platinum:#f4f4f5;
     --gold:#d4af37; --gold-hi:#e5c158; --gold-deep:#c5a059;
-    --blue:#3b82f6; --intel:#5b8def; --zinc:#71717a;
+    --blue:#3b82f6; --intel:#5b8def;
+    /* --zinc carries small text (legal line, press line, captions):
+       stone-zinc #71717A measures 4.18:1 on the obsidian field — under
+       WCAG AA for text — so the text value is lifted to zinc-400
+       #A1A1AA (8.0:1) in Round 1. The hue family is unchanged. */
+    --zinc:#a1a1aa;
     --line:#1f1f1f; --max:68rem; --radius:0;
   }
   *{box-sizing:border-box; border-radius:var(--radius)}
@@ -77,6 +104,9 @@
   a:focus-visible{outline:2px solid var(--gold); outline-offset:3px}
   .skip{position:absolute; left:-999px; top:0; background:var(--gold); color:var(--obsidian); padding:.5rem 1rem; z-index:40}
   .skip:focus{left:0}
+  .visually-hidden{position:absolute !important; width:1px !important; height:1px !important;
+    margin:-1px; padding:0; overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%);
+    white-space:nowrap; border:0}
   .masthead{background:rgba(3,6,16,.92); color:var(--platinum); position:sticky; top:0; z-index:20;
     border-bottom:1px solid var(--line); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px)}
   .masthead-in{max-width:var(--max); margin:0 auto; padding:.65rem clamp(1rem,4vw,2rem);
@@ -179,6 +209,7 @@
 <main id="main">
   <div class="hero">
     <canvas class="liquid" id="liquid-hero" aria-hidden="true"></canvas>
+    <span class="visually-hidden">Decorative motion: gold and blue liquid light moving slowly over a black field, behind the page title.</span>
     <h1>The Box Studios</h1>
     <p class="roles">Recording · Production · Archive</p>
     <p class="summary">A working recording studio on Chef Menteur Highway in New Orleans East — a recording room, its archive, and the ground it stands on, held under one roof and reached through one door.</p>
@@ -412,6 +443,7 @@
       img.src = media.source_url;
       img.alt = plainText(media.alt_text) || title;
       img.loading = 'lazy';
+      img.decoding = 'async';
       a.appendChild(img);
     }
     var cap = document.createElement('span');

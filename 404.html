@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Not Found | The Box Studios — New Orleans</title>
+<meta name="description" content="That page is not on the record. The Box Studios, New Orleans — the studio, the room, the ground, visit, lease, legal. Door: sales@leasethebox.com.">
+<meta property="og:title" content="Not Found | The Box Studios — New Orleans">
+<meta property="og:description" content="That page is not on the record. The Box Studios, New Orleans — the studio, the room, the ground, visit, lease, legal. Door: sales@leasethebox.com.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Box Studios">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Not Found | The Box Studios — New Orleans">
+<meta name="twitter:description" content="That page is not on the record. The Box Studios, New Orleans — the studio, the room, the ground, visit, lease, legal. Door: sales@leasethebox.com.">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#030610">
+<style>
+  /* THEME — Capital Command design tokens, read from the live app's own
+     stylesheet (capital-command-nola.base44.app, /assets/index-MvkYsNiO.css,
+     :root block, fetched 2026-10-20):
+       --background hsl(225 68% 4%) · --card hsl(222 50% 6%)
+       --primary hsl(46 65% 52%) · --accent hsl(217 91% 60%)
+       --obsidian #030610 · --aged-gold #D4AF37 · --platinum #F4F4F5
+       --cyan-intel #5B8DEF · --stone-zinc #71717A · --border hsl(0 0% 12%)
+       --radius 0rem · theme-color #E5C158
+     Type: Playfair Display (headings) · Cormorant Garamond (display) ·
+     Montserrat (body) · JetBrains Mono (labels/numbers). Declared as
+     stacks with local fallbacks — this builder makes no network calls. */
+  :root{
+    --obsidian:#030610; --card:#080c17; --platinum:#f4f4f5;
+    --gold:#d4af37; --gold-hi:#e5c158; --gold-deep:#c5a059;
+    --blue:#3b82f6; --intel:#5b8def;
+    /* --zinc carries small text (legal line, press line, captions):
+       stone-zinc #71717A measures 4.18:1 on the obsidian field — under
+       WCAG AA for text — so the text value is lifted to zinc-400
+       #A1A1AA (8.0:1) in Round 1. The hue family is unchanged. */
+    --zinc:#a1a1aa;
+    --line:#1f1f1f; --max:68rem; --radius:0;
+  }
+  *{box-sizing:border-box; border-radius:var(--radius)}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--obsidian); color:var(--platinum);
+    font-family:'Montserrat','Helvetica Neue',Arial,Helvetica,sans-serif;
+    font-size:1.0625rem; line-height:1.7; overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--gold); color:var(--obsidian)}
+  a{color:var(--platinum); text-decoration-color:var(--gold); text-underline-offset:3px}
+  a:hover{color:var(--gold-hi)}
+  a:focus-visible{outline:2px solid var(--gold); outline-offset:3px}
+  .skip{position:absolute; left:-999px; top:0; background:var(--gold); color:var(--obsidian); padding:.5rem 1rem; z-index:40}
+  .skip:focus{left:0}
+  .visually-hidden{position:absolute !important; width:1px !important; height:1px !important;
+    margin:-1px; padding:0; overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%);
+    white-space:nowrap; border:0}
+  .masthead{background:rgba(3,6,16,.92); color:var(--platinum); position:sticky; top:0; z-index:20;
+    border-bottom:1px solid var(--line); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px)}
+  .masthead-in{max-width:var(--max); margin:0 auto; padding:.65rem clamp(1rem,4vw,2rem);
+    display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap}
+  .wordmark{font-weight:700; font-size:.95rem; letter-spacing:.35em; text-transform:uppercase}
+  .wordmark strong{color:var(--gold); font-weight:700}
+  nav .nav-list{list-style:none; display:flex; gap:1.25rem; margin:0; padding:0; flex-wrap:wrap}
+  nav .nav-list a{color:var(--platinum); text-decoration:none; font-size:.82rem; letter-spacing:.14em; text-transform:uppercase}
+  nav .nav-list a:hover{color:var(--gold-hi)}
+  main{max-width:var(--max); margin:0 auto; padding:0 clamp(1rem,4vw,2rem) 4rem}
+  /* HERO — full-bleed band carrying the 5D/8K liquid movement (WebGL canvas).
+     Fallback composition (no WebGL / no JS) is the layered gradient below. */
+  .hero{
+    position:relative; overflow:hidden; isolation:isolate;
+    width:100vw; margin-left:calc(50% - 50vw);
+    padding:clamp(3rem,9vw,6rem) max(clamp(1rem,4vw,2rem), calc(50vw - 34rem)) 3rem;
+    border-bottom:1px solid var(--line);
+    background:
+      radial-gradient(60rem 30rem at 78% -10%, rgba(212,175,55,.20), transparent 60%),
+      radial-gradient(50rem 26rem at 8% 115%, rgba(91,141,239,.16), transparent 60%),
+      linear-gradient(180deg, #05080f 0%, var(--obsidian) 100%);
+  }
+  .hero .liquid{position:absolute; inset:0; width:100%; height:100%; z-index:0; display:block}
+  .hero::after{content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:linear-gradient(180deg, rgba(3,6,16,.18) 0%, rgba(3,6,16,0) 34%, rgba(3,6,16,.55) 100%)}
+  .hero>*{position:relative; z-index:2}
+  .hero h1{
+    font-family:'Playfair Display',Georgia,serif; font-weight:700;
+    font-size:clamp(2.8rem,10vw,6.5rem); line-height:.95; margin:0 0 1rem; letter-spacing:-.01em;
+    text-shadow:0 2px 30px rgba(3,6,16,.65);
+  }
+  .hero .roles{
+    font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+    font-size:clamp(.8rem,2vw,1rem); letter-spacing:.3em; text-transform:uppercase; color:var(--gold-hi);
+  }
+  .summary{line-height:1.45; max-width:42rem; margin:2rem 0 0;
+    font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(1.45rem,3.2vw,1.9rem)}
+  section{padding:clamp(2.5rem,6vw,4rem) 0; border-bottom:1px solid var(--line)}
+  .sec-head{display:flex; align-items:baseline; gap:1.25rem; margin-bottom:1.5rem; position:relative; padding-bottom:1.1rem}
+  .sec-head::after{ /* gold divider with the Capital Command shimmer sweep */
+    content:""; position:absolute; left:0; bottom:0; height:2px; width:100%;
+    background:linear-gradient(90deg, var(--gold) 0%, rgba(212,175,55,.12) 38%, rgba(212,175,55,.12) 62%, var(--gold-deep) 100%);
+    background-size:220% 100%; animation:divider-shimmer 7s linear infinite;
+  }
+  @keyframes divider-shimmer{0%{background-position:120% 0}100%{background-position:-120% 0}}
+  .sec-num{
+    font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+    font-size:clamp(1.05rem,2.4vw,1.4rem); letter-spacing:.18em; color:var(--gold); font-weight:700;
+  }
+  .sec-head h2{font-family:'Playfair Display',Georgia,serif; font-size:clamp(1.8rem,4.5vw,3rem); margin:0; line-height:1.05}
+  section p{max-width:44rem}
+  section p:empty{display:none}
+  section:has(> .sec-head h2:empty){display:none}
+  .cta-line{font-size:1.15rem}
+  .legal{font-size:.92rem; line-height:1.6; color:var(--zinc); border-left:3px solid var(--gold); padding-left:1rem; max-width:44rem}
+  footer{background:var(--card); color:var(--platinum); border-top:1px solid var(--line)}
+  .footer-in{max-width:var(--max); margin:0 auto; padding:2.5rem clamp(1rem,4vw,2rem)}
+  footer a{color:var(--gold-hi)}
+  footer p{max-width:44rem}
+  .next-step{font-size:1.15rem}
+  .press-line{
+    font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+    font-size:.85rem; letter-spacing:.22em; text-transform:uppercase; color:var(--zinc);
+  }
+  .press-line a{letter-spacing:.22em}
+  /* THE WORLD SCROLLS — the daily-comic mount. The span stays hidden
+     until the feed script fills it; if the feed fails, the paragraph
+     collapses and the section's standing archive link carries the
+     section alone (the graceful fallback). */
+  .scrolls-mount[hidden]{display:none}
+  p:has(> .scrolls-mount[hidden]){display:none}
+  .scrolls-card{display:block; max-width:44rem; text-decoration:none}
+  .scrolls-card img{display:block; width:100%; height:auto; border:1px solid var(--gold-deep)}
+  .scrolls-cap{display:block; margin-top:.7rem}
+  .scrolls-cap .cap-label{
+    font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+    font-size:.8rem; letter-spacing:.22em; text-transform:uppercase; color:var(--zinc);
+  }
+  .scrolls-cap .cap-title{
+    display:block; margin-top:.15rem;
+    font-family:'Cormorant Garamond',Georgia,serif; font-size:1.5rem; line-height:1.25; color:var(--platinum);
+  }
+  .scrolls-card:hover .cap-title{color:var(--gold-hi)}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *{transition:none !important; animation:none !important}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to the record</a>
+
+<header class="masthead">
+  <div class="masthead-in">
+    <div class="wordmark">The <strong>Box</strong> Studios · New Orleans</div>
+    <nav aria-label="Site"><ul class="nav-list"><li><a href="index.html">Home</a></li><li><a href="the-room.html">The Room</a></li><li><a href="the-ground.html">The Ground</a></li><li><a href="visit.html">Visit</a></li><li><a href="lease-the-box.html">Lease The Box</a></li><li><a href="legal.html">Legal</a></li></ul></nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="hero">
+    <canvas class="liquid" id="liquid-hero" aria-hidden="true"></canvas>
+    <span class="visually-hidden">Decorative motion: gold and blue liquid light moving slowly over a black field, behind the page title.</span>
+    <h1>Not on the record</h1>
+    <p class="roles">The Box Studios · New Orleans</p>
+    <p class="summary">That address is not on the record. The studio's pages stand at their own addresses — the way back is short.</p>
+  </div>
+
+    <section aria-labelledby="h-way-back">
+    <div class="sec-head"><span class="sec-num">01</span><h2 id="h-way-back">The way back</h2></div>
+    <p>Return to the <a href="/index.html">home page</a>, or go straight to the <a href="/visit.html">Visit page</a> — agents only, one door: <a href="mailto:sales@leasethebox.com">sales@leasethebox.com</a>.</p>
+    <p></p>
+    <p></p>
+  </section>
+
+    <section aria-labelledby="h-">
+    <div class="sec-head"><span class="sec-num"></span><h2 id="h-"></h2></div>
+    <p></p>
+    <p></p>
+    <p></p>
+  </section>
+
+    <section aria-labelledby="h-">
+    <div class="sec-head"><span class="sec-num"></span><h2 id="h-"></h2></div>
+    <p></p>
+    <p></p>
+    <p></p>
+  </section>
+
+    <section aria-labelledby="h-">
+    <div class="sec-head"><span class="sec-num"></span><h2 id="h-"></h2></div>
+    <p></p>
+    <p></p>
+    <p></p>
+  </section>
+
+    <section aria-labelledby="h-">
+    <div class="sec-head"><span class="sec-num"></span><h2 id="h-"></h2></div>
+    <p></p>
+    <p></p>
+    <p></p>
+  </section>
+
+
+  <section aria-labelledby="h-next">
+    <div class="sec-head"><span class="sec-num">—</span><h2 id="h-next">Back to the record</h2></div>
+    <p class="cta-line">The home page carries the studio, the room, the ground, and the press — everything on the record stands there.</p>
+    <p class="legal">If a link on this site brought you here, the record corrects itself: write to the door and name the page you came from.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-in">
+    <p class="next-step">Next step: write to the studio's door — sales@leasethebox.com.</p>
+    <p>The Box Studios — <a href="mailto:sales@leasethebox.com">sales@leasethebox.com</a><br>7367 Chef Menteur Hwy · New Orleans, LA 70126</p>
+    <p class="press-line">Press — <a href="https://newmusic.press">NewMusic Press</a> · <a href="https://repeatable.press">Repeatable Press</a></p>
+    <p>Rendering by the Byron Jupiter Agency, with Renaissance Instruments<br>© Byron Jupiter — sales@leasethebox.com</p>
+    <p><a href="legal.html">Legal</a> · <a href="#main">Back to the top</a></p>
+  </div>
+</footer>
+
+<script>
+/* 5D/8K LIQUID MOVEMENT — WebGL fluid in the house manner.
+   A domain-warped fbm flow (the liquid technique of the 5D/8K pieces,
+   ARCH-2026-0017's canvas environment family) rendered as one fragment
+   shader in Capital Command's tokens: obsidian field, aged-gold currents,
+   intel-blue veins. Pointer energy swells the flow. Discipline: DPR cap,
+   pause off-screen and when the tab hides, one still frame when the
+   visitor prefers reduced motion, CSS gradient fallback without WebGL. */
+(function () {
+  var canvas = document.getElementById('liquid-hero');
+  if (!canvas) return;
+  var hero = canvas.parentElement;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var gl = null;
+  try {
+    gl = canvas.getContext('webgl', { antialias: false, alpha: false, depth: false, stencil: false, powerPreference: 'low-power' })
+      || canvas.getContext('experimental-webgl');
+  } catch (e) { gl = null; }
+  if (!gl) { canvas.style.display = 'none'; return; }
+
+  var VERT = 'attribute vec2 p; void main(){ gl_Position = vec4(p, 0.0, 1.0); }';
+  var FRAG = [
+    'precision highp float;',
+    'uniform vec2 uRes; uniform float uTime; uniform vec2 uMouse; uniform float uEnergy;',
+    'float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123); }',
+    'float noise(vec2 p){',
+    '  vec2 i = floor(p); vec2 f = fract(p);',
+    '  f = f * f * (3.0 - 2.0 * f);',
+    '  return mix(mix(hash(i), hash(i + vec2(1.0, 0.0)), f.x),',
+    '             mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), f.x), f.y);',
+    '}',
+    'float fbm(vec2 p){',
+    '  float v = 0.0; float a = 0.5;',
+    '  mat2 m = mat2(1.6, 1.2, -1.2, 1.6);',
+    '  for (int i = 0; i < 5; i++){ v += a * noise(p); p = m * p; a *= 0.5; }',
+    '  return v;',
+    '}',
+    'void main(){',
+    '  vec2 uv = (gl_FragCoord.xy * 2.0 - uRes) / min(uRes.x, uRes.y);',
+    '  float t = uTime * 0.055;',
+    '  vec2 q = vec2(fbm(uv * 1.35 + t), fbm(uv * 1.35 + vec2(5.2, 1.3) - t));',
+    '  vec2 r = vec2(fbm(uv * 1.35 + 3.0 * q + vec2(1.7, 9.2) + 0.15 * t),',
+    '                fbm(uv * 1.35 + 3.0 * q + vec2(8.3, 2.8) - 0.12 * t));',
+    '  float f = fbm(uv * 1.35 + 3.5 * r);',
+    '  vec2 m = uMouse * 2.0 - 1.0; m.y *= -1.0;',
+    '  m.x *= uRes.x / uRes.y;',
+    '  float md = length(uv - m);',
+    '  f += uEnergy * 0.38 * exp(-md * md * 2.2);',
+    '  vec3 obsidian = vec3(0.012, 0.023, 0.063);',
+    '  vec3 cardc    = vec3(0.031, 0.047, 0.090);',
+    '  vec3 navy     = vec3(0.045, 0.115, 0.285);',
+    '  vec3 intel    = vec3(0.357, 0.553, 0.937);',
+    '  vec3 gold     = vec3(0.831, 0.686, 0.216);',
+    '  vec3 goldhi   = vec3(0.898, 0.757, 0.345);',
+    '  vec3 col = obsidian;',
+    '  col = mix(col, cardc, smoothstep(0.18, 0.52, f));',
+    '  col = mix(col, navy,  smoothstep(0.44, 0.74, f) * 0.55);',
+    '  col = mix(col, intel, smoothstep(0.60, 0.90, f) * 0.22);',
+    '  col = mix(col, gold,  smoothstep(0.62, 0.95, f) * 0.80);',
+    '  col = mix(col, goldhi, smoothstep(0.86, 1.05, f));',
+    '  col *= 1.0 - 0.32 * dot(uv * 0.55, uv * 0.55);',
+    '  gl_FragColor = vec4(col, 1.0);',
+    '}'
+  ].join('\n');
+
+  function shader(type, src) {
+    var s = gl.createShader(type);
+    gl.shaderSource(s, src); gl.compileShader(s);
+    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) { gl.deleteShader(s); return null; }
+    return s;
+  }
+  var vs = shader(gl.VERTEX_SHADER, VERT), fs = shader(gl.FRAGMENT_SHADER, FRAG);
+  if (!vs || !fs) { canvas.style.display = 'none'; return; }
+  var prog = gl.createProgram();
+  gl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);
+  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) { canvas.style.display = 'none'; return; }
+  gl.useProgram(prog);
+  var buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+  var loc = gl.getAttribLocation(prog, 'p');
+  gl.enableVertexAttribArray(loc);
+  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+  var uRes = gl.getUniformLocation(prog, 'uRes');
+  var uTime = gl.getUniformLocation(prog, 'uTime');
+  var uMouse = gl.getUniformLocation(prog, 'uMouse');
+  var uEnergy = gl.getUniformLocation(prog, 'uEnergy');
+
+  var mouseX = 0.5, mouseY = 0.5, energy = 0.0;
+  function resize() {
+    var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    var w = Math.max(2, Math.round(hero.clientWidth * dpr));
+    var h = Math.max(2, Math.round(hero.clientHeight * dpr));
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width = w; canvas.height = h; gl.viewport(0, 0, w, h);
+    }
+  }
+  function draw(timeSec) {
+    resize();
+    gl.uniform2f(uRes, canvas.width, canvas.height);
+    gl.uniform1f(uTime, timeSec);
+    gl.uniform2f(uMouse, mouseX, mouseY);
+    gl.uniform1f(uEnergy, energy);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+  }
+
+  if (reduced) {
+    draw(7.3); /* one still frame of the liquid, then nothing moves */
+    window.addEventListener('resize', function () { draw(7.3); });
+    return;
+  }
+
+  var running = true, visible = true, raf = 0, start = null;
+  function frame(ts) {
+    if (!running) return;
+    if (start === null) start = ts;
+    energy *= 0.965;
+    draw((ts - start) / 1000);
+    raf = requestAnimationFrame(frame);
+  }
+  function play() { if (!running && visible && !document.hidden) { running = true; start = null; raf = requestAnimationFrame(frame); } }
+  function stop() { running = false; if (raf) cancelAnimationFrame(raf); }
+  hero.addEventListener('pointermove', function (e) {
+    var b = hero.getBoundingClientRect();
+    mouseX = (e.clientX - b.left) / b.width;
+    mouseY = 1.0 - (e.clientY - b.top) / b.height;
+    energy = Math.min(energy + 0.06, 1.0);
+  });
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      visible = entries[0].isIntersecting;
+      if (visible) play(); else stop();
+    }, { threshold: 0.02 }).observe(hero);
+  }
+  document.addEventListener('visibilitychange', function () { if (document.hidden) stop(); else play(); });
+  raf = requestAnimationFrame(frame);
+})();
+</script>
+
+<script>
+/* THE WORLD SCROLLS — the daily comic, pulled live from Repeatable Press.
+   At view time the section asks the press's own record for the newest
+   World Scrolls item (category 1598) and shows its card: the featured
+   image and the episode title, linked to the episode on the press.
+   If the feed is unreachable or empty, the mount stays hidden and the
+   section's standing archive link carries the section alone. */
+(function () {
+  var mount = document.getElementById('world-scrolls-latest');
+  if (!mount || !window.fetch) return;
+  var FEED = 'https://repeatable.press/wp-json/wp/v2/posts?categories=1598&per_page=1&_embed';
+  function plainText(html) {
+    var d = document.createElement('div');
+    d.innerHTML = html || '';
+    return (d.textContent || d.innerText || '').replace(/\s+/g, ' ').trim();
+  }
+  fetch(FEED).then(function (res) {
+    if (!res.ok) throw new Error('feed');
+    return res.json();
+  }).then(function (posts) {
+    if (!posts || !posts.length) return;
+    var post = posts[0];
+    var title = plainText(post.title && post.title.rendered);
+    if (!title || !post.link) return;
+    var media = null;
+    if (post._embedded && post._embedded['wp:featuredmedia'] && post._embedded['wp:featuredmedia'][0]) {
+      media = post._embedded['wp:featuredmedia'][0];
+    }
+    var a = document.createElement('a');
+    a.className = 'scrolls-card';
+    a.href = post.link;
+    if (media && media.source_url) {
+      var img = document.createElement('img');
+      img.src = media.source_url;
+      img.alt = plainText(media.alt_text) || title;
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      a.appendChild(img);
+    }
+    var cap = document.createElement('span');
+    cap.className = 'scrolls-cap';
+    var lab = document.createElement('span');
+    lab.className = 'cap-label';
+    lab.textContent = 'The latest, from the press';
+    var tit = document.createElement('span');
+    tit.className = 'cap-title';
+    tit.textContent = title;
+    cap.appendChild(lab);
+    cap.appendChild(tit);
+    a.appendChild(cap);
+    mount.appendChild(a);
+    mount.hidden = false;
+  }).catch(function () { /* the standing archive link carries the section */ });
+})();
+</script>
+
+<!-- Rendered by the House Site Builder v1.0.0 - official record copy -->
+</body>
+</html>
