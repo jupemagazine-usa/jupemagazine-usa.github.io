@@ -1,0 +1,4 @@
+Contact: mailto:sales@leasethebox.com
+Expires: 2027-10-22T23:59:59Z
+Canonical: https://theboxstudiosofneworleans.com/.well-known/security.txt
+Preferred-Languages: en
