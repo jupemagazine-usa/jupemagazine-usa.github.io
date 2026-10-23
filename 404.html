@@ -105,7 +105,7 @@
     font-family:'Playfair Display',Georgia,serif; font-weight:700;
     font-size:clamp(2.8rem,10vw,6.5rem); line-height:.95; margin:0 0 1rem; letter-spacing:-.01em;
     color:var(--paper);
-    text-shadow:0 2px 30px rgba(3,6,16,.65);
+    text-shadow:0 1px 0 rgba(212,175,106,.35), 0 3px 0 rgba(3,6,16,.55), 0 12px 34px rgba(3,6,16,.7);
   }
   .hero .roles{
     font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
@@ -126,7 +126,7 @@
     font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
     font-size:clamp(1.05rem,2.4vw,1.4rem); letter-spacing:.18em; color:var(--gold-ink); font-weight:700;
   }
-  .sec-head h2{font-family:'Playfair Display',Georgia,serif; font-size:clamp(1.8rem,4.5vw,3rem); margin:0; line-height:1.05}
+  .sec-head h2{font-family:'Playfair Display',Georgia,serif; font-size:clamp(1.8rem,4.5vw,3rem); margin:0; line-height:1.05; text-shadow:0 1px 0 rgba(255,252,240,.5), 0 3px 7px rgba(29,26,20,.16)}
   section p{max-width:44rem}
   section p:empty{display:none}
   section:has(> .sec-head h2:empty){display:none}
@@ -166,7 +166,7 @@
      figure with an accessible name (role="img" + aria-label), and the
      mono micro-label caption treatment used across the site. Sections
      without a panel carry an empty figure, which never renders. */
-  .panel-art{margin:2rem 0 0; max-width:44rem; border:1px solid var(--gold-deep); background:var(--paper-card); padding:1.1rem 1.1rem .9rem}
+  .panel-art{margin:2rem 0 0; max-width:44rem; border:1px solid var(--gold-deep); background:linear-gradient(180deg, #fdfaf0 0%, var(--paper-card) 60%, #efe7d2 100%); padding:1.1rem 1.1rem .9rem; box-shadow:inset 0 1px 0 rgba(255,255,255,.7), inset 0 -3px 8px rgba(122,90,29,.10), 0 14px 34px rgba(29,26,20,.20), 0 3px 8px rgba(29,26,20,.14)}
   .panel-art:empty{display:none}
   .panel-art svg{display:block; width:100%; height:auto}
   .panel-art figcaption{
@@ -219,8 +219,9 @@
   .bot-launch{
     position:fixed; right:1rem; bottom:1rem; z-index:60;
     font-family:var(--mono); font-size:.78rem; letter-spacing:.16em; text-transform:uppercase;
-    background:var(--ink); color:var(--paper); border:2px solid var(--gold);
-    padding:.85rem 1.1rem; cursor:pointer; box-shadow:0 6px 24px rgba(29,26,20,.35);
+    background:linear-gradient(180deg, #2a251b 0%, var(--ink) 55%, #100e0a 100%); color:var(--paper); border:2px solid var(--gold);
+    padding:.85rem 1.1rem; cursor:pointer;
+    box-shadow:inset 0 1px 0 rgba(240,235,222,.28), inset 0 -2px 0 rgba(0,0,0,.45), 0 10px 28px rgba(29,26,20,.45), 0 3px 8px rgba(29,26,20,.35);
   }
   .bot-launch:hover{background:var(--gold); color:var(--ink)}
   .bot-launch:focus-visible{outline:2px solid var(--gold); outline-offset:3px}
@@ -229,7 +230,7 @@
     width:min(24rem, calc(100vw - 2rem)); max-height:min(36rem, calc(100vh - 2rem));
     display:none; flex-direction:column;
     background:var(--paper-card); color:var(--ink);
-    border:2px solid var(--ink); box-shadow:0 12px 40px rgba(29,26,20,.4);
+    border:2px solid var(--ink); box-shadow:inset 0 1px 0 rgba(255,252,240,.6), 0 24px 60px rgba(29,26,20,.5), 0 6px 18px rgba(29,26,20,.35);
   }
   .bot-panel.open{display:flex}
   .bot-head{

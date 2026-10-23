@@ -152,7 +152,7 @@
     font-family:'Playfair Display',Georgia,serif; font-weight:700;
     font-size:clamp(2.8rem,10vw,6.5rem); line-height:.95; margin:0 0 1rem; letter-spacing:-.01em;
     color:var(--paper);
-    text-shadow:0 2px 30px rgba(3,6,16,.65);
+    text-shadow:0 1px 0 rgba(212,175,106,.35), 0 3px 0 rgba(3,6,16,.55), 0 12px 34px rgba(3,6,16,.7);
   }
   .hero .roles{
     font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
@@ -173,7 +173,7 @@
     font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
     font-size:clamp(1.05rem,2.4vw,1.4rem); letter-spacing:.18em; color:var(--gold-ink); font-weight:700;
   }
-  .sec-head h2{font-family:'Playfair Display',Georgia,serif; font-size:clamp(1.8rem,4.5vw,3rem); margin:0; line-height:1.05}
+  .sec-head h2{font-family:'Playfair Display',Georgia,serif; font-size:clamp(1.8rem,4.5vw,3rem); margin:0; line-height:1.05; text-shadow:0 1px 0 rgba(255,252,240,.5), 0 3px 7px rgba(29,26,20,.16)}
   section p{max-width:44rem}
   section p:empty{display:none}
   section:has(> .sec-head h2:empty){display:none}
@@ -213,7 +213,7 @@
      figure with an accessible name (role="img" + aria-label), and the
      mono micro-label caption treatment used across the site. Sections
      without a panel carry an empty figure, which never renders. */
-  .panel-art{margin:2rem 0 0; max-width:44rem; border:1px solid var(--gold-deep); background:var(--paper-card); padding:1.1rem 1.1rem .9rem}
+  .panel-art{margin:2rem 0 0; max-width:44rem; border:1px solid var(--gold-deep); background:linear-gradient(180deg, #fdfaf0 0%, var(--paper-card) 60%, #efe7d2 100%); padding:1.1rem 1.1rem .9rem; box-shadow:inset 0 1px 0 rgba(255,255,255,.7), inset 0 -3px 8px rgba(122,90,29,.10), 0 14px 34px rgba(29,26,20,.20), 0 3px 8px rgba(29,26,20,.14)}
   .panel-art:empty{display:none}
   .panel-art svg{display:block; width:100%; height:auto}
   .panel-art figcaption{
@@ -266,8 +266,9 @@
   .bot-launch{
     position:fixed; right:1rem; bottom:1rem; z-index:60;
     font-family:var(--mono); font-size:.78rem; letter-spacing:.16em; text-transform:uppercase;
-    background:var(--ink); color:var(--paper); border:2px solid var(--gold);
-    padding:.85rem 1.1rem; cursor:pointer; box-shadow:0 6px 24px rgba(29,26,20,.35);
+    background:linear-gradient(180deg, #2a251b 0%, var(--ink) 55%, #100e0a 100%); color:var(--paper); border:2px solid var(--gold);
+    padding:.85rem 1.1rem; cursor:pointer;
+    box-shadow:inset 0 1px 0 rgba(240,235,222,.28), inset 0 -2px 0 rgba(0,0,0,.45), 0 10px 28px rgba(29,26,20,.45), 0 3px 8px rgba(29,26,20,.35);
   }
   .bot-launch:hover{background:var(--gold); color:var(--ink)}
   .bot-launch:focus-visible{outline:2px solid var(--gold); outline-offset:3px}
@@ -276,7 +277,7 @@
     width:min(24rem, calc(100vw - 2rem)); max-height:min(36rem, calc(100vh - 2rem));
     display:none; flex-direction:column;
     background:var(--paper-card); color:var(--ink);
-    border:2px solid var(--ink); box-shadow:0 12px 40px rgba(29,26,20,.4);
+    border:2px solid var(--ink); box-shadow:inset 0 1px 0 rgba(255,252,240,.6), 0 24px 60px rgba(29,26,20,.5), 0 6px 18px rgba(29,26,20,.35);
   }
   .bot-panel.open{display:flex}
   .bot-head{
@@ -348,7 +349,7 @@
     <p>Beside the building, the garden lot carries the Tranquility Garden of Serenity and the house's exhibition ground — a place held for gatherings, teaching days, and the archive's public face.</p>
     <p>A model home is planned for the back corner of the garden lot, set facing the oak and away from the street.</p>
     <p></p>
-    <figure class="panel-art"><svg viewBox="0 0 720 350" role="img" aria-label="Schematic plan of the ground at 7367 Chef Menteur Highway: the studio building with the room and the lease portions under one roof, the garden lot beside it carrying the Tranquility Garden of Serenity, the oak at the back, the model home planned facing the oak, and the permitted pole-sign position on the highway frontage." xmlns="http://www.w3.org/2000/svg"><rect x="36" y="26" width="648" height="252" fill="none" stroke="#C5A059"/><text x="52" y="50" font-family="'JetBrains Mono',monospace" font-size="10" letter-spacing="2.5" fill="#A1A1AA">7367 CHEF MENTEUR HWY</text><rect x="56" y="64" width="304" height="118" fill="#05080F" stroke="#C5A059"/><line x1="226" y1="64" x2="226" y2="182" stroke="rgba(212,175,55,.35)"/><text x="76" y="90" font-family="'JetBrains Mono',monospace" font-size="10.5" letter-spacing="2.5" fill="#D4AF37">THE ROOM</text><text x="76" y="116" font-family="'Playfair Display',Georgia,serif" font-size="15" fill="#F4F4F5">The Box Studios</text><text x="240" y="90" font-family="'JetBrains Mono',monospace" font-size="10" letter-spacing="2" fill="#D4AF37">LEASE PORTIONS</text><text x="76" y="168" font-family="'JetBrains Mono',monospace" font-size="9.5" letter-spacing="2.5" fill="#A1A1AA">ONE ROOF</text><rect x="392" y="64" width="268" height="214" fill="rgba(212,175,55,.03)" stroke="rgba(212,175,55,.35)" stroke-dasharray="5 4"/><text x="408" y="90" font-family="'JetBrains Mono',monospace" font-size="10.5" letter-spacing="2.5" fill="#D4AF37">THE GARDEN LOT</text><g fill="none" stroke="rgba(212,175,55,.28)"><path d="M412,244 C 480,204 560,210 640,172"/><path d="M412,262 C 480,226 560,230 640,194"/><path d="M412,226 C 480,188 548,192 636,152"/></g><g fill="rgba(212,175,55,.08)" stroke="#D4AF37"><circle cx="596" cy="112" r="27"/><circle cx="574" cy="124" r="19"/><circle cx="618" cy="126" r="17"/></g><line x1="596" y1="132" x2="596" y2="158" stroke="#C5A059" stroke-width="2.5"/><text x="596" y="180" font-family="'JetBrains Mono',monospace" font-size="10.5" letter-spacing="2.5" fill="#D4AF37" text-anchor="middle">THE OAK</text><line x1="532" y1="206" x2="592" y2="152" stroke="rgba(91,141,239,.45)" stroke-dasharray="2 4"/><rect x="428" y="196" width="104" height="48" fill="none" stroke="#D4AF37" stroke-dasharray="5 4"/><text x="480" y="219" font-family="'JetBrains Mono',monospace" font-size="10" letter-spacing="2" fill="#F4F4F5" text-anchor="middle">MODEL HOME</text><text x="480" y="236" font-family="'JetBrains Mono',monospace" font-size="9" letter-spacing="2" fill="#A1A1AA" text-anchor="middle">PLANNED</text><line x1="648" y1="278" x2="648" y2="222" stroke="#F4F4F5" stroke-width="2"/><rect x="620" y="196" width="56" height="26" fill="#05080F" stroke="#D4AF37"/><text x="648" y="213" font-family="'Playfair Display',Georgia,serif" font-size="11" fill="#F4F4F5" text-anchor="middle">THE BOX</text><rect x="36" y="284" width="648" height="4" fill="rgba(212,175,55,.15)"/><rect x="0" y="294" width="720" height="30" fill="#05080F"/><line x1="0" y1="309" x2="720" y2="309" stroke="#A1A1AA" stroke-dasharray="14 10" opacity=".55"/><text x="150" y="313" font-family="'JetBrains Mono',monospace" font-size="10.5" letter-spacing="2.5" fill="#A1A1AA" text-anchor="middle">CHEF MENTEUR HWY</text><line x1="694" y1="52" x2="694" y2="30" stroke="#A1A1AA"/><polygon points="694,24 690,32 698,32" fill="#A1A1AA"/><text x="694" y="66" font-family="'JetBrains Mono',monospace" font-size="10" fill="#A1A1AA" text-anchor="middle">N</text></svg><figcaption>The ground — building, garden lot, the oak</figcaption></figure>
+    <figure class="panel-art"><svg viewBox="0 0 720 350" role="img" aria-label="Schematic plan of the ground at 7367 Chef Menteur Highway: the studio building with the room and the lease portions under one roof, the garden lot beside it carrying the Tranquility Garden of Serenity, the oak at the back, the model home planned facing the oak, and the permitted pole-sign position on the highway frontage." xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="planFace" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#101a30"/><stop offset="1" stop-color="#04060d"/></linearGradient><filter id="planShadow" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.5"/></filter></defs><rect x="36" y="26" width="648" height="252" fill="none" stroke="#C5A059"/><text x="52" y="50" font-family="'JetBrains Mono',monospace" font-size="10" letter-spacing="2.5" fill="#A1A1AA">7367 CHEF MENTEUR HWY</text><rect x="56" y="64" width="304" height="118" fill="url(#planFace)" stroke="#C5A059" filter="url(#planShadow)"/><line x1="226" y1="64" x2="226" y2="182" stroke="rgba(212,175,55,.35)"/><text x="76" y="90" font-family="'JetBrains Mono',monospace" font-size="10.5" letter-spacing="2.5" fill="#D4AF37">THE ROOM</text><text x="76" y="116" font-family="'Playfair Display',Georgia,serif" font-size="15" fill="#F4F4F5">The Box Studios</text><text x="240" y="90" font-family="'JetBrains Mono',monospace" font-size="10" letter-spacing="2" fill="#D4AF37">LEASE PORTIONS</text><text x="76" y="168" font-family="'JetBrains Mono',monospace" font-size="9.5" letter-spacing="2.5" fill="#A1A1AA">ONE ROOF</text><rect x="392" y="64" width="268" height="214" fill="rgba(212,175,55,.03)" stroke="rgba(212,175,55,.35)" stroke-dasharray="5 4"/><text x="408" y="90" font-family="'JetBrains Mono',monospace" font-size="10.5" letter-spacing="2.5" fill="#D4AF37">THE GARDEN LOT</text><g fill="none" stroke="rgba(212,175,55,.28)"><path d="M412,244 C 480,204 560,210 640,172"/><path d="M412,262 C 480,226 560,230 640,194"/><path d="M412,226 C 480,188 548,192 636,152"/></g><g fill="rgba(212,175,55,.08)" stroke="#D4AF37"><circle cx="596" cy="112" r="27"/><circle cx="574" cy="124" r="19"/><circle cx="618" cy="126" r="17"/></g><line x1="596" y1="132" x2="596" y2="158" stroke="#C5A059" stroke-width="2.5"/><text x="596" y="180" font-family="'JetBrains Mono',monospace" font-size="10.5" letter-spacing="2.5" fill="#D4AF37" text-anchor="middle">THE OAK</text><line x1="532" y1="206" x2="592" y2="152" stroke="rgba(91,141,239,.45)" stroke-dasharray="2 4"/><rect x="428" y="196" width="104" height="48" fill="none" stroke="#D4AF37" stroke-dasharray="5 4"/><text x="480" y="219" font-family="'JetBrains Mono',monospace" font-size="10" letter-spacing="2" fill="#F4F4F5" text-anchor="middle">MODEL HOME</text><text x="480" y="236" font-family="'JetBrains Mono',monospace" font-size="9" letter-spacing="2" fill="#A1A1AA" text-anchor="middle">PLANNED</text><line x1="648" y1="278" x2="648" y2="222" stroke="#F4F4F5" stroke-width="2"/><rect x="620" y="196" width="56" height="26" fill="url(#planFace)" stroke="#D4AF37" filter="url(#planShadow)"/><text x="648" y="213" font-family="'Playfair Display',Georgia,serif" font-size="11" fill="#F4F4F5" text-anchor="middle">THE BOX</text><rect x="36" y="284" width="648" height="4" fill="rgba(212,175,55,.15)"/><rect x="0" y="294" width="720" height="30" fill="#05080F"/><line x1="0" y1="309" x2="720" y2="309" stroke="#A1A1AA" stroke-dasharray="14 10" opacity=".55"/><text x="150" y="313" font-family="'JetBrains Mono',monospace" font-size="10.5" letter-spacing="2.5" fill="#A1A1AA" text-anchor="middle">CHEF MENTEUR HWY</text><line x1="694" y1="52" x2="694" y2="30" stroke="#A1A1AA"/><polygon points="694,24 690,32 698,32" fill="#A1A1AA"/><text x="694" y="66" font-family="'JetBrains Mono',monospace" font-size="10" fill="#A1A1AA" text-anchor="middle">N</text></svg><figcaption>The ground — building, garden lot, the oak</figcaption></figure>
   </section>
 
     <section aria-labelledby="h-foundation">
