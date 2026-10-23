@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Enter The Box | The Box Studios — New Orleans</title>
+<meta name="description" content="Enter The Box at The Box Studios, New Orleans — for right now: learn from the Black Owned Experience. Doors: sales@leasethebox.com, or the chat on this page.">
+<link rel="canonical" href="https://theboxstudiosofneworleans.com/enter-the-box">
+<meta property="og:title" content="Enter The Box | The Box Studios — New Orleans">
+<meta property="og:description" content="Enter The Box at The Box Studios, New Orleans — for right now: learn from the Black Owned Experience. Doors: sales@leasethebox.com, or the chat on this page.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://theboxstudiosofneworleans.com/enter-the-box">
+<meta property="og:site_name" content="The Box Studios">
+<meta property="og:image" content="https://theboxstudiosofneworleans.com/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Box Studios share card: a gold box mark with a serif B on obsidian, framed in gold.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Enter The Box | The Box Studios — New Orleans">
+<meta name="twitter:description" content="Enter The Box at The Box Studios, New Orleans — for right now: learn from the Black Owned Experience. Doors: sales@leasethebox.com, or the chat on this page.">
+<meta name="twitter:image" content="https://theboxstudiosofneworleans.com/assets/og-card.png">
+<meta name="twitter:image:alt" content="The Box Studios share card: a gold box mark with a serif B on obsidian, framed in gold.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@id": "https://theboxstudiosofneworleans.com/#studio",
+      "@type": "RecordingStudio",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "US",
+        "addressLocality": "New Orleans",
+        "addressRegion": "LA",
+        "postalCode": "70126",
+        "streetAddress": "7367 Chef Menteur Hwy"
+      },
+      "email": "sales@leasethebox.com",
+      "name": "The Box Studios",
+      "description": "The Box Studios — a development studio and recording studio at 7367 Chef Menteur Hwy, New Orleans, LA 70126.",
+      "url": "https://theboxstudiosofneworleans.com/",
+      "sameAs": [
+        "https://www.instagram.com/bee._dee/",
+        "https://www.youtube.com/@theboxstudiosofneworleans"
+      ]
+    },
+    {
+      "@id": "https://theboxstudiosofneworleans.com/lease-the-box",
+      "@type": "WebPage",
+      "about": {
+        "@id": "https://theboxstudiosofneworleans.com/#studio"
+      },
+      "isPartOf": {
+        "@id": "https://theboxstudiosofneworleans.com/#website"
+      },
+      "name": "Enter The Box | The Box Studios — New Orleans",
+      "url": "https://theboxstudiosofneworleans.com/lease-the-box"
+    }
+  ]
+}
+</script>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#f6efdd">
+<style>
+  /* THEME — Capital Command design tokens, read from the live app's own
+     stylesheet (capital-command-nola.base44.app, /assets/index-MvkYsNiO.css,
+     :root block, fetched 2026-10-20):
+       --background hsl(225 68% 4%) · --card hsl(222 50% 6%)
+       --primary hsl(46 65% 52%) · --accent hsl(217 91% 60%)
+       --obsidian #030610 · --aged-gold #D4AF37 · --platinum #F4F4F5
+       --cyan-intel #5B8DEF · --stone-zinc #71717A · --border hsl(0 0% 12%)
+       --radius 0rem · theme-color #E5C158
+     Type: Playfair Display (headings) · Cormorant Garamond (display) ·
+     Montserrat (body) · JetBrains Mono (labels/numbers). Declared as
+     stacks with local fallbacks — this builder makes no network calls. */
+  :root{
+    /* NEWSPRINT COMBINATION (Byron's ruling, 2026-10-23: "Update site
+       combine the news print") — the Daily Jupiter newspaper dress is
+       combined into the site: paper ground, ink text, serif reading
+       type, thin rules, gold held as accent only. The hero band keeps
+       its obsidian field and liquid motion as the front-page art; the
+       footer closes as an ink colophon. */
+    --paper:#f6efdd; --ink:#1d1a14; --muted:#8a8168; --gold-ink:#8a6d1f;
+    --paper-card:#fffdf4; --rule:#d9d0b8;
+    --obsidian:#030610; --card:#080c17; --platinum:#f4f4f5;
+    --gold:#d4af37; --gold-hi:#e5c158; --gold-deep:#c5a059;
+    --blue:#3b82f6; --intel:#5b8def;
+    /* --zinc carries small text (legal line, press line, captions):
+       stone-zinc #71717A measures 4.18:1 on the obsidian field — under
+       WCAG AA for text — so the text value is lifted to zinc-400
+       #A1A1AA (8.0:1) in Round 1. The hue family is unchanged. */
+    --zinc:#6f6750;
+    --line:#d9d0b8; --max:68rem; --radius:0;
+    /* --mono is the label stack used across the site (section numbers,
+       press line, door links). Defined in Round 4 (2026-10-23): two
+       rules (.ig-line, .door-link) referenced var(--mono) with no
+       definition on record, so they silently fell back to the body
+       face; the token now carries the stack they were written for. */
+    --mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+  }
+  *{box-sizing:border-box; border-radius:var(--radius)}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+    font-size:1.0625rem; line-height:1.7; overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--gold); color:var(--ink)}
+  a{color:var(--ink); text-decoration-color:var(--gold); text-underline-offset:3px}
+  a:hover{color:var(--gold-ink)}
+  a:focus-visible{outline:2px solid var(--gold); outline-offset:3px}
+  .skip{position:absolute; left:-999px; top:0; background:var(--gold); color:var(--ink); padding:.5rem 1rem; z-index:40}
+  .skip:focus{left:0}
+  .visually-hidden{position:absolute !important; width:1px !important; height:1px !important;
+    margin:-1px; padding:0; overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%);
+    white-space:nowrap; border:0}
+  .masthead{background:rgba(246,239,221,.95); color:var(--ink); position:sticky; top:0; z-index:20;
+    border-bottom:4px double var(--ink); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px)}
+  .masthead-in{max-width:var(--max); margin:0 auto; padding:.65rem clamp(1rem,4vw,2rem);
+    display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap}
+  .wordmark{font-weight:700; font-size:.95rem; letter-spacing:.35em; text-transform:uppercase}
+  .wordmark strong{color:var(--gold-ink); font-weight:700}
+  nav .nav-list{list-style:none; display:flex; gap:1.25rem; margin:0; padding:0; flex-wrap:wrap}
+  /* Round 4 (2026-10-23): inline-block + block padding gives each nav
+     link a target height above the WCAG 2.2 AA target-size minimum
+     (2.5.8, 24 CSS px) without changing the masthead's look. */
+  nav .nav-list a{color:var(--ink); text-decoration:none; font-size:.82rem; letter-spacing:.14em; text-transform:uppercase; display:inline-block; padding:.45rem 0}
+  nav .nav-list a:hover{color:var(--gold-ink)}
+  main{max-width:var(--max); margin:0 auto; padding:0 clamp(1rem,4vw,2rem) 4rem}
+  /* HERO — full-bleed band carrying the 5D/8K liquid movement (WebGL canvas).
+     Fallback composition (no WebGL / no JS) is the layered gradient below. */
+  .hero{
+    position:relative; overflow:hidden; isolation:isolate;
+    width:100vw; margin-left:calc(50% - 50vw);
+    padding:clamp(3rem,9vw,6rem) max(clamp(1rem,4vw,2rem), calc(50vw - 34rem)) 3rem;
+    border-bottom:3px solid var(--ink);
+    background:
+      radial-gradient(60rem 30rem at 78% -10%, rgba(212,175,55,.20), transparent 60%),
+      radial-gradient(50rem 26rem at 8% 115%, rgba(91,141,239,.16), transparent 60%),
+      linear-gradient(180deg, #05080f 0%, var(--obsidian) 100%);
+  }
+  .hero .liquid{position:absolute; inset:0; width:100%; height:100%; z-index:0; display:block}
+  .hero::after{content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:linear-gradient(180deg, rgba(3,6,16,.18) 0%, rgba(3,6,16,0) 34%, rgba(3,6,16,.55) 100%)}
+  .hero>*{position:relative; z-index:2}
+  .hero h1{
+    font-family:'Playfair Display',Georgia,serif; font-weight:700;
+    font-size:clamp(2.8rem,10vw,6.5rem); line-height:.95; margin:0 0 1rem; letter-spacing:-.01em;
+    text-shadow:0 2px 30px rgba(3,6,16,.65);
+  }
+  .hero .roles{
+    font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+    font-size:clamp(.8rem,2vw,1rem); letter-spacing:.3em; text-transform:uppercase; color:var(--gold-hi);
+  }
+  .summary{line-height:1.45; max-width:42rem; margin:2rem 0 0;
+    font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(1.45rem,3.2vw,1.9rem)}
+  section{padding:clamp(2.5rem,6vw,4rem) 0; border-bottom:1px solid var(--line)}
+  .sec-head{display:flex; align-items:baseline; gap:1.25rem; margin-bottom:1.5rem; position:relative; padding-bottom:1.1rem}
+  .sec-head::after{ /* gold divider with the Capital Command shimmer sweep */
+    content:""; position:absolute; left:0; bottom:0; height:2px; width:100%;
+    background:linear-gradient(90deg, var(--gold) 0%, rgba(212,175,55,.12) 38%, rgba(212,175,55,.12) 62%, var(--gold-deep) 100%);
+    background-size:220% 100%; animation:divider-shimmer 7s linear infinite;
+  }
+  @keyframes divider-shimmer{0%{background-position:120% 0}100%{background-position:-120% 0}}
+  .sec-num{
+    font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+    font-size:clamp(1.05rem,2.4vw,1.4rem); letter-spacing:.18em; color:var(--gold-ink); font-weight:700;
+  }
+  .sec-head h2{font-family:'Playfair Display',Georgia,serif; font-size:clamp(1.8rem,4.5vw,3rem); margin:0; line-height:1.05}
+  section p{max-width:44rem}
+  section p:empty{display:none}
+  section:has(> .sec-head h2:empty){display:none}
+  .cta-line{font-size:1.15rem}
+  .legal{font-size:.92rem; line-height:1.6; color:var(--zinc); border-left:3px solid var(--gold); padding-left:1rem; max-width:44rem}
+  footer{background:var(--ink); color:var(--paper); border-top:3px solid var(--gold)}
+  footer .ig-line, footer .press-line{color:#b8ad8f}
+  .footer-in{max-width:var(--max); margin:0 auto; padding:2.5rem clamp(1rem,4vw,2rem)}
+  footer a{color:var(--gold-hi)}
+  footer p{max-width:44rem}
+  .next-step{font-size:1.15rem}
+  .press-line{
+    font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+    font-size:.85rem; letter-spacing:.22em; text-transform:uppercase; color:var(--zinc);
+  }
+  .press-line a{letter-spacing:.22em}
+  /* THE WORLD SCROLLS — the daily-comic mount. The span stays hidden
+     until the feed script fills it; if the feed fails, the paragraph
+     collapses and the section's standing archive link carries the
+     section alone (the graceful fallback). */
+  .scrolls-mount[hidden]{display:none}
+  p:has(> .scrolls-mount[hidden]){display:none}
+  .scrolls-card{display:block; max-width:44rem; text-decoration:none}
+  .scrolls-card img{display:block; width:100%; height:auto; border:1px solid var(--gold-deep)}
+  .scrolls-cap{display:block; margin-top:.7rem}
+  .scrolls-cap .cap-label{
+    font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+    font-size:.8rem; letter-spacing:.22em; text-transform:uppercase; color:var(--zinc);
+  }
+  .scrolls-cap .cap-title{
+    display:block; margin-top:.15rem;
+    font-family:'Cormorant Garamond',Georgia,serif; font-size:1.5rem; line-height:1.25; color:var(--ink);
+  }
+  .scrolls-card:hover .cap-title{color:var(--gold-ink)}
+  /* ROUND 2 PANELS — designed graphics drawn locally in the Capital
+     Command system: gold line art on the card field, an inline SVG
+     figure with an accessible name (role="img" + aria-label), and the
+     mono micro-label caption treatment used across the site. Sections
+     without a panel carry an empty figure, which never renders. */
+  .panel-art{margin:2rem 0 0; max-width:44rem; border:1px solid var(--gold-deep); background:var(--paper-card); padding:1.1rem 1.1rem .9rem}
+  .panel-art:empty{display:none}
+  .panel-art svg{display:block; width:100%; height:auto}
+  .panel-art figcaption{
+    margin-top:.8rem;
+    font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+    font-size:.78rem; letter-spacing:.22em; text-transform:uppercase; color:var(--zinc);
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *{transition:none !important; animation:none !important}
+  }
+  /* EMBEDS (Byron's order, 2026-10-23: "Embed as much as possible for
+     full potential") — the house's own films and the address map ride
+     inside the pages in a single treatment: paper-width, gold-deep
+     frame, lazy-loaded, titled for accessibility. */
+  .vid-embed{max-width:44rem; margin:1.5rem 0}
+  .vid-embed iframe{display:block; width:100%; aspect-ratio:16/9; height:auto; border:1px solid var(--gold-deep); background:#000}
+  .vid-embed.map-embed iframe{aspect-ratio:4/3; background:var(--paper-card)}
+  /* Click-to-play facade (code pattern from the Gemini seat, 2026-10-23,
+     adapted to house tokens — the poster is a mounted print, the badge
+     an ink-and-gold seal; nothing loads from YouTube until the visitor
+     presses play, so the page carries no third-party weight up front). */
+  .vid-embed .yt-facade{display:block; position:relative; width:100%; aspect-ratio:16/9;
+    border:1px solid var(--gold-deep); background:#000; overflow:hidden; padding:0; cursor:pointer}
+  .vid-embed .yt-facade img{width:100%; height:100%; object-fit:cover; display:block}
+  .vid-embed .yt-play{position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+    width:4.25rem; height:3rem; background:rgba(29,26,20,.92); border:2px solid var(--gold);
+    display:grid; place-items:center; pointer-events:none; transition:background-color .15s ease}
+  .vid-embed .yt-play svg{width:1.5rem; height:1.5rem; fill:var(--gold-hi)}
+  .vid-embed .yt-facade:hover .yt-play, .vid-embed .yt-facade:focus-visible .yt-play{background:var(--gold)}
+  .vid-embed .yt-facade:hover .yt-play svg, .vid-embed .yt-facade:focus-visible .yt-play svg{fill:var(--ink)}
+  .vid-embed .yt-facade:focus-visible{outline:2px solid var(--gold); outline-offset:3px}
+  .ig-line{margin:0 0 .5rem; font-family:var(--mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--zinc)}
+  .ig-embed{max-width:540px; margin:2rem auto .25rem}
+  .ig-embed .instagram-media{margin:0 auto !important; width:100% !important; min-width:0 !important}
+  .door-card{margin:1.6rem 0 0; border:1px solid var(--gold-deep); background:var(--paper-card); padding:1.05rem 1.2rem}
+  .door-link{font-family:var(--mono); font-size:.8rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-ink); text-decoration:underline; text-underline-offset:4px}
+  .door-note{color:var(--ink)}
+  button.door-link{font-family:var(--mono); background:none; border:0; padding:0; cursor:pointer; text-align:left}
+  button.door-link:hover{color:var(--ink)}
+  .foot-bot{font:inherit; color:var(--gold-hi); background:none; border:0; padding:0; cursor:pointer; text-decoration:underline; text-underline-offset:3px; text-decoration-color:var(--gold)}
+  .foot-bot:hover{color:var(--paper)}
+  /* LEASE THE BOT — the desk's chat, on the site (Byron's order,
+     2026-10-23: "Lease the Chat Bot. On website."). Built in-house, no
+     outside service: the bot fronts the desk, takes the intake in
+     the six-step manner (intake first), answers from the record, and
+     hands the intake to the desk by email. Nothing is agreed in the
+     chat; the desk answers in writing. House dress: paper card, ink
+     text, gold rule, mono labels. */
+  .bot-launch{
+    position:fixed; right:1rem; bottom:1rem; z-index:60;
+    font-family:var(--mono); font-size:.78rem; letter-spacing:.16em; text-transform:uppercase;
+    background:var(--ink); color:var(--paper); border:2px solid var(--gold);
+    padding:.85rem 1.1rem; cursor:pointer; box-shadow:0 6px 24px rgba(29,26,20,.35);
+  }
+  .bot-launch:hover{background:var(--gold); color:var(--ink)}
+  .bot-launch:focus-visible{outline:2px solid var(--gold); outline-offset:3px}
+  .bot-panel{
+    position:fixed; right:1rem; bottom:1rem; z-index:61;
+    width:min(24rem, calc(100vw - 2rem)); max-height:min(36rem, calc(100vh - 2rem));
+    display:none; flex-direction:column;
+    background:var(--paper-card); color:var(--ink);
+    border:2px solid var(--ink); box-shadow:0 12px 40px rgba(29,26,20,.4);
+  }
+  .bot-panel.open{display:flex}
+  .bot-head{
+    display:flex; align-items:center; justify-content:space-between; gap:1rem;
+    background:var(--ink); color:var(--paper); padding:.7rem 1rem;
+    border-bottom:3px solid var(--gold);
+  }
+  .bot-head .bot-name{font-family:var(--mono); font-size:.8rem; letter-spacing:.18em; text-transform:uppercase}
+  .bot-head .bot-name strong{color:var(--gold-hi); font-weight:700}
+  .bot-close{background:none; border:1px solid var(--gold); color:var(--paper);
+    font-family:var(--mono); font-size:.72rem; letter-spacing:.12em; text-transform:uppercase;
+    padding:.4rem .6rem; cursor:pointer}
+  .bot-close:hover{background:var(--gold); color:var(--ink)}
+  .bot-log{overflow-y:auto; padding:1rem; display:flex; flex-direction:column; gap:.7rem; font-size:1rem; line-height:1.5}
+  .bot-msg{max-width:92%; padding:.6rem .8rem; border:1px solid var(--rule); background:var(--paper)}
+  .bot-msg.bot{background:var(--paper); border-left:3px solid var(--gold)}
+  .bot-msg.user{align-self:flex-end; background:var(--ink); color:var(--paper); border-color:var(--ink)}
+  .bot-msg p{margin:0 0 .4rem} .bot-msg p:last-child{margin-bottom:0}
+  .bot-chips{display:flex; flex-wrap:wrap; gap:.45rem; padding:0 1rem .8rem}
+  .bot-chips:empty{display:none}
+  .bot-chip{
+    font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase;
+    background:var(--paper); color:var(--ink); border:1px solid var(--gold-deep);
+    padding:.5rem .65rem; cursor:pointer; text-decoration:none; display:inline-block;
+  }
+  .bot-chip:hover{background:var(--gold); color:var(--ink)}
+  .bot-form{display:flex; gap:.5rem; padding:.8rem 1rem 1rem; border-top:1px solid var(--rule)}
+  .bot-input{
+    flex:1; min-width:0; font:inherit; font-size:1rem; color:var(--ink);
+    background:var(--paper); border:1px solid var(--gold-deep); padding:.55rem .7rem;
+  }
+  .bot-input:focus-visible{outline:2px solid var(--gold); outline-offset:1px}
+  .bot-send{
+    font-family:var(--mono); font-size:.75rem; letter-spacing:.12em; text-transform:uppercase;
+    background:var(--ink); color:var(--paper); border:2px solid var(--gold); padding:.55rem .8rem; cursor:pointer;
+  }
+  .bot-send:hover{background:var(--gold); color:var(--ink)}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to the record</a>
+
+<header class="masthead">
+  <div class="masthead-in">
+    <div class="wordmark">The <strong>Box</strong> Studios · New Orleans</div>
+    <nav aria-label="Site"><ul class="nav-list"><li><a href="index.html">Home</a></li><li><a href="the-room.html">The Room</a></li><li><a href="the-ground.html">The Ground</a></li><li><a href="visit.html">Visit</a></li><li><a href="enter-the-box.html">Enter The Box</a></li><li><a href="legal.html">Legal</a></li></ul></nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="hero">
+    <canvas class="liquid" id="liquid-hero" aria-hidden="true"></canvas>
+    <span class="visually-hidden">Decorative motion: gold and blue liquid light moving slowly over a black field, behind the page title.</span>
+    <h1>Enter The Box</h1>
+    <p class="roles">The Black Owned Experience</p>
+    <p class="summary">For right now: learn from the Black Owned Experience — a working studio, its room, its record, and the trade as it is actually practiced.</p>
+  </div>
+
+    <section aria-labelledby="h-experience">
+    <div class="sec-head"><span class="sec-num">01</span><h2 id="h-experience">The experience</h2></div>
+    <p>The Box Studios is a Black-owned studio in New Orleans East — owned ground, a professional room, and a record kept to the standard. Enter The Box is the way in: how the room runs, how the record is kept, how the work is done — learned from the inside.</p>
+    <p>It is not a lease, and it is not open access to the room. You come in as an intern to the experience — arranged in writing, through the doors, as a professional situation.</p>
+    <p>And what the place teaches is ownership — intellectual property, owned. What a person makes belongs to them: ownership of your own piece stays with you. The arrangement is worked out in writing.</p>
+    <figure class="panel-art"></figure>
+  </section>
+
+    <section aria-labelledby="h-doors">
+    <div class="sec-head"><span class="sec-num">02</span><h2 id="h-doors">The doors</h2></div>
+    <p>Write to the studio — <a href="mailto:sales@leasethebox.com">sales@leasethebox.com</a> — or open the chat on this page. State the matter plainly; the desk answers in writing.</p>
+    <p><p class="door-card"><button type="button" class="door-link" data-open-bot>Enter The B · O · X</button><span class="door-note"> — the chat, on this page.</span></p></p>
+    <p>Nothing is agreed outside a written arrangement.</p>
+    <figure class="panel-art"></figure>
+  </section>
+
+    <section aria-labelledby="h-">
+    <div class="sec-head"><span class="sec-num"></span><h2 id="h-"></h2></div>
+    <p></p>
+    <p></p>
+    <p></p>
+    <figure class="panel-art"></figure>
+  </section>
+
+    <section aria-labelledby="h-">
+    <div class="sec-head"><span class="sec-num"></span><h2 id="h-"></h2></div>
+    <p></p>
+    <p></p>
+    <p></p>
+    <figure class="panel-art"></figure>
+  </section>
+
+    <section aria-labelledby="h-">
+    <div class="sec-head"><span class="sec-num"></span><h2 id="h-"></h2></div>
+    <p></p>
+    <p></p>
+    <p></p>
+    <figure class="panel-art"></figure>
+  </section>
+
+    <section aria-labelledby="h-">
+    <div class="sec-head"><span class="sec-num"></span><h2 id="h-"></h2></div>
+    <p></p>
+    <p></p>
+    <p></p>
+    <figure class="panel-art"></figure>
+  </section>
+
+
+  <section aria-labelledby="h-next">
+    <div class="sec-head"><span class="sec-num">03</span><h2 id="h-next">Write</h2></div>
+    <p class="cta-line">Email — <a href="mailto:sales@leasethebox.com">sales@leasethebox.com</a> — or Enter The B · O · X. Those are the studio's only two doors.</p>
+    <p class="legal">This page describes a door for learning inquiries. It states no terms and makes no offer.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-in">
+    <p class="next-step">Next step: email the studio — sales@leasethebox.com — or open Enter The B · O · X.</p>
+    <p>The Box Studios — two doors only: <a href="mailto:sales@leasethebox.com">sales@leasethebox.com</a> · <button type="button" class="foot-bot" data-open-bot>Enter The B · O · X</button><br>7367 Chef Menteur Hwy · New Orleans, LA 70126</p>
+    <p class="ig-line">Instagram — <a href="https://www.instagram.com/bee._dee/">@bee._dee</a></p>
+      <p class="ig-line">YouTube — <a href="https://www.youtube.com/@theboxstudiosofneworleans">The Box Studios</a></p>
+      <p class="press-line">Press — <a href="https://newmusic.press">NewMusic Press</a> · <a href="https://repeatable.press">Repeatable Press</a></p>
+    <p>Rendering by the Byron Jupiter Agency, with Renaissance Instruments<br>© Byron Jupiter — sales@leasethebox.com</p>
+    <p><a href="legal.html">Legal</a> · <a href="#main">Back to the top</a></p>
+  </div>
+</footer>
+
+<!-- LEASE THE BOT — the desk's chat, on the site. The launcher
+     rides every page; the panel takes the intake and answers from the
+     record. The desk answers in writing, by email. -->
+<button type="button" class="bot-launch" id="bot-launch" aria-haspopup="dialog" aria-expanded="false" aria-controls="bot-panel">Enter The B · O · X — Chat</button>
+<div class="bot-panel" id="bot-panel" role="dialog" aria-modal="false" aria-label="Enter The B · O · X — the chat" hidden>
+  <div class="bot-head">
+    <span class="bot-name">Enter <strong>The B · O · X</strong> · The Box Studios</span>
+    <button type="button" class="bot-close" id="bot-close">Close</button>
+  </div>
+  <div class="bot-log" id="bot-log" aria-live="polite"></div>
+  <div class="bot-chips" id="bot-chips"></div>
+  <form class="bot-form" id="bot-form">
+    <label class="visually-hidden" for="bot-input">Write to Enter The B · O · X</label>
+    <input class="bot-input" id="bot-input" type="text" autocomplete="off" placeholder="Write here…">
+    <button class="bot-send" type="submit">Send</button>
+  </form>
+</div>
+
+<script>
+/* 5D/8K LIQUID MOVEMENT — WebGL fluid in the house manner.
+   A domain-warped fbm flow (the liquid technique of the 5D/8K pieces,
+   ARCH-2026-0017's canvas environment family) rendered as one fragment
+   shader in Capital Command's tokens: obsidian field, aged-gold currents,
+   intel-blue veins. Pointer energy swells the flow. Discipline: DPR cap,
+   pause off-screen and when the tab hides, one still frame when the
+   visitor prefers reduced motion, CSS gradient fallback without WebGL. */
+(function () {
+  var canvas = document.getElementById('liquid-hero');
+  if (!canvas) return;
+  var hero = canvas.parentElement;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var gl = null;
+  try {
+    gl = canvas.getContext('webgl', { antialias: false, alpha: false, depth: false, stencil: false, powerPreference: 'low-power' })
+      || canvas.getContext('experimental-webgl');
+  } catch (e) { gl = null; }
+  if (!gl) { canvas.style.display = 'none'; return; }
+
+  var VERT = 'attribute vec2 p; void main(){ gl_Position = vec4(p, 0.0, 1.0); }';
+  var FRAG = [
+    'precision highp float;',
+    'uniform vec2 uRes; uniform float uTime; uniform vec2 uMouse; uniform float uEnergy;',
+    'float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123); }',
+    'float noise(vec2 p){',
+    '  vec2 i = floor(p); vec2 f = fract(p);',
+    '  f = f * f * (3.0 - 2.0 * f);',
+    '  return mix(mix(hash(i), hash(i + vec2(1.0, 0.0)), f.x),',
+    '             mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), f.x), f.y);',
+    '}',
+    'float fbm(vec2 p){',
+    '  float v = 0.0; float a = 0.5;',
+    '  mat2 m = mat2(1.6, 1.2, -1.2, 1.6);',
+    '  for (int i = 0; i < 5; i++){ v += a * noise(p); p = m * p; a *= 0.5; }',
+    '  return v;',
+    '}',
+    'void main(){',
+    '  vec2 uv = (gl_FragCoord.xy * 2.0 - uRes) / min(uRes.x, uRes.y);',
+    '  float t = uTime * 0.055;',
+    '  vec2 q = vec2(fbm(uv * 1.35 + t), fbm(uv * 1.35 + vec2(5.2, 1.3) - t));',
+    '  vec2 r = vec2(fbm(uv * 1.35 + 3.0 * q + vec2(1.7, 9.2) + 0.15 * t),',
+    '                fbm(uv * 1.35 + 3.0 * q + vec2(8.3, 2.8) - 0.12 * t));',
+    '  float f = fbm(uv * 1.35 + 3.5 * r);',
+    '  vec2 m = uMouse * 2.0 - 1.0; m.y *= -1.0;',
+    '  m.x *= uRes.x / uRes.y;',
+    '  float md = length(uv - m);',
+    '  f += uEnergy * 0.38 * exp(-md * md * 2.2);',
+    '  vec3 obsidian = vec3(0.012, 0.023, 0.063);',
+    '  vec3 cardc    = vec3(0.031, 0.047, 0.090);',
+    '  vec3 navy     = vec3(0.045, 0.115, 0.285);',
+    '  vec3 intel    = vec3(0.357, 0.553, 0.937);',
+    '  vec3 gold     = vec3(0.831, 0.686, 0.216);',
+    '  vec3 goldhi   = vec3(0.898, 0.757, 0.345);',
+    '  vec3 col = obsidian;',
+    '  col = mix(col, cardc, smoothstep(0.18, 0.52, f));',
+    '  col = mix(col, navy,  smoothstep(0.44, 0.74, f) * 0.55);',
+    '  col = mix(col, intel, smoothstep(0.60, 0.90, f) * 0.22);',
+    '  col = mix(col, gold,  smoothstep(0.62, 0.95, f) * 0.80);',
+    '  col = mix(col, goldhi, smoothstep(0.86, 1.05, f));',
+    '  col *= 1.0 - 0.32 * dot(uv * 0.55, uv * 0.55);',
+    '  gl_FragColor = vec4(col, 1.0);',
+    '}'
+  ].join('\n');
+
+  function shader(type, src) {
+    var s = gl.createShader(type);
+    gl.shaderSource(s, src); gl.compileShader(s);
+    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) { gl.deleteShader(s); return null; }
+    return s;
+  }
+  var vs = shader(gl.VERTEX_SHADER, VERT), fs = shader(gl.FRAGMENT_SHADER, FRAG);
+  if (!vs || !fs) { canvas.style.display = 'none'; return; }
+  var prog = gl.createProgram();
+  gl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);
+  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) { canvas.style.display = 'none'; return; }
+  gl.useProgram(prog);
+  var buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+  var loc = gl.getAttribLocation(prog, 'p');
+  gl.enableVertexAttribArray(loc);
+  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+  var uRes = gl.getUniformLocation(prog, 'uRes');
+  var uTime = gl.getUniformLocation(prog, 'uTime');
+  var uMouse = gl.getUniformLocation(prog, 'uMouse');
+  var uEnergy = gl.getUniformLocation(prog, 'uEnergy');
+
+  var mouseX = 0.5, mouseY = 0.5, energy = 0.0;
+  function resize() {
+    var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    var w = Math.max(2, Math.round(hero.clientWidth * dpr));
+    var h = Math.max(2, Math.round(hero.clientHeight * dpr));
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width = w; canvas.height = h; gl.viewport(0, 0, w, h);
+    }
+  }
+  function draw(timeSec) {
+    resize();
+    gl.uniform2f(uRes, canvas.width, canvas.height);
+    gl.uniform1f(uTime, timeSec);
+    gl.uniform2f(uMouse, mouseX, mouseY);
+    gl.uniform1f(uEnergy, energy);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+  }
+
+  if (reduced) {
+    draw(7.3); /* one still frame of the liquid, then nothing moves */
+    window.addEventListener('resize', function () { draw(7.3); });
+    return;
+  }
+
+  var running = true, visible = true, raf = 0, start = null;
+  function frame(ts) {
+    if (!running) return;
+    if (start === null) start = ts;
+    energy *= 0.965;
+    draw((ts - start) / 1000);
+    raf = requestAnimationFrame(frame);
+  }
+  function play() { if (!running && visible && !document.hidden) { running = true; start = null; raf = requestAnimationFrame(frame); } }
+  function stop() { running = false; if (raf) cancelAnimationFrame(raf); }
+  hero.addEventListener('pointermove', function (e) {
+    var b = hero.getBoundingClientRect();
+    mouseX = (e.clientX - b.left) / b.width;
+    mouseY = 1.0 - (e.clientY - b.top) / b.height;
+    energy = Math.min(energy + 0.06, 1.0);
+  });
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      visible = entries[0].isIntersecting;
+      if (visible) play(); else stop();
+    }, { threshold: 0.02 }).observe(hero);
+  }
+  document.addEventListener('visibilitychange', function () { if (document.hidden) stop(); else play(); });
+  raf = requestAnimationFrame(frame);
+})();
+</script>
+
+<script>
+/* THE WORLD SCROLLS — the daily comic, pulled live from Repeatable Press.
+   At view time the section asks the press's own record for the newest
+   World Scrolls item (category 1598) and shows its card: the featured
+   image and the episode title, linked to the episode on the press.
+   If the feed is unreachable or empty, the mount stays hidden and the
+   section's standing archive link carries the section alone. */
+(function () {
+  var mount = document.getElementById('world-scrolls-latest');
+  if (!mount || !window.fetch) return;
+  var FEED = 'https://repeatable.press/wp-json/wp/v2/posts?categories=1598&per_page=1&_embed';
+  function plainText(html) {
+    var d = document.createElement('div');
+    d.innerHTML = html || '';
+    return (d.textContent || d.innerText || '').replace(/\s+/g, ' ').trim();
+  }
+  fetch(FEED).then(function (res) {
+    if (!res.ok) throw new Error('feed');
+    return res.json();
+  }).then(function (posts) {
+    if (!posts || !posts.length) return;
+    var post = posts[0];
+    var title = plainText(post.title && post.title.rendered);
+    if (!title || !post.link) return;
+    var media = null;
+    if (post._embedded && post._embedded['wp:featuredmedia'] && post._embedded['wp:featuredmedia'][0]) {
+      media = post._embedded['wp:featuredmedia'][0];
+    }
+    var a = document.createElement('a');
+    a.className = 'scrolls-card';
+    a.href = post.link;
+    if (media && media.source_url) {
+      var img = document.createElement('img');
+      img.src = media.source_url;
+      img.alt = plainText(media.alt_text) || title;
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      a.appendChild(img);
+    }
+    var cap = document.createElement('span');
+    cap.className = 'scrolls-cap';
+    var lab = document.createElement('span');
+    lab.className = 'cap-label';
+    lab.textContent = 'The latest, from the press';
+    var tit = document.createElement('span');
+    tit.className = 'cap-title';
+    tit.textContent = title;
+    cap.appendChild(lab);
+    cap.appendChild(tit);
+    a.appendChild(cap);
+    mount.appendChild(a);
+    mount.hidden = false;
+  }).catch(function () { /* the standing archive link carries the section */ });
+})();
+</script>
+
+<script>
+/* Click-to-play for the film facades: swaps the mounted poster for the
+   real player on press, and warms the player host on first hover so the
+   press feels instant. No third-party request happens before intent. */
+document.addEventListener('click', function (e) {
+  var btn = e.target.closest('.yt-facade');
+  if (!btn) return;
+  e.preventDefault();
+  var iframe = document.createElement('iframe');
+  iframe.src = btn.getAttribute('data-yt-src');
+  iframe.title = btn.getAttribute('data-yt-title');
+  iframe.allow = 'accelerometer; autoplay; encrypted-media; picture-in-picture';
+  iframe.allowFullscreen = true;
+  iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+  btn.replaceWith(iframe);
+  iframe.focus();
+});
+document.addEventListener('pointerover', function warm(e) {
+  if (!e.target.closest('.yt-facade')) return;
+  var l = document.createElement('link');
+  l.rel = 'preconnect'; l.href = 'https://www.youtube-nocookie.com';
+  document.head.appendChild(l);
+  document.removeEventListener('pointerover', warm);
+});
+</script>
+
+<script>
+/* LEASE THE BOT — the chat engine. In-house, no outside service, no
+   tracking: the conversation lives in this page only. The bot fronts
+   The desk — it takes the intake (name, principal, matter,
+   details, reply email) and hands it to the desk as an email the
+   visitor sends; it answers simple questions from the record. The
+   desk answers in writing. Nothing is agreed in this chat. */
+(function () {
+  var launch = document.getElementById('bot-launch');
+  var panel = document.getElementById('bot-panel');
+  var closeBtn = document.getElementById('bot-close');
+  var log = document.getElementById('bot-log');
+  var chipsBox = document.getElementById('bot-chips');
+  var form = document.getElementById('bot-form');
+  var input = document.getElementById('bot-input');
+  if (!launch || !panel || !log || !form || !input) return;
+
+  var DESK = 'sales@leasethebox.com';
+  var PROMPT_URL = 'agent-connection-prompt.md';
+  var started = false;
+  var inIntake = false;
+  var step = 0;
+  var intake = { name: '', principal: '', matter: '', details: '', email: '' };
+  var STEPS = [
+    { key: 'name', ask: 'Your name — you, the person, not only your company.' },
+    { key: 'principal', ask: 'Who do you represent? Name your principal — or say “myself.”' },
+    { key: 'matter', ask: 'Your matter, in one line. Choose one, or write it plainly.', chips: ['The room', 'The ground', 'Learning', 'A session arrangement', 'Credits and the record', 'Press', 'Another matter'] },
+    { key: 'details', ask: 'The matter, plainly — the facts you hold, and what you are asking for.' },
+    { key: 'email', ask: 'An email address for the desk’s written reply.' }
+  ];
+  var FAQS = {
+    'Where is the studio?': 'The Box Studios · 7367 Chef Menteur Hwy · New Orleans, LA 70126 — on Chef Menteur Highway in New Orleans East. Arrivals and deliveries are confirmed by email before the day.',
+    'How do the doors work?': 'Two doors only: this chat, and email — ' + DESK + '. No phone, no form, no other door. The room is reached through agents only, and every arrangement is made in writing, party to party.',
+    'What is Enter The Box?': 'Enter The Box is the desk\'s chat at The Box Studios — for right now: learn from the Black Owned Experience. It takes intakes — name, principal, matter — and answers from the record. The desk answers in writing, by email. Nothing is agreed in this chat.'
+  };
+
+  function say(text, who) {
+    var d = document.createElement('div');
+    d.className = 'bot-msg ' + (who || 'bot');
+    var p = document.createElement('p');
+    p.textContent = text;
+    d.appendChild(p);
+    log.appendChild(d);
+    log.scrollTop = log.scrollHeight;
+  }
+  function chips(list) {
+    chipsBox.innerHTML = '';
+    (list || []).forEach(function (c) {
+      var b;
+      if (c.href) {
+        b = document.createElement('a');
+        b.href = c.href;
+        if (c.download) b.setAttribute('download', '');
+      } else {
+        b = document.createElement('button');
+        b.type = 'button';
+      }
+      b.className = 'bot-chip';
+      b.textContent = c.label;
+      if (c.act) b.addEventListener('click', function () { c.act(); });
+      chipsBox.appendChild(b);
+    });
+  }
+  function menuChips() {
+    var list = [
+      { label: 'Start an intake', act: startIntake },
+      { label: 'Where is the studio?', act: function () { faq('Where is the studio?'); } },
+      { label: 'How do the doors work?', act: function () { faq('How do the doors work?'); } },
+      { label: 'What is Enter The Box?', act: function () { faq('What is Enter The Box?'); } },
+      { label: 'I am an agent — the connection prompt', href: PROMPT_URL, download: true }
+    ];
+    chips(list);
+  }
+  function faq(q) {
+    say(q, 'user');
+    say(FAQS[q]);
+    say('Anything else — or shall we open your intake?');
+    menuChips();
+  }
+  function greet() {
+    say('Enter The B · O · X — for right now: learn from the Black Owned Experience. The Box Studios, New Orleans.');
+    say('I take intakes and answer from the record. The desk answers in writing; nothing is agreed in this chat, and terms exist only in a signed written agreement.');
+    menuChips();
+  }
+  function startIntake() {
+    inIntake = true;
+    step = 0;
+    intake = { name: '', principal: '', matter: '', details: '', email: '' };
+    say('Start an intake', 'user');
+    say('We will take it in order: intake first, then the desk. ' + STEPS[0].ask);
+    chips([]);
+    input.focus();
+  }
+  function askStep() {
+    var s = STEPS[step];
+    say(s.ask);
+    if (s.chips) {
+      chips(s.chips.map(function (label) {
+        return { label: label, act: function () { answer(label); } };
+      }));
+    } else {
+      chips([]);
+    }
+    input.focus();
+  }
+  function review() {
+    say('Your intake, as the desk will receive it — Name: ' + intake.name + ' · Principal: ' + intake.principal + ' · Matter: ' + intake.matter + ' · Reply to: ' + intake.email);
+    say(intake.details);
+    say('Send it, and your email program opens with the intake addressed to the desk. The desk answers in writing. The matter is opened — nothing is agreed until paper.');
+    chips([
+      { label: 'Send to the desk', act: sendToDesk },
+      { label: 'Start over', act: startIntake }
+    ]);
+  }
+  function sendToDesk() {
+    var subject = 'Enter The B · O · X — intake: ' + intake.matter;
+    var body = [
+      'LEASE THE BOT — INTAKE',
+      'Name: ' + intake.name,
+      'Principal: ' + intake.principal,
+      'Matter: ' + intake.matter,
+      'Details: ' + intake.details,
+      'Reply to: ' + intake.email
+    ].join('\n');
+    window.location.href = 'mailto:' + DESK + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    inIntake = false;
+    say('The intake is addressed to ' + DESK + '. Send the email, and the desk takes it from there — in writing.');
+    menuChips();
+  }
+  function answer(text) {
+    var s = STEPS[step];
+    if (!s) return;
+    say(text, 'user');
+    if (s.key === 'email' && text.indexOf('@') === -1) {
+      say('That does not read as an email address. ' + s.ask);
+      input.focus();
+      return;
+    }
+    intake[s.key] = text;
+    step++;
+    if (step < STEPS.length) { askStep(); } else { review(); }
+  }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var text = input.value.replace(/\s+/g, ' ').trim();
+    if (!text) return;
+    input.value = '';
+    if (inIntake) { answer(text); return; }
+    say(text, 'user');
+    say('I take intakes and answer from the record. Choose one, or start an intake.');
+    menuChips();
+  });
+
+  function open() {
+    panel.hidden = false;
+    panel.classList.add('open');
+    launch.setAttribute('aria-expanded', 'true');
+    launch.style.display = 'none';
+    if (!started) { started = true; greet(); }
+    input.focus();
+  }
+  function close() {
+    panel.classList.remove('open');
+    panel.hidden = true;
+    launch.setAttribute('aria-expanded', 'false');
+    launch.style.display = '';
+    launch.focus();
+  }
+  launch.addEventListener('click', open);
+  closeBtn.addEventListener('click', close);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && panel.classList.contains('open')) close(); });
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('[data-open-bot]');
+    if (t) { e.preventDefault(); open(); }
+  });
+})();
+</script>
+
+<!-- Rendered by the House Site Builder v1.0.0 - official record copy -->
+</body>
+</html>
