@@ -37,6 +37,7 @@
       },
       "email": "sales@leasethebox.com",
       "name": "The Box Studios",
+      "description": "The Box Studios — a movie/television studio and recording studio at 7367 Chef Menteur Hwy, New Orleans, LA 70126.",
       "url": "https://theboxstudiosofneworleans.com/",
       "sameAs": [
         "https://www.instagram.com/bee._dee/",
@@ -63,7 +64,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<meta name="theme-color" content="#030610">
+<meta name="theme-color" content="#f6efdd">
 <style>
   /* THEME — Capital Command design tokens, read from the live app's own
      stylesheet (capital-command-nola.base44.app, /assets/index-MvkYsNiO.css,
@@ -77,6 +78,14 @@
      Montserrat (body) · JetBrains Mono (labels/numbers). Declared as
      stacks with local fallbacks — this builder makes no network calls. */
   :root{
+    /* NEWSPRINT COMBINATION (Byron's ruling, 2026-10-23: "Update site
+       combine the news print") — the Daily Jupiter newspaper dress is
+       combined into the site: paper ground, ink text, serif reading
+       type, thin rules, gold held as accent only. The hero band keeps
+       its obsidian field and liquid motion as the front-page art; the
+       footer closes as an ink colophon. */
+    --paper:#f6efdd; --ink:#1d1a14; --muted:#8a8168; --gold-ink:#8a6d1f;
+    --paper-card:#fffdf4; --rule:#d9d0b8;
     --obsidian:#030610; --card:#080c17; --platinum:#f4f4f5;
     --gold:#d4af37; --gold-hi:#e5c158; --gold-deep:#c5a059;
     --blue:#3b82f6; --intel:#5b8def;
@@ -84,8 +93,8 @@
        stone-zinc #71717A measures 4.18:1 on the obsidian field — under
        WCAG AA for text — so the text value is lifted to zinc-400
        #A1A1AA (8.0:1) in Round 1. The hue family is unchanged. */
-    --zinc:#a1a1aa;
-    --line:#1f1f1f; --max:68rem; --radius:0;
+    --zinc:#6f6750;
+    --line:#d9d0b8; --max:68rem; --radius:0;
     /* --mono is the label stack used across the site (section numbers,
        press line, door links). Defined in Round 4 (2026-10-23): two
        rules (.ig-line, .door-link) referenced var(--mono) with no
@@ -96,32 +105,32 @@
   *{box-sizing:border-box; border-radius:var(--radius)}
   html{scroll-behavior:smooth}
   body{
-    margin:0; background:var(--obsidian); color:var(--platinum);
-    font-family:'Montserrat','Helvetica Neue',Arial,Helvetica,sans-serif;
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;
     font-size:1.0625rem; line-height:1.7; overflow-x:hidden;
     -webkit-font-smoothing:antialiased;
   }
-  ::selection{background:var(--gold); color:var(--obsidian)}
-  a{color:var(--platinum); text-decoration-color:var(--gold); text-underline-offset:3px}
-  a:hover{color:var(--gold-hi)}
+  ::selection{background:var(--gold); color:var(--ink)}
+  a{color:var(--ink); text-decoration-color:var(--gold); text-underline-offset:3px}
+  a:hover{color:var(--gold-ink)}
   a:focus-visible{outline:2px solid var(--gold); outline-offset:3px}
-  .skip{position:absolute; left:-999px; top:0; background:var(--gold); color:var(--obsidian); padding:.5rem 1rem; z-index:40}
+  .skip{position:absolute; left:-999px; top:0; background:var(--gold); color:var(--ink); padding:.5rem 1rem; z-index:40}
   .skip:focus{left:0}
   .visually-hidden{position:absolute !important; width:1px !important; height:1px !important;
     margin:-1px; padding:0; overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%);
     white-space:nowrap; border:0}
-  .masthead{background:rgba(3,6,16,.92); color:var(--platinum); position:sticky; top:0; z-index:20;
-    border-bottom:1px solid var(--line); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px)}
+  .masthead{background:rgba(246,239,221,.95); color:var(--ink); position:sticky; top:0; z-index:20;
+    border-bottom:4px double var(--ink); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px)}
   .masthead-in{max-width:var(--max); margin:0 auto; padding:.65rem clamp(1rem,4vw,2rem);
     display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap}
   .wordmark{font-weight:700; font-size:.95rem; letter-spacing:.35em; text-transform:uppercase}
-  .wordmark strong{color:var(--gold); font-weight:700}
+  .wordmark strong{color:var(--gold-ink); font-weight:700}
   nav .nav-list{list-style:none; display:flex; gap:1.25rem; margin:0; padding:0; flex-wrap:wrap}
   /* Round 4 (2026-10-23): inline-block + block padding gives each nav
      link a target height above the WCAG 2.2 AA target-size minimum
      (2.5.8, 24 CSS px) without changing the masthead's look. */
-  nav .nav-list a{color:var(--platinum); text-decoration:none; font-size:.82rem; letter-spacing:.14em; text-transform:uppercase; display:inline-block; padding:.45rem 0}
-  nav .nav-list a:hover{color:var(--gold-hi)}
+  nav .nav-list a{color:var(--ink); text-decoration:none; font-size:.82rem; letter-spacing:.14em; text-transform:uppercase; display:inline-block; padding:.45rem 0}
+  nav .nav-list a:hover{color:var(--gold-ink)}
   main{max-width:var(--max); margin:0 auto; padding:0 clamp(1rem,4vw,2rem) 4rem}
   /* HERO — full-bleed band carrying the 5D/8K liquid movement (WebGL canvas).
      Fallback composition (no WebGL / no JS) is the layered gradient below. */
@@ -129,7 +138,7 @@
     position:relative; overflow:hidden; isolation:isolate;
     width:100vw; margin-left:calc(50% - 50vw);
     padding:clamp(3rem,9vw,6rem) max(clamp(1rem,4vw,2rem), calc(50vw - 34rem)) 3rem;
-    border-bottom:1px solid var(--line);
+    border-bottom:3px solid var(--ink);
     background:
       radial-gradient(60rem 30rem at 78% -10%, rgba(212,175,55,.20), transparent 60%),
       radial-gradient(50rem 26rem at 8% 115%, rgba(91,141,239,.16), transparent 60%),
@@ -160,7 +169,7 @@
   @keyframes divider-shimmer{0%{background-position:120% 0}100%{background-position:-120% 0}}
   .sec-num{
     font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
-    font-size:clamp(1.05rem,2.4vw,1.4rem); letter-spacing:.18em; color:var(--gold); font-weight:700;
+    font-size:clamp(1.05rem,2.4vw,1.4rem); letter-spacing:.18em; color:var(--gold-ink); font-weight:700;
   }
   .sec-head h2{font-family:'Playfair Display',Georgia,serif; font-size:clamp(1.8rem,4.5vw,3rem); margin:0; line-height:1.05}
   section p{max-width:44rem}
@@ -168,7 +177,8 @@
   section:has(> .sec-head h2:empty){display:none}
   .cta-line{font-size:1.15rem}
   .legal{font-size:.92rem; line-height:1.6; color:var(--zinc); border-left:3px solid var(--gold); padding-left:1rem; max-width:44rem}
-  footer{background:var(--card); color:var(--platinum); border-top:1px solid var(--line)}
+  footer{background:var(--ink); color:var(--paper); border-top:3px solid var(--gold)}
+  footer .ig-line, footer .press-line{color:#b8ad8f}
   .footer-in{max-width:var(--max); margin:0 auto; padding:2.5rem clamp(1rem,4vw,2rem)}
   footer a{color:var(--gold-hi)}
   footer p{max-width:44rem}
@@ -193,15 +203,15 @@
   }
   .scrolls-cap .cap-title{
     display:block; margin-top:.15rem;
-    font-family:'Cormorant Garamond',Georgia,serif; font-size:1.5rem; line-height:1.25; color:var(--platinum);
+    font-family:'Cormorant Garamond',Georgia,serif; font-size:1.5rem; line-height:1.25; color:var(--ink);
   }
-  .scrolls-card:hover .cap-title{color:var(--gold-hi)}
+  .scrolls-card:hover .cap-title{color:var(--gold-ink)}
   /* ROUND 2 PANELS — designed graphics drawn locally in the Capital
      Command system: gold line art on the card field, an inline SVG
      figure with an accessible name (role="img" + aria-label), and the
      mono micro-label caption treatment used across the site. Sections
      without a panel carry an empty figure, which never renders. */
-  .panel-art{margin:2rem 0 0; max-width:44rem; border:1px solid var(--gold-deep); background:var(--card); padding:1.1rem 1.1rem .9rem}
+  .panel-art{margin:2rem 0 0; max-width:44rem; border:1px solid var(--gold-deep); background:var(--paper-card); padding:1.1rem 1.1rem .9rem}
   .panel-art:empty{display:none}
   .panel-art svg{display:block; width:100%; height:auto}
   .panel-art figcaption{
@@ -216,9 +226,9 @@
   .ig-line{margin:0 0 .5rem; font-family:var(--mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--zinc)}
   .ig-embed{max-width:540px; margin:2rem auto .25rem}
   .ig-embed .instagram-media{margin:0 auto !important; width:100% !important; min-width:0 !important}
-  .door-card{margin:1.6rem 0 0; border:1px solid var(--gold-deep); background:var(--card); padding:1.05rem 1.2rem}
-  .door-link{font-family:var(--mono); font-size:.8rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-hi); text-decoration:underline; text-underline-offset:4px}
-  .door-note{color:var(--platinum)}
+  .door-card{margin:1.6rem 0 0; border:1px solid var(--gold-deep); background:var(--paper-card); padding:1.05rem 1.2rem}
+  .door-link{font-family:var(--mono); font-size:.8rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-ink); text-decoration:underline; text-underline-offset:4px}
+  .door-note{color:var(--ink)}
 </style>
 </head>
 <body>
