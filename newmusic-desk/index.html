@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWMUSIC.PRESS // THE MASTER RELEASE DESK</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;800&family=JetBrains+Mono:ital,wght@0,300;0,500;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+    <!-- Schema.org MusicRelease & Algorithmic Defense Graph -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://newmusic.press/#website",
+          "name": "NewMusic.press",
+          "alternateName": "The Listening Room & Master Release Desk",
+          "description": "Where new sound hits the record first. The premiere desk of the Byron Jupiter Agency: new recordings documented with their rooms, hardware signal chains, and credits on the record.",
+          "publisher": {
+            "@type": "Organization",
+            "name": "The Byron Jupiter Agency",
+            "parentOrganization": {
+              "@type": "Organization",
+              "name": "Repeatable.press"
+            },
+            "location": "7367 Chef Menteur Hwy, New Orleans, LA"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --void: #030306;
+            --chassis: #090A0F;
+            --ivory: #F5F2EB;
+            --gold: #E5B842;
+            --tangerine: #FF5500;
+            --vfd-cyan: #00F0FF;
+            --vu-green: #10B981;
+            --vu-red: #F43F5E;
+            --grid-line: rgba(245, 242, 235, 0.11);
+        }
+
+        * {
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body {
+            background-color: var(--void);
+            color: var(--ivory);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            margin: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        @font-face { font-family: 'Jupiter Deco'; src: url('data:font/ttf;base64,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AG8AQwB1AHQAIABUAHcAbwBKAHUAcABpAHQAZQByACAARABlAGMAbwAgAEMAdQB0ACAAVAB3AG8AIAAwAC4AMQAgIBQAIABCAHkAcgBvAG4AIABKAHUAcABpAHQAZQByAEoAdQBwAGkAdABlAHIAIABEAGUAYwBvACAAQwB1AHQAIABUAHcAbwBWAGUAcgBzAGkAbwBuACAAMAAuADEASgB1AHAAaQB0AGUAcgBEAGUAYwBvAC0AQwB1AHQAVAB3AG8AQgB5AHIAbwBuACAASgB1AHAAaQB0AGUAcgAgAEEAZwBlAG4AYwB5AEIAeQByAG8AbgAgAEoAdQBwAGkAdABlAHIAQQByAHQAIABEAGUAYwBvACAAZABpAHMAcABsAGEAeQAgAGYAYQBjAGUAIABkAHIAYQB3AG4AIABmAG8AcgAgAEIAeQByAG8AbgAgAEoAdQBwAGkAdABlAHIAICAUACAAbwByAGkAZwBpAG4AYQBsACAAbABlAHQAdABlAHIAZgBvAHIAbQBzACAAaQBuACAAdABoAGUAIABEAGUAYwBvACAAcwBwAGkAcgBpAHQAOgAgAGQAbwB1AGIAbABlAC0AbABpAG4AZQAgAHMAdABlAG0AcwAsACAAZABpAGEAbQBvAG4AZAAgAHQAZQByAG0AaQBuAGEAbABzACwAIAB0AGgAZQAgAEoAdQBwAGkAdABlAHIAIABiAGEAbgBkACAAYQBjAHIAbwBzAHMAIAB0AGgAZQAgAE8ALgBQAHIAbwBwAHIAaQBlAHQAYQByAHkALgAgACgAYwApACAAQgB5AHIAbwBuACAASgB1AHAAaQB0AGUAcgAuACAAQQBsAGwAIAByAGkAZwBoAHQAcwAgAHIAZQBzAGUAcgB2AGUAZAAuAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEAAAAJAAlACYAJwAoACkAKgArACwALQAuAC8AMAAxADIAMwA0ADUANgA3ADgAOQA6ADsAPAA9ABMAFAAVABYAFwAYABkAGgAbABwAAwARAA8AHQAeABAAsgCzAAoAtwAFAAQAIgASAAsADAAOAAgABwAGAAkAIwCLAIoAjACHAKsADQAgAEIAXwAA') format('truetype'); font-display: swap; }
+        @font-face { font-family: 'Jupiter Box'; src: url('data:font/ttf;base64,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AG8AeAAgAEMAdQB0ACAATwBuAGUAIAAwAC4AMQAgIBQAIABCAHkAcgBvAG4AIABKAHUAcABpAHQAZQByAEoAdQBwAGkAdABlAHIAIABCAG8AeAAgAEMAdQB0ACAATwBuAGUAVgBlAHIAcwBpAG8AbgAgADAALgAxAEoAdQBwAGkAdABlAHIAQgBvAHgALQBDAHUAdABPAG4AZQBCAHkAcgBvAG4AIABKAHUAcABpAHQAZQByACAAQQBnAGUAbgBjAHkAQgB5AHIAbwBuACAASgB1AHAAaQB0AGUAcgBUAGgAZQAgAGgAbwB1AHMAZQAgAGYAbwBuAHQAIABvAGYAIABCAHkAcgBvAG4AIABKAHUAcABpAHQAZQByAC4AIABPAHIAaQBnAGkAbgBhAGwAIABnAGUAbwBtAGUAdAByAGkAYwAgAGQAaQBzAHAAbABhAHkAIABmAGEAYwBlACAgFAAgAGIAbwB3AGwAcwAgAGQAcgBhAHcAbgAgAGEAcwAgAGIAbwB4AGUAcwAgAHcAaQB0AGgAIABjAHUAdAAgAGMAbwByAG4AZQByAHMALgBQAHIAbwBwAHIAaQBlAHQAYQByAHkALgAgACgAYwApACAAQgB5AHIAbwBuACAASgB1AHAAaQB0AGUAcgAuACAAQQBsAGwAIAByAGkAZwBoAHQAcwAgAHIAZQBzAGUAcgB2AGUAZAAuAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEAAAAJAAlACYAJwAoACkAKgArACwALQAuAC8AMAAxADIAMwA0ADUANgA3ADgAOQA6ADsAPAA9ABMAFAAVABYAFwAYABkAGgAbABwAAwARAA8AHQAeABAAsgCzAAoAtwAFAAQAIgASAAsADAAOAAgABwAGAAkAIwCLAIoAjACHAKsADQAgAEIAXwAA') format('truetype'); font-display: swap; }
+        .font-editorial { font-family: 'Cormorant Garamond', Georgia, serif; }
+        .font-display { font-family: 'Jupiter Deco', Georgia, serif; }
+        .font-box { font-family: 'Jupiter Box', monospace; }
+        .font-mono-tech { font-family: 'JetBrains Mono', monospace; }
+
+        /* Tactile Analog Tape & CRT Grain */
+        .analog-grain {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.038;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
+
+        .bento-line {
+            border-color: var(--grid-line);
+        }
+
+        /* Metallic & Tangerine Gradients */
+        .sonic-gradient-text {
+            background: linear-gradient(135deg, #FFFFFF 0%, #E5B842 48%, #FF5500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tangerine-glow {
+            box-shadow: 0 0 35px -5px rgba(255, 85, 0, 0.38);
+        }
+
+        .gold-glow {
+            box-shadow: 0 0 35px -5px rgba(229, 184, 66, 0.3);
+        }
+
+        .vfd-glow {
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
+        }
+
+        /* Infinite Telemetry Ribbon */
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marquee 36s linear infinite;
+        }
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+
+        /* Spinning Vinyl / Reel Animation */
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .reel-spin {
+            animation: spin-slow 8s linear infinite;
+            animation-play-state: paused;
+        }
+        .reel-spin.playing {
+            animation-play-state: running;
+        }
+
+        /* Custom Hardware Fader */
+        input[type=range].console-fader {
+            -webkit-appearance: none;
+            appearance: none;
+            background: linear-gradient(90deg, rgba(255,255,255,0.08) 0%, rgba(229,184,66,0.25) 100%);
+            height: 5px;
+            border-radius: 3px;
+        }
+        input[type=range].console-fader::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 28px;
+            background: linear-gradient(180deg, #F3F4F6 0%, #9CA3AF 46%, #111827 50%, #4B5563 100%);
+            border: 1px solid var(--gold);
+            border-radius: 2px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.9);
+        }
+
+        /* Interactive Spotlight Card */
+        .console-card {
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.25s ease;
+        }
+        .console-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(550px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 85, 0, 0.08), transparent 40%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .console-card:hover::before { opacity: 1; }
+        .console-card:hover { border-color: rgba(229, 184, 66, 0.45); }
+
+        /* Sequencer Pad Active Pulse */
+        .seq-step.active-step {
+            border-color: #FFFFFF !important;
+            transform: scale(1.06);
+            box-shadow: 0 0 16px rgba(255, 255, 255, 0.5);
+        }
+
+        ::-webkit-scrollbar { width: 5px; height: 5px; }
+        ::-webkit-scrollbar-track { background: #030306; }
+        ::-webkit-scrollbar-thumb { background: #FF5500; border-radius: 2px; }
+    </style>
+</head>
+<body class="selection:bg-[#FF5500] selection:text-black">
+    <div class="analog-grain"></div>
+
+    <!-- Custom Hardware Toast Notification -->
+    <div id="toast-box" class="fixed bottom-6 right-6 z-50 transform translate-y-28 opacity-0 transition-all duration-300 pointer-events-none bg-[#090A0F] border-2 border-[#FF5500] px-5 py-4 rounded-xl shadow-2xl flex items-center space-x-3.5 max-w-md">
+        <span class="w-2.5 h-2.5 rounded-full bg-[#00F0FF] animate-ping shrink-0"></span>
+        <div>
+            <p id="toast-head" class="font-mono-tech text-[10px] uppercase tracking-[0.25em] text-[#FF5500] font-extrabold">MASTER DESK DISPATCH</p>
+            <p id="toast-msg" class="text-xs text-stone-200 mt-0.5 font-mono-tech">The Split Worksheet is a demo — nothing is issued here.</p>
+        </div>
+    </div>
+
+    <!-- TOP CONSOLE TELEMETRY TICKER -->
+    <div class="w-full border-b bento-line bg-[#020204] py-2 overflow-hidden">
+        <div class="animate-marquee font-box text-[10px] tracking-[0.24em] uppercase text-stone-400 space-x-12">
+            <span class="flex items-center space-x-2">
+                <span class="w-2 h-2 rounded-full bg-[#FF5500] animate-pulse"></span>
+                <strong class="text-white">NEWMUSIC.PRESS</strong>
+                <span>// THE LISTENING ROOM & MASTER PREMIERE DESK</span>
+            </span>
+            <span class="text-[#00F0FF]">ENSONIQ 12-BIT WORKSTATION: ONLINE</span>
+            <span class="text-[#E5B842]">THE V3 STANDARD: KEPT ON THE RECORD</span>
+            <span>18-INCH PEAVEY SUB-BASS RESONANCE: 54.0 Hz LOCKED</span>
+            <span class="text-[#10B981]">PROVENANCE: HUMAN ORIGIN, ON THE RECORD</span>
+            <span>SISTER ORGAN TO REPEATABLE.PRESS // POWERED BY METANATED</span>
+            <!-- Duplicate for seamless loop -->
+            <span class="flex items-center space-x-2">
+                <span class="w-2 h-2 rounded-full bg-[#FF5500] animate-pulse"></span>
+                <strong class="text-white">NEWMUSIC.PRESS</strong>
+                <span>// THE LISTENING ROOM & MASTER PREMIERE DESK</span>
+            </span>
+            <span class="text-[#00F0FF]">ENSONIQ 12-BIT WORKSTATION: ONLINE</span>
+            <span class="text-[#E5B842]">THE V3 STANDARD: KEPT ON THE RECORD</span>
+            <span>18-INCH PEAVEY SUB-BASS RESONANCE: 54.0 Hz LOCKED</span>
+        </div>
+    </div>
+
+    <!-- STICKY MASTER TRANSPORT & MASTHEAD -->
+    <header class="border-b bento-line sticky top-0 z-40 bg-[#030306]/90 backdrop-blur-2xl">
+        <div class="max-w-[1640px] mx-auto grid grid-cols-1 lg:grid-cols-12 items-center">
+
+            <!-- Left: Sister Publication & Timecode Readout -->
+            <div class="lg:col-span-3 p-4 lg:p-5 border-b lg:border-b-0 lg:border-r bento-line flex items-center justify-between">
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <span class="px-2 py-0.5 text-[9px] font-mono-tech uppercase tracking-widest bg-[#FF5500]/20 text-[#FF5500] border border-[#FF5500]/50 rounded font-bold">30 IPS MASTER</span>
+                        <span class="font-mono-tech text-[10px] text-[#00F0FF] vfd-glow" id="smpte-clock">01:00:00:00</span>
+                    </div>
+                    <p class="font-mono-tech text-[10px] text-stone-400 mt-1.5 tracking-widest uppercase">
+                        The Byron Jupiter Agency // New Orleans
+                    </p>
+                </div>
+                <!-- Mini animated reel icon -->
+                <div id="header-reel" class="reel-spin w-9 h-9 rounded-full border-2 border-[#E5B842]/60 flex items-center justify-center bg-black">
+                    <div class="w-2.5 h-2.5 rounded-full bg-[#FF5500]"></div>
+                </div>
+            </div>
+
+            <!-- Center: Flagship Title -->
+            <div class="lg:col-span-6 p-4 lg:p-5 text-center border-b lg:border-b-0 lg:border-r bento-line">
+                <a href="#top" class="inline-block">
+                    <h1 class="font-display text-3xl sm:text-5xl xl:text-6xl font-extrabold tracking-tighter uppercase leading-none sonic-gradient-text">
+                        NEWMUSIC.PRESS
+                    </h1>
+                    <p class="font-editorial italic text-sm sm:text-base text-stone-300 mt-1 tracking-wide">
+                        “Where new sound hits the permanent record first—credited, split-sheeted, and mastered.”
+                    </p>
+                </a>
+            </div>
+
+            <!-- Right: Master Transport Controls -->
+            <div class="lg:col-span-3 p-4 lg:p-5 flex items-center justify-between lg:justify-end space-x-3">
+                <div class="text-left lg:text-right mr-1">
+                    <span class="block font-mono-tech text-[9px] uppercase tracking-widest text-stone-400">Master Bus Status</span>
+                    <span id="transport-status" class="font-mono-tech text-xs font-bold text-[#00F0FF] vfd-glow">STANDBY // 432Hz</span>
+                </div>
+                <button id="master-play-btn" onclick="toggleMasterTransport()" class="px-5 py-3 rounded-xl border border-[#FF5500] bg-[#FF5500] text-black hover:bg-white transition-all font-mono-tech text-[11px] font-extrabold uppercase tracking-widest flex items-center space-x-2 tangerine-glow">
+                    <span id="play-icon">▶</span>
+                    <span id="play-label">ENGAGE SOUND</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Sub-Navigation & Live VU Meter Bar -->
+        <nav class="max-w-[1640px] mx-auto border-t bento-line px-4 lg:px-6 py-2.5 flex flex-wrap items-center justify-between gap-4 font-mono-tech text-[10px] uppercase tracking-[0.18em]">
+            <div class="flex flex-wrap items-center gap-6">
+                <a href="#premiere-deck" class="text-[#FF5500] font-bold hover:underline">01 // Premiere & 3D Woofer</a>
+                <a href="#stem-console" class="text-stone-300 hover:text-white transition-colors">02 // 4-Track Stem Audition</a>
+                <a href="#ensoniq-lab" class="text-stone-300 hover:text-white transition-colors">03 // Ensoniq 12-Bit Sequencer</a>
+                <a href="#split-sheet-desk" class="text-stone-300 hover:text-white transition-colors">04 // Split Worksheet (Demo)</a>
+                <a href="#catalog-wire" class="text-stone-300 hover:text-white transition-colors">05 // The Dispatch Wire</a>
+            </div>
+            <!-- Live LED Peak Meter -->
+            <div class="hidden xl:flex items-center space-x-2">
+                <span class="text-[9px] text-stone-400">L/R BUS:</span>
+                <div id="led-meter-bar" class="flex space-x-1">
+                    <span class="led-seg w-2 h-3 bg-[#10B981]/30 rounded-xs"></span>
+                    <span class="led-seg w-2 h-3 bg-[#10B981]/30 rounded-xs"></span>
+                    <span class="led-seg w-2 h-3 bg-[#10B981]/30 rounded-xs"></span>
+                    <span class="led-seg w-2 h-3 bg-[#10B981]/30 rounded-xs"></span>
+                    <span class="led-seg w-2 h-3 bg-[#10B981]/30 rounded-xs"></span>
+                    <span class="led-seg w-2 h-3 bg-[#E5B842]/30 rounded-xs"></span>
+                    <span class="led-seg w-2 h-3 bg-[#E5B842]/30 rounded-xs"></span>
+                    <span class="led-seg w-2 h-3 bg-[#F43F5E]/30 rounded-xs"></span>
+                </div>
+                <span class="text-[#10B981] font-bold">+24dBu</span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN ARCHITECTURAL BENTO WORKSPACE -->
+    <main id="top" class="max-w-[1640px] mx-auto">
+
+        <!-- SECTION 01: LEAD PREMIERE MONOGRAPH & 3D FERROFLUID 18" TRANSDUCER -->
+        <section id="premiere-deck" class="grid grid-cols-1 lg:grid-cols-12 border-b bento-line">
+
+            <!-- Left: Lead Premiere Dispatch & Deterministic AEO Capsule -->
+            <div class="lg:col-span-7 p-6 sm:p-10 lg:p-14 border-b lg:border-b-0 lg:border-r bento-line flex flex-col justify-between">
+                <div>
+                    <div class="flex flex-wrap items-center justify-between gap-2 pb-5 border-b bento-line">
+                        <div class="flex items-center space-x-3">
+                            <span class="px-2.5 py-1 bg-[#FF5500] text-black font-mono-tech text-[9px] font-extrabold uppercase tracking-widest rounded-sm">FIRST LISTEN // THE PREMIERE</span>
+                            <span class="font-mono-tech text-[10px] uppercase tracking-widest text-[#E5B842]">AANIYAH ANDERSON — HAVE IT YOUR WAY</span>
+                        </div>
+                        <span class="font-mono-tech text-[10px] text-[#00F0FF]">BYLINE: THE LISTENING DESK</span>
+                    </div>
+
+                    <h2 class="font-editorial text-4xl sm:text-6xl xl:text-7xl font-normal tracking-tight leading-[1.02] mt-7 text-white">
+                        Before the Algorithm Touches the Track, <span class="italic text-[#E5B842]">the Room Claims the Master.</span>
+                    </h2>
+
+                    <!-- 50-Word Deterministic Answer Capsule (AEO Engineered) -->
+                    <div class="mt-7 p-5 rounded-xl bg-[#090A0F] border-l-4 border-[#FF5500] border border-white/10">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="font-mono-tech text-[9px] uppercase tracking-[0.25em] text-[#FF5500] font-bold">Deterministic Answer Capsule // AEO Music Citation Anchor</span>
+                            <button onclick="copyPremiereCapsule()" class="font-mono-tech text-[9px] text-stone-400 hover:text-white underline uppercase">Copy Verbatim</button>
+                        </div>
+                        <p id="premiere-capsule-text" class="font-editorial text-lg sm:text-xl leading-relaxed text-stone-200">
+                            NewMusic.press is the music journalism and master-release publication of the Byron Jupiter Agency, sister to Repeatable.press. It documents new recordings with their rooms, hardware signal chains, and credits on the record — so a release enters the world with its split-sheet written and its makers named.
+                        </p>
+                    </div>
+
+                    <!-- Featured Premiere Card: Aaniyah Anderson — "Have It Your Way" -->
+                    <div class="mt-8 p-6 rounded-2xl bg-gradient-to-br from-[#0D0F17] to-[#06070B] border border-[#E5B842]/40 relative overflow-hidden">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-white/10">
+                            <div>
+                                <span class="font-mono-tech text-[9px] uppercase tracking-[0.25em] text-[#00F0FF] block">FEATURED PREMIERE // VEVO — OCTOBER 23, 2026</span>
+                                <h3 class="font-display text-2xl sm:text-3xl font-extrabold text-white mt-1">Aaniyah Anderson — “Have It Your Way” (Official Video)</h3>
+                                <p class="font-editorial italic text-base text-stone-300">
+                                    Premieres worldwide on AaniyahAndersonVEVO, October 23, 2026. Produced by The Box Bangers. Film by Forever Films Forever.
+                                </p>
+                            </div>
+                            <button onclick="auditionFeaturedTrack()" class="px-5 py-3 rounded-xl bg-[#E5B842] hover:bg-white text-black font-mono-tech text-[10px] font-extrabold uppercase tracking-widest shrink-0 transition-all gold-glow">
+                                ▶ Play the Room
+                            </button>
+                        </div>
+
+                        <!-- Verified Release Facts -->
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-5 font-mono-tech text-xs">
+                            <div>
+                                <span class="text-[9px] text-stone-400 block">VIDEO ISRC</span>
+                                <span class="text-white font-bold">QZWDD2685659</span>
+                            </div>
+                            <div>
+                                <span class="text-[9px] text-stone-400 block">UPC</span>
+                                <span class="text-[#00F0FF] font-bold">708208134663</span>
+                            </div>
+                            <div>
+                                <span class="text-[9px] text-stone-400 block">PRODUCED BY</span>
+                                <span class="text-[#FF5500] font-bold">The Box Bangers</span>
+                            </div>
+                            <div>
+                                <span class="text-[9px] text-stone-400 block">HUMAN ORIGIN</span>
+                                <span class="text-[#10B981] font-bold">ON THE RECORD</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Editorial Lead-In -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 pt-6 border-t bento-line text-xs sm:text-sm text-stone-300 leading-relaxed">
+                    <p>
+                        Streaming services ingest thousands of tracks a day—stripping liner notes, burying session musicians, and flooding playlists with uncredited synthetic clones. <strong class="text-white">NewMusic.press</strong> restores the weight of the physical premiere.
+                    </p>
+                    <p>
+                        Every release featured on this desk arrives with its <strong class="text-[#E5B842]">Four-Point Acoustic Chain of Custody</strong>: the room it was cut in, the chain it passed through, the hands on the faders, and the split-sheet, written before it travels.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right: Interactive 3D Ferrofluid 18-Inch Sub-Bass Transducer & Acoustic Mesh -->
+            <div class="lg:col-span-5 flex flex-col justify-between bg-[#06070C] relative min-h-[560px]">
+                <!-- Top HUD -->
+                <div class="p-6 border-b bento-line flex items-center justify-between z-10 bg-[#06070C]/85 backdrop-blur-md">
+                    <div>
+                        <span class="font-mono-tech text-[9px] uppercase tracking-[0.3em] text-[#FF5500] block">Interactive 3D Acoustic Mesh</span>
+                        <h3 class="font-display text-lg font-bold text-white">18" Peavey Sub-Bass & Harmonic Torus</h3>
+                    </div>
+                    <div class="flex space-x-1.5">
+                        <button onclick="setVisualizerMode('woofer')" id="vis-woofer" class="px-2.5 py-1 rounded text-[9px] font-mono-tech uppercase bg-[#FF5500] text-black font-bold">18" Cone</button>
+                        <button onclick="setVisualizerMode('torus')" id="vis-torus" class="px-2.5 py-1 rounded text-[9px] font-mono-tech uppercase border border-white/20 text-stone-300">432Hz Torus</button>
+                        <button onclick="setVisualizerMode('vault5d')" id="vis-vault5d" class="px-2.5 py-1 rounded text-[9px] font-mono-tech uppercase border border-white/20 text-stone-300">5D Lattice</button>
+                    </div>
+                </div>
+
+                <!-- Three.js Canvas Mount -->
+                <div id="acoustic-canvas-wrap" class="relative flex-grow w-full h-[390px] sm:h-[440px] cursor-grab active:cursor-grabbing">
+                    <div id="acoustic-canvas" class="w-full h-full"></div>
+
+                    <!-- Live Sub-Bass Excursion Overlay -->
+                    <div class="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-black/85 border border-[#FF5500]/40 backdrop-blur-md pointer-events-none flex items-center justify-between">
+                        <div>
+                            <span class="font-mono-tech text-[9px] uppercase tracking-widest text-[#FF5500] block">TRANSDUCER TELEMETRY // DRAG TO ORBIT</span>
+                            <h4 id="vis-readout-title" class="font-display text-sm sm:text-base font-bold text-white mt-0.5">18-Inch Subwoofer Excursion: 54.0 Hz</h4>
+                        </div>
+                        <div class="text-right font-mono-tech">
+                            <span id="cone-spl" class="text-sm font-extrabold text-[#00F0FF] vfd-glow">118.4 dB SPL</span>
+                            <span class="block text-[9px] text-stone-400">ROOM COUPLED</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Sub-Bass Impulse Trigger Bar -->
+                <div class="p-4 border-t bento-line bg-[#040508] flex items-center justify-between gap-3 z-10">
+                    <button onclick="triggerSubDrop(42)" class="flex-1 py-2.5 rounded-lg bg-white/5 hover:bg-[#FF5500] hover:text-black border border-white/10 font-mono-tech text-[10px] font-bold uppercase tracking-wider transition-all">
+                        Drop 42Hz Sub
+                    </button>
+                    <button onclick="triggerSubDrop(54)" class="flex-1 py-2.5 rounded-lg bg-[#FF5500]/20 hover:bg-[#FF5500] hover:text-black border border-[#FF5500] font-mono-tech text-[10px] font-bold uppercase tracking-wider text-white transition-all">
+                        Drop 54Hz Bounce
+                    </button>
+                    <button onclick="triggerSubDrop(68)" class="flex-1 py-2.5 rounded-lg bg-white/5 hover:bg-[#E5B842] hover:text-black border border-white/10 font-mono-tech text-[10px] font-bold uppercase tracking-wider transition-all">
+                        Galvez X-Fader Cut
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 02: THE V3 STEM CONSOLE — HERITAGE RECALL TOY -->
+        <section id="stem-console" class="border-b bento-line bg-[#06070B]">
+            <div class="p-6 sm:p-10 border-b bento-line flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <span class="font-mono-tech text-[10px] uppercase tracking-[0.3em] text-[#00F0FF]">Section I // The Heritage Recall — An Interactive Toy</span>
+                    <h2 class="font-editorial text-3xl sm:text-5xl text-white mt-1">The V3 Stem Console, Recalled</h2>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <button onclick="resetAllStems()" class="px-4 py-2 rounded-lg border border-white/20 hover:border-[#E5B842] font-mono-tech text-[10px] uppercase tracking-widest text-stone-200">
+                        Recall the Preset (+0.0 dB)
+                    </button>
+                    <button onclick="soloBounceFoundation()" class="px-4 py-2 rounded-lg bg-[#E5B842]/15 border border-[#E5B842] text-[#E5B842] hover:bg-[#E5B842] hover:text-black font-mono-tech text-[10px] font-bold uppercase tracking-widest transition-all">
+                        Solo 9th Ward Drum & Sub
+                    </button>
+                </div>
+            </div>
+
+            <!-- 4-Channel Strip Grid + Master Oscilloscope -->
+            <div class="grid grid-cols-1 lg:grid-cols-12">
+
+                <!-- 4 Channel Strips -->
+                <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 border-b lg:border-b-0 lg:border-r bento-line">
+
+                    <!-- CH 01: 18" Peavey Sub-Bass -->
+                    <div class="console-card p-6 border-b sm:border-r bento-line flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between">
+                                <span class="font-mono-tech text-[10px] font-bold px-2 py-0.5 rounded bg-[#FF5500]/20 text-[#FF5500] border border-[#FF5500]/40">CH 01 // SUB</span>
+                                <span id="ch1-db" class="font-mono-tech text-xs font-bold text-white">+2.0 dB</span>
+                            </div>
+                            <h3 class="font-display text-lg font-bold text-white mt-4">18" Peavey SP-1 Bass</h3>
+                            <p class="text-[11px] text-stone-400 mt-1">54Hz fundamental sine + transformer harmonic saturation, recalled.</p>
+                        </div>
+
+                        <div class="my-6">
+                            <input id="stem-fader-0" type="range" min="-36" max="6" step="0.5" value="2" oninput="updateStemGain(0, this.value)" class="w-full console-fader">
+                        </div>
+
+                        <div class="flex space-x-2 font-mono-tech text-[10px]">
+                            <button id="mute-btn-0" onclick="toggleStemMute(0)" class="flex-1 py-2 rounded border border-white/15 bg-white/5 hover:border-[#F43F5E] font-bold uppercase">MUTE</button>
+                            <button id="solo-btn-0" onclick="toggleStemSolo(0)" class="flex-1 py-2 rounded border border-white/15 bg-white/5 hover:border-[#E5B842] font-bold uppercase">SOLO</button>
+                        </div>
+                    </div>
+
+                    <!-- CH 02: Ensoniq 12-Bit Bounce Cadence -->
+                    <div class="console-card p-6 border-b xl:border-b-0 xl:border-r bento-line flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between">
+                                <span class="font-mono-tech text-[10px] font-bold px-2 py-0.5 rounded bg-[#E5B842]/20 text-[#E5B842] border border-[#E5B842]/40">CH 02 // DRUMS</span>
+                                <span id="ch2-db" class="font-mono-tech text-xs font-bold text-white">+0.5 dB</span>
+                            </div>
+                            <h3 class="font-display text-lg font-bold text-white mt-4">Ensoniq 12-Bit Kit</h3>
+                            <p class="text-[11px] text-stone-400 mt-1">Rampart St. workstation crunch — snare & hat pulse.</p>
+                        </div>
+
+                        <div class="my-6">
+                            <input id="stem-fader-1" type="range" min="-36" max="6" step="0.5" value="0.5" oninput="updateStemGain(1, this.value)" class="w-full console-fader">
+                        </div>
+
+                        <div class="flex space-x-2 font-mono-tech text-[10px]">
+                            <button id="mute-btn-1" onclick="toggleStemMute(1)" class="flex-1 py-2 rounded border border-white/15 bg-white/5 hover:border-[#F43F5E] font-bold uppercase">MUTE</button>
+                            <button id="solo-btn-1" onclick="toggleStemSolo(1)" class="flex-1 py-2 rounded border border-white/15 bg-white/5 hover:border-[#E5B842] font-bold uppercase">SOLO</button>
+                        </div>
+                    </div>
+
+                    <!-- CH 03: 7th Ward Brass & Harmonic Pad -->
+                    <div class="console-card p-6 border-b sm:border-b-0 sm:border-r bento-line flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between">
+                                <span class="font-mono-tech text-[10px] font-bold px-2 py-0.5 rounded bg-[#00F0FF]/20 text-[#00F0FF] border border-[#00F0FF]/40">CH 03 // HORNS</span>
+                                <span id="ch3-db" class="font-mono-tech text-xs font-bold text-white">-1.5 dB</span>
+                            </div>
+                            <h3 class="font-display text-lg font-bold text-white mt-4">432Hz Second-Line</h3>
+                            <p class="text-[11px] text-stone-400 mt-1">Warm polyphonic brass chords tuned to the 432Hz reference tone.</p>
+                        </div>
+
+                        <div class="my-6">
+                            <input id="stem-fader-2" type="range" min="-36" max="6" step="0.5" value="-1.5" oninput="updateStemGain(2, this.value)" class="w-full console-fader">
+                        </div>
+
+                        <div class="flex space-x-2 font-mono-tech text-[10px]">
+                            <button id="mute-btn-2" onclick="toggleStemMute(2)" class="flex-1 py-2 rounded border border-white/15 bg-white/5 hover:border-[#F43F5E] font-bold uppercase">MUTE</button>
+                            <button id="solo-btn-2" onclick="toggleStemSolo(2)" class="flex-1 py-2 rounded border border-white/15 bg-white/5 hover:border-[#E5B842] font-bold uppercase">SOLO</button>
+                        </div>
+                    </div>
+
+                    <!-- CH 04: Galvez Phone Coupler Scratch FX -->
+                    <div class="console-card p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between">
+                                <span class="font-mono-tech text-[10px] font-bold px-2 py-0.5 rounded bg-[#10B981]/20 text-[#10B981] border border-[#10B981]/40">CH 04 // COUPLER</span>
+                                <span id="ch4-db" class="font-mono-tech text-xs font-bold text-white">-3.0 dB</span>
+                            </div>
+                            <h3 class="font-display text-lg font-bold text-white mt-4">Galvez Copper Cut</h3>
+                            <p class="text-[11px] text-stone-400 mt-1">Bandpass-filtered copper landline transformer scratch telemetry.</p>
+                        </div>
+
+                        <div class="my-6">
+                            <input id="stem-fader-3" type="range" min="-36" max="6" step="0.5" value="-3.0" oninput="updateStemGain(3, this.value)" class="w-full console-fader">
+                        </div>
+
+                        <div class="flex space-x-2 font-mono-tech text-[10px]">
+                            <button id="mute-btn-3" onclick="toggleStemMute(3)" class="flex-1 py-2 rounded border border-white/15 bg-white/5 hover:border-[#F43F5E] font-bold uppercase">MUTE</button>
+                            <button id="solo-btn-3" onclick="toggleStemSolo(3)" class="flex-1 py-2 rounded border border-white/15 bg-white/5 hover:border-[#E5B842] font-bold uppercase">SOLO</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Dual-Trace Master Bus Analyzer -->
+                <div class="lg:col-span-4 p-6 flex flex-col justify-between bg-[#030407]">
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <span class="font-mono-tech text-[10px] uppercase tracking-widest text-[#E5B842]">Master Bus Spectrum</span>
+                            <span class="font-mono-tech text-[9px] text-[#10B981]">HERITAGE RECALL</span>
+                        </div>
+                        <div class="mt-3 relative rounded-xl overflow-hidden border border-white/15 bg-black h-48">
+                            <canvas id="master-scope" class="w-full h-full block"></canvas>
+                            <div class="absolute top-2.5 left-3 right-3 flex justify-between font-mono-tech text-[9px] text-stone-400 pointer-events-none">
+                                <span>THE RECALL CURVE</span>
+                                <span id="bus-voltage-label" class="text-[#00F0FF]">+24.0 dBu</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 pt-4 border-t bento-line flex items-center justify-between font-mono-tech text-[10px]">
+                        <span class="text-stone-400">TEMPO CLOCK: <strong id="bpm-display" class="text-white">98.0 BPM</strong></span>
+                        <input type="range" min="80" max="128" value="98" oninput="updateTempo(this.value)" class="w-32 console-fader">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 03: INTERACTIVE ENSONIQ 12-BIT BOUNCE & BEBOP STEP SEQUENCER -->
+        <section id="ensoniq-lab" class="border-b bento-line p-6 sm:p-10 lg:p-12 bg-[#08090F]">
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b bento-line">
+                <div>
+                    <span class="font-mono-tech text-[10px] uppercase tracking-[0.3em] text-[#FF5500]">Section II // Hands-On Street Tech Archive</span>
+                    <h2 class="font-editorial text-3xl sm:text-4xl text-white mt-1">Ensoniq 12-Bit Step Sequencer & Cadence Matrix</h2>
+                    <p class="text-xs text-stone-400 mt-1">
+                        Click any step pad in the 16-step matrix below to program the Ninth Ward Bedroom Lab cadence in real time.
+                    </p>
+                </div>
+                <div class="flex flex-wrap items-center gap-2.5">
+                    <button onclick="loadSeqPreset('bounce')" class="px-3.5 py-2 rounded-lg bg-[#FF5500] text-black font-mono-tech text-[10px] font-extrabold uppercase tracking-wider">
+                        Preset: 9th Ward Bounce
+                    </button>
+                    <button onclick="loadSeqPreset('bebop')" class="px-3.5 py-2 rounded-lg border border-[#E5B842] text-[#E5B842] hover:bg-[#E5B842] hover:text-black font-mono-tech text-[10px] font-bold uppercase tracking-wider transition-all">
+                        Preset: Hollygrove Bebop
+                    </button>
+                    <button onclick="loadSeqPreset('secondline')" class="px-3.5 py-2 rounded-lg border border-[#00F0FF] text-[#00F0FF] hover:bg-[#00F0FF] hover:text-black font-mono-tech text-[10px] font-bold uppercase tracking-wider transition-all">
+                        Preset: 7th Ward Brass
+                    </button>
+                </div>
+            </div>
+
+            <!-- 4 Rows x 16 Steps Grid -->
+            <div id="sequencer-grid" class="mt-6 space-y-3 overflow-x-auto pb-2">
+                <!-- Dynamically built by JS -->
+            </div>
+        </section>
+
+        <!-- SECTION 04: METANATED // SPLIT-SHEET WORKSHEET (DEMO) -->
+        <section id="split-sheet-desk" class="grid grid-cols-1 lg:grid-cols-12 border-b bento-line">
+
+            <!-- Left: Split-Sheet Input Desk -->
+            <div class="lg:col-span-6 p-6 sm:p-10 lg:p-12 border-b lg:border-b-0 lg:border-r bento-line">
+                <span class="font-mono-tech text-[10px] uppercase tracking-[0.3em] text-[#E5B842]">Section III // Metanated Music Protocol — Demonstration</span>
+                <h2 class="font-editorial text-3xl sm:text-4xl text-white mt-1">The Split-Sheet Worksheet (Demo)</h2>
+                <p class="text-xs text-stone-400 mt-2 leading-relaxed">
+                    Never let a record leave the studio with unwritten credits. This worksheet is a <strong class="text-white">demonstration only</strong>: it issues nothing, assigns no code, and binds nobody. Real split sheets are written and signed in writing through the Agency, before a record travels.
+                </p>
+
+                <div class="mt-6 space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block font-mono-tech text-[10px] uppercase tracking-widest text-stone-300 mb-1">Master Track Title</label>
+                            <input id="split-title" type="text" value="Worksheet — Untitled Master" class="w-full px-3.5 py-2.5 rounded-lg bg-black border border-white/15 text-xs text-white font-mono-tech focus:outline-none focus:border-[#FF5500]">
+                        </div>
+                        <div>
+                            <label class="block font-mono-tech text-[10px] uppercase tracking-widest text-stone-300 mb-1">Recording Sanctuary / Room</label>
+                            <select id="split-room" class="w-full px-3.5 py-2.5 rounded-lg bg-black border border-white/15 text-xs text-white font-mono-tech focus:outline-none focus:border-[#FF5500]">
+                                <option value="The Box Studios // 7367 Chef Menteur Hwy">The Box Studios // 7367 Chef Menteur Hwy</option>
+                                <option value="Ninth Ward Bedroom Lab (18-Inch Subs)">Ninth Ward Bedroom Lab (18" Subs)</option>
+                                <option value="Downman Road Analog Mastering Suite">Downman Road Analog Mastering Suite</option>
+                                <option value="7th Ward Family House">7th Ward Family House</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div>
+                            <label class="block font-mono-tech text-[9px] uppercase tracking-widest text-[#E5B842] mb-1">Producer / Architect (%)</label>
+                            <input id="split-p1" type="text" value="Producer ( % )" class="w-full px-3 py-2 rounded-lg bg-black border border-white/15 text-xs text-white font-mono-tech">
+                        </div>
+                        <div>
+                            <label class="block font-mono-tech text-[9px] uppercase tracking-widest text-[#00F0FF] mb-1">Co-Writer / Artist (%)</label>
+                            <input id="split-p2" type="text" value="Co-Writer / Artist ( % )" class="w-full px-3 py-2 rounded-lg bg-black border border-white/15 text-xs text-white font-mono-tech">
+                        </div>
+                        <div>
+                            <label class="block font-mono-tech text-[9px] uppercase tracking-widest text-[#10B981] mb-1">Tracking Engineer (%)</label>
+                            <input id="split-p3" type="text" value="Tracking Engineer ( % )" class="w-full px-3 py-2 rounded-lg bg-black border border-white/15 text-xs text-white font-mono-tech">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block font-mono-tech text-[10px] uppercase tracking-widest text-stone-300 mb-1">Hardware Patch & Liner Note Verification</label>
+                        <input id="split-notes" type="text" value="Tracked at The Box Studios; Ensoniq 12-bit drum bus; no generative AI stems." class="w-full px-3.5 py-2.5 rounded-lg bg-black border border-white/15 text-xs text-white font-mono-tech">
+                    </div>
+
+                    <div class="pt-2 flex flex-wrap gap-3">
+                        <button onclick="mintSplitSheet()" class="px-6 py-3.5 rounded-xl bg-[#FF5500] hover:bg-white text-black font-mono-tech text-xs font-extrabold uppercase tracking-widest transition-all tangerine-glow">
+                            Preview the Split Worksheet (Demo)
+                        </button>
+                        <button onclick="copySplitCertificate()" class="px-4 py-3.5 rounded-xl border border-white/20 hover:border-[#E5B842] text-stone-200 font-mono-tech text-xs uppercase tracking-widest transition-all">
+                            Copy Worksheet Preview
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Demo Worksheet Preview -->
+            <div class="lg:col-span-6 p-6 sm:p-10 lg:p-12 bg-[#040508] flex items-center justify-center">
+                <div class="w-full max-w-xl p-6 sm:p-8 rounded-2xl bg-[#0A0C12] border-2 border-[#FF5500]/60 shadow-2xl relative">
+                    <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                        <div>
+                            <span class="font-mono-tech text-[9px] uppercase tracking-[0.25em] text-[#FF5500] block">NEWMUSIC.PRESS × METANATED</span>
+                            <h3 class="font-display text-xl font-bold text-white mt-0.5">SPLIT-SHEET WORKSHEET — PREVIEW</h3>
+                        </div>
+                        <span id="split-isrc-badge" class="px-2.5 py-1 rounded bg-[#00F0FF]/15 text-[#00F0FF] border border-[#00F0FF]/40 font-mono-tech text-[10px] font-bold">
+                            DEMO — NO ISRC ISSUED
+                        </span>
+                    </div>
+
+                    <div class="mt-5 space-y-2.5 font-mono-tech text-xs">
+                        <div class="flex justify-between py-1.5 border-b border-white/5">
+                            <span class="text-stone-400">MASTER TITLE:</span>
+                            <span id="cert-split-title" class="text-white font-bold">Worksheet — Untitled Master</span>
+                        </div>
+                        <div class="flex justify-between py-1.5 border-b border-white/5">
+                            <span class="text-stone-400">RECORDING ROOM:</span>
+                            <span id="cert-split-room" class="text-[#E5B842]">The Box Studios // 7367 Chef Menteur Hwy</span>
+                        </div>
+                        <div class="py-2 border-b border-white/5">
+                            <span class="text-stone-400 block mb-2">WORKSHEET SPLITS (UNSET — FILLED IN WRITING):</span>
+                            <div class="grid grid-cols-3 gap-2 text-[11px]">
+                                <div id="cert-p1" class="p-2 rounded bg-black border border-[#E5B842]/40 text-[#E5B842] font-bold truncate">Producer ( % )</div>
+                                <div id="cert-p2" class="p-2 rounded bg-black border border-[#00F0FF]/40 text-[#00F0FF] font-bold truncate">Co-Writer / Artist ( % )</div>
+                                <div id="cert-p3" class="p-2 rounded bg-black border border-[#10B981]/40 text-[#10B981] font-bold truncate">Tracking Engineer ( % )</div>
+                            </div>
+                        </div>
+                        <div class="py-1.5">
+                            <span class="text-stone-400 block mb-1">SIGNAL CHAIN & NOTES:</span>
+                            <p id="cert-split-notes" class="text-stone-300 bg-black/70 p-2.5 rounded border border-white/10 text-[11px]">
+                                Tracked at The Box Studios; Ensoniq 12-bit drum bus; no generative AI stems.
+                            </p>
+                        </div>
+                        <div class="bg-black p-3 rounded border border-[#FF5500]/40">
+                            <span class="text-[9px] text-stone-400 block">DEMO DIGEST (SIMULATED — NOT A HASH):</span>
+                            <span id="cert-split-hash" class="text-[10px] text-[#FF5500] break-all font-bold">— preview only; nothing is fingerprinted here —</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 pt-3 border-t border-white/10 flex items-center justify-between font-mono-tech text-[10px] text-stone-400">
+                        <span>DEMO WORKSHEET — NOT A FILING</span>
+                        <span class="text-[#10B981] font-bold">● DEMO ONLY — REAL SPLITS ARE SIGNED IN WRITING</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 05: VERIFIED PRESSINGS & DISPATCH WIRE -->
+        <section id="catalog-wire" class="border-b bento-line p-6 sm:p-10 lg:p-12">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b bento-line">
+                <div>
+                    <span class="font-mono-tech text-[10px] uppercase tracking-[0.3em] text-[#00F0FF]">Section IV // The 360 Listening Ledger</span>
+                    <h2 class="font-editorial text-3xl sm:text-5xl text-white mt-1">Recent Verified Pressings & Sonic Dispatches</h2>
+                </div>
+                <span class="font-mono-tech text-xs text-stone-400">CLICK ANY DISPATCH TO LOAD ITS CADENCE IN THE SEQUENCER</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                <!-- Dispatch 1 -->
+                <article onclick="auditionCatalogItem(0)" class="console-card p-6 rounded-2xl bg-[#090A0F] border bento-line cursor-pointer flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between font-mono-tech text-[10px]">
+                            <span class="text-[#FF5500] font-bold">THE FIRST ROOMS // ARCHIVE RECONSTRUCTION</span>
+                            <span class="text-stone-400">DESK FILE 04</span>
+                        </div>
+                        <h3 class="font-editorial text-2xl font-bold text-white mt-3">The Rampart Street Ensoniq: How 12-Bit Quantization Built the Bounce Pocket</h3>
+                        <p class="text-xs text-stone-300 mt-3 leading-relaxed">
+                            Inside the Ninth Ward Bedroom Lab where 18-inch Peavey subwoofers and a 12-bit sampler forged the foundational low-frequency cadence for Tim Smooth, Sporty T, and Gregory D.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between font-mono-tech text-[10px] text-[#E5B842]">
+                        <span>LOAD THE CADENCE</span>
+                        <span>▶ AUDITION</span>
+                    </div>
+                </article>
+
+                <!-- Dispatch 2 -->
+                <article onclick="auditionCatalogItem(1)" class="console-card p-6 rounded-2xl bg-[#090A0F] border bento-line cursor-pointer flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between font-mono-tech text-[10px]">
+                            <span class="text-[#00F0FF] font-bold">COPPER TELEMETRY // HARDWARE</span>
+                            <span class="text-stone-400">DESK FILE 09</span>
+                        </div>
+                        <h3 class="font-editorial text-2xl font-bold text-white mt-3">Copper-Wire Scratch Battles: The Galvez Landline Phone Coupler</h3>
+                        <p class="text-xs text-stone-300 mt-3 leading-relaxed">
+                            Before fiber-optic studio bridges, New Orleans DJs wired switching couplers directly into landline receivers to trade real-time transformer cuts across town.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between font-mono-tech text-[10px] text-[#00F0FF]">
+                        <span>LOAD COPPER TELEMETRY</span>
+                        <span>▶ AUDITION</span>
+                    </div>
+                </article>
+
+                <!-- Dispatch 3 -->
+                <article onclick="auditionCatalogItem(2)" class="console-card p-6 rounded-2xl bg-[#090A0F] border bento-line cursor-pointer flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between font-mono-tech text-[10px]">
+                            <span class="text-[#10B981] font-bold">THE PRESENT DESK // CONSOLE HERITAGE</span>
+                            <span class="text-stone-400">DESK FILE 01</span>
+                        </div>
+                        <h3 class="font-editorial text-2xl font-bold text-white mt-3">The Recall: The V3 and Its Tangerine Automation, Kept</h3>
+                        <p class="text-xs text-stone-300 mt-3 leading-relaxed">
+                            How The Box Studios keeps the decommissioned V3 to the museum standard — British transformer iron, its automation, and its provenance, all on the record.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between font-mono-tech text-[10px] text-[#10B981]">
+                        <span>LOAD THE RECALL</span>
+                        <span>▶ AUDITION</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- COLOPHON & INSTITUTIONAL OATH FOOTER -->
+    <footer class="max-w-[1640px] mx-auto px-6 sm:px-10 py-14 border-b bento-line bg-[#020204]">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div class="lg:col-span-7">
+                <span class="font-mono-tech text-[10px] uppercase tracking-[0.35em] text-[#FF5500]">THE RECORD TRIAD // REPEATABLE.PRESS × NEWMUSIC.PRESS × METANATED</span>
+                <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-white tracking-tight mt-2 leading-none">
+                    DO WELL BY DOING GOOD.<br>
+                    <span class="sonic-gradient-text">SINGULARITY IN ALL ASPECTS.</span><br>
+                    OPTIMUS MAXIMUS.
+                </h2>
+                <p class="font-editorial italic text-xl text-stone-300 mt-4">
+                    “Somebody has to be in the room with a recorder running—and the split-sheet signed. Otherwise it never happened.”
+                </p>
+            </div>
+            <div class="lg:col-span-5 lg:text-right font-mono-tech text-xs text-stone-400 space-y-2">
+                <p class="text-white font-bold uppercase tracking-widest">THE BYRON JUPITER AGENCY</p>
+                <p>The Box Studios: 7367 Chef Menteur Hwy</p>
+                <p>New Orleans, Louisiana</p>
+                <p class="pt-2">HOUSE BYLINE: THE LISTENING DESK</p>
+                <p>Business, in writing: sales@leasethebox.com</p>
+                <p>Rendering by the Byron Jupiter Agency, with Renaissance Instruments</p>
+                <p class="text-[#E5B842]">© Byron Jupiter — sales@leasethebox.com</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT: TONE.JS 4-STEM WORKSTATION, 16-STEP SEQUENCER & THREE.JS WOOFER -->
+    <script>
+        // ---------------------------------------------------------------------
+        // 1. SPOTLIGHT HOVER TRACKING
+        // ---------------------------------------------------------------------
+        document.querySelectorAll('.console-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const r = card.getBoundingClientRect();
+                card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+                card.style.setProperty('--my', `${e.clientY - r.top}px`);
+            });
+        });
+
+        // ---------------------------------------------------------------------
+        // 2. TOAST NOTIFICATION HELPER
+        // ---------------------------------------------------------------------
+        let toastTimeout = null;
+        function notifyDesk(head, msg) {
+            const box = document.getElementById('toast-box');
+            document.getElementById('toast-head').innerText = head;
+            document.getElementById('toast-msg').innerText = msg;
+            box.classList.remove('translate-y-28', 'opacity-0');
+            if (toastTimeout) clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                box.classList.add('translate-y-28', 'opacity-0');
+            }, 3500);
+        }
+
+        function copyTextHelper(str, label) {
+            const el = document.createElement('textarea');
+            el.value = str;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+            notifyDesk("CLIPBOARD DISPATCH", `${label} copied verbatim.`);
+        }
+
+        function copyPremiereCapsule() {
+            copyTextHelper(document.getElementById('premiere-capsule-text').innerText, "50-Word NewMusic.press Answer Capsule");
+        }
+
+        // ---------------------------------------------------------------------
+        // 3. 16-STEP ENSONIQ 12-BIT SEQUENCER MATRIX & TONE.JS SYNTHESIS
+        // ---------------------------------------------------------------------
+        const trackMeta = [
+            { name: "01 // 18\" PEAVEY SUB", color: "#FF5500" },
+            { name: "02 // ENSONIQ SNARE/CLAP", color: "#E5B842" },
+            { name: "03 // 432Hz BRASS STAB", color: "#00F0FF" },
+            { name: "04 // GALVEZ X-FADER CUT", color: "#10B981" }
+        ];
+
+        const presets = {
+            bounce: [
+                [1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0],
+                [0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1],
+                [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+                [0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0]
+            ],
+            bebop: [
+                [1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0],
+                [0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1],
+                [1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0],
+                [0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1]
+            ],
+            secondline: [
+                [1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0],
+                [0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1],
+                [1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0],
+                [0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1]
+            ]
+        };
+
+        let seqPattern = JSON.parse(JSON.stringify(presets.bounce));
+        let stemGains = [2.0, 0.5, -1.5, -3.0];
+        let stemMuted = [false, false, false, false];
+        let stemSolo = [false, false, false, false];
+        let currentStep = 0;
+        let isPlaying = false;
+        let audioInitialized = false;
+
+        // Tone.js Instruments & Gains
+        let chGainNodes = [];
+        let subSynth, snareSynth, brassSynth, scratchSynth;
+        let subEnergyPulse = 0;
+
+        function buildSequencerDOM() {
+            const container = document.getElementById('sequencer-grid');
+            container.innerHTML = '';
+            seqPattern.forEach((row, rIdx) => {
+                const rowEl = document.createElement('div');
+                rowEl.className = "flex items-center space-x-2 min-w-[740px]";
+
+                const labelEl = document.createElement('div');
+                labelEl.className = "w-48 shrink-0 font-mono-tech text-[10px] font-bold tracking-wider uppercase";
+                labelEl.style.color = trackMeta[rIdx].color;
+                labelEl.innerText = trackMeta[rIdx].name;
+                rowEl.appendChild(labelEl);
+
+                const stepsWrap = document.createElement('div');
+                stepsWrap.className = "grid grid-cols-16 gap-1.5 flex-grow";
+                stepsWrap.style.gridTemplateColumns = "repeat(16, minmax(0, 1fr))";
+
+                row.forEach((val, sIdx) => {
+                    const btn = document.createElement('button');
+                    btn.id = `cell-${rIdx}-${sIdx}`;
+                    btn.onclick = () => toggleSeqCell(rIdx, sIdx);
+                    btn.className = `seq-step h-9 rounded border transition-all font-mono-tech text-[9px] ${
+                        val ? 'font-bold text-black' : 'bg-black/60 text-stone-500 border-white/10'
+                    }`;
+                    if (val) {
+                        btn.style.backgroundColor = trackMeta[rIdx].color;
+                        btn.style.borderColor = trackMeta[rIdx].color;
+                    }
+                    btn.innerText = sIdx + 1;
+                    stepsWrap.appendChild(btn);
+                });
+
+                rowEl.appendChild(stepsWrap);
+                container.appendChild(rowEl);
+            });
+        }
+
+        function toggleSeqCell(r, s) {
+            seqPattern[r][s] = seqPattern[r][s] ? 0 : 1;
+            buildSequencerDOM();
+        }
+
+        function loadSeqPreset(name) {
+            seqPattern = JSON.parse(JSON.stringify(presets[name]));
+            buildSequencerDOM();
+            notifyDesk("ENSONIQ 12-BIT WORKSTATION", `Loaded "${name.toUpperCase()}" rhythmic cadence.`);
+        }
+
+        async function initAudioWorkstation() {
+            if (audioInitialized) return;
+            await Tone.start();
+
+            for (let i = 0; i < 4; i++) {
+                const g = new Tone.Volume(stemGains[i]).toDestination();
+                chGainNodes.push(g);
+            }
+
+            // CH 1: 18" Peavey Sub-Bass
+            subSynth = new Tone.MembraneSynth({
+                pitchDecay: 0.06,
+                octaves: 4,
+                oscillator: { type: "sine" },
+                envelope: { attack: 0.005, decay: 0.38, sustain: 0.1, release: 0.4 }
+            }).connect(chGainNodes[0]);
+
+            // CH 2: Ensoniq 12-Bit Snare / Rim
+            snareSynth = new Tone.NoiseSynth({
+                noise: { type: "white" },
+                envelope: { attack: 0.001, decay: 0.14, sustain: 0 }
+            }).connect(chGainNodes[1]);
+
+            // CH 3: 432Hz Second-Line Brass Stab
+            brassSynth = new Tone.PolySynth(Tone.Synth, {
+                oscillator: { type: "sawtooth" },
+                envelope: { attack: 0.01, decay: 0.22, sustain: 0.15, release: 0.3 }
+            }).connect(chGainNodes[2]);
+
+            // CH 4: Galvez Copper Coupler Cut
+            const bp = new Tone.Filter(1400, "bandpass").connect(chGainNodes[3]);
+            scratchSynth = new Tone.MetalSynth({
+                frequency: 320,
+                envelope: { attack: 0.002, decay: 0.07, release: 0.03 },
+                harmonicity: 3.1,
+                modulationIndex: 16,
+                resonance: 2400,
+                octaves: 1.2
+            }).connect(bp);
+
+            Tone.Transport.bpm.value = 98;
+            Tone.Transport.scheduleRepeat((time) => {
+                const step = currentStep % 16;
+                const anySolo = stemSolo.some(s => s);
+
+                // Check each row
+                for (let r = 0; r < 4; r++) {
+                    const audible = anySolo ? stemSolo[r] : !stemMuted[r];
+                    if (seqPattern[r][step] && audible) {
+                        if (r === 0) {
+                            subSynth.triggerAttackRelease("A1", "8n", time);
+                            subEnergyPulse = 1.0;
+                        } else if (r === 1) {
+                            snareSynth.triggerAttackRelease("16n", time);
+                        } else if (r === 2) {
+                            const chords = [["A3", "C4", "E4"], ["G3", "B3", "D4"], ["F3", "A3", "C4"]];
+                            brassSynth.triggerAttackRelease(chords[step % chords.length], "16n", time, 0.35);
+                        } else if (r === 3) {
+                            scratchSynth.triggerAttackRelease("32n", time, 0.3);
+                        }
+                    }
+                }
+
+                // UI Step Highlight
+                Tone.Draw.schedule(() => {
+                    document.querySelectorAll('.seq-step').forEach(el => el.classList.remove('active-step'));
+                    for (let r = 0; r < 4; r++) {
+                        const cell = document.getElementById(`cell-${r}-${step}`);
+                        if (cell) cell.classList.add('active-step');
+                    }
+                    updateLEDMeters();
+                }, time);
+
+                currentStep++;
+            }, "16n");
+
+            audioInitialized = true;
+        }
+
+        async function toggleMasterTransport() {
+            await initAudioWorkstation();
+            const btn = document.getElementById('master-play-btn');
+            const label = document.getElementById('play-label');
+            const icon = document.getElementById('play-icon');
+            const status = document.getElementById('transport-status');
+            const reel = document.getElementById('header-reel');
+
+            if (!isPlaying) {
+                Tone.Transport.start();
+                isPlaying = true;
+                label.innerText = "STOP MASTER";
+                icon.innerText = "■";
+                btn.classList.replace('bg-[#FF5500]', 'bg-[#00F0FF]');
+                status.innerText = "LOCKED // 30 IPS";
+                reel.classList.add('playing');
+                notifyDesk("MASTER TRANSPORT ENGAGED", "The heritage recall & Ensoniq 12-Bit Sequencer are running.");
+            } else {
+                Tone.Transport.stop();
+                isPlaying = false;
+                label.innerText = "ENGAGE SOUND";
+                icon.innerText = "▶";
+                btn.classList.replace('bg-[#00F0FF]', 'bg-[#FF5500]');
+                status.innerText = "STANDBY // 432Hz";
+                reel.classList.remove('playing');
+            }
+        }
+
+        function auditionFeaturedTrack() {
+            loadSeqPreset('bounce');
+            if (!isPlaying) toggleMasterTransport();
+            else notifyDesk("NOW PLAYING", "The featured premiere cadence is active on the Master Bus toy.");
+        }
+
+        function auditionCatalogItem(idx) {
+            const map = ['bounce', 'bebop', 'secondline'];
+            loadSeqPreset(map[idx]);
+            if (!isPlaying) toggleMasterTransport();
+        }
+
+        async function triggerSubDrop(freq) {
+            await initAudioWorkstation();
+            subEnergyPulse = 1.35;
+            document.getElementById('vis-readout-title').innerText = `18-Inch Subwoofer Excursion: ${freq}.0 Hz`;
+            document.getElementById('cone-spl').innerText = `${(116 + Math.random() * 5).toFixed(1)} dB SPL`;
+            if (subSynth) subSynth.triggerAttackRelease(freq, "4n");
+        }
+
+        // Stem Console Controls
+        function updateStemGain(idx, val) {
+            const db = parseFloat(val);
+            stemGains[idx] = db;
+            document.getElementById(`ch${idx + 1}-db`).innerText = `${db >= 0 ? '+' : ''}${db.toFixed(1)} dB`;
+            if (chGainNodes[idx]) chGainNodes[idx].volume.value = db;
+        }
+
+        function toggleStemMute(idx) {
+            stemMuted[idx] = !stemMuted[idx];
+            const btn = document.getElementById(`mute-btn-${idx}`);
+            btn.className = stemMuted[idx]
+                ? "flex-1 py-2 rounded border border-[#F43F5E] bg-[#F43F5E] text-black font-bold uppercase"
+                : "flex-1 py-2 rounded border border-white/15 bg-white/5 hover:border-[#F43F5E] font-bold uppercase";
+        }
+
+        function toggleStemSolo(idx) {
+            stemSolo[idx] = !stemSolo[idx];
+            const btn = document.getElementById(`solo-btn-${idx}`);
+            btn.className = stemSolo[idx]
+                ? "flex-1 py-2 rounded border border-[#E5B842] bg-[#E5B842] text-black font-bold uppercase"
+                : "flex-1 py-2 rounded border border-white/15 bg-white/5 hover:border-[#E5B842] font-bold uppercase";
+        }
+
+        function resetAllStems() {
+            const defaults = [2.0, 0.5, -1.5, -3.0];
+            for (let i = 0; i < 4; i++) {
+                stemMuted[i] = false;
+                stemSolo[i] = false;
+                document.getElementById(`stem-fader-${i}`).value = defaults[i];
+                updateStemGain(i, defaults[i]);
+                document.getElementById(`mute-btn-${i}`).className = "flex-1 py-2 rounded border border-white/15 bg-white/5 hover:border-[#F43F5E] font-bold uppercase";
+                document.getElementById(`solo-btn-${i}`).className = "flex-1 py-2 rounded border border-white/15 bg-white/5 hover:border-[#E5B842] font-bold uppercase";
+            }
+            notifyDesk("HERITAGE RECALL", "All 4 recalled channels restored to the preset.");
+        }
+
+        function soloBounceFoundation() {
+            stemSolo = [true, true, false, false];
+            for (let i = 0; i < 4; i++) {
+                const btn = document.getElementById(`solo-btn-${i}`);
+                btn.className = stemSolo[i]
+                    ? "flex-1 py-2 rounded border border-[#E5B842] bg-[#E5B842] text-black font-bold uppercase"
+                    : "flex-1 py-2 rounded border border-white/15 bg-white/5 hover:border-[#E5B842] font-bold uppercase";
+            }
+            notifyDesk("9TH WARD FOUNDATION SOLOED", "Isolating 18-Inch Peavey Sub + Ensoniq 12-Bit Drum Bus.");
+        }
+
+        function updateTempo(val) {
+            document.getElementById('bpm-display').innerText = `${parseFloat(val).toFixed(1)} BPM`;
+            if (audioInitialized) Tone.Transport.bpm.value = parseFloat(val);
+        }
+
+        function updateLEDMeters() {
+            const segs = document.querySelectorAll('.led-seg');
+            const activeCount = Math.floor(4 + Math.random() * 4);
+            segs.forEach((s, i) => {
+                s.style.opacity = i < activeCount ? '1' : '0.25';
+            });
+        }
+
+        // ---------------------------------------------------------------------
+        // 4. METANATED SPLIT-SHEET GENERATOR
+        // ---------------------------------------------------------------------
+        function mintSplitSheet() {
+            const title = document.getElementById('split-title').value.trim() || "Untitled Master";
+            const room = document.getElementById('split-room').value;
+            const p1 = document.getElementById('split-p1').value.trim();
+            const p2 = document.getElementById('split-p2').value.trim();
+            const p3 = document.getElementById('split-p3').value.trim();
+            const notes = document.getElementById('split-notes').value.trim();
+
+            document.getElementById('cert-split-title').innerText = title;
+            document.getElementById('cert-split-room').innerText = room;
+            document.getElementById('cert-p1').innerText = p1;
+            document.getElementById('cert-p2').innerText = p2;
+            document.getElementById('cert-p3').innerText = p3;
+            document.getElementById('cert-split-notes').innerText = notes;
+
+            document.getElementById('split-isrc-badge').innerText = "DEMO PREVIEW — NO CODE ISSUED";
+
+            let seed = `${title}|${room}|${p1}|${p2}|${p3}|${Date.now()}`;
+            let digest = "0x";
+            for (let i = 0; i < 64; i++) {
+                digest += ((seed.charCodeAt(i % seed.length) * (i + 19) + Date.now()) % 16).toString(16);
+            }
+            document.getElementById('cert-split-hash').innerText = digest;
+            triggerSubDrop(54);
+            notifyDesk("WORKSHEET PREVIEW (DEMO)", "Nothing issued, nothing bound. Real splits are signed in writing.");
+        }
+
+        function copySplitCertificate() {
+            const txt = `NEWMUSIC.PRESS SPLIT WORKSHEET (DEMO — NOT A FILING)\n${document.getElementById('split-isrc-badge').innerText}\nTITLE: ${document.getElementById('cert-split-title').innerText}\nROOM: ${document.getElementById('cert-split-room').innerText}\nSPLITS: ${document.getElementById('cert-p1').innerText} | ${document.getElementById('cert-p2').innerText} | ${document.getElementById('cert-p3').innerText}\nDEMO DIGEST: ${document.getElementById('cert-split-hash').innerText}`;
+            copyTextHelper(txt, "Demo Split Worksheet");
+        }
+
+        // ---------------------------------------------------------------------
+        // 5. THREE.JS 3D 18-INCH SUBWOOFER TRANSDUCER & ACOUSTIC MESH
+        // ---------------------------------------------------------------------
+        let scene, camera, renderer, meshGroup;
+        let visMode = 'woofer';
+        let rotY = 0.35, rotX = 0.2;
+
+        function initAcoustic3D() {
+            const container = document.getElementById('acoustic-canvas');
+            const w = container.clientWidth || 500;
+            const h = container.clientHeight || 420;
+
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(50, w / h, 1, 2000);
+            camera.position.set(0, 0, 310);
+
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+            renderer.setSize(w, h);
+            container.appendChild(renderer.domElement);
+
+            meshGroup = new THREE.Group();
+            scene.add(meshGroup);
+
+            buildVisualizerGeometry();
+
+            let dragging = false, px = 0, py = 0;
+            container.addEventListener('mousedown', e => { dragging = true; px = e.clientX; py = e.clientY; });
+            window.addEventListener('mouseup', () => dragging = false);
+            window.addEventListener('mousemove', e => {
+                if (!dragging) return;
+                rotY += (e.clientX - px) * 0.008;
+                rotX += (e.clientY - py) * 0.008;
+                px = e.clientX; py = e.clientY;
+            });
+
+            container.addEventListener('touchstart', e => {
+                if (e.touches.length === 1) { dragging = true; px = e.touches[0].clientX; py = e.touches[0].clientY; }
+            }, { passive: true });
+            window.addEventListener('touchend', () => dragging = false);
+            window.addEventListener('touchmove', e => {
+                if (!dragging || e.touches.length !== 1) return;
+                rotY += (e.touches[0].clientX - px) * 0.008;
+                rotX += (e.touches[0].clientY - py) * 0.008;
+                px = e.touches[0].clientX; py = e.touches[0].clientY;
+            }, { passive: true });
+
+            window.addEventListener('resize', () => {
+                const nw = container.clientWidth;
+                const nh = container.clientHeight;
+                camera.aspect = nw / nh;
+                camera.updateProjectionMatrix();
+                renderer.setSize(nw, nh);
+            });
+        }
+
+        function buildVisualizerGeometry() {
+            while (meshGroup.children.length > 0) meshGroup.remove(meshGroup.children[0]);
+
+            if (visMode === 'woofer') {
+                // Concentric 18-Inch Peavey Sub-Bass Rings + Dust Cap
+                for (let r = 18; r <= 115; r += 16) {
+                    const torusGeo = new THREE.TorusGeometry(r, 1.4, 12, 48);
+                    const mat = new THREE.MeshBasicMaterial({
+                        color: r < 50 ? 0xFF5500 : 0xE5B842,
+                        wireframe: true
+                    });
+                    const ring = new THREE.Mesh(torusGeo, mat);
+                    ring.userData = { baseZ: (115 - r) * 0.28, ringRadius: r };
+                    ring.position.z = ring.userData.baseZ;
+                    meshGroup.add(ring);
+                }
+                const basketGeo = new THREE.ConeGeometry(118, 85, 24, 4, true);
+                const basketMat = new THREE.MeshBasicMaterial({ color: 0x00F0FF, wireframe: true, transparent: true, opacity: 0.22 });
+                const basket = new THREE.Mesh(basketGeo, basketMat);
+                basket.rotation.x = Math.PI / 2;
+                basket.position.z = -20;
+                meshGroup.add(basket);
+            } else if (visMode === 'torus') {
+                const knotGeo = new THREE.TorusKnotGeometry(70, 22, 110, 16);
+                const knotMat = new THREE.MeshBasicMaterial({ color: 0x00F0FF, wireframe: true, transparent: true, opacity: 0.65 });
+                meshGroup.add(new THREE.Mesh(knotGeo, knotMat));
+            } else {
+                // 5D Penteract Vault Lattice
+                const v5 = [];
+                for (let i = 0; i < 32; i++) {
+                    v5.push([(i & 1) ? 1 : -1, (i & 2) ? 1 : -1, (i & 4) ? 1 : -1, (i & 8) ? 1 : -1, (i & 16) ? 1 : -1]);
+                }
+                const p3 = v5.map(v => {
+                    const f5 = 1 / (2.5 - v[4] * 0.45);
+                    const f4 = 1 / (2.2 - v[3] * f5 * 0.5);
+                    return [v[0] * f5 * f4 * 125, v[1] * f5 * f4 * 125, v[2] * f5 * f4 * 125];
+                });
+                const edges = [];
+                for (let i = 0; i < 32; i++) {
+                    for (let b = 0; b < 5; b++) {
+                        const n = i ^ (1 << b);
+                        if (n > i) edges.push(...p3[i], ...p3[n]);
+                    }
+                }
+                const lGeo = new THREE.BufferGeometry();
+                lGeo.setAttribute('position', new THREE.Float32BufferAttribute(edges, 3));
+                meshGroup.add(new THREE.LineSegments(lGeo, new THREE.LineBasicMaterial({ color: 0xE5B842, transparent: true, opacity: 0.7 })));
+            }
+        }
+
+        function setVisualizerMode(m) {
+            visMode = m;
+            ['woofer', 'torus', 'vault5d'].forEach(id => {
+                const btn = document.getElementById(`vis-${id}`);
+                btn.className = (id === m)
+                    ? "px-2.5 py-1 rounded text-[9px] font-mono-tech uppercase bg-[#FF5500] text-black font-bold"
+                    : "px-2.5 py-1 rounded text-[9px] font-mono-tech uppercase border border-white/20 text-stone-300";
+            });
+            buildVisualizerGeometry();
+        }
+
+        // ---------------------------------------------------------------------
+        // 6. MASTER OSCILLOSCOPE, SMPTE TIMECODE & RENDER LOOP
+        // ---------------------------------------------------------------------
+        const scopeCanvas = document.getElementById('master-scope');
+        const scopeCtx = scopeCanvas.getContext('2d');
+        let phase = 0;
+        let frameCount = 0;
+
+        function renderScopeAndTimecode() {
+            const w = scopeCanvas.width = scopeCanvas.clientWidth;
+            const h = scopeCanvas.height = scopeCanvas.clientHeight;
+            scopeCtx.clearRect(0, 0, w, h);
+
+            // Center line
+            scopeCtx.strokeStyle = 'rgba(255,255,255,0.06)';
+            scopeCtx.beginPath();
+            scopeCtx.moveTo(0, h / 2);
+            scopeCtx.lineTo(w, h / 2);
+            scopeCtx.stroke();
+
+            const activeAmp = isPlaying ? (h * 0.32) : (h * 0.08);
+            const boost = 1 + subEnergyPulse * 0.8;
+
+            // Tangerine Sub Trace
+            scopeCtx.strokeStyle = '#FF5500';
+            scopeCtx.lineWidth = 2.2;
+            scopeCtx.beginPath();
+            for (let x = 0; x < w; x++) {
+                const y = h / 2 + Math.sin(x * 0.03 + phase) * activeAmp * boost * Math.cos(x * 0.01 - phase * 0.5);
+                if (x === 0) scopeCtx.moveTo(x, y);
+                else scopeCtx.lineTo(x, y);
+            }
+            scopeCtx.stroke();
+
+            // VFD Cyan Harmonic Trace
+            scopeCtx.strokeStyle = '#00F0FF';
+            scopeCtx.lineWidth = 1.2;
+            scopeCtx.beginPath();
+            for (let x = 0; x < w; x++) {
+                const y = h / 2 + Math.cos(x * 0.065 - phase * 1.4) * (activeAmp * 0.55);
+                if (x === 0) scopeCtx.moveTo(x, y);
+                else scopeCtx.lineTo(x, y);
+            }
+            scopeCtx.stroke();
+
+            phase += isPlaying ? 0.14 : 0.04;
+            subEnergyPulse *= 0.92;
+
+            // SMPTE Timecode Update
+            frameCount++;
+            const hrs = "01";
+            const mins = String(Math.floor((frameCount / 1800) % 60)).padStart(2, '0');
+            const secs = String(Math.floor((frameCount / 30) % 60)).padStart(2, '0');
+            const frms = String(frameCount % 30).padStart(2, '0');
+            document.getElementById('smpte-clock').innerText = `${hrs}:${mins}:${secs}:${frms}`;
+        }
+
+        function animateLoop() {
+            requestAnimationFrame(animateLoop);
+
+            if (meshGroup) {
+                rotY += isPlaying ? 0.008 : 0.0025;
+                meshGroup.rotation.y += (rotY - meshGroup.rotation.y) * 0.08;
+                meshGroup.rotation.x += (rotX - meshGroup.rotation.x) * 0.08;
+
+                // Animate 18" Subwoofer Cone excursion on bass pulse
+                if (visMode === 'woofer') {
+                    meshGroup.children.forEach(ch => {
+                        if (ch.userData && ch.userData.baseZ !== undefined) {
+                            ch.position.z = ch.userData.baseZ + subEnergyPulse * (120 - ch.userData.ringRadius) * 0.35;
+                        }
+                    });
+                } else {
+                    const s = 1 + subEnergyPulse * 0.18;
+                    meshGroup.scale.set(s, s, s);
+                }
+
+                renderer.render(scene, camera);
+            }
+
+            renderScopeAndTimecode();
+        }
+
+        window.onload = function () {
+            buildSequencerDOM();
+            initAcoustic3D();
+            animateLoop();
+        };
+    </script>
+</body>
+</html>
