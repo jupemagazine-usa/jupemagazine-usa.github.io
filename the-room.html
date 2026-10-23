@@ -254,9 +254,9 @@
   button.door-link:hover{color:var(--ink)}
   .foot-bot{font:inherit; color:var(--gold-hi); background:none; border:0; padding:0; cursor:pointer; text-decoration:underline; text-underline-offset:3px; text-decoration-color:var(--gold)}
   .foot-bot:hover{color:var(--paper)}
-  /* LEASE THE BOT — the Lease The Box chat, on the site (Byron's order,
+  /* LEASE THE BOT — the desk's chat, on the site (Byron's order,
      2026-10-23: "Lease the Chat Bot. On website."). Built in-house, no
-     outside service: the bot fronts Lease The Box, takes the intake in
+     outside service: the bot fronts the desk, takes the intake in
      the six-step manner (intake first), answers from the record, and
      hands the intake to the desk by email. Nothing is agreed in the
      chat; the desk answers in writing. House dress: paper card, ink
@@ -320,7 +320,7 @@
 <header class="masthead">
   <div class="masthead-in">
     <div class="wordmark">The <strong>Box</strong> Studios · New Orleans</div>
-    <nav aria-label="Site"><ul class="nav-list"><li><a href="index.html">Home</a></li><li><a href="the-room.html">The Room</a></li><li><a href="the-ground.html">The Ground</a></li><li><a href="visit.html">Visit</a></li><li><a href="lease-the-box.html">Lease The Box</a></li><li><a href="legal.html">Legal</a></li></ul></nav>
+    <nav aria-label="Site"><ul class="nav-list"><li><a href="index.html">Home</a></li><li><a href="the-room.html">The Room</a></li><li><a href="the-ground.html">The Ground</a></li><li><a href="visit.html">Visit</a></li><li><a href="legal.html">Legal</a></li></ul></nav>
   </div>
 </header>
 
@@ -391,8 +391,8 @@
 
 <footer>
   <div class="footer-in">
-    <p class="next-step">Next step: email the studio — sales@leasethebox.com — or open Lease the B · O · X — the Lease The Box chat.</p>
-    <p>The Box Studios — two doors only: <a href="mailto:sales@leasethebox.com">sales@leasethebox.com</a> · <button type="button" class="foot-bot" data-open-bot>Lease the B · O · X — the Lease The Box chat</button><br>7367 Chef Menteur Hwy · New Orleans, LA 70126</p>
+    <p class="next-step">Next step: email the studio — sales@leasethebox.com — or open Lease the B · O · X — the desk's chat.</p>
+    <p>The Box Studios — two doors only: <a href="mailto:sales@leasethebox.com">sales@leasethebox.com</a> · <button type="button" class="foot-bot" data-open-bot>Lease the B · O · X — the desk's chat</button><br>7367 Chef Menteur Hwy · New Orleans, LA 70126</p>
     <p class="ig-line">Instagram — <a href="https://www.instagram.com/bee._dee/">@bee._dee</a></p>
       <p class="ig-line">YouTube — <a href="https://www.youtube.com/@theboxstudiosofneworleans">The Box Studios</a></p>
       <p class="press-line">Press — <a href="https://newmusic.press">NewMusic Press</a> · <a href="https://repeatable.press">Repeatable Press</a></p>
@@ -401,11 +401,11 @@
   </div>
 </footer>
 
-<!-- LEASE THE BOT — the Lease The Box chat, on the site. The launcher
+<!-- LEASE THE BOT — the desk's chat, on the site. The launcher
      rides every page; the panel takes the intake and answers from the
      record. The desk answers in writing, by email. -->
 <button type="button" class="bot-launch" id="bot-launch" aria-haspopup="dialog" aria-expanded="false" aria-controls="bot-panel">Lease the B · O · X — Chat</button>
-<div class="bot-panel" id="bot-panel" role="dialog" aria-modal="false" aria-label="Lease the B · O · X — the Lease The Box chat" hidden>
+<div class="bot-panel" id="bot-panel" role="dialog" aria-modal="false" aria-label="Lease the B · O · X — the desk's chat" hidden>
   <div class="bot-head">
     <span class="bot-name">Lease the <strong>B · O · X</strong> · The Box Studios</span>
     <button type="button" class="bot-close" id="bot-close">Close</button>
@@ -643,7 +643,7 @@ document.addEventListener('pointerover', function warm(e) {
 <script>
 /* LEASE THE BOT — the chat engine. In-house, no outside service, no
    tracking: the conversation lives in this page only. The bot fronts
-   Lease The Box — it takes the intake (name, principal, matter,
+   The desk — it takes the intake (name, principal, matter,
    details, reply email) and hands it to the desk as an email the
    visitor sends; it answers simple questions from the record. The
    desk answers in writing. Nothing is agreed in this chat. */
@@ -666,14 +666,14 @@ document.addEventListener('pointerover', function warm(e) {
   var STEPS = [
     { key: 'name', ask: 'Your name — you, the person, not only your company.' },
     { key: 'principal', ask: 'Who do you represent? Name your principal — or say “myself.”' },
-    { key: 'matter', ask: 'Your matter, in one line. Choose one, or write it plainly.', chips: ['The room', 'The ground', 'A lease', 'A session arrangement', 'Credits and the record', 'Press', 'Another matter'] },
+    { key: 'matter', ask: 'Your matter, in one line. Choose one, or write it plainly.', chips: ['The room', 'The ground', 'A session arrangement', 'Credits and the record', 'Press', 'Another matter'] },
     { key: 'details', ask: 'The matter, plainly — the facts you hold, and what you are asking for.' },
     { key: 'email', ask: 'An email address for the desk’s written reply.' }
   ];
   var FAQS = {
     'Where is the studio?': 'The Box Studios · 7367 Chef Menteur Hwy · New Orleans, LA 70126 — on Chef Menteur Highway in New Orleans East. Arrivals and deliveries are confirmed by email before the day.',
     'How do the doors work?': 'Two doors only: this chat, and email — ' + DESK + '. No phone, no form, no other door. The room is reached through agents only, and every arrangement is made in writing, party to party.',
-    'What is Lease The Box?': 'Lease The Box is the agency service of The Box Studios: agency capacity, leased — communicated and created through chat boxes like this one. This chat is its door. Open an intake, and the desk answers in writing.'
+    'What is this chat?': 'This chat is the desk\'s door at The Box Studios. It takes intakes — name, principal, matter — and answers from the record. The desk answers in writing, by email. Nothing is agreed in this chat.'
   };
 
   function say(text, who) {
@@ -708,7 +708,7 @@ document.addEventListener('pointerover', function warm(e) {
       { label: 'Start an intake', act: startIntake },
       { label: 'Where is the studio?', act: function () { faq('Where is the studio?'); } },
       { label: 'How do the doors work?', act: function () { faq('How do the doors work?'); } },
-      { label: 'What is Lease The Box?', act: function () { faq('What is Lease The Box?'); } },
+      { label: 'What is this chat?', act: function () { faq('What is this chat?'); } },
       { label: 'I am an agent — the connection prompt', href: PROMPT_URL, download: true }
     ];
     chips(list);
@@ -720,7 +720,7 @@ document.addEventListener('pointerover', function warm(e) {
     menuChips();
   }
   function greet() {
-    say('Lease the B · O · X — the Lease The Box chat, at the desk of The Box Studios, New Orleans.');
+    say('Lease the B · O · X — the desk's chat, at The Box Studios, New Orleans.');
     say('I take intakes and answer from the record. The desk answers in writing; nothing is agreed in this chat, and terms exist only in a signed written agreement.');
     menuChips();
   }
