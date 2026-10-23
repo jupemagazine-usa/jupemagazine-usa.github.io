@@ -148,6 +148,13 @@
   .hero::after{content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
     background:linear-gradient(180deg, rgba(3,6,16,.18) 0%, rgba(3,6,16,0) 34%, rgba(3,6,16,.55) 100%)}
   .hero>*{position:relative; z-index:2}
+  .hero-grand{
+    min-height:92svh; display:flex; flex-direction:column; justify-content:center;
+    padding-top:clamp(4rem,10vw,7rem); padding-bottom:clamp(4rem,10vw,7rem);
+  }
+  .hero-grand h1{font-size:clamp(3.4rem,12.5vw,9rem)}
+  .hero-grand .roles{font-size:clamp(.92rem,2.2vw,1.18rem)}
+  .hero-grand .summary{font-size:1.18rem; max-width:46rem}
   .hero h1{
     font-family:'Playfair Display',Georgia,serif; font-weight:700;
     font-size:clamp(2.8rem,10vw,6.5rem); line-height:.95; margin:0 0 1rem; letter-spacing:-.01em;
@@ -461,7 +468,7 @@
     '}',
     'void main(){',
     '  vec2 uv = (gl_FragCoord.xy * 2.0 - uRes) / min(uRes.x, uRes.y);',
-    '  float t = uTime * 0.055;',
+    '  float t = uTime * 0.030;',
     '  vec2 q = vec2(fbm(uv * 1.35 + t), fbm(uv * 1.35 + vec2(5.2, 1.3) - t));',
     '  vec2 r = vec2(fbm(uv * 1.35 + 3.0 * q + vec2(1.7, 9.2) + 0.15 * t),',
     '                fbm(uv * 1.35 + 3.0 * q + vec2(8.3, 2.8) - 0.12 * t));',
