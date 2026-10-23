@@ -86,6 +86,12 @@
        #A1A1AA (8.0:1) in Round 1. The hue family is unchanged. */
     --zinc:#a1a1aa;
     --line:#1f1f1f; --max:68rem; --radius:0;
+    /* --mono is the label stack used across the site (section numbers,
+       press line, door links). Defined in Round 4 (2026-10-23): two
+       rules (.ig-line, .door-link) referenced var(--mono) with no
+       definition on record, so they silently fell back to the body
+       face; the token now carries the stack they were written for. */
+    --mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
   }
   *{box-sizing:border-box; border-radius:var(--radius)}
   html{scroll-behavior:smooth}
@@ -111,7 +117,10 @@
   .wordmark{font-weight:700; font-size:.95rem; letter-spacing:.35em; text-transform:uppercase}
   .wordmark strong{color:var(--gold); font-weight:700}
   nav .nav-list{list-style:none; display:flex; gap:1.25rem; margin:0; padding:0; flex-wrap:wrap}
-  nav .nav-list a{color:var(--platinum); text-decoration:none; font-size:.82rem; letter-spacing:.14em; text-transform:uppercase}
+  /* Round 4 (2026-10-23): inline-block + block padding gives each nav
+     link a target height above the WCAG 2.2 AA target-size minimum
+     (2.5.8, 24 CSS px) without changing the masthead's look. */
+  nav .nav-list a{color:var(--platinum); text-decoration:none; font-size:.82rem; letter-spacing:.14em; text-transform:uppercase; display:inline-block; padding:.45rem 0}
   nav .nav-list a:hover{color:var(--gold-hi)}
   main{max-width:var(--max); margin:0 auto; padding:0 clamp(1rem,4vw,2rem) 4rem}
   /* HERO — full-bleed band carrying the 5D/8K liquid movement (WebGL canvas).
