@@ -223,6 +223,13 @@
     html{scroll-behavior:auto}
     *{transition:none !important; animation:none !important}
   }
+  /* EMBEDS (Byron's order, 2026-10-23: "Embed as much as possible for
+     full potential") — the house's own films and the address map ride
+     inside the pages in a single treatment: paper-width, gold-deep
+     frame, lazy-loaded, titled for accessibility. */
+  .vid-embed{max-width:44rem; margin:1.5rem 0}
+  .vid-embed iframe{display:block; width:100%; aspect-ratio:16/9; height:auto; border:1px solid var(--gold-deep); background:#000}
+  .vid-embed.map-embed iframe{aspect-ratio:4/3; background:var(--paper-card)}
   .ig-line{margin:0 0 .5rem; font-family:var(--mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--zinc)}
   .ig-embed{max-width:540px; margin:2rem auto .25rem}
   .ig-embed .instagram-media{margin:0 auto !important; width:100% !important; min-width:0 !important}
@@ -262,7 +269,7 @@
     <div class="sec-head"><span class="sec-num">02</span><h2 id="h-address">The address</h2></div>
     <p>The Box Studios · 7367 Chef Menteur Hwy · New Orleans, LA 70126. The studio stands on Chef Menteur Highway in New Orleans East; its permitted pole sign marks the premises.</p>
     <p>Arrivals and deliveries are confirmed by email before the day. Write first, and the studio will confirm the arrangement.</p>
-    <p></p>
+    <p><div class="vid-embed map-embed"><iframe src="https://maps.google.com/maps?q=7367%20Chef%20Menteur%20Hwy%2C%20New%20Orleans%2C%20LA%2070126&output=embed" title="Map — The Box Studios, 7367 Chef Menteur Hwy, New Orleans, LA 70126" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div></p>
     <figure class="panel-art"></figure>
   </section>
 
@@ -311,6 +318,7 @@
     <p class="next-step">Next step: email the studio — sales@leasethebox.com — or open Lease the Bot — the Lease The Box chat.</p>
     <p>The Box Studios — two doors only: <a href="mailto:sales@leasethebox.com">sales@leasethebox.com</a> · Lease the Bot — the Lease The Box chat<br>7367 Chef Menteur Hwy · New Orleans, LA 70126</p>
     <p class="ig-line">Instagram — <a href="https://www.instagram.com/bee._dee/">@bee._dee</a></p>
+      <p class="ig-line">YouTube — <a href="https://www.youtube.com/@theboxstudiosofneworleans">The Box Studios</a></p>
       <p class="press-line">Press — <a href="https://newmusic.press">NewMusic Press</a> · <a href="https://repeatable.press">Repeatable Press</a></p>
     <p>Rendering by the Byron Jupiter Agency, with Renaissance Instruments<br>© Byron Jupiter — sales@leasethebox.com</p>
     <p><a href="legal.html">Legal</a> · <a href="#main">Back to the top</a></p>
