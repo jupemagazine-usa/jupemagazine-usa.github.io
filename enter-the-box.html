@@ -35,14 +35,14 @@
         "postalCode": "70126",
         "streetAddress": "7367 Chef Menteur Hwy"
       },
+      "description": "The Box Studios — a development studio and recording studio at 7367 Chef Menteur Hwy, New Orleans, LA 70126.",
       "email": "sales@leasethebox.com",
       "name": "The Box Studios",
-      "description": "The Box Studios — a development studio and recording studio at 7367 Chef Menteur Hwy, New Orleans, LA 70126.",
-      "url": "https://theboxstudiosofneworleans.com/",
       "sameAs": [
         "https://www.instagram.com/bee._dee/",
         "https://www.youtube.com/@theboxstudiosofneworleans"
-      ]
+      ],
+      "url": "https://theboxstudiosofneworleans.com/"
     },
     {
       "@id": "https://theboxstudiosofneworleans.com/lease-the-box",
@@ -235,6 +235,15 @@
     font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
     font-size:.78rem; letter-spacing:.22em; text-transform:uppercase; color:var(--zinc);
   }
+  /* 3D ART SLOTS ([BUILD-1023] step 1, 2026-10-23) — every panel figure
+     carries one self-contained inline-SVG piece (class art3d): layered
+     depth inside the drawing, hover choreography in the piece's own
+     style, and a gentle pointer tilt from the script at the foot of the
+     page (fine pointers only; the reduced-motion rule above stills the
+     CSS, and the tilt script checks the same preference). */
+  .panel-art{perspective:1100px}
+  .panel-art svg.art3d{transform-style:preserve-3d}
+  .art3d .plx{transform-box:fill-box; transform-origin:center}
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto}
     *{transition:none !important; animation:none !important}
@@ -355,7 +364,7 @@
     <p>The Box Studios is a Black-owned studio in New Orleans East — owned ground, a professional room, and a record kept to the standard. Enter The Box is the way in: how the room runs, how the record is kept, how the work is done — learned from the inside.</p>
     <p>It is not a lease, and it is not open access to the room. You come in as an intern to the experience — arranged in writing, through the doors, as a professional situation.</p>
     <p>And what the place teaches is ownership — intellectual property, owned. What a person makes belongs to them: ownership of your own piece stays with you. The arrangement is worked out in writing.</p>
-    <figure class="panel-art"></figure>
+    <figure class="panel-art"><svg class="art3d" viewBox="0 0 720 400" role="img" aria-label="Diagram in depth: the B · O · X itself — a gold-framed box with a cream B on its face and its lid lifting at a touch, light inside."><defs><linearGradient id="e1-f" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b0f22"/><stop offset="1" stop-color="#050814"/></linearGradient><linearGradient id="e1-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f5a524"/><stop offset=".55" stop-color="#D4AF6A"/><stop offset="1" stop-color="#c79e4d"/></linearGradient><radialGradient id="e1-o" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#f5a524" stop-opacity=".5"/><stop offset="1" stop-color="#f5a524" stop-opacity="0"/></radialGradient></defs><style>.e1 .mv{transition:transform .6s cubic-bezier(.2,.7,.2,1)}.e1:hover .lid{transform:translate(-6px,-18px) rotate(-3deg)}.e1 .beam{transition:opacity .6s}.e1:hover .beam{opacity:.32}</style><rect width="720" height="400" fill="url(#e1-f)"/><polygon class="beam" points="302,158 418,158 452,52 268,52" fill="url(#e1-g)" opacity=".13"/><polygon points="435,170 482,124 482,256 435,302" fill="#080b16" stroke="#D4AF6A" stroke-opacity=".6"/><rect x="285" y="170" width="150" height="132" fill="#0d1122" stroke="#D4AF6A" stroke-width="2"/><text x="360" y="266" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-size="86" fill="#f0ebde">B</text><g class="mv lid plx"><polygon points="285,170 332,124 482,124 435,170" fill="#131a30" stroke="url(#e1-g)" stroke-width="2"/></g><line x1="285" y1="302" x2="435" y2="302" stroke="#c79e4d" stroke-opacity=".6"/><text x="28" y="374" font-family="'JetBrains Mono',monospace" font-size="14" letter-spacing="3" fill="#c79e4d">B · O · X — BLACK OWNED EXPERIENCE</text></svg></figure>
   </section>
 
     <section aria-labelledby="h-doors">
@@ -363,7 +372,7 @@
     <p>Write to the studio — <a href="mailto:sales@leasethebox.com">sales@leasethebox.com</a> — or open the chat on this page. State the matter plainly; the desk answers in writing.</p>
     <p><p class="door-card"><button type="button" class="door-link" data-open-bot>Enter The B · O · X</button><span class="door-note"> — the chat, on this page.</span></p></p>
     <p>Nothing is agreed outside a written arrangement.</p>
-    <figure class="panel-art"></figure>
+    <figure class="panel-art"><svg class="art3d" viewBox="0 0 720 400" role="img" aria-label="Diagram in depth: three door frames receding into gold light — the way in is by arrangement."><defs><linearGradient id="e2-f" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b0f22"/><stop offset="1" stop-color="#050814"/></linearGradient><linearGradient id="e2-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f5a524"/><stop offset=".55" stop-color="#D4AF6A"/><stop offset="1" stop-color="#c79e4d"/></linearGradient><radialGradient id="e2-o" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#f5a524" stop-opacity=".5"/><stop offset="1" stop-color="#f5a524" stop-opacity="0"/></radialGradient></defs><style>.e2 .mv{transition:transform .6s cubic-bezier(.2,.7,.2,1)}.e2:hover .f1{transform:translate(-5px,-4px)}.e2:hover .f3{transform:translate(5px,4px)}</style><rect width="720" height="400" fill="url(#e2-f)"/><line x1="140" y1="330" x2="300" y2="212" stroke="#c79e4d" stroke-opacity=".45"/><line x1="580" y1="330" x2="420" y2="212" stroke="#c79e4d" stroke-opacity=".45"/><g class="mv f1"><rect x="140" y="52" width="440" height="278" fill="none" stroke="#D4AF6A" stroke-opacity=".5" stroke-width="2"/></g><rect x="215" y="92" width="290" height="220" fill="none" stroke="#D4AF6A" stroke-opacity=".75" stroke-width="2"/><g class="mv f3"><rect x="278" y="126" width="164" height="164" fill="url(#e2-g)" opacity=".9"/><rect x="316" y="160" width="88" height="130" fill="none" stroke="#050814" stroke-width="3"/><circle cx="392" cy="228" r="4" fill="#050814"/></g><text x="28" y="374" font-family="'JetBrains Mono',monospace" font-size="14" letter-spacing="3" fill="#c79e4d">BY ARRANGEMENT</text></svg></figure>
   </section>
 
     <section aria-labelledby="h-">
@@ -831,6 +840,32 @@ document.addEventListener('pointerover', function warm(e) {
   document.addEventListener('click', function (e) {
     var t = e.target.closest('[data-open-bot]');
     if (t) { e.preventDefault(); open(); }
+  });
+})();
+</script>
+
+<script>
+/* 3D ART TILT ([BUILD-1023] step 1, 2026-10-23) — the panel-art pieces
+   lean toward the pointer: a small rotateX/rotateY on the whole drawing,
+   fine pointers only, never under reduced motion, reset on leave. The
+   pieces' own hover choreography is CSS and needs no script. */
+(function () {
+  if (!window.matchMedia('(pointer: fine)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('.panel-art svg.art3d').forEach(function (svg) {
+    var fig = svg.closest('.panel-art');
+    if (!fig) return;
+    fig.addEventListener('pointermove', function (e) {
+      var r = fig.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - 0.5;
+      var y = (e.clientY - r.top) / r.height - 0.5;
+      svg.style.transition = 'transform .12s ease-out';
+      svg.style.transform = 'rotateY(' + (x * 7).toFixed(2) + 'deg) rotateX(' + (-y * 7).toFixed(2) + 'deg)';
+    });
+    fig.addEventListener('pointerleave', function () {
+      svg.style.transition = 'transform .5s cubic-bezier(.2,.7,.2,1)';
+      svg.style.transform = '';
+    });
   });
 })();
 </script>

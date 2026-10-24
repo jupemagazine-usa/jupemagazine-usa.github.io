@@ -35,9 +35,9 @@
         "postalCode": "70126",
         "streetAddress": "7367 Chef Menteur Hwy"
       },
+      "description": "The Box Studios — a development studio and recording studio at 7367 Chef Menteur Hwy, New Orleans, LA 70126.",
       "email": "sales@leasethebox.com",
       "name": "The Box Studios",
-      "description": "The Box Studios — a development studio and recording studio at 7367 Chef Menteur Hwy, New Orleans, LA 70126.",
       "sameAs": [
         "https://www.instagram.com/bee._dee/",
         "https://www.youtube.com/@theboxstudiosofneworleans"
@@ -235,6 +235,15 @@
     font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
     font-size:.78rem; letter-spacing:.22em; text-transform:uppercase; color:var(--zinc);
   }
+  /* 3D ART SLOTS ([BUILD-1023] step 1, 2026-10-23) — every panel figure
+     carries one self-contained inline-SVG piece (class art3d): layered
+     depth inside the drawing, hover choreography in the piece's own
+     style, and a gentle pointer tilt from the script at the foot of the
+     page (fine pointers only; the reduced-motion rule above stills the
+     CSS, and the tilt script checks the same preference). */
+  .panel-art{perspective:1100px}
+  .panel-art svg.art3d{transform-style:preserve-3d}
+  .art3d .plx{transform-box:fill-box; transform-origin:center}
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto}
     *{transition:none !important; animation:none !important}
@@ -355,7 +364,7 @@
     <p><strong>Recording &amp; production</strong> — Tracking, overdubs, mixing, and archive-grade delivery for music, spoken word, and documentary work.</p>
     <p><strong>Video, cameras &amp; streaming</strong> — Mirrorless and DSLR systems, livestream capture, lighting interfaces, and secure media storage for interviews, documentaries, commercials, and training.</p>
     <p></p>
-    <figure class="panel-art"></figure>
+    <figure class="panel-art"><svg class="art3d" viewBox="0 0 720 400" role="img" aria-label="Diagram in depth: a speaker cabinet — tweeter above, woofer below — with rings of sound pulsing from the woofer."><defs><linearGradient id="r1-f" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b0f22"/><stop offset="1" stop-color="#050814"/></linearGradient><linearGradient id="r1-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f5a524"/><stop offset=".55" stop-color="#D4AF6A"/><stop offset="1" stop-color="#c79e4d"/></linearGradient><radialGradient id="r1-o" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#f5a524" stop-opacity=".5"/><stop offset="1" stop-color="#f5a524" stop-opacity="0"/></radialGradient></defs><style>.r1 .mv{transition:transform .6s cubic-bezier(.2,.7,.2,1)}.r1 .rg{animation:r1p 3.6s ease-in-out infinite}.r1 .r2{animation-delay:1.2s}.r1 .r3{animation-delay:2.4s}@keyframes r1p{0%,100%{transform:scale(1);opacity:.55}50%{transform:scale(1.07);opacity:.15}}.r1:hover .cab{transform:translateY(-4px)}</style><rect width="720" height="400" fill="url(#r1-f)"/><g class="mv cab"><rect x="283" y="92" width="154" height="216" rx="9" fill="#0d1122" stroke="#D4AF6A" stroke-width="2"/><circle cx="360" cy="134" r="14" fill="none" stroke="#f5a524" stroke-width="2"/><circle cx="360" cy="224" r="47" fill="#0a0e1e" stroke="#D4AF6A" stroke-width="2"/><circle cx="360" cy="224" r="27" fill="none" stroke="#f5a524" stroke-width="2"/><circle cx="360" cy="224" r="9" fill="url(#r1-g)"/></g><g fill="none" stroke="#D4AF6A"><circle class="rg plx" cx="360" cy="224" r="60"/><circle class="rg r2 plx" cx="360" cy="224" r="76" opacity=".35"/><circle class="rg r3 plx" cx="360" cy="224" r="92" opacity=".2"/></g><text x="28" y="374" font-family="'JetBrains Mono',monospace" font-size="14" letter-spacing="3" fill="#c79e4d">TRACKING — OVERDUBS — MIXING</text></svg></figure>
   </section>
 
     <section aria-labelledby="h-equipment">
@@ -371,7 +380,7 @@
     <p>Practical discipline in gain staging, signal flow, cable care, testing, soldering, shielding, labeling, storage, and maintenance logs protects production quality — reducing noise, grounding problems, signal loss, and cable failure.</p>
     <p>The result is self-reliance and equipment longevity, serving the studio, the stage, the archive, and the classroom at once.</p>
     <p></p>
-    <figure class="panel-art"></figure>
+    <figure class="panel-art"><svg class="art3d" viewBox="0 0 720 400" role="img" aria-label="Diagram in depth: a signal ribbon running from a microphone, through a preamp, to the archive — a pulse of light travels the path."><defs><linearGradient id="r3-f" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b0f22"/><stop offset="1" stop-color="#050814"/></linearGradient><linearGradient id="r3-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f5a524"/><stop offset=".55" stop-color="#D4AF6A"/><stop offset="1" stop-color="#c79e4d"/></linearGradient><radialGradient id="r3-o" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#f5a524" stop-opacity=".5"/><stop offset="1" stop-color="#f5a524" stop-opacity="0"/></radialGradient></defs><style>.r3 .mv{transition:transform .6s cubic-bezier(.2,.7,.2,1)}.r3 .pulse{offset-path:path('M92,232 C240,150 300,302 430,212 C520,152 596,168 640,204');animation:r3t 7s linear infinite}@keyframes r3t{0%{offset-distance:0%}100%{offset-distance:100%}}</style><rect width="720" height="400" fill="url(#r3-f)"/><path d="M92,232 C240,150 300,302 430,212 C520,152 596,168 640,204" transform="translate(0,11)" fill="none" stroke="#5B8DEF" stroke-opacity=".45" stroke-width="2"/><path d="M92,232 C240,150 300,302 430,212 C520,152 596,168 640,204" fill="none" stroke="#D4AF6A" stroke-width="2.5"/><circle cx="110" cy="222" r="21" fill="#0d1122" stroke="url(#r3-g)" stroke-width="2"/><rect x="103" y="206" width="14" height="22" rx="7" fill="none" stroke="#f0ebde" stroke-width="2"/><rect x="316" y="182" width="92" height="56" fill="#0d1122" stroke="#D4AF6A" stroke-width="2"/><circle cx="338" cy="210" r="7" fill="none" stroke="#f5a524" stroke-width="2"/><circle cx="362" cy="210" r="7" fill="none" stroke="#f5a524" stroke-width="2"/><circle cx="386" cy="210" r="7" fill="none" stroke="#f5a524" stroke-width="2"/><rect x="576" y="180" width="62" height="56" fill="#0d1122" stroke="#D4AF6A" stroke-width="2"/><text x="607" y="224" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-size="34" fill="#f0ebde">B</text><circle class="pulse" r="6" fill="#f5a524"/><text x="28" y="374" font-family="'JetBrains Mono',monospace" font-size="14" letter-spacing="3" fill="#c79e4d">GAIN STAGING — SIGNAL FLOW — LABELING</text></svg></figure>
   </section>
 
     <section aria-labelledby="h-on-film">
@@ -379,7 +388,7 @@
     <p>The sessions, as they were filmed — the house playlist of the room at work:</p>
     <p><div class="vid-embed"><iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PLR8OkgwX4Wjc" title="Aaniyah — In Session: the session films playlist" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div></p>
     <p></p>
-    <figure class="panel-art"></figure>
+    <figure class="panel-art"><svg class="art3d" viewBox="0 0 720 400" role="img" aria-label="Diagram in depth: a strip of film with sprocket holes and three frames; the strip advances at a touch."><defs><linearGradient id="r4-f" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b0f22"/><stop offset="1" stop-color="#050814"/></linearGradient><linearGradient id="r4-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f5a524"/><stop offset=".55" stop-color="#D4AF6A"/><stop offset="1" stop-color="#c79e4d"/></linearGradient><radialGradient id="r4-o" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#f5a524" stop-opacity=".5"/><stop offset="1" stop-color="#f5a524" stop-opacity="0"/></radialGradient></defs><style>.r4 .mv{transition:transform .6s cubic-bezier(.2,.7,.2,1)}.r4 .film{transform:rotate(-3deg)}.r4:hover .film{transform:rotate(-3deg) translateX(-30px)}</style><rect width="720" height="400" fill="url(#r4-f)"/><g class="mv film plx"><rect x="86" y="146" width="548" height="110" fill="#0a0c14" stroke="#D4AF6A" stroke-width="2"/><rect x="104" y="152" width="24" height="13" fill="#f0ebde" opacity=".8"/><rect x="104" y="237" width="24" height="13" fill="#f0ebde" opacity=".8"/><rect x="148" y="152" width="24" height="13" fill="#f0ebde" opacity=".8"/><rect x="148" y="237" width="24" height="13" fill="#f0ebde" opacity=".8"/><rect x="192" y="152" width="24" height="13" fill="#f0ebde" opacity=".8"/><rect x="192" y="237" width="24" height="13" fill="#f0ebde" opacity=".8"/><rect x="236" y="152" width="24" height="13" fill="#f0ebde" opacity=".8"/><rect x="236" y="237" width="24" height="13" fill="#f0ebde" opacity=".8"/><rect x="280" y="152" width="24" height="13" fill="#f0ebde" opacity=".8"/><rect x="280" y="237" width="24" height="13" fill="#f0ebde" opacity=".8"/><rect x="324" y="152" width="24" height="13" fill="#f0ebde" opacity=".8"/><rect x="324" y="237" width="24" height="13" fill="#f0ebde" opacity=".8"/><rect x="368" y="152" width="24" height="13" fill="#f0ebde" opacity=".8"/><rect x="368" y="237" width="24" height="13" fill="#f0ebde" opacity=".8"/><rect x="412" y="152" width="24" height="13" fill="#f0ebde" opacity=".8"/><rect x="412" y="237" width="24" height="13" fill="#f0ebde" opacity=".8"/><rect x="456" y="152" width="24" height="13" fill="#f0ebde" opacity=".8"/><rect x="456" y="237" width="24" height="13" fill="#f0ebde" opacity=".8"/><rect x="500" y="152" width="24" height="13" fill="#f0ebde" opacity=".8"/><rect x="500" y="237" width="24" height="13" fill="#f0ebde" opacity=".8"/><rect x="544" y="152" width="24" height="13" fill="#f0ebde" opacity=".8"/><rect x="544" y="237" width="24" height="13" fill="#f0ebde" opacity=".8"/><rect x="588" y="152" width="24" height="13" fill="#f0ebde" opacity=".8"/><rect x="588" y="237" width="24" height="13" fill="#f0ebde" opacity=".8"/><rect x="118" y="172" width="140" height="66" fill="#10182c" stroke="#f0ebde" stroke-opacity=".7"/><circle cx="188" cy="205" r="17" fill="none" stroke="#f5a524" stroke-width="2"/><rect x="290" y="172" width="140" height="66" fill="#10182c" stroke="#f0ebde" stroke-opacity=".7"/><line x1="312" y1="222" x2="336" y2="190" stroke="#D4AF6A" stroke-width="2"/><line x1="336" y1="190" x2="360" y2="222" stroke="#D4AF6A" stroke-width="2"/><line x1="360" y1="222" x2="384" y2="190" stroke="#D4AF6A" stroke-width="2"/><line x1="384" y1="190" x2="408" y2="222" stroke="#D4AF6A" stroke-width="2"/><rect x="462" y="172" width="140" height="66" fill="#10182c" stroke="#f0ebde" stroke-opacity=".7"/><rect x="516" y="184" width="34" height="44" fill="none" stroke="#f5a524" stroke-width="2"/></g><text x="28" y="374" font-family="'JetBrains Mono',monospace" font-size="14" letter-spacing="3" fill="#c79e4d">THE ROOM AT WORK</text></svg></figure>
   </section>
 
     <section aria-labelledby="h-">
@@ -831,6 +840,32 @@ document.addEventListener('pointerover', function warm(e) {
   document.addEventListener('click', function (e) {
     var t = e.target.closest('[data-open-bot]');
     if (t) { e.preventDefault(); open(); }
+  });
+})();
+</script>
+
+<script>
+/* 3D ART TILT ([BUILD-1023] step 1, 2026-10-23) — the panel-art pieces
+   lean toward the pointer: a small rotateX/rotateY on the whole drawing,
+   fine pointers only, never under reduced motion, reset on leave. The
+   pieces' own hover choreography is CSS and needs no script. */
+(function () {
+  if (!window.matchMedia('(pointer: fine)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('.panel-art svg.art3d').forEach(function (svg) {
+    var fig = svg.closest('.panel-art');
+    if (!fig) return;
+    fig.addEventListener('pointermove', function (e) {
+      var r = fig.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - 0.5;
+      var y = (e.clientY - r.top) / r.height - 0.5;
+      svg.style.transition = 'transform .12s ease-out';
+      svg.style.transform = 'rotateY(' + (x * 7).toFixed(2) + 'deg) rotateX(' + (-y * 7).toFixed(2) + 'deg)';
+    });
+    fig.addEventListener('pointerleave', function () {
+      svg.style.transition = 'transform .5s cubic-bezier(.2,.7,.2,1)';
+      svg.style.transform = '';
+    });
   });
 })();
 </script>

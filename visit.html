@@ -35,14 +35,14 @@
         "postalCode": "70126",
         "streetAddress": "7367 Chef Menteur Hwy"
       },
+      "description": "The Box Studios — a development studio and recording studio at 7367 Chef Menteur Hwy, New Orleans, LA 70126.",
       "email": "sales@leasethebox.com",
       "name": "The Box Studios",
-      "description": "The Box Studios — a development studio and recording studio at 7367 Chef Menteur Hwy, New Orleans, LA 70126.",
-      "url": "https://theboxstudiosofneworleans.com/",
       "sameAs": [
         "https://www.instagram.com/bee._dee/",
         "https://www.youtube.com/@theboxstudiosofneworleans"
-      ]
+      ],
+      "url": "https://theboxstudiosofneworleans.com/"
     },
     {
       "@id": "https://theboxstudiosofneworleans.com/visit",
@@ -235,6 +235,15 @@
     font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
     font-size:.78rem; letter-spacing:.22em; text-transform:uppercase; color:var(--zinc);
   }
+  /* 3D ART SLOTS ([BUILD-1023] step 1, 2026-10-23) — every panel figure
+     carries one self-contained inline-SVG piece (class art3d): layered
+     depth inside the drawing, hover choreography in the piece's own
+     style, and a gentle pointer tilt from the script at the foot of the
+     page (fine pointers only; the reduced-motion rule above stills the
+     CSS, and the tilt script checks the same preference). */
+  .panel-art{perspective:1100px}
+  .panel-art svg.art3d{transform-style:preserve-3d}
+  .art3d .plx{transform-box:fill-box; transform-origin:center}
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto}
     *{transition:none !important; animation:none !important}
@@ -355,7 +364,7 @@
     <p>Email the studio at <a href="mailto:sales@leasethebox.com">sales@leasethebox.com</a> — or open Enter The B · O · X, the chat — where matters are opened, and the desk answers in writing. Those are the studio's only two doors. The room is reached through agents only — representation and agent inquiries, education partnerships, venue collaborations, and archive inquiries all route to those two doors, and the studio answers from the record.</p>
     <p>There is no form on this site, and the studio takes no direct bookings. The studio's work is arranged in writing, party to party.</p>
     <p><p class="door-card"><span class="door-link">For Agents — The Connection Prompt</span><span class="door-note"> — an agent connects to the desk by downloading the Agent Connection Prompt: one plain file that carries the handshake, the scope menu, and all protections. Load it, then write to the desk. <a href="agent-connection-prompt.md" download>Download the Agent Connection Prompt — v1.0</a></span></p></p>
-    <figure class="panel-art"></figure>
+    <figure class="panel-art"><svg class="art3d" viewBox="0 0 720 400" role="img" aria-label="Diagram in depth: three steps rising to a door, with an envelope tile and a chat tile at the base — the studio's two doors."><defs><linearGradient id="v1-f" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b0f22"/><stop offset="1" stop-color="#050814"/></linearGradient><linearGradient id="v1-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f5a524"/><stop offset=".55" stop-color="#D4AF6A"/><stop offset="1" stop-color="#c79e4d"/></linearGradient><radialGradient id="v1-o" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#f5a524" stop-opacity=".5"/><stop offset="1" stop-color="#f5a524" stop-opacity="0"/></radialGradient></defs><style>.v1 .mv{transition:transform .6s cubic-bezier(.2,.7,.2,1)}.v1 .dr{transform-origin:left center}.v1:hover .dr{transform:scaleX(.8)}</style><rect width="720" height="400" fill="url(#v1-f)"/><polygon points="212,318 508,318 486,292 234,292" fill="#10172a" stroke="#c79e4d" stroke-opacity=".6"/><polygon points="238,292 482,292 462,268 258,268" fill="#10172a" stroke="#c79e4d" stroke-opacity=".75"/><polygon points="262,268 458,268 440,246 280,246" fill="#10172a" stroke="#D4AF6A"/><g class="mv dr plx"><rect x="306" y="88" width="108" height="158" fill="#0d1122" stroke="url(#v1-g)" stroke-width="2"/><circle cx="398" cy="170" r="5" fill="#f5a524"/></g><rect x="118" y="272" width="66" height="46" fill="#0d1122" stroke="#f0ebde" stroke-opacity=".8"/><polyline points="118,272 151,296 184,272" fill="none" stroke="#f0ebde" stroke-opacity=".8"/><rect x="536" y="272" width="66" height="46" rx="10" fill="#0d1122" stroke="#f0ebde" stroke-opacity=".8"/><circle cx="556" cy="295" r="3.5" fill="#f5a524"/><circle cx="569" cy="295" r="3.5" fill="#f5a524"/><circle cx="582" cy="295" r="3.5" fill="#f5a524"/><text x="28" y="374" font-family="'JetBrains Mono',monospace" font-size="14" letter-spacing="3" fill="#c79e4d">EMAIL — OR ENTER THE B · O · X</text></svg></figure>
   </section>
 
     <section aria-labelledby="h-address">
@@ -363,7 +372,7 @@
     <p>The Box Studios · 7367 Chef Menteur Hwy · New Orleans, LA 70126. The studio stands in the Eastern New Orleans Renaissance Corridor; the building carries its name on the highway.</p>
     <p>Arrivals and deliveries are confirmed by email before the day. Write first, and the studio will confirm the arrangement.</p>
     <p><div class="vid-embed map-embed"><iframe src="https://maps.google.com/maps?q=7367%20Chef%20Menteur%20Hwy%2C%20New%20Orleans%2C%20LA%2070126&output=embed" title="Map — The Box Studios, 7367 Chef Menteur Hwy, New Orleans, LA 70126" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div></p>
-    <figure class="panel-art"></figure>
+    <figure class="panel-art"><svg class="art3d" viewBox="0 0 720 400" role="img" aria-label="Diagram in depth: a schematic street grid — Chef Menteur Highway crossing the corridor — with a gold pin standing at the studio's corner."><defs><linearGradient id="v2-f" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b0f22"/><stop offset="1" stop-color="#050814"/></linearGradient><linearGradient id="v2-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f5a524"/><stop offset=".55" stop-color="#D4AF6A"/><stop offset="1" stop-color="#c79e4d"/></linearGradient><radialGradient id="v2-o" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#f5a524" stop-opacity=".5"/><stop offset="1" stop-color="#f5a524" stop-opacity="0"/></radialGradient></defs><style>.v2 .mv{transition:transform .6s cubic-bezier(.2,.7,.2,1)}.v2 .pin{animation:v2f 5s ease-in-out infinite}@keyframes v2f{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}.v2 .rng{animation:v2p 3.4s ease-in-out infinite}@keyframes v2p{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.25);opacity:.12}}</style><rect width="720" height="400" fill="url(#v2-f)"/><line x1="40" y1="138" x2="680" y2="138" stroke="#c79e4d" stroke-opacity=".35"/><polygon points="40,236 680,236 680,272 40,272" fill="#0d1122" stroke="#D4AF6A" stroke-opacity=".7"/><text x="56" y="261" font-family="'JetBrains Mono',monospace" font-size="15" letter-spacing="4" fill="#f0ebde">CHEF MENTEUR HWY</text><polygon points="300,138 356,138 420,236 372,236" fill="#0b0f20" stroke="#c79e4d" stroke-opacity=".4"/><polygon points="470,138 520,138 610,236 566,236" fill="#0b0f20" stroke="#c79e4d" stroke-opacity=".4"/><line x1="120" y1="320" x2="640" y2="320" stroke="#c79e4d" stroke-opacity=".3"/><ellipse class="rng plx" cx="432" cy="238" rx="30" ry="9" fill="none" stroke="#f5a524" stroke-width="2"/><g class="pin"><path d="M432,238 C414,214 408,200 408,186 a24,24 0 1 1 48,0 C456,200 450,214 432,238 Z" fill="url(#v2-g)"/><circle cx="432" cy="185" r="10" fill="#050814"/></g><text x="28" y="374" font-family="'JetBrains Mono',monospace" font-size="14" letter-spacing="3" fill="#c79e4d">EASTERN NEW ORLEANS RENAISSANCE CORRIDOR</text></svg></figure>
   </section>
 
     <section aria-labelledby="h-working-visit">
@@ -371,7 +380,7 @@
     <p>A visit is a working visit: the room, the equipment record, and the ground, shown by arrangement.</p>
     <p>Sessions are documented as they run — the equipment used is itemized, and the record of the session is part of the delivery.</p>
     <p></p>
-    <figure class="panel-art"></figure>
+    <figure class="panel-art"><svg class="art3d" viewBox="0 0 720 400" role="img" aria-label="Diagram in depth: an open session ledger in cream and gold, a pen resting on the right page; sessions are documented as they run."><defs><linearGradient id="v3-f" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b0f22"/><stop offset="1" stop-color="#050814"/></linearGradient><linearGradient id="v3-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f5a524"/><stop offset=".55" stop-color="#D4AF6A"/><stop offset="1" stop-color="#c79e4d"/></linearGradient><radialGradient id="v3-o" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#f5a524" stop-opacity=".5"/><stop offset="1" stop-color="#f5a524" stop-opacity="0"/></radialGradient></defs><style>.v3 .mv{transition:transform .6s cubic-bezier(.2,.7,.2,1)}.v3:hover .pen{transform:translate(12px,5px) rotate(24deg)}.v3 .pen{transform:rotate(24deg)}</style><rect width="720" height="400" fill="url(#v3-f)"/><polygon points="360,116 204,90 204,272 360,298" fill="#f0ebde" stroke="#c79e4d"/><polygon points="360,116 516,90 516,272 360,298" fill="#f0ebde" stroke="#c79e4d"/><line x1="228" y1="126" x2="336" y2="116" stroke="#8a8168" stroke-width="4"/><line x1="228" y1="152" x2="336" y2="142" stroke="#8a8168" stroke-width="4"/><line x1="228" y1="178" x2="336" y2="168" stroke="#8a8168" stroke-width="4"/><line x1="228" y1="204" x2="336" y2="194" stroke="#8a8168" stroke-width="4"/><line x1="228" y1="230" x2="336" y2="220" stroke="#8a8168" stroke-width="4"/><line x1="228" y1="256" x2="336" y2="246" stroke="#8a8168" stroke-width="4"/><line x1="384" y1="116" x2="492" y2="126" stroke="#8a8168" stroke-width="4"/><line x1="384" y1="142" x2="492" y2="152" stroke="#8a8168" stroke-width="4"/><line x1="384" y1="168" x2="492" y2="178" stroke="#8a8168" stroke-width="4"/><line x1="384" y1="194" x2="492" y2="204" stroke="#8a8168" stroke-width="4"/><polyline points="392,232 404,244 424,220" fill="none" stroke="#c79e4d" stroke-width="3"/><line x1="360" y1="116" x2="360" y2="298" stroke="#c79e4d" stroke-width="2"/><g class="mv pen plx"><rect x="438" y="120" width="11" height="96" fill="url(#v3-g)"/><polygon points="438,216 449,216 443,236" fill="#f5a524"/></g><text x="28" y="374" font-family="'JetBrains Mono',monospace" font-size="14" letter-spacing="3" fill="#c79e4d">DOCUMENTED AS THEY RUN</text></svg></figure>
   </section>
 
     <section aria-labelledby="h-">
@@ -831,6 +840,32 @@ document.addEventListener('pointerover', function warm(e) {
   document.addEventListener('click', function (e) {
     var t = e.target.closest('[data-open-bot]');
     if (t) { e.preventDefault(); open(); }
+  });
+})();
+</script>
+
+<script>
+/* 3D ART TILT ([BUILD-1023] step 1, 2026-10-23) — the panel-art pieces
+   lean toward the pointer: a small rotateX/rotateY on the whole drawing,
+   fine pointers only, never under reduced motion, reset on leave. The
+   pieces' own hover choreography is CSS and needs no script. */
+(function () {
+  if (!window.matchMedia('(pointer: fine)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('.panel-art svg.art3d').forEach(function (svg) {
+    var fig = svg.closest('.panel-art');
+    if (!fig) return;
+    fig.addEventListener('pointermove', function (e) {
+      var r = fig.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - 0.5;
+      var y = (e.clientY - r.top) / r.height - 0.5;
+      svg.style.transition = 'transform .12s ease-out';
+      svg.style.transform = 'rotateY(' + (x * 7).toFixed(2) + 'deg) rotateX(' + (-y * 7).toFixed(2) + 'deg)';
+    });
+    fig.addEventListener('pointerleave', function () {
+      svg.style.transition = 'transform .5s cubic-bezier(.2,.7,.2,1)';
+      svg.style.transform = '';
+    });
   });
 })();
 </script>

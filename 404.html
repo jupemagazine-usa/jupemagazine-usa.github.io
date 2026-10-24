@@ -188,6 +188,15 @@
     font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
     font-size:.78rem; letter-spacing:.22em; text-transform:uppercase; color:var(--zinc);
   }
+  /* 3D ART SLOTS ([BUILD-1023] step 1, 2026-10-23) — every panel figure
+     carries one self-contained inline-SVG piece (class art3d): layered
+     depth inside the drawing, hover choreography in the piece's own
+     style, and a gentle pointer tilt from the script at the foot of the
+     page (fine pointers only; the reduced-motion rule above stills the
+     CSS, and the tilt script checks the same preference). */
+  .panel-art{perspective:1100px}
+  .panel-art svg.art3d{transform-style:preserve-3d}
+  .art3d .plx{transform-box:fill-box; transform-origin:center}
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto}
     *{transition:none !important; animation:none !important}
@@ -308,7 +317,7 @@
     <p>Return to the <a href="/index.html">home page</a>, or go straight to the <a href="/visit.html">Visit page</a> — agents only. The doors are two: the email, <a href="mailto:sales@leasethebox.com">sales@leasethebox.com</a>, and Enter The B · O · X, the desk's chat.</p>
     <p></p>
     <p></p>
-    <figure class="panel-art"></figure>
+    <figure class="panel-art"><svg class="art3d" viewBox="0 0 720 400" role="img" aria-label="Diagram in depth: a compass rose with a slowly turning needle, and a dotted path curling back to a small door."><defs><linearGradient id="n1-f" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b0f22"/><stop offset="1" stop-color="#050814"/></linearGradient><linearGradient id="n1-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f5a524"/><stop offset=".55" stop-color="#D4AF6A"/><stop offset="1" stop-color="#c79e4d"/></linearGradient><radialGradient id="n1-o" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#f5a524" stop-opacity=".5"/><stop offset="1" stop-color="#f5a524" stop-opacity="0"/></radialGradient></defs><style>.n1 .mv{transition:transform .6s cubic-bezier(.2,.7,.2,1)}.n1 .nd{animation:n1s 60s linear infinite}@keyframes n1s{to{transform:rotate(360deg)}}</style><rect width="720" height="400" fill="url(#n1-f)"/><circle cx="248" cy="198" r="88" fill="#0a0e1e" stroke="#D4AF6A" stroke-width="2"/><circle cx="248" cy="198" r="70" fill="none" stroke="#c79e4d" stroke-opacity=".5"/><line x1="326" y1="198" x2="336" y2="198" stroke="#D4AF6A" stroke-width="2"/><line x1="316" y1="237" x2="324" y2="242" stroke="#D4AF6A" stroke-width="2"/><line x1="287" y1="266" x2="292" y2="274" stroke="#D4AF6A" stroke-width="2"/><line x1="248" y1="276" x2="248" y2="286" stroke="#D4AF6A" stroke-width="2"/><line x1="209" y1="266" x2="204" y2="274" stroke="#D4AF6A" stroke-width="2"/><line x1="180" y1="237" x2="172" y2="242" stroke="#D4AF6A" stroke-width="2"/><line x1="170" y1="198" x2="160" y2="198" stroke="#D4AF6A" stroke-width="2"/><line x1="180" y1="159" x2="172" y2="154" stroke="#D4AF6A" stroke-width="2"/><line x1="209" y1="130" x2="204" y2="122" stroke="#D4AF6A" stroke-width="2"/><line x1="248" y1="120" x2="248" y2="110" stroke="#D4AF6A" stroke-width="2"/><line x1="287" y1="130" x2="292" y2="122" stroke="#D4AF6A" stroke-width="2"/><line x1="316" y1="159" x2="324" y2="154" stroke="#D4AF6A" stroke-width="2"/><g class="nd plx"><polygon points="248,128 262,198 248,268 234,198" fill="url(#n1-g)"/><polygon points="178,198 248,184 318,198 248,212" fill="#f0ebde" opacity=".85"/></g><circle cx="248" cy="198" r="7" fill="#050814" stroke="#f5a524"/><path d="M352,292 C470,306 548,258 552,196" fill="none" stroke="#f0ebde" stroke-width="3" stroke-dasharray="1 10" stroke-linecap="round"/><rect x="534" y="118" width="38" height="64" fill="#0d1122" stroke="url(#n1-g)" stroke-width="2"/><circle cx="563" cy="152" r="3" fill="#f5a524"/><text x="28" y="374" font-family="'JetBrains Mono',monospace" font-size="14" letter-spacing="3" fill="#c79e4d">THE WAY BACK</text></svg></figure>
   </section>
 
     <section aria-labelledby="h-">
@@ -784,6 +793,32 @@ document.addEventListener('pointerover', function warm(e) {
   document.addEventListener('click', function (e) {
     var t = e.target.closest('[data-open-bot]');
     if (t) { e.preventDefault(); open(); }
+  });
+})();
+</script>
+
+<script>
+/* 3D ART TILT ([BUILD-1023] step 1, 2026-10-23) — the panel-art pieces
+   lean toward the pointer: a small rotateX/rotateY on the whole drawing,
+   fine pointers only, never under reduced motion, reset on leave. The
+   pieces' own hover choreography is CSS and needs no script. */
+(function () {
+  if (!window.matchMedia('(pointer: fine)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('.panel-art svg.art3d').forEach(function (svg) {
+    var fig = svg.closest('.panel-art');
+    if (!fig) return;
+    fig.addEventListener('pointermove', function (e) {
+      var r = fig.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - 0.5;
+      var y = (e.clientY - r.top) / r.height - 0.5;
+      svg.style.transition = 'transform .12s ease-out';
+      svg.style.transform = 'rotateY(' + (x * 7).toFixed(2) + 'deg) rotateX(' + (-y * 7).toFixed(2) + 'deg)';
+    });
+    fig.addEventListener('pointerleave', function () {
+      svg.style.transition = 'transform .5s cubic-bezier(.2,.7,.2,1)';
+      svg.style.transform = '';
+    });
   });
 })();
 </script>

@@ -35,14 +35,14 @@
         "postalCode": "70126",
         "streetAddress": "7367 Chef Menteur Hwy"
       },
+      "description": "The Box Studios — a development studio and recording studio at 7367 Chef Menteur Hwy, New Orleans, LA 70126.",
       "email": "sales@leasethebox.com",
       "name": "The Box Studios",
-      "description": "The Box Studios — a development studio and recording studio at 7367 Chef Menteur Hwy, New Orleans, LA 70126.",
-      "url": "https://theboxstudiosofneworleans.com/",
       "sameAs": [
         "https://www.instagram.com/bee._dee/",
         "https://www.youtube.com/@theboxstudiosofneworleans"
-      ]
+      ],
+      "url": "https://theboxstudiosofneworleans.com/"
     },
     {
       "@id": "https://theboxstudiosofneworleans.com/the-ground",
@@ -235,6 +235,15 @@
     font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
     font-size:.78rem; letter-spacing:.22em; text-transform:uppercase; color:var(--zinc);
   }
+  /* 3D ART SLOTS ([BUILD-1023] step 1, 2026-10-23) — every panel figure
+     carries one self-contained inline-SVG piece (class art3d): layered
+     depth inside the drawing, hover choreography in the piece's own
+     style, and a gentle pointer tilt from the script at the foot of the
+     page (fine pointers only; the reduced-motion rule above stills the
+     CSS, and the tilt script checks the same preference). */
+  .panel-art{perspective:1100px}
+  .panel-art svg.art3d{transform-style:preserve-3d}
+  .art3d .plx{transform-box:fill-box; transform-origin:center}
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto}
     *{transition:none !important; animation:none !important}
@@ -355,7 +364,7 @@
     <p>The building at 7367 Chef Menteur Hwy houses The Box Studios — the recording room, the archive's working space, and the studio's offices under one roof. Portions of the building are suited to lease to compatible tenants.</p>
     <p>A pole sign stood on the highway frontage under permit; it was destroyed and has not been replaced. The building itself carries the studio's name on the highway.</p>
     <p></p>
-    <figure class="panel-art"></figure>
+    <figure class="panel-art"><svg class="art3d" viewBox="0 0 720 400" role="img" aria-label="Diagram in depth: the building as an isometric block on its lot, its roof lifting at a touch, and the oak at the back corner."><defs><linearGradient id="d1-f" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b0f22"/><stop offset="1" stop-color="#050814"/></linearGradient><linearGradient id="d1-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f5a524"/><stop offset=".55" stop-color="#D4AF6A"/><stop offset="1" stop-color="#c79e4d"/></linearGradient><radialGradient id="d1-o" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#f5a524" stop-opacity=".5"/><stop offset="1" stop-color="#f5a524" stop-opacity="0"/></radialGradient></defs><style>.d1 .mv{transition:transform .6s cubic-bezier(.2,.7,.2,1)}.d1:hover .roof{transform:translateY(-11px)}</style><rect width="720" height="400" fill="url(#d1-f)"/><polygon points="120,248 600,248 662,320 58,320" fill="#0a0e1e" stroke="#c79e4d" stroke-opacity=".55"/><line x1="180" y1="276" x2="620" y2="276" stroke="#c79e4d" stroke-opacity=".18"/><line x1="240" y1="248" x2="212" y2="320" stroke="#c79e4d" stroke-opacity=".18"/><line x1="420" y1="248" x2="418" y2="320" stroke="#c79e4d" stroke-opacity=".18"/><polygon points="450,150 506,120 506,220 450,250" fill="#080b16" stroke="#D4AF6A" stroke-opacity=".5"/><rect x="268" y="150" width="182" height="100" fill="#0d1122" stroke="#D4AF6A"/><text x="359" y="222" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-size="58" fill="#f0ebde">B</text><g class="mv roof"><polygon points="268,150 324,120 506,120 450,150" fill="#131a30" stroke="url(#d1-g)" stroke-width="2"/></g><line x1="556" y1="196" x2="556" y2="238" stroke="#c79e4d" stroke-width="4"/><circle cx="556" cy="168" r="30" fill="none" stroke="#6f9a5f" stroke-width="2"/><circle cx="532" cy="182" r="19" fill="none" stroke="#6f9a5f" stroke-width="2"/><circle cx="580" cy="182" r="19" fill="none" stroke="#6f9a5f" stroke-width="2"/><text x="28" y="374" font-family="'JetBrains Mono',monospace" font-size="14" letter-spacing="3" fill="#c79e4d">7367 CHEF MENTEUR HWY</text></svg></figure>
   </section>
 
     <section aria-labelledby="h-garden">
@@ -371,7 +380,7 @@
     <p>The ground earns independently of the studio's calendar, and it is the foundation every other lane stands on.</p>
     <p>Leasing inquiries and ground questions route to the studio's doors: <a href="mailto:sales@leasethebox.com">sales@leasethebox.com</a>.</p>
     <p></p>
-    <figure class="panel-art"></figure>
+    <figure class="panel-art"><svg class="art3d" viewBox="0 0 720 400" role="img" aria-label="Diagram in depth: three strata of ground in section, parting at a touch around a gold foundation beam."><defs><linearGradient id="d3-f" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b0f22"/><stop offset="1" stop-color="#050814"/></linearGradient><linearGradient id="d3-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f5a524"/><stop offset=".55" stop-color="#D4AF6A"/><stop offset="1" stop-color="#c79e4d"/></linearGradient><radialGradient id="d3-o" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#f5a524" stop-opacity=".5"/><stop offset="1" stop-color="#f5a524" stop-opacity="0"/></radialGradient></defs><style>.d3 .mv{transition:transform .6s cubic-bezier(.2,.7,.2,1)}.d3:hover .s1{transform:translateY(-9px)}.d3:hover .s3{transform:translateY(9px)}</style><rect width="720" height="400" fill="url(#d3-f)"/><g class="mv s1"><polygon points="170,118 550,118 578,142 142,142" fill="#2a2118" stroke="#D4AF6A" stroke-opacity=".7"/><line x1="196" y1="112" x2="196" y2="100" stroke="#6f9a5f" stroke-width="3"/><line x1="330" y1="112" x2="330" y2="100" stroke="#6f9a5f" stroke-width="3"/><line x1="486" y1="112" x2="486" y2="100" stroke="#6f9a5f" stroke-width="3"/></g><polygon points="142,142 578,142 606,168 114,168" fill="#1c1710" stroke="#c79e4d" stroke-opacity=".5"/><rect x="168" y="182" width="384" height="17" fill="url(#d3-g)"/><g class="mv s3"><polygon points="114,214 606,214 634,242 86,242" fill="#120e08" stroke="#c79e4d" stroke-opacity=".45"/><line x1="220" y1="228" x2="300" y2="228" stroke="#c79e4d" stroke-opacity=".35"/><line x1="400" y1="228" x2="500" y2="228" stroke="#c79e4d" stroke-opacity=".35"/></g><text x="28" y="374" font-family="'JetBrains Mono',monospace" font-size="14" letter-spacing="3" fill="#c79e4d">THE FOUNDATION EVERY LANE STANDS ON</text></svg></figure>
   </section>
 
     <section aria-labelledby="h-">
@@ -831,6 +840,32 @@ document.addEventListener('pointerover', function warm(e) {
   document.addEventListener('click', function (e) {
     var t = e.target.closest('[data-open-bot]');
     if (t) { e.preventDefault(); open(); }
+  });
+})();
+</script>
+
+<script>
+/* 3D ART TILT ([BUILD-1023] step 1, 2026-10-23) — the panel-art pieces
+   lean toward the pointer: a small rotateX/rotateY on the whole drawing,
+   fine pointers only, never under reduced motion, reset on leave. The
+   pieces' own hover choreography is CSS and needs no script. */
+(function () {
+  if (!window.matchMedia('(pointer: fine)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('.panel-art svg.art3d').forEach(function (svg) {
+    var fig = svg.closest('.panel-art');
+    if (!fig) return;
+    fig.addEventListener('pointermove', function (e) {
+      var r = fig.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - 0.5;
+      var y = (e.clientY - r.top) / r.height - 0.5;
+      svg.style.transition = 'transform .12s ease-out';
+      svg.style.transform = 'rotateY(' + (x * 7).toFixed(2) + 'deg) rotateX(' + (-y * 7).toFixed(2) + 'deg)';
+    });
+    fig.addEventListener('pointerleave', function () {
+      svg.style.transition = 'transform .5s cubic-bezier(.2,.7,.2,1)';
+      svg.style.transform = '';
+    });
   });
 })();
 </script>
