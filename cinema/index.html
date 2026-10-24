@@ -106,8 +106,8 @@
         .font-display { font-family: 'Syne', sans-serif; }
         .font-mono-tech { font-family: 'JetBrains Mono', monospace; }
 
-        /* Authentic 35mm Kodak 5219 Film Grain Overlay */
-        .kodak-grain {
+        /* 35mm Film Grain Overlay */
+        .film-grain {
             position: fixed;
             inset: 0;
             pointer-events: none;
@@ -142,22 +142,22 @@
             box-shadow: inset 0 0 110px rgba(0, 0, 0, 0.88);
         }
 
-        /* Film Stock LUT Color Grading Filters */
-        .lut-kodak500t {
+        /* Emulation Look Color Grading Filters */
+        .lut-500t-gold {
             filter: contrast(1.08) saturate(1.14) sepia(0.08);
         }
-        .lut-ilfordbw {
+        .lut-silver-bw {
             filter: grayscale(1) contrast(1.38) brightness(1.04);
         }
-        .lut-technicolor {
+        .lut-3strip {
             filter: contrast(1.22) saturate(1.65) hue-rotate(-8deg);
         }
         .lut-infrared {
             filter: invert(0.08) contrast(1.3) saturate(1.8) hue-rotate(155deg);
         }
 
-        /* Criterion-Style Cinema Subtitles */
-        .criterion-subtitle {
+        /* Cinema Subtitles */
+        .cinema-subtitle {
             color: #FFE47A;
             text-shadow: 0 2px 6px rgba(0, 0, 0, 0.98), 0 0 2px #000000, 0 0 14px rgba(0, 0, 0, 0.9);
             letter-spacing: 0.02em;
@@ -227,8 +227,8 @@
     </style>
 </head>
 <body class="selection:bg-[#E5A93C] selection:text-black">
-    <!-- 35mm Kodak Grain Overlay -->
-    <div class="kodak-grain"></div>
+    <!-- 35mm Film Grain Overlay -->
+    <div class="film-grain"></div>
 
     <!-- Custom Notification Toast -->
     <div id="cinema-toast" class="fixed bottom-6 right-6 z-50 transform translate-y-28 opacity-0 transition-all duration-300 pointer-events-none bg-[#0A0B0E] border-2 border-[#E5A93C] px-5 py-4 rounded-xl shadow-2xl flex items-center space-x-3.5 max-w-md">
@@ -247,7 +247,7 @@
                 <strong class="text-white">CINEMA.PRESS</strong>
                 <span>// THE CRESCENT ARCHIVE — THE HOUSE'S FILMS, ON THE RECORD</span>
             </span>
-            <span class="text-[#E5A93C]">PANAVISION ANAMORPHIC 2.39:1 REAL-TIME WEBGL ENGINE</span>
+            <span class="text-[#E5A93C]">ANAMORPHIC 2.39:1 REAL-TIME WEBGL ENGINE</span>
             <span class="text-[#38BDF8]">OPTICAL AUDIO: 432Hz BIOACOUSTIC + 18" SUB-BASS TELEMETRY</span>
             <span>SISTER ARCHIVE TO REPEATABLE.PRESS &amp; NEWMUSIC.PRESS</span>
             <span class="text-[#10B981]">FRAME PROVENANCE: HUMAN ORIGIN, ON THE RECORD // RENAISSANCE INSTRUMENTS</span>
@@ -257,7 +257,7 @@
                 <strong class="text-white">CINEMA.PRESS</strong>
                 <span>// THE CRESCENT ARCHIVE — THE HOUSE'S FILMS, ON THE RECORD</span>
             </span>
-            <span class="text-[#E5A93C]">PANAVISION ANAMORPHIC 2.39:1 REAL-TIME WEBGL ENGINE</span>
+            <span class="text-[#E5A93C]">ANAMORPHIC 2.39:1 REAL-TIME WEBGL ENGINE</span>
             <span class="text-[#38BDF8]">OPTICAL AUDIO: 432Hz BIOACOUSTIC + 18" SUB-BASS TELEMETRY</span>
         </div>
     </div>
@@ -387,9 +387,9 @@
                             <strong id="hud-reel-id" class="text-white">REEL 01 // BREATHE 1.0</strong>
                         </span>
                         <span class="text-stone-500">|</span>
-                        <span id="hud-lens-spec" class="text-[#E5A93C]">OPTICS: 35mm PANAVISION ANAMORPHIC (T1.9)</span>
+                        <span id="hud-lens-spec" class="text-[#E5A93C]">OPTICS: 35MM ANAMORPHIC (T1.9)</span>
                         <span class="text-stone-500 hidden sm:inline">|</span>
-                        <span id="hud-lut-spec" class="text-[#38BDF8] hidden sm:inline">STOCK: KODAK VISION3 500T (5219)</span>
+                        <span id="hud-lut-spec" class="text-[#38BDF8] hidden sm:inline">LOOK: 500T GOLD EMULATION</span>
                     </div>
 
                     <div class="flex items-center space-x-3">
@@ -410,7 +410,7 @@
                 <div class="relative w-full py-6 px-3 sm:px-8 flex items-center justify-center bg-black min-h-[380px] sm:min-h-[480px] overflow-hidden">
 
                     <!-- Dynamic Aspect Ratio Gate Box -->
-                    <div id="cinema-gate-box" class="relative w-full max-w-[1160px] overflow-hidden rounded-sm border border-white/15 shadow-[0_0_90px_rgba(229,169,60,0.12)] lut-kodak500t" style="aspect-ratio: 2.39 / 1;">
+                    <div id="cinema-gate-box" class="relative w-full max-w-[1160px] overflow-hidden rounded-sm border border-white/15 shadow-[0_0_90px_rgba(229,169,60,0.12)] lut-500t-gold" style="aspect-ratio: 2.39 / 1;">
 
                         <!-- Three.js WebGL Short Film Mount -->
                         <div id="webgl-film-stage" class="w-full h-full cursor-grab active:cursor-grabbing"></div>
@@ -431,9 +431,9 @@
                             </div>
                         </div>
 
-                        <!-- Bottom Center Criterion Narrative Subtitle Overlay -->
+                        <!-- Bottom Center Narrative Subtitle Overlay -->
                         <div class="absolute bottom-5 left-6 right-6 text-center pointer-events-none z-20">
-                            <p id="live-cinema-subtitle" class="font-editorial italic text-lg sm:text-2xl md:text-3xl criterion-subtitle max-w-3xl mx-auto leading-snug">
+                            <p id="live-cinema-subtitle" class="font-editorial italic text-lg sm:text-2xl md:text-3xl cinema-subtitle max-w-3xl mx-auto leading-snug">
                                 “Some songs you hear. This one, you breathe.”
                             </p>
                         </div>
@@ -445,7 +445,7 @@
                     The gate shows a procedural visual study keyed to each film — the films themselves live at their own doors, linked in Track M1 below.
                 </div>
 
-                <!-- LIVE DIRECTOR OF PHOTOGRAPHY (DoP) OPTICS, FILM STOCK & ASPECT GATE DECK -->
+                <!-- LIVE DIRECTOR OF PHOTOGRAPHY (DoP) OPTICS, EMULATION LOOKS & ASPECT GATE DECK -->
                 <div class="p-4 sm:px-6 border-t bento-rule bg-[#07080C] grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
 
                     <!-- Prime / Anamorphic Lens Switcher -->
@@ -453,20 +453,20 @@
                         <span class="font-mono-tech text-[9px] uppercase tracking-widest text-stone-400 block mb-1.5">Prime &amp; Anamorphic Lens Turret (FOV)</span>
                         <div class="grid grid-cols-4 gap-1.5 font-mono-tech text-[10px]">
                             <button onclick="setCameraLens(24, '24mm ANAMORPHIC WIDE', this)" class="lens-btn py-1.5 rounded border border-white/15 bg-white/5 text-stone-300 hover:border-[#E5A93C]">24mm</button>
-                            <button onclick="setCameraLens(35, '35mm PANAVISION C-SERIES', this)" class="lens-btn py-1.5 rounded border border-[#E5A93C] bg-[#E5A93C] text-black font-bold">35mm</button>
-                            <button onclick="setCameraLens(50, '50mm MASTER PRIME T1.4', this)" class="lens-btn py-1.5 rounded border border-white/15 bg-white/5 text-stone-300 hover:border-[#E5A93C]">50mm</button>
+                            <button onclick="setCameraLens(35, '35mm ANAMORPHIC PRIME', this)" class="lens-btn py-1.5 rounded border border-[#E5A93C] bg-[#E5A93C] text-black font-bold">35mm</button>
+                            <button onclick="setCameraLens(50, '50mm PRIME T1.4', this)" class="lens-btn py-1.5 rounded border border-white/15 bg-white/5 text-stone-300 hover:border-[#E5A93C]">50mm</button>
                             <button onclick="setCameraLens(85, '85mm TELEPHOTO PORTRAIT', this)" class="lens-btn py-1.5 rounded border border-white/15 bg-white/5 text-stone-300 hover:border-[#E5A93C]">85mm</button>
                         </div>
                     </div>
 
-                    <!-- 35mm Film Stock LUT Switcher -->
+                    <!-- Emulation Look LUT Switcher -->
                     <div class="md:col-span-4">
-                        <span class="font-mono-tech text-[9px] uppercase tracking-widest text-stone-400 block mb-1.5">Celluloid Emulsion / Color LUT</span>
+                        <span class="font-mono-tech text-[9px] uppercase tracking-widest text-stone-400 block mb-1.5">Emulation Looks / Color LUT</span>
                         <div class="grid grid-cols-4 gap-1.5 font-mono-tech text-[9px]">
-                            <button onclick="setFilmLUT('lut-kodak500t', 'KODAK VISION3 500T', this)" class="lut-btn py-1.5 rounded border border-[#E5A93C] bg-[#E5A93C] text-black font-bold truncate px-1">500T Gold</button>
-                            <button onclick="setFilmLUT('lut-ilfordbw', 'ILFORD HP5 SILVER B&W', this)" class="lut-btn py-1.5 rounded border border-white/15 bg-white/5 text-stone-300 hover:border-[#E5A93C] truncate px-1">Ilford B&amp;W</button>
-                            <button onclick="setFilmLUT('lut-technicolor', 'TECHNICOLOR 3-STRIP', this)" class="lut-btn py-1.5 rounded border border-white/15 bg-white/5 text-stone-300 hover:border-[#E5A93C] truncate px-1">3-Strip</button>
-                            <button onclick="setFilmLUT('lut-infrared', 'INFRARED BAYOU THERMAL', this)" class="lut-btn py-1.5 rounded border border-white/15 bg-white/5 text-stone-300 hover:border-[#E5A93C] truncate px-1">Infrared</button>
+                            <button onclick="setFilmLUT('lut-500t-gold', '500T GOLD EMULATION', this)" class="lut-btn py-1.5 rounded border border-[#E5A93C] bg-[#E5A93C] text-black font-bold truncate px-1">500T Gold</button>
+                            <button onclick="setFilmLUT('lut-silver-bw', 'SILVER B&W EMULATION', this)" class="lut-btn py-1.5 rounded border border-white/15 bg-white/5 text-stone-300 hover:border-[#E5A93C] truncate px-1">Silver B&amp;W</button>
+                            <button onclick="setFilmLUT('lut-3strip', '3-STRIP EMULATION', this)" class="lut-btn py-1.5 rounded border border-white/15 bg-white/5 text-stone-300 hover:border-[#E5A93C] truncate px-1">3-Strip</button>
+                            <button onclick="setFilmLUT('lut-infrared', 'INFRARED EMULATION', this)" class="lut-btn py-1.5 rounded border border-white/15 bg-white/5 text-stone-300 hover:border-[#E5A93C] truncate px-1">Infrared</button>
                         </div>
                     </div>
 
@@ -476,13 +476,13 @@
                         <div class="grid grid-cols-4 gap-1.5 font-mono-tech text-[9px]">
                             <button onclick="setAspectGate('2.39 / 1', '2.39:1', '1160px', this)" class="gate-btn py-1.5 rounded border border-[#E5A93C] bg-[#E5A93C] text-black font-bold">2.39 Scope</button>
                             <button onclick="setAspectGate('1.85 / 1', '1.85:1', '940px', this)" class="gate-btn py-1.5 rounded border border-white/15 bg-white/5 text-stone-300 hover:border-[#E5A93C]">1.85 Flat</button>
-                            <button onclick="setAspectGate('1.43 / 1', '1.43:1', '780px', this)" class="gate-btn py-1.5 rounded border border-white/15 bg-white/5 text-stone-300 hover:border-[#E5A93C]">1.43 IMAX</button>
+                            <button onclick="setAspectGate('1.43 / 1', '1.43:1', '780px', this)" class="gate-btn py-1.5 rounded border border-white/15 bg-white/5 text-stone-300 hover:border-[#E5A93C]">1.43 Large Format</button>
                             <button onclick="setAspectGate('1.33 / 1', '1.33:1', '700px', this)" class="gate-btn py-1.5 rounded border border-white/15 bg-white/5 text-stone-300 hover:border-[#E5A93C]">16mm 4:3</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- DAVINCI / TEENAGE ENGINEERING NLE MULTI-TRACK SCRUBBING TIMELINE -->
+                <!-- NLE MULTI-TRACK SCRUBBING TIMELINE -->
                 <div class="p-4 sm:px-6 border-t bento-rule bg-[#040508]">
                     <!-- Timeline Transport Header -->
                     <div class="flex flex-wrap items-center justify-between gap-2 mb-3 font-mono-tech text-[10px]">
@@ -666,7 +666,7 @@
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b bento-rule">
                 <div>
                     <span class="font-mono-tech text-[10px] uppercase tracking-[0.3em] text-[#E5A93C]">
-                        Kodak 5219 Contact Sheet // Captured From The Gate
+                        35mm Contact Sheet // Captured From The Gate
                     </span>
                     <h2 class="font-editorial text-3xl sm:text-5xl text-white mt-1">
                         Captured 35mm Stills, Stamped With Their Real Frame Hash
@@ -1069,17 +1069,17 @@
             showCinemaToast("LENS TURRET ROTATED", `Mounted ${specLabel} on camera body.`);
         }
 
-        function setFilmLUT(lutClass, stockName, btnEl) {
+        function setFilmLUT(lutClass, lookName, btnEl) {
             const gate = document.getElementById('cinema-gate-box');
-            gate.classList.remove('lut-kodak500t', 'lut-ilfordbw', 'lut-technicolor', 'lut-infrared');
+            gate.classList.remove('lut-500t-gold', 'lut-silver-bw', 'lut-3strip', 'lut-infrared');
             gate.classList.add(lutClass);
-            document.getElementById('hud-lut-spec').innerText = `STOCK: ${stockName}`;
+            document.getElementById('hud-lut-spec').innerText = `LOOK: ${lookName}`;
 
             document.querySelectorAll('.lut-btn').forEach(b => {
                 b.className = "lut-btn py-1.5 rounded border border-white/15 bg-white/5 text-stone-300 hover:border-[#E5A93C] truncate px-1";
             });
             if (btnEl) btnEl.className = "lut-btn py-1.5 rounded border border-[#E5A93C] bg-[#E5A93C] text-black font-bold truncate px-1";
-            showCinemaToast("FILM STOCK EMULSION", `Applied ${stockName} color profile.`);
+            showCinemaToast("EMULATION LOOK", `Applied ${lookName}.`);
         }
 
         function setAspectGate(ratioStr, badgeText, maxWidthPx, btnEl) {
@@ -1268,13 +1268,13 @@
             }
             latestFrameHash = frameHash;
 
-            // Composite the frame onto an authentic 35mm Kodak contact-sheet card
+            // Composite the frame onto a 35mm contact-sheet card
             const c = document.createElement('canvas');
             c.width = 960;
             c.height = 540;
             const ctx = c.getContext('2d');
 
-            // Black celluloid border
+            // Black film border
             ctx.fillStyle = '#040406';
             ctx.fillRect(0, 0, c.width, c.height);
 
@@ -1285,12 +1285,12 @@
                 ctx.fillRect(x, c.height - 30, 24, 16);
             }
 
-            // Kodak Edge Keycode Markings
+            // Edge Markings
             ctx.fillStyle = '#E5A93C';
             ctx.font = 'bold 11px "JetBrains Mono", monospace';
             const film = shortFilms[currentFilmIdx];
             const smpte = document.getElementById('smpte-master-readout').innerText;
-            ctx.fillText(`KODAK 5219 500T  //  CINEMA.PRESS  //  ${film.id}: ${film.title}`, 32, 46);
+            ctx.fillText(`35MM CONTACT SHEET  //  CINEMA.PRESS  //  ${film.id}: ${film.title}`, 32, 46);
             ctx.fillText(`SMPTE ${smpte}`, c.width - 180, 46);
 
             // Draw the captured frame into the 2.39:1 gate
@@ -1351,7 +1351,7 @@
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
-            showCinemaToast("35MM PNG EXPORTED", "Downloaded Kodak 5219 sprocketed frame grab.");
+            showCinemaToast("35MM PNG EXPORTED", "Downloaded 35mm sprocketed frame grab.");
         }
 
         function copyCinemaCapsule() {
