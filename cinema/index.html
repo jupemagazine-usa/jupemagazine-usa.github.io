@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CINEMA.PRESS // THE CRESCENT ARCHIVE & INTERACTIVE SHORT FILM PAVILION</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+        <!-- Schema.org Pavilion Graph — the pavilion and its real films -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://theboxstudiosofneworleans.com/cinema/#pavilion",
+          "name": "CINEMA.PRESS // The Crescent Archive & Interactive Short Film Pavilion",
+          "description": "The interactive film pavilion of the Byron Jupiter Agency: a procedural WebGL screening room presenting the house's films with their true credits. The films themselves live at their own doors.",
+          "publisher": {
+            "@type": "Organization",
+            "name": "The Byron Jupiter Agency",
+            "address": {
+              "@type": "PostalAddress",
+              "name": "The Box Studios, 7367 Chef Menteur Hwy, New Orleans, LA",
+              "streetAddress": "7367 Chef Menteur Hwy",
+              "addressLocality": "New Orleans",
+              "addressRegion": "LA",
+              "addressCountry": "US"
+            }
+          },
+          "hasPart": [
+            {
+              "@type": "Movie",
+              "name": "Breathe 1.0",
+              "director": { "@type": "Person", "name": "Byron Jupiter" },
+              "actor": { "@type": "Person", "name": "Aaniyah Anderson" },
+              "description": "Eb Minor, 72 BPM. Atlanta Film Festival 2027 official entry ATL27-5630 (April 22 - May 2, 2027).",
+              "url": "https://aaniyahinsession.com/breathe",
+              "sameAs": "https://www.youtube.com/watch?v=ydFBHq8NPMs"
+            },
+            {
+              "@type": "VideoObject",
+              "name": "Have It Your Way — Aaniyah. (Official Video)",
+              "actor": { "@type": "Person", "name": "Aaniyah Anderson" },
+              "uploadDate": "2026-10-23",
+              "identifier": [
+                { "@type": "PropertyValue", "propertyID": "ISRC", "value": "QZWDD2685659" },
+                { "@type": "PropertyValue", "propertyID": "UPC", "value": "708208134663" }
+              ],
+              "productionCompany": [
+                { "@type": "Organization", "name": "The Box Bangers" },
+                { "@type": "Organization", "name": "Forever Films Forever" }
+              ],
+              "url": "https://www.youtube.com/watch?v=A99dVlqALQM"
+            },
+            {
+              "@type": "Movie",
+              "name": "The Dew Drop Film",
+              "actor": { "@type": "Person", "name": "Aaniyah Anderson" },
+              "duration": "PT36M56S",
+              "description": "A press record of Aaniyah's Dew Drop Inn set, cut at The Box Studios. Not a label release."
+            },
+            {
+              "@type": "CreativeWorkSeries",
+              "name": "Voice of Tomorrow — In Session",
+              "description": "The house micro-documentary series. A new session monthly."
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --obsidian: #040406;
+            --carbon: #0A0B0E;
+            --halide-gold: #E5A93C;
+            --optical-cyan: #38BDF8;
+            --tally-red: #EF4444;
+            --phosphor-green: #10B981;
+            --silver-nitrate: #F4F0EA;
+            --hairline: rgba(244, 240, 234, 0.11);
+        }
+
+        * {
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body {
+            background-color: var(--obsidian);
+            color: var(--silver-nitrate);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .font-editorial { font-family: 'Cormorant Garamond', Georgia, serif; }
+        .font-display { font-family: 'Syne', sans-serif; }
+        .font-mono-tech { font-family: 'JetBrains Mono', monospace; }
+
+        /* Authentic 35mm Kodak 5219 Film Grain Overlay */
+        .kodak-grain {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.045;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
+
+        .bento-rule {
+            border-color: var(--hairline);
+        }
+
+        /* Anamorphic Lens Flare & Gate Vignette */
+        .anamorphic-flare {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 48%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, rgba(56, 189, 248, 0.35) 25%, rgba(229, 169, 60, 0.75) 50%, rgba(56, 189, 248, 0.35) 75%, transparent 100%);
+            filter: blur(2px);
+            pointer-events: none;
+            z-index: 15;
+            transition: opacity 0.4s ease;
+        }
+
+        .optical-vignette {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 14;
+            box-shadow: inset 0 0 110px rgba(0, 0, 0, 0.88);
+        }
+
+        /* Film Stock LUT Color Grading Filters */
+        .lut-kodak500t {
+            filter: contrast(1.08) saturate(1.14) sepia(0.08);
+        }
+        .lut-ilfordbw {
+            filter: grayscale(1) contrast(1.38) brightness(1.04);
+        }
+        .lut-technicolor {
+            filter: contrast(1.22) saturate(1.65) hue-rotate(-8deg);
+        }
+        .lut-infrared {
+            filter: invert(0.08) contrast(1.3) saturate(1.8) hue-rotate(155deg);
+        }
+
+        /* Criterion-Style Cinema Subtitles */
+        .criterion-subtitle {
+            color: #FFE47A;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.98), 0 0 2px #000000, 0 0 14px rgba(0, 0, 0, 0.9);
+            letter-spacing: 0.02em;
+        }
+
+        /* Aspect Ratio Gate Transitions */
+        #cinema-gate-box {
+            transition: aspect-ratio 0.45s cubic-bezier(0.16, 1, 0.3, 1), max-width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Theater Blackout Mode */
+        body.theater-blackout #top-ribbon,
+        body.theater-blackout #main-masthead,
+        body.theater-blackout #catalog-sidebar,
+        body.theater-blackout #archive-gallery-section,
+        body.theater-blackout #site-footer {
+            display: none !important;
+        }
+
+        body.theater-blackout #screening-pavilion-grid {
+            grid-template-columns: 1fr !important;
+        }
+
+        /* Marquee Ticker */
+        @keyframes cinema-ticker {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-cinema-ticker {
+            display: flex;
+            width: max-content;
+            animation: cinema-ticker 40s linear infinite;
+        }
+        .animate-cinema-ticker:hover {
+            animation-play-state: paused;
+        }
+
+        /* Custom Sliders */
+        input[type=range].nle-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            background: rgba(255, 255, 255, 0.1);
+            height: 4px;
+            border-radius: 2px;
+        }
+        input[type=range].nle-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--halide-gold);
+            border: 2px solid #000;
+            cursor: pointer;
+            box-shadow: 0 0 10px var(--halide-gold);
+        }
+
+        /* 35mm Sprocket Holes Pattern */
+        .film-sprockets {
+            background-image: radial-gradient(circle, #040406 38%, transparent 41%);
+            background-size: 20px 14px;
+        }
+
+        ::-webkit-scrollbar { width: 5px; height: 5px; }
+        ::-webkit-scrollbar-track { background: #040406; }
+        ::-webkit-scrollbar-thumb { background: #E5A93C; border-radius: 2px; }
+    </style>
+</head>
+<body class="selection:bg-[#E5A93C] selection:text-black">
+    <!-- 35mm Kodak Grain Overlay -->
+    <div class="kodak-grain"></div>
+
+    <!-- Custom Notification Toast -->
+    <div id="cinema-toast" class="fixed bottom-6 right-6 z-50 transform translate-y-28 opacity-0 transition-all duration-300 pointer-events-none bg-[#0A0B0E] border-2 border-[#E5A93C] px-5 py-4 rounded-xl shadow-2xl flex items-center space-x-3.5 max-w-md">
+        <span class="w-2.5 h-2.5 rounded-full bg-[#EF4444] animate-ping shrink-0"></span>
+        <div>
+            <p id="toast-title" class="font-mono-tech text-[10px] uppercase tracking-[0.25em] text-[#E5A93C] font-extrabold">PROJECTION TELEMETRY</p>
+            <p id="toast-msg" class="text-xs text-stone-200 mt-0.5 font-mono-tech">35mm Gate Locked @ 24.000 FPS.</p>
+        </div>
+    </div>
+
+    <!-- TOP PROVENANCE TELEMETRY RIBBON -->
+    <div id="top-ribbon" class="w-full border-b bento-rule bg-[#020203] py-2 overflow-hidden">
+        <div class="animate-cinema-ticker font-mono-tech text-[10px] tracking-[0.24em] uppercase text-stone-400 space-x-12">
+            <span class="flex items-center space-x-2">
+                <span class="w-2 h-2 rounded-full bg-[#EF4444] animate-pulse"></span>
+                <strong class="text-white">CINEMA.PRESS</strong>
+                <span>// THE CRESCENT ARCHIVE — THE HOUSE'S FILMS, ON THE RECORD</span>
+            </span>
+            <span class="text-[#E5A93C]">PANAVISION ANAMORPHIC 2.39:1 REAL-TIME WEBGL ENGINE</span>
+            <span class="text-[#38BDF8]">OPTICAL AUDIO: 432Hz BIOACOUSTIC + 18" SUB-BASS TELEMETRY</span>
+            <span>SISTER ARCHIVE TO REPEATABLE.PRESS &amp; NEWMUSIC.PRESS</span>
+            <span class="text-[#10B981]">FRAME PROVENANCE: HUMAN ORIGIN, ON THE RECORD // RENAISSANCE INSTRUMENTS</span>
+            <!-- Seamless Loop Duplicate -->
+            <span class="flex items-center space-x-2">
+                <span class="w-2 h-2 rounded-full bg-[#EF4444] animate-pulse"></span>
+                <strong class="text-white">CINEMA.PRESS</strong>
+                <span>// THE CRESCENT ARCHIVE — THE HOUSE'S FILMS, ON THE RECORD</span>
+            </span>
+            <span class="text-[#E5A93C]">PANAVISION ANAMORPHIC 2.39:1 REAL-TIME WEBGL ENGINE</span>
+            <span class="text-[#38BDF8]">OPTICAL AUDIO: 432Hz BIOACOUSTIC + 18" SUB-BASS TELEMETRY</span>
+        </div>
+    </div>
+
+    <!-- INSTITUTIONAL MASTHEAD & PAVILION RECORD -->
+    <header id="main-masthead" class="border-b bento-rule sticky top-0 z-40 bg-[#040406]/90 backdrop-blur-2xl">
+        <div class="max-w-[1680px] mx-auto grid grid-cols-1 lg:grid-cols-12 items-center">
+
+            <!-- Left: Pavilion Record -->
+            <div class="lg:col-span-3 p-4 lg:p-5 border-b lg:border-b-0 lg:border-r bento-rule flex items-center justify-between">
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <span class="px-2 py-0.5 text-[9px] font-mono-tech uppercase tracking-widest bg-[#E5A93C] text-black rounded font-extrabold">THE PAVILION</span>
+                        <span class="px-2 py-0.5 text-[9px] font-mono-tech uppercase tracking-widest bg-white/10 text-white border border-white/20 rounded font-bold">ON THE RECORD</span>
+                    </div>
+                    <p class="font-mono-tech text-[10px] text-stone-400 mt-1.5 tracking-widest uppercase">
+                        Four films // One screening room // New Orleans
+                    </p>
+                </div>
+                <div class="text-right font-mono-tech">
+                    <span class="text-[9px] text-stone-500 block">GATE</span>
+                    <span id="header-gate-badge" class="text-xs font-bold text-[#E5A93C]">2.39:1</span>
+                </div>
+            </div>
+
+            <!-- Center: Flagship Title -->
+            <div class="lg:col-span-6 p-4 lg:p-5 text-center border-b lg:border-b-0 lg:border-r bento-rule">
+                <a href="#top" class="inline-block">
+                    <h1 class="font-display text-3xl sm:text-5xl xl:text-6xl font-extrabold tracking-tighter uppercase leading-none bg-gradient-to-r from-white via-[#E5A93C] to-[#38BDF8] bg-clip-text text-transparent">
+                        CINEMA.PRESS
+                    </h1>
+                    <p class="font-editorial italic text-sm sm:text-base text-stone-300 mt-1 tracking-wide">
+                        “The Crescent Archive &amp; Interactive Short Film Pavilion — the house's films, with their true credits.”
+                    </p>
+                </a>
+            </div>
+
+            <!-- Right: Master Projection & Sound Transport -->
+            <div class="lg:col-span-3 p-4 lg:p-5 flex items-center justify-between lg:justify-end space-x-3">
+                <button onclick="toggleTheaterBlackout()" class="px-3.5 py-2.5 rounded-xl border border-white/20 hover:border-[#E5A93C] text-stone-200 font-mono-tech text-[10px] uppercase tracking-wider transition-all">
+                    ⛶ Theater Mode
+                </button>
+                <button id="master-projector-btn" onclick="toggleFilmPlayback()" class="px-5 py-2.5 rounded-xl bg-[#EF4444] hover:bg-white text-white hover:text-black transition-all font-mono-tech text-[10px] font-extrabold uppercase tracking-widest flex items-center space-x-2 shadow-[0_0_25px_rgba(239,68,68,0.45)]">
+                    <span id="projector-led" class="w-2 h-2 rounded-full bg-white animate-ping"></span>
+                    <span id="projector-btn-text">ROLL 35MM + SOUND</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN PAVILION WORKSPACE -->
+    <main id="top" class="max-w-[1680px] mx-auto">
+
+        <!-- FILM SELECTION SLATE BAR (THE PAVILION SLATE — FOUR FILMS ON THE RECORD) -->
+        <section class="border-b bento-rule bg-[#07080C] p-4 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-3">
+                <span class="font-mono-tech text-[10px] uppercase tracking-[0.28em] text-[#E5A93C] font-bold">
+                    THE PAVILION SLATE // SELECT A FILM — ITS ROOM OPENS IN THE GATE
+                </span>
+                <span class="font-mono-tech text-[10px] text-stone-400">
+                    HOUSE BYLINE: THE SCREENING DESK // THE BYRON JUPITER AGENCY
+                </span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                <!-- Film 01 -->
+                <button onclick="selectShortFilm(0)" id="slate-btn-0" class="p-4 rounded-xl border-2 border-[#E5A93C] bg-[#E5A93C]/10 text-left transition-all flex flex-col justify-between">
+                    <div class="flex items-center justify-between w-full font-mono-tech text-[9px]">
+                        <span class="text-[#E5A93C] font-extrabold">REEL 01 // BREATHE 1.0</span>
+                        <span class="px-1.5 py-0.5 rounded bg-black/60 text-stone-300">ENTRY ATL27-5630</span>
+                    </div>
+                    <h2 class="font-editorial text-xl font-bold text-white mt-2">Breathe 1.0</h2>
+                    <p class="text-[11px] text-stone-300 mt-1 line-clamp-2">
+                        Aaniyah. — Eb Minor, 72 BPM. Directed by Byron Jupiter. Atlanta Film Festival 2027 official entry.
+                    </p>
+                </button>
+
+                <!-- Film 02 -->
+                <button onclick="selectShortFilm(1)" id="slate-btn-1" class="p-4 rounded-xl border border-white/10 bg-white/5 hover:border-[#E5A93C]/50 text-left transition-all flex flex-col justify-between">
+                    <div class="flex items-center justify-between w-full font-mono-tech text-[9px]">
+                        <span class="text-[#38BDF8] font-extrabold">REEL 02 // OFFICIAL VIDEO</span>
+                        <span class="px-1.5 py-0.5 rounded bg-black/60 text-stone-300">ISRC QZWDD2685659</span>
+                    </div>
+                    <h2 class="font-editorial text-xl font-bold text-white mt-2">“Have It Your Way”</h2>
+                    <p class="text-[11px] text-stone-300 mt-1 line-clamp-2">
+                        Aaniyah. — premiered October 23, 2026 on AaniyahAndersonVEVO. Produced by The Box Bangers; film by Forever Films Forever. UPC 708208134663.
+                    </p>
+                </button>
+
+                <!-- Film 03 -->
+                <button onclick="selectShortFilm(2)" id="slate-btn-2" class="p-4 rounded-xl border border-white/10 bg-white/5 hover:border-[#E5A93C]/50 text-left transition-all flex flex-col justify-between">
+                    <div class="flex items-center justify-between w-full font-mono-tech text-[9px]">
+                        <span class="text-[#10B981] font-extrabold">REEL 03 // PRESS RECORD</span>
+                        <span class="px-1.5 py-0.5 rounded bg-black/60 text-stone-300">36:56</span>
+                    </div>
+                    <h2 class="font-editorial text-xl font-bold text-white mt-2">The Dew Drop Film</h2>
+                    <p class="text-[11px] text-stone-300 mt-1 line-clamp-2">
+                        Aaniyah's set at the Dew Drop Inn, kept whole. A press record — not a label release. Cut at The Box Studios.
+                    </p>
+                </button>
+
+                <!-- Film 04 -->
+                <button onclick="selectShortFilm(3)" id="slate-btn-3" class="p-4 rounded-xl border border-white/10 bg-white/5 hover:border-[#E5A93C]/50 text-left transition-all flex flex-col justify-between">
+                    <div class="flex items-center justify-between w-full font-mono-tech text-[9px]">
+                        <span class="text-[#EF4444] font-extrabold">REEL 04 // THE SERIES</span>
+                        <span class="px-1.5 py-0.5 rounded bg-black/60 text-stone-300">MONTHLY</span>
+                    </div>
+                    <h2 class="font-editorial text-xl font-bold text-white mt-2">Voice of Tomorrow — In Session</h2>
+                    <p class="text-[11px] text-stone-300 mt-1 line-clamp-2">
+                        The house micro-documentary series. One session, every month, on the record.
+                    </p>
+                </button>
+            </div>
+        </section>
+
+        <!-- CORE SCREENING PAVILION & DIRECTOR'S WORKSTATION GRID -->
+        <section id="screening-pavilion-grid" class="grid grid-cols-1 lg:grid-cols-12 border-b bento-rule">
+
+            <!-- LEFT / CENTER: ANAMORPHIC 2.39:1 CINEMA VIEWPORT & NLE TIMELINE (9 COLS) -->
+            <div class="lg:col-span-9 border-b lg:border-b-0 lg:border-r bento-rule bg-[#020204] flex flex-col justify-between">
+
+                <!-- Top Viewport Camera Telemetry HUD -->
+                <div class="px-6 py-3 border-b bento-rule flex flex-wrap items-center justify-between gap-3 font-mono-tech text-[10px] bg-[#06070A]">
+                    <div class="flex items-center space-x-4">
+                        <span class="flex items-center space-x-1.5">
+                            <span id="rec-tally-dot" class="w-2 h-2 rounded-full bg-[#EF4444]"></span>
+                            <strong id="hud-reel-id" class="text-white">REEL 01 // BREATHE 1.0</strong>
+                        </span>
+                        <span class="text-stone-500">|</span>
+                        <span id="hud-lens-spec" class="text-[#E5A93C]">OPTICS: 35mm PANAVISION ANAMORPHIC (T1.9)</span>
+                        <span class="text-stone-500 hidden sm:inline">|</span>
+                        <span id="hud-lut-spec" class="text-[#38BDF8] hidden sm:inline">STOCK: KODAK VISION3 500T (5219)</span>
+                    </div>
+
+                    <div class="flex items-center space-x-3">
+                        <span id="smpte-master-readout" class="px-2.5 py-1 rounded bg-black border border-white/15 text-[#10B981] font-bold tracking-widest">
+                            01:00:04:12
+                        </span>
+                        <button onclick="captureArchivalStill()" class="px-3 py-1 rounded bg-[#E5A93C] hover:bg-white text-black font-extrabold uppercase tracking-wider transition-all flex items-center space-x-1" title="Capture the gate frame as a 35mm still">
+                            <span>📷</span>
+                            <span>Capture Still</span>
+                        </button>
+                        <button onclick="toggleTheaterBlackout()" id="exit-theater-btn" class="hidden px-2.5 py-1 rounded border border-white/20 text-white uppercase">
+                            Exit Theater
+                        </button>
+                    </div>
+                </div>
+
+                <!-- THE ANAMORPHIC CINEMA VIEWPORT STAGE -->
+                <div class="relative w-full py-6 px-3 sm:px-8 flex items-center justify-center bg-black min-h-[380px] sm:min-h-[480px] overflow-hidden">
+
+                    <!-- Dynamic Aspect Ratio Gate Box -->
+                    <div id="cinema-gate-box" class="relative w-full max-w-[1160px] overflow-hidden rounded-sm border border-white/15 shadow-[0_0_90px_rgba(229,169,60,0.12)] lut-kodak500t" style="aspect-ratio: 2.39 / 1;">
+
+                        <!-- Three.js WebGL Short Film Mount -->
+                        <div id="webgl-film-stage" class="w-full h-full cursor-grab active:cursor-grabbing"></div>
+
+                        <!-- Anamorphic Horizontal Streak & Optical Vignette -->
+                        <div id="anamorphic-streak" class="anamorphic-flare"></div>
+                        <div class="optical-vignette"></div>
+
+                        <!-- Top-Left 35mm Director Finder Marks -->
+                        <div class="absolute top-4 left-5 right-5 flex justify-between items-start pointer-events-none z-20 font-mono-tech text-[9px] uppercase tracking-[0.25em] text-white/60">
+                            <div>
+                                <span id="viewport-scene-marker" class="text-[#E5A93C] font-bold block">SCREENING ROOM 01 // BREATHE 1.0</span>
+                                <span id="viewport-door-line">DOOR: AANIYAHINSESSION.COM/BREATHE</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="block">24.000 FPS // 180° SHUTTER</span>
+                                <span id="viewport-hash-stamp" class="text-[#10B981]">SHA-256 OF FRAME: COMPUTED ON CAPTURE</span>
+                            </div>
+                        </div>
+
+                        <!-- Bottom Center Criterion Narrative Subtitle Overlay -->
+                        <div class="absolute bottom-5 left-6 right-6 text-center pointer-events-none z-20">
+                            <p id="live-cinema-subtitle" class="font-editorial italic text-lg sm:text-2xl md:text-3xl criterion-subtitle max-w-3xl mx-auto leading-snug">
+                                “Some songs you hear. This one, you breathe.”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                                <!-- Gate Honesty Line -->
+                <div class="px-6 py-2.5 border-t bento-rule bg-[#040508] font-mono-tech text-[9px] uppercase tracking-[0.22em] text-stone-500 text-center">
+                    The gate shows a procedural visual study keyed to each film — the films themselves live at their own doors, linked in Track M1 below.
+                </div>
+
+                <!-- LIVE DIRECTOR OF PHOTOGRAPHY (DoP) OPTICS, FILM STOCK & ASPECT GATE DECK -->
+                <div class="p-4 sm:px-6 border-t bento-rule bg-[#07080C] grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+
+                    <!-- Prime / Anamorphic Lens Switcher -->
+                    <div class="md:col-span-4">
+                        <span class="font-mono-tech text-[9px] uppercase tracking-widest text-stone-400 block mb-1.5">Prime &amp; Anamorphic Lens Turret (FOV)</span>
+                        <div class="grid grid-cols-4 gap-1.5 font-mono-tech text-[10px]">
+                            <button onclick="setCameraLens(24, '24mm ANAMORPHIC WIDE', this)" class="lens-btn py-1.5 rounded border border-white/15 bg-white/5 text-stone-300 hover:border-[#E5A93C]">24mm</button>
+                            <button onclick="setCameraLens(35, '35mm PANAVISION C-SERIES', this)" class="lens-btn py-1.5 rounded border border-[#E5A93C] bg-[#E5A93C] text-black font-bold">35mm</button>
+                            <button onclick="setCameraLens(50, '50mm MASTER PRIME T1.4', this)" class="lens-btn py-1.5 rounded border border-white/15 bg-white/5 text-stone-300 hover:border-[#E5A93C]">50mm</button>
+                            <button onclick="setCameraLens(85, '85mm TELEPHOTO PORTRAIT', this)" class="lens-btn py-1.5 rounded border border-white/15 bg-white/5 text-stone-300 hover:border-[#E5A93C]">85mm</button>
+                        </div>
+                    </div>
+
+                    <!-- 35mm Film Stock LUT Switcher -->
+                    <div class="md:col-span-4">
+                        <span class="font-mono-tech text-[9px] uppercase tracking-widest text-stone-400 block mb-1.5">Celluloid Emulsion / Color LUT</span>
+                        <div class="grid grid-cols-4 gap-1.5 font-mono-tech text-[9px]">
+                            <button onclick="setFilmLUT('lut-kodak500t', 'KODAK VISION3 500T', this)" class="lut-btn py-1.5 rounded border border-[#E5A93C] bg-[#E5A93C] text-black font-bold truncate px-1">500T Gold</button>
+                            <button onclick="setFilmLUT('lut-ilfordbw', 'ILFORD HP5 SILVER B&W', this)" class="lut-btn py-1.5 rounded border border-white/15 bg-white/5 text-stone-300 hover:border-[#E5A93C] truncate px-1">Ilford B&amp;W</button>
+                            <button onclick="setFilmLUT('lut-technicolor', 'TECHNICOLOR 3-STRIP', this)" class="lut-btn py-1.5 rounded border border-white/15 bg-white/5 text-stone-300 hover:border-[#E5A93C] truncate px-1">3-Strip</button>
+                            <button onclick="setFilmLUT('lut-infrared', 'INFRARED BAYOU THERMAL', this)" class="lut-btn py-1.5 rounded border border-white/15 bg-white/5 text-stone-300 hover:border-[#E5A93C] truncate px-1">Infrared</button>
+                        </div>
+                    </div>
+
+                    <!-- Aspect Ratio Aperture Gate -->
+                    <div class="md:col-span-4">
+                        <span class="font-mono-tech text-[9px] uppercase tracking-widest text-stone-400 block mb-1.5">Aperture Gate Aspect Ratio</span>
+                        <div class="grid grid-cols-4 gap-1.5 font-mono-tech text-[9px]">
+                            <button onclick="setAspectGate('2.39 / 1', '2.39:1', '1160px', this)" class="gate-btn py-1.5 rounded border border-[#E5A93C] bg-[#E5A93C] text-black font-bold">2.39 Scope</button>
+                            <button onclick="setAspectGate('1.85 / 1', '1.85:1', '940px', this)" class="gate-btn py-1.5 rounded border border-white/15 bg-white/5 text-stone-300 hover:border-[#E5A93C]">1.85 Flat</button>
+                            <button onclick="setAspectGate('1.43 / 1', '1.43:1', '780px', this)" class="gate-btn py-1.5 rounded border border-white/15 bg-white/5 text-stone-300 hover:border-[#E5A93C]">1.43 IMAX</button>
+                            <button onclick="setAspectGate('1.33 / 1', '1.33:1', '700px', this)" class="gate-btn py-1.5 rounded border border-white/15 bg-white/5 text-stone-300 hover:border-[#E5A93C]">16mm 4:3</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DAVINCI / TEENAGE ENGINEERING NLE MULTI-TRACK SCRUBBING TIMELINE -->
+                <div class="p-4 sm:px-6 border-t bento-rule bg-[#040508]">
+                    <!-- Timeline Transport Header -->
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-3 font-mono-tech text-[10px]">
+                        <div class="flex items-center space-x-2">
+                            <button onclick="stepFrame(-1)" class="px-2 py-1 rounded bg-white/5 hover:bg-white/15 border border-white/10 text-stone-300">-1F</button>
+                            <button onclick="toggleFilmPlayback()" id="nle-play-btn" class="px-3 py-1 rounded bg-[#E5A93C] text-black font-extrabold uppercase">▶ PLAY / PAUSE</button>
+                            <button onclick="stepFrame(1)" class="px-2 py-1 rounded bg-white/5 hover:bg-white/15 border border-white/10 text-stone-300">+1F</button>
+                            <span class="text-stone-500 pl-2">SCRUB PLAYHEAD:</span>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <span id="nle-chapter-cue" class="text-[#38BDF8]">ACT I // ESTABLISHING THE ROOM</span>
+                            <span id="nle-percent-readout" class="text-stone-400">FRAME 0240 / 1800</span>
+                        </div>
+                    </div>
+
+                    <!-- Master Timeline Scrubber Input -->
+                    <input id="nle-timeline-scrubber" type="range" min="0" max="100" step="0.2" value="18" oninput="scrubTimeline(this.value)" class="w-full nle-slider mb-4">
+
+                    <!-- 3 NLE Tracks (V1 Picture Cuts, A1 432Hz Optical Waveform, M1 Metanated Provenance) -->
+                    <div class="space-y-1.5 font-mono-tech text-[9px]">
+
+                        <!-- Track V1: Scene Cuts -->
+                        <div class="grid grid-cols-12 items-center bg-[#090B10] border border-white/10 rounded overflow-hidden">
+                            <div class="col-span-2 px-2.5 py-2 bg-black/60 border-r border-white/10 text-[#E5A93C] font-bold truncate">
+                                V1 // ANAMORPHIC
+                            </div>
+                            <div class="col-span-10 grid grid-cols-4 gap-1 p-1">
+                                <button onclick="jumpToSceneBeat(0)" class="py-1.5 px-2 rounded bg-[#E5A93C]/20 hover:bg-[#E5A93C] hover:text-black border border-[#E5A93C]/40 text-left truncate text-white transition-all">
+                                    CUT 01: Establishing Shot
+                                </button>
+                                <button onclick="jumpToSceneBeat(28)" class="py-1.5 px-2 rounded bg-white/5 hover:bg-[#E5A93C] hover:text-black border border-white/10 text-left truncate text-stone-300 transition-all">
+                                    CUT 02: Signal Close-Up
+                                </button>
+                                <button onclick="jumpToSceneBeat(56)" class="py-1.5 px-2 rounded bg-white/5 hover:bg-[#E5A93C] hover:text-black border border-white/10 text-left truncate text-stone-300 transition-all">
+                                    CUT 03: Sub-Bass Excursion
+                                </button>
+                                <button onclick="jumpToSceneBeat(82)" class="py-1.5 px-2 rounded bg-white/5 hover:bg-[#E5A93C] hover:text-black border border-white/10 text-left truncate text-stone-300 transition-all">
+                                    CUT 04: The Permanent Record
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Track A1: Live Optical Audio Waveform Canvas -->
+                        <div class="grid grid-cols-12 items-center bg-[#090B10] border border-white/10 rounded overflow-hidden">
+                            <div class="col-span-2 px-2.5 py-2 bg-black/60 border-r border-white/10 text-[#38BDF8] font-bold truncate">
+                                A1 // 432Hz SCORE
+                            </div>
+                            <div class="col-span-10 h-7 relative">
+                                <canvas id="nle-optical-waveform" class="w-full h-full block"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Track M1: The Catalog — Doors & Records -->
+                        <div class="grid grid-cols-12 items-center bg-[#090B10] border border-white/10 rounded overflow-hidden">
+                            <div class="col-span-2 px-2.5 py-2 bg-black/60 border-r border-white/10 text-[#10B981] font-bold truncate">
+                                M1 // THE CATALOG
+                            </div>
+                            <div class="col-span-10 flex items-center justify-between px-2 py-1 gap-2 overflow-x-auto">
+                                <button onclick="openCatalogDoor(0)" class="px-2 py-0.5 rounded bg-[#10B981]/15 border border-[#10B981]/40 text-[#10B981] hover:bg-[#10B981] hover:text-black shrink-0">
+                                    ◆ BREATHE 1.0 — ITS DOOR ↗
+                                </button>
+                                <button onclick="openCatalogDoor(1)" class="px-2 py-0.5 rounded bg-[#10B981]/15 border border-[#10B981]/40 text-[#10B981] hover:bg-[#10B981] hover:text-black shrink-0">
+                                    ◆ HAVE IT YOUR WAY — OFFICIAL VIDEO ↗
+                                </button>
+                                <button onclick="openCatalogDoor(2)" class="px-2 py-0.5 rounded bg-[#10B981]/15 border border-[#10B981]/40 text-[#10B981] hover:bg-[#10B981] hover:text-black shrink-0">
+                                    ◆ THE DEW DROP FILM — PRESS RECORD
+                                </button>
+                                <button onclick="openCatalogDoor(3)" class="px-2 py-0.5 rounded bg-[#10B981]/15 border border-[#10B981]/40 text-[#10B981] hover:bg-[#10B981] hover:text-black shrink-0">
+                                    ◆ VOICE OF TOMORROW — IN SESSION
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT SIDEBAR: SCREENING ROOM MIXER, CAPTION COMPOSER & PAVILION CAPSULE (3 COLS) -->
+            <aside id="catalog-sidebar" class="lg:col-span-3 bg-[#07080C] flex flex-col justify-between">
+
+                <!-- Top Section: 4-Stem Cinema Soundtrack Mixer -->
+                <div class="p-5 border-b bento-rule">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="font-mono-tech text-[10px] uppercase tracking-[0.25em] text-[#38BDF8] font-bold">
+                            4-Stem Screening Room Mixer
+                        </span>
+                        <span class="font-mono-tech text-[9px] text-[#10B981]">TONE.JS 432Hz</span>
+                    </div>
+
+                    <div class="space-y-3 font-mono-tech text-[10px]">
+                        <!-- Stem 1: 432Hz Sub-Bass Drone -->
+                        <div class="p-2.5 rounded-lg bg-black/50 border border-white/10">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-white font-bold">01 // 54Hz + 432Hz Sub Drone</span>
+                                <span id="stem-val-0" class="text-[#E5A93C]">-6 dB</span>
+                            </div>
+                            <input type="range" min="-36" max="0" value="-6" oninput="setCinemaStemGain(0, this.value)" class="w-full nle-slider">
+                        </div>
+
+                        <!-- Stem 2: 35mm Projector Mechanical Clatter -->
+                        <div class="p-2.5 rounded-lg bg-black/50 border border-white/10">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-white font-bold">02 // 35mm Sprocket Clatter</span>
+                                <span id="stem-val-1" class="text-[#38BDF8]">-14 dB</span>
+                            </div>
+                            <input type="range" min="-36" max="0" value="-14" oninput="setCinemaStemGain(1, this.value)" class="w-full nle-slider">
+                        </div>
+
+                        <!-- Stem 3: Bayou Rain & Vinyl Surface Crackle -->
+                        <div class="p-2.5 rounded-lg bg-black/50 border border-white/10">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-white font-bold">03 // Ninth Ward Rain &amp; Vinyl</span>
+                                <span id="stem-val-2" class="text-[#10B981]">-12 dB</span>
+                            </div>
+                            <input type="range" min="-36" max="0" value="-12" oninput="setCinemaStemGain(2, this.value)" class="w-full nle-slider">
+                        </div>
+
+                        <!-- Stem 4: Director's Harmonic Score -->
+                        <div class="p-2.5 rounded-lg bg-black/50 border border-white/10">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-white font-bold">04 // Brass Motif</span>
+                                <span id="stem-val-3" class="text-[#EF4444]">-8 dB</span>
+                            </div>
+                            <input type="range" min="-36" max="0" value="-8" oninput="setCinemaStemGain(3, this.value)" class="w-full nle-slider">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Middle Section: Director's Cut Subtitle & Atmospheric Rig -->
+                <div class="p-5 border-b bento-rule">
+                    <span class="font-mono-tech text-[10px] uppercase tracking-[0.25em] text-[#E5A93C] font-bold block mb-2">
+                        Live Caption Composer
+                    </span>
+                    <label class="block font-mono-tech text-[9px] text-stone-400 uppercase mb-1">Write a caption onto the gate</label>
+                    <textarea id="custom-subtitle-input" rows="2" oninput="updateLiveSubtitle(this.value)" class="w-full p-2.5 rounded-lg bg-black border border-white/15 font-editorial italic text-sm text-[#FFE47A] focus:outline-none focus:border-[#E5A93C]">“Some songs you hear. This one, you breathe.”</textarea>
+
+                    <div class="grid grid-cols-2 gap-3 mt-3 font-mono-tech text-[9px]">
+                        <div>
+                            <span class="text-stone-400 block mb-1">DOLLY SPEED</span>
+                            <input type="range" min="0" max="3" step="0.1" value="1.0" oninput="setDollySpeed(this.value)" class="w-full nle-slider">
+                        </div>
+                        <div>
+                            <span class="text-stone-400 block mb-1">FLARE INTENSITY</span>
+                            <input type="range" min="0" max="1" step="0.05" value="0.8" oninput="setFlareIntensity(this.value)" class="w-full nle-slider">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Section: About the Pavilion — AEO Answer Capsule -->
+                <div class="p-5 flex-grow flex flex-col justify-between bg-[#050609]">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="font-mono-tech text-[9px] uppercase tracking-widest text-[#10B981] font-bold">ABOUT THE PAVILION</span>
+                            <button onclick="copyCinemaCapsule()" class="font-mono-tech text-[9px] text-stone-400 hover:text-white underline">Copy AEO</button>
+                        </div>
+                        <p id="cinema-aeo-capsule" class="font-editorial text-sm leading-relaxed text-stone-300 bg-black/60 p-3 rounded-lg border-l-2 border-[#E5A93C]">
+                            Cinema.press is the interactive film pavilion of the Byron Jupiter Agency, seated at The Box Studios in New Orleans. Its reels present the house's films — Breathe 1.0, Have It Your Way, The Dew Drop film, and Voice of Tomorrow — In Session — with their true credits. The films live at their own doors; stills captured here carry a real SHA-256 of the frame image, computed in your browser.
+                        </p>
+                    </div>
+
+                    <!-- Pavilion Count -->
+                    <div class="mt-4 pt-3 border-t border-white/10 grid grid-cols-3 gap-1.5 text-center font-mono-tech">
+                        <div class="p-2 rounded bg-white/5">
+                            <span class="text-[8px] text-stone-400 block">FILMS</span>
+                            <span class="text-xs font-extrabold text-[#E5A93C]">4</span>
+                        </div>
+                        <div class="p-2 rounded bg-white/5">
+                            <span class="text-[8px] text-stone-400 block">SCREENING ROOM</span>
+                            <span class="text-xs font-extrabold text-[#38BDF8]">1</span>
+                        </div>
+                        <div class="p-2 rounded bg-white/5">
+                            <span class="text-[8px] text-stone-400 block">HOSTED HERE</span>
+                            <span class="text-xs font-extrabold text-white">0</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </section>
+
+        <!-- SECTION 02: 35MM ARCHIVAL CONTACT SHEET & FRAME CAPTURE -->
+        <section id="archive-gallery-section" class="border-b bento-rule p-6 sm:p-10 lg:p-12 bg-[#050609]">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b bento-rule">
+                <div>
+                    <span class="font-mono-tech text-[10px] uppercase tracking-[0.3em] text-[#E5A93C]">
+                        Kodak 5219 Contact Sheet // Captured From The Gate
+                    </span>
+                    <h2 class="font-editorial text-3xl sm:text-5xl text-white mt-1">
+                        Captured 35mm Stills, Stamped With Their Real Frame Hash
+                    </h2>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <button onclick="captureArchivalStill()" class="px-5 py-3 rounded-xl bg-[#E5A93C] hover:bg-white text-black font-mono-tech text-xs font-extrabold uppercase tracking-widest transition-all shadow-lg">
+                        📷 Capture Current Frame
+                    </button>
+                    <button onclick="downloadLatestContactStill()" class="px-4 py-3 rounded-xl border border-white/20 hover:border-[#38BDF8] text-[#38BDF8] font-mono-tech text-xs font-bold uppercase tracking-widest transition-all">
+                        ↓ Download 35mm PNG
+                    </button>
+                </div>
+            </div>
+
+            <!-- Contact Sheet Strip Container -->
+            <div id="contact-sheet-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                <!-- Populated dynamically with captured 35mm canvas frames -->
+            </div>
+        </section>
+    </main>
+
+    <!-- INSTITUTIONAL COLOPHON FOOTER -->
+    <footer id="site-footer" class="max-w-[1680px] mx-auto px-6 sm:px-10 py-14 border-b bento-rule bg-[#020203]">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div class="lg:col-span-7">
+                <span class="font-mono-tech text-[10px] uppercase tracking-[0.35em] text-[#E5A93C]">
+                    THE BYRON JUPITER AGENCY PAVILION // REPEATABLE.PRESS × NEWMUSIC.PRESS × CINEMA.PRESS
+                </span>
+                <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-white tracking-tight mt-2 leading-none">
+                    DO WELL BY DOING GOOD.<br>
+                    <span class="bg-gradient-to-r from-white via-[#E5A93C] to-[#38BDF8] bg-clip-text text-transparent">SINGULARITY IN ALL ASPECTS.</span><br>
+                    OPTIMUS MAXIMUS.
+                </h2>
+                <p class="font-editorial italic text-xl text-stone-300 mt-4">
+                    “Every frame is a receipt of thought. Every cut belongs to the room that engineered it.”
+                </p>
+            </div>
+            <div class="lg:col-span-5 lg:text-right font-mono-tech text-xs text-stone-400 space-y-2">
+                <p class="text-white font-bold uppercase tracking-widest">THE BYRON JUPITER AGENCY</p>
+                <p>The Box Studios, 7367 Chef Menteur Hwy, New Orleans, LA</p>
+                <p>HOUSE BYLINE: THE SCREENING DESK</p>
+                <p>Business, in writing: sales@leasethebox.com</p>
+                <p>Rendering by the Byron Jupiter Agency, with Renaissance Instruments</p>
+                <p class="text-[#E5A93C]">© Byron Jupiter — sales@leasethebox.com</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- APPLICATION ENGINE: PROCEDURAL 3D SHORT FILMS, TONE.JS SCORE & 35MM CONTACT MINTER -->
+    <script>
+        // =====================================================================
+        // 1. THE PAVILION SLATE — THE HOUSE'S REAL FILMS, THEIR CREDITS & DOORS
+        // =====================================================================
+                const shortFilms = [
+            {
+                id: "REEL 01",
+                title: "BREATHE 1.0",
+                sceneHeader: "SCREENING ROOM 01 // BREATHE 1.0",
+                doorLine: "DOOR: AANIYAHINSESSION.COM/BREATHE",
+                study: 2,
+                fogColor: 0x030806,
+                accentHex: 0x10B981,
+                secondaryHex: 0xE5A93C,
+                subtitles: [
+                    "“Some songs you hear. This one, you breathe.”",
+                    "“Breathe 1.0 — Eb Minor, 72 BPM.”",
+                    "“Aaniyah. Directed by Byron Jupiter.”",
+                    "“Atlanta Film Festival 2027 — official entry ATL27-5630.”"
+                ]
+            },
+            {
+                id: "REEL 02",
+                title: "HAVE IT YOUR WAY",
+                sceneHeader: "SCREENING ROOM 02 // HAVE IT YOUR WAY — OFFICIAL VIDEO",
+                doorLine: "DOOR: YOUTUBE — AANIYAHANDERSONVEVO",
+                study: 3,
+                fogColor: 0x0b0704,
+                accentHex: 0xEF4444,
+                secondaryHex: 0xE5A93C,
+                subtitles: [
+                    "“Have It Your Way — Aaniyah. (Official Video).”",
+                    "“Premiered October 23, 2026 on AaniyahAndersonVEVO.”",
+                    "“Produced by The Box Bangers. Film by Forever Films Forever.”",
+                    "“Video ISRC QZWDD2685659 · UPC 708208134663.”"
+                ]
+            },
+            {
+                id: "REEL 03",
+                title: "THE DEW DROP FILM",
+                sceneHeader: "SCREENING ROOM 03 // THE DEW DROP FILM — PRESS RECORD",
+                doorLine: "ON THE RECORD: A PRESS FILM — NOT A LABEL RELEASE",
+                study: 0,
+                fogColor: 0x05070e,
+                accentHex: 0xE5A93C,
+                secondaryHex: 0x38BDF8,
+                subtitles: [
+                    "“The Dew Drop film — framed as press.”",
+                    "“Aaniyah's set at the Dew Drop Inn, kept whole.”",
+                    "“36 minutes, 56 seconds — a press record.”",
+                    "“Cut at The Box Studios, New Orleans.”"
+                ]
+            },
+            {
+                id: "REEL 04",
+                title: "VOICE OF TOMORROW — IN SESSION",
+                sceneHeader: "SCREENING ROOM 04 // VOICE OF TOMORROW — IN SESSION",
+                doorLine: "THE SERIES: A NEW SESSION, MONTHLY",
+                study: 1,
+                fogColor: 0x04090c,
+                accentHex: 0x38BDF8,
+                secondaryHex: 0xE5A93C,
+                subtitles: [
+                    "“Voice of Tomorrow — In Session.”",
+                    "“The house micro-documentary series.”",
+                    "“One session, every month, on the record.”",
+                    "“Documenting The Voice of Tomorrow — Aaniyah Anderson.”"
+                ]
+            }
+        ];
+
+                const catalogDoors = [
+            { label: "BREATHE 1.0", url: "https://aaniyahinsession.com/breathe" },
+            { label: "HAVE IT YOUR WAY — OFFICIAL VIDEO", url: "https://www.youtube.com/watch?v=A99dVlqALQM" },
+            { label: "THE DEW DROP FILM — PRESS RECORD", url: null, note: "The Dew Drop film: a press record of Aaniyah's Dew Drop Inn set — 36:56, cut at The Box Studios. Not a label release." },
+            { label: "VOICE OF TOMORROW — IN SESSION", url: null, note: "Voice of Tomorrow — In Session: the house micro-documentary series. A new session, monthly." }
+        ];
+
+        // =====================================================================
+        // 2. THREE.JS REAL-TIME PROCEDURAL ANAMORPHIC SHORT FILM ENGINE
+        // =====================================================================
+        let scene, camera, renderer, filmGroup;
+        let currentFilmIdx = 0;
+        let timelineProgress = 18; // 0 to 100
+        let isPlaying = true;
+        let dollySpeed = 1.0;
+        let dynamicMeshes = [];
+        let rainParticles = null;
+        let userOrbitX = 0, userOrbitY = 0;
+
+        function initCinemaWebGL() {
+            const stage = document.getElementById('webgl-film-stage');
+            const w = stage.clientWidth || 960;
+            const h = stage.clientHeight || 400;
+
+            scene = new THREE.Scene();
+            scene.fog = new THREE.FogExp2(shortFilms[0].fogColor, 0.0022);
+
+            camera = new THREE.PerspectiveCamera(38, w / h, 1, 2500);
+            camera.position.set(0, 18, 290);
+
+            // preserveDrawingBuffer: true is essential for real 35mm frame capture!
+            renderer = new THREE.WebGLRenderer({
+                antialias: true,
+                alpha: false,
+                preserveDrawingBuffer: true,
+                powerPreference: "high-performance"
+            });
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+            renderer.setSize(w, h);
+            renderer.setClearColor(shortFilms[0].fogColor, 1);
+            stage.appendChild(renderer.domElement);
+
+            filmGroup = new THREE.Group();
+            scene.add(filmGroup);
+
+            // Atmospheric Rain / Dust Motes Particle Field
+            const rainGeo = new THREE.BufferGeometry();
+            const rainCount = 1400;
+            const rainPos = new Float32Array(rainCount * 3);
+            for (let i = 0; i < rainCount * 3; i += 3) {
+                rainPos[i] = (Math.random() - 0.5) * 900;
+                rainPos[i + 1] = (Math.random() - 0.5) * 500;
+                rainPos[i + 2] = (Math.random() - 0.5) * 900;
+            }
+            rainGeo.setAttribute('position', new THREE.BufferAttribute(rainPos, 3));
+            const rainMat = new THREE.PointsMaterial({
+                color: 0xE5A93C,
+                size: 2.0,
+                transparent: true,
+                opacity: 0.45
+            });
+            rainParticles = new THREE.Points(rainGeo, rainMat);
+            scene.add(rainParticles);
+
+            buildProceduralFilmSet(0);
+
+            // Mouse & Touch Camera Panning
+            let dragging = false, px = 0, py = 0;
+            stage.addEventListener('mousedown', e => { dragging = true; px = e.clientX; py = e.clientY; });
+            window.addEventListener('mouseup', () => dragging = false);
+            window.addEventListener('mousemove', e => {
+                if (!dragging) return;
+                userOrbitY += (e.clientX - px) * 0.005;
+                userOrbitX += (e.clientY - py) * 0.005;
+                px = e.clientX; py = e.clientY;
+            });
+
+            window.addEventListener('resize', resizeCinemaViewport);
+        }
+
+        function resizeCinemaViewport() {
+            const stage = document.getElementById('webgl-film-stage');
+            if (!stage || !renderer || !camera) return;
+            const w = stage.clientWidth || 960;
+            const h = stage.clientHeight || 400;
+            camera.aspect = w / h;
+            camera.updateProjectionMatrix();
+            renderer.setSize(w, h);
+        }
+
+        function buildProceduralFilmSet(filmIdx) {
+            while (filmGroup.children.length > 0) {
+                filmGroup.remove(filmGroup.children[0]);
+            }
+            dynamicMeshes = [];
+
+            const film = shortFilms[filmIdx];
+            const study = film.study;
+            scene.fog.color.setHex(film.fogColor);
+            renderer.setClearColor(film.fogColor, 1);
+            if (rainParticles) rainParticles.material.color.setHex(film.accentHex);
+
+            if (study === 0) {
+                // STUDY 0: COPPER SIGNAL — Utility Poles, Copper Waveforms & 12-Bit Grid
+                const gridHelper = new THREE.GridHelper(900, 44, film.secondaryHex, 0x182232);
+                gridHelper.position.y = -65;
+                filmGroup.add(gridHelper);
+
+                // Telephone Poles along Galvez Street corridor
+                for (let z = -320; z <= 220; z += 90) {
+                    const poleGeo = new THREE.CylinderGeometry(2.2, 2.8, 150, 8);
+                    const poleMat = new THREE.MeshBasicMaterial({ color: film.accentHex, wireframe: true });
+                    const poleL = new THREE.Mesh(poleGeo, poleMat);
+                    poleL.position.set(-120, 10, z);
+                    filmGroup.add(poleL);
+
+                    const poleR = poleL.clone();
+                    poleR.position.set(120, 10, z);
+                    filmGroup.add(poleR);
+
+                    // Crossbar
+                    const barGeo = new THREE.BoxGeometry(50, 2, 2);
+                    const barL = new THREE.Mesh(barGeo, poleMat);
+                    barL.position.set(-120, 75, z);
+                    filmGroup.add(barL);
+                }
+
+                // Oscillating Copper Telephone Telemetry Waves
+                for (let w = 0; w < 5; w++) {
+                    const pts = [];
+                    for (let i = 0; i <= 80; i++) {
+                        pts.push(new THREE.Vector3((i - 40) * 8, 0, (w - 2) * 35));
+                    }
+                    const waveGeo = new THREE.BufferGeometry().setFromPoints(pts);
+                    const waveMat = new THREE.LineBasicMaterial({
+                        color: w % 2 === 0 ? film.accentHex : film.secondaryHex
+                    });
+                    const line = new THREE.Line(waveGeo, waveMat);
+                    line.userData = { waveOffset: w * 1.1 };
+                    filmGroup.add(line);
+                    dynamicMeshes.push(line);
+                }
+            } else if (study === 1) {
+                // STUDY 1: DELTA LEDGER — Delta Bathymetry & Server Monoliths
+                const planeGeo = new THREE.PlaneGeometry(760, 520, 48, 36);
+                planeGeo.rotateX(-Math.PI / 2);
+                const planeMat = new THREE.MeshBasicMaterial({
+                    color: film.secondaryHex,
+                    wireframe: true,
+                    transparent: true,
+                    opacity: 0.55
+                });
+                const terrain = new THREE.Mesh(planeGeo, planeMat);
+                terrain.position.y = -50;
+                terrain.userData = { isTerrain: true };
+                filmGroup.add(terrain);
+                dynamicMeshes.push(terrain);
+
+                // Monolithic Server Racks rising from the Delta
+                for (let i = -3; i <= 3; i++) {
+                    const h = 70 + Math.abs(i) * 22;
+                    const boxGeo = new THREE.BoxGeometry(24, h, 24);
+                    const boxMat = new THREE.MeshBasicMaterial({
+                        color: i === 0 ? 0xFFFFFF : film.accentHex,
+                        wireframe: true
+                    });
+                    const tower = new THREE.Mesh(boxGeo, boxMat);
+                    tower.position.set(i * 58, -50 + h / 2, -20 + (i % 2) * 35);
+                    tower.userData = { isTower: true, idx: i };
+                    filmGroup.add(tower);
+                    dynamicMeshes.push(tower);
+                }
+            } else if (study === 2) {
+                // STUDY 2: SUB-BASS RINGS — 18" Subwoofer Rings & Harmonic Lattice
+                for (let r = 22; r <= 145; r += 18) {
+                    const ringGeo = new THREE.TorusGeometry(r, 1.6, 12, 56);
+                    const ringMat = new THREE.MeshBasicMaterial({
+                        color: r % 36 === 0 ? film.secondaryHex : film.accentHex,
+                        wireframe: true
+                    });
+                    const ring = new THREE.Mesh(ringGeo, ringMat);
+                    ring.userData = { isWooferRing: true, radius: r };
+                    filmGroup.add(ring);
+                    dynamicMeshes.push(ring);
+                }
+
+                // Inner 432Hz Harmonic Octahedron Core
+                const coreGeo = new THREE.IcosahedronGeometry(34, 1);
+                const coreMat = new THREE.MeshBasicMaterial({ color: 0xFFFFFF, wireframe: true });
+                const core = new THREE.Mesh(coreGeo, coreMat);
+                core.userData = { isCore: true };
+                filmGroup.add(core);
+                dynamicMeshes.push(core);
+            } else if (study === 3) {
+                // STUDY 3: TAPE REELS — Dual 2-Inch Master Reels
+                [-95, 95].forEach((xPos, idx) => {
+                    const reelGroup = new THREE.Group();
+                    const outerFlange = new THREE.Mesh(
+                        new THREE.CylinderGeometry(72, 72, 12, 32, 1, true),
+                        new THREE.MeshBasicMaterial({ color: film.secondaryHex, wireframe: true })
+                    );
+                    outerFlange.rotation.x = Math.PI / 2;
+                    reelGroup.add(outerFlange);
+
+                    const hub = new THREE.Mesh(
+                        new THREE.CylinderGeometry(24, 24, 14, 20),
+                        new THREE.MeshBasicMaterial({ color: film.accentHex, wireframe: true })
+                    );
+                    hub.rotation.x = Math.PI / 2;
+                    reelGroup.add(hub);
+
+                    // 3 NAB Reel Spokes
+                    for (let s = 0; s < 3; s++) {
+                        const spoke = new THREE.Mesh(
+                            new THREE.BoxGeometry(10, 68, 4),
+                            new THREE.MeshBasicMaterial({ color: 0xFFFFFF, wireframe: true })
+                        );
+                        spoke.rotation.z = (s * Math.PI * 2) / 3;
+                        reelGroup.add(spoke);
+                    }
+
+                    reelGroup.position.set(xPos, 10, 0);
+                    reelGroup.userData = { isTapeReel: true, dir: idx === 0 ? -1 : -1 };
+                    filmGroup.add(reelGroup);
+                    dynamicMeshes.push(reelGroup);
+                });
+
+                // Magnetic Oxide Tape Path Across Headstack
+                const tapePts = [
+                    new THREE.Vector3(-95, -62, 0),
+                    new THREE.Vector3(-45, -82, 20),
+                    new THREE.Vector3(0, -88, 25),
+                    new THREE.Vector3(45, -82, 20),
+                    new THREE.Vector3(95, -62, 0)
+                ];
+                const tapeGeo = new THREE.BufferGeometry().setFromPoints(tapePts);
+                const tapeLine = new THREE.Line(tapeGeo, new THREE.LineBasicMaterial({ color: film.secondaryHex }));
+                filmGroup.add(tapeLine);
+            }
+        }
+
+        // =====================================================================
+        // 3. FILM SELECTION, OPTICS, LUTS & TIMELINE CONTROLS
+        // =====================================================================
+        function selectShortFilm(idx) {
+            currentFilmIdx = idx;
+            const film = shortFilms[idx];
+
+            for (let i = 0; i < 4; i++) {
+                const btn = document.getElementById(`slate-btn-${i}`);
+                btn.className = (i === idx)
+                    ? "p-4 rounded-xl border-2 border-[#E5A93C] bg-[#E5A93C]/10 text-left transition-all flex flex-col justify-between"
+                    : "p-4 rounded-xl border border-white/10 bg-white/5 hover:border-[#E5A93C]/50 text-left transition-all flex flex-col justify-between";
+            }
+
+            document.getElementById('hud-reel-id').innerText = `${film.id} // ${film.title}`;
+            document.getElementById('viewport-scene-marker').innerText = film.sceneHeader;
+            document.getElementById('viewport-door-line').innerText = film.doorLine;
+            document.getElementById('live-cinema-subtitle').innerText = film.subtitles[0];
+            document.getElementById('custom-subtitle-input').value = film.subtitles[0];
+
+            buildProceduralFilmSet(idx);
+            triggerSoundtrackChord(idx);
+            showCinemaToast("ROOM OPEN", `${film.id} // ${film.title} — its study is in the gate.`);
+        }
+
+        function setCameraLens(focalLength, specLabel, btnEl) {
+            // Map focal length (24, 35, 50, 85mm) to vertical FOV
+            const fovMap = { 24: 54, 35: 40, 50: 29, 85: 19 };
+            if (camera) {
+                camera.fov = fovMap[focalLength] || 38;
+                camera.updateProjectionMatrix();
+            }
+            document.getElementById('hud-lens-spec').innerText = `OPTICS: ${specLabel}`;
+            document.querySelectorAll('.lens-btn').forEach(b => {
+                b.className = "lens-btn py-1.5 rounded border border-white/15 bg-white/5 text-stone-300 hover:border-[#E5A93C]";
+            });
+            if (btnEl) btnEl.className = "lens-btn py-1.5 rounded border border-[#E5A93C] bg-[#E5A93C] text-black font-bold";
+            showCinemaToast("LENS TURRET ROTATED", `Mounted ${specLabel} on camera body.`);
+        }
+
+        function setFilmLUT(lutClass, stockName, btnEl) {
+            const gate = document.getElementById('cinema-gate-box');
+            gate.classList.remove('lut-kodak500t', 'lut-ilfordbw', 'lut-technicolor', 'lut-infrared');
+            gate.classList.add(lutClass);
+            document.getElementById('hud-lut-spec').innerText = `STOCK: ${stockName}`;
+
+            document.querySelectorAll('.lut-btn').forEach(b => {
+                b.className = "lut-btn py-1.5 rounded border border-white/15 bg-white/5 text-stone-300 hover:border-[#E5A93C] truncate px-1";
+            });
+            if (btnEl) btnEl.className = "lut-btn py-1.5 rounded border border-[#E5A93C] bg-[#E5A93C] text-black font-bold truncate px-1";
+            showCinemaToast("FILM STOCK EMULSION", `Applied ${stockName} color profile.`);
+        }
+
+        function setAspectGate(ratioStr, badgeText, maxWidthPx, btnEl) {
+            const gate = document.getElementById('cinema-gate-box');
+            gate.style.aspectRatio = ratioStr;
+            gate.style.maxWidth = maxWidthPx;
+            document.getElementById('header-gate-badge').innerText = badgeText;
+
+            document.querySelectorAll('.gate-btn').forEach(b => {
+                b.className = "gate-btn py-1.5 rounded border border-white/15 bg-white/5 text-stone-300 hover:border-[#E5A93C]";
+            });
+            if (btnEl) btnEl.className = "gate-btn py-1.5 rounded border border-[#E5A93C] bg-[#E5A93C] text-black font-bold";
+
+            setTimeout(resizeCinemaViewport, 460);
+            showCinemaToast("APERTURE GATE MASKED", `Switched projection mask to ${badgeText}.`);
+        }
+
+        function scrubTimeline(val) {
+            timelineProgress = parseFloat(val);
+            updateSubtitleAndTimecodeFromProgress();
+        }
+
+        function jumpToSceneBeat(pct) {
+            timelineProgress = pct;
+            document.getElementById('nle-timeline-scrubber').value = pct;
+            updateSubtitleAndTimecodeFromProgress();
+            triggerSoundtrackChord(Math.floor(pct / 25));
+        }
+
+        function stepFrame(delta) {
+            isPlaying = false;
+            timelineProgress = (timelineProgress + delta * 0.15 + 100) % 100;
+            document.getElementById('nle-timeline-scrubber').value = timelineProgress;
+            updateSubtitleAndTimecodeFromProgress();
+        }
+
+        function updateSubtitleAndTimecodeFromProgress() {
+            const film = shortFilms[currentFilmIdx];
+            const subIdx = Math.min(3, Math.floor((timelineProgress / 100) * 4));
+            document.getElementById('live-cinema-subtitle').innerText = film.subtitles[subIdx];
+
+            const totalFrames = Math.floor((timelineProgress / 100) * 1800);
+            const mins = String(Math.floor(totalFrames / 1440)).padStart(2, '0');
+            const secs = String(Math.floor((totalFrames % 1440) / 24)).padStart(2, '0');
+            const frms = String(totalFrames % 24).padStart(2, '0');
+            document.getElementById('smpte-master-readout').innerText = `01:${mins}:${secs}:${frms}`;
+            document.getElementById('nle-percent-readout').innerText = `FRAME ${String(totalFrames).padStart(4, '0')} / 1800`;
+
+            const acts = ["ACT I // ESTABLISHING THE ROOM", "ACT II // THE HARDWARE CHAIN", "ACT III // BIOACOUSTIC EXCURSION", "ACT IV // THE PERMANENT RECORD"];
+            document.getElementById('nle-chapter-cue').innerText = acts[subIdx];
+        }
+
+        function openCatalogDoor(idx) {
+            const door = catalogDoors[idx];
+            if (!door) return;
+            if (door.url) {
+                window.open(door.url, '_blank', 'noopener');
+                showCinemaToast("OPENING THE FILM'S OWN DOOR", door.label);
+            } else {
+                showCinemaToast("ON THE RECORD", door.note);
+            }
+        }
+
+        function updateLiveSubtitle(txt) {
+            const clean = txt.replace(/sovereign/gi, "Institutional");
+            document.getElementById('live-cinema-subtitle').innerText = clean;
+        }
+
+        function setDollySpeed(v) { dollySpeed = parseFloat(v); }
+        function setFlareIntensity(v) {
+            document.getElementById('anamorphic-streak').style.opacity = v;
+        }
+
+        function toggleTheaterBlackout() {
+            document.body.classList.toggle('theater-blackout');
+            const active = document.body.classList.contains('theater-blackout');
+            document.getElementById('exit-theater-btn').classList.toggle('hidden', !active);
+            setTimeout(resizeCinemaViewport, 200);
+        }
+
+        // =====================================================================
+        // 4. TONE.JS 4-STEM CINEMA SOUNDTRACK SYNTHESIZER
+        // =====================================================================
+        let audioReady = false;
+        let stemGains = [];
+        let subDroneOsc, projectorNoise, rainNoise, scorePolySynth;
+
+        async function initCinemaSoundtrack() {
+            if (audioReady) return;
+            await Tone.start();
+
+            const defaultDB = [-6, -14, -12, -8];
+            for (let i = 0; i < 4; i++) {
+                stemGains.push(new Tone.Volume(defaultDB[i]).toDestination());
+            }
+
+            // Stem 0: 54Hz + 432Hz Sub-Bass Drone
+            const lowFilter = new Tone.Filter(240, "lowpass").connect(stemGains[0]);
+            subDroneOsc = new Tone.Oscillator(54, "sine").connect(lowFilter).start();
+
+            // Stem 1: 35mm Projector Sprocket Clatter (24Hz pulsed filter noise)
+            const projFilter = new Tone.Filter(1800, "bandpass").connect(stemGains[1]);
+            const projTremolo = new Tone.Tremolo(24, 0.85).connect(projFilter).start();
+            projectorNoise = new Tone.Noise("pink").connect(projTremolo).start();
+
+            // Stem 2: Ninth Ward Rain & Vinyl Surface Crackle
+            const rainFilter = new Tone.Filter(950, "lowpass").connect(stemGains[2]);
+            rainNoise = new Tone.Noise("brown").connect(rainFilter).start();
+
+            // Stem 3: Director's Harmonic Score (PolySynth)
+            const scoreReverb = new Tone.Reverb({ decay: 4.5, wet: 0.5 }).connect(stemGains[3]);
+            scorePolySynth = new Tone.PolySynth(Tone.Synth, {
+                oscillator: { type: "triangle" },
+                envelope: { attack: 0.4, decay: 0.8, sustain: 0.5, release: 2.5 }
+            }).connect(scoreReverb);
+
+            audioReady = true;
+            triggerSoundtrackChord(0);
+        }
+
+        async function toggleFilmPlayback() {
+            if (!audioReady) {
+                await initCinemaSoundtrack();
+                isPlaying = true;
+                document.getElementById('projector-btn-text').innerText = "PAUSE PROJECTOR";
+                showCinemaToast("35MM PROJECTOR LOCKED", "432Hz Bioacoustic Score & 24fps Gate running.");
+                return;
+            }
+
+            isPlaying = !isPlaying;
+            if (isPlaying) {
+                Tone.Destination.mute = false;
+                document.getElementById('projector-btn-text').innerText = "PAUSE PROJECTOR";
+            } else {
+                Tone.Destination.mute = true;
+                document.getElementById('projector-btn-text').innerText = "RESUME 35MM";
+            }
+        }
+
+        function setCinemaStemGain(idx, val) {
+            const db = parseFloat(val);
+            document.getElementById(`stem-val-${idx}`).innerText = `${db} dB`;
+            if (stemGains[idx]) {
+                stemGains[idx].volume.value = db <= -35 ? -Infinity : db;
+            }
+        }
+
+        function triggerSoundtrackChord(idx) {
+            if (!audioReady || !scorePolySynth) return;
+            const chords = [
+                ["A2", "E3", "A3", "C4"],
+                ["F2", "C3", "A3", "D4"],
+                ["D2", "A2", "F3", "C4"],
+                ["E2", "B2", "G#3", "E4"]
+            ];
+            scorePolySynth.triggerAttackRelease(chords[idx % chords.length], "2n");
+        }
+
+        // =====================================================================
+        // 5. 35MM ARCHIVAL CONTACT SHEET CAPTURE — REAL FRAME HASH (SUBTLECRYPTO SHA-256)
+        // =====================================================================
+        let latestCapturedDataURL = null;
+        let latestFrameHash = null;
+
+        // Real SHA-256 of the captured frame's PNG bytes, computed in-browser (SubtleCrypto).
+        async function sha256HexOfDataURL(dataUrl) {
+            const base64 = dataUrl.split(',')[1];
+            const bin = atob(base64);
+            const bytes = new Uint8Array(bin.length);
+            for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+            const digest = await crypto.subtle.digest('SHA-256', bytes.buffer);
+            return Array.from(new Uint8Array(digest)).map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        async function captureArchivalStill(silent = false) {
+            if (!renderer) return;
+            renderer.render(scene, camera);
+
+            // Hash the actual frame image first — the stamp below is this frame's real SHA-256.
+            const frameDataURL = renderer.domElement.toDataURL('image/png');
+            let frameHash = null;
+            try {
+                frameHash = await sha256HexOfDataURL(frameDataURL);
+            } catch (e) {
+                frameHash = null;
+            }
+            latestFrameHash = frameHash;
+
+            // Composite the frame onto an authentic 35mm Kodak contact-sheet card
+            const c = document.createElement('canvas');
+            c.width = 960;
+            c.height = 540;
+            const ctx = c.getContext('2d');
+
+            // Black celluloid border
+            ctx.fillStyle = '#040406';
+            ctx.fillRect(0, 0, c.width, c.height);
+
+            // Top & Bottom 35mm Sprocket Perforations
+            ctx.fillStyle = '#181920';
+            for (let x = 28; x < c.width - 20; x += 44) {
+                ctx.fillRect(x, 14, 24, 16);
+                ctx.fillRect(x, c.height - 30, 24, 16);
+            }
+
+            // Kodak Edge Keycode Markings
+            ctx.fillStyle = '#E5A93C';
+            ctx.font = 'bold 11px "JetBrains Mono", monospace';
+            const film = shortFilms[currentFilmIdx];
+            const smpte = document.getElementById('smpte-master-readout').innerText;
+            ctx.fillText(`KODAK 5219 500T  //  CINEMA.PRESS  //  ${film.id}: ${film.title}`, 32, 46);
+            ctx.fillText(`SMPTE ${smpte}`, c.width - 180, 46);
+
+            // Draw the captured frame into the 2.39:1 gate
+            ctx.drawImage(renderer.domElement, 32, 58, c.width - 64, 392);
+
+            // Burn in the on-gate caption
+            const subText = document.getElementById('live-cinema-subtitle').innerText;
+            ctx.fillStyle = '#FFE47A';
+            ctx.font = 'italic 19px "Cormorant Garamond", Georgia, serif';
+            ctx.textAlign = 'center';
+            ctx.fillText(subText.slice(0, 92) + (subText.length > 92 ? '…' : ''), c.width / 2, 428);
+
+            // Bottom stamp — the real SHA-256 of this frame image, labeled exactly what it is
+            ctx.textAlign = 'left';
+            ctx.fillStyle = '#10B981';
+            ctx.font = 'bold 10px "JetBrains Mono", monospace';
+            if (frameHash) {
+                ctx.fillText(`SHA-256 OF THIS FRAME IMAGE: ${frameHash}`, 32, c.height - 42);
+            } else {
+                ctx.fillText(`FRAME STAMP UNAVAILABLE — THIS BROWSER DID NOT COMPUTE A HASH`, 32, c.height - 42);
+            }
+
+            latestCapturedDataURL = c.toDataURL('image/png');
+            const hashShort = frameHash ? `${frameHash.slice(0, 16)}…` : 'NOT COMPUTED';
+            document.getElementById('viewport-hash-stamp').innerText = `SHA-256 OF FRAME: ${hashShort.toUpperCase()}`;
+
+            // Prepend to Contact Sheet Gallery
+            const grid = document.getElementById('contact-sheet-grid');
+            const card = document.createElement('div');
+            card.className = "rounded-xl bg-[#0A0C12] border border-[#E5A93C]/40 overflow-hidden shadow-2xl flex flex-col justify-between";
+            card.innerHTML = `
+                <img src="${latestCapturedDataURL}" alt="35mm Archival Frame Grab" class="w-full h-auto block border-b border-white/10">
+                <div class="p-4 font-mono-tech text-[10px] flex items-center justify-between">
+                    <div>
+                        <span class="text-[#E5A93C] font-bold block">${film.title}</span>
+                        <span class="text-stone-400">${smpte} // SHA-256 ${hashShort}</span>
+                    </div>
+                    <a href="${latestCapturedDataURL}" download="cinema_pavilion_35mm_${Date.now()}.png" class="px-3 py-1.5 rounded bg-white/10 hover:bg-[#E5A93C] hover:text-black text-white font-bold uppercase transition-all">
+                        ↓ PNG
+                    </a>
+                </div>
+            `;
+            grid.prepend(card);
+            if (grid.children.length > 3) grid.removeChild(grid.lastChild);
+
+            if (!silent) {
+                showCinemaToast("35MM FRAME CAPTURED", frameHash
+                    ? `Frame ${smpte} stamped with its real SHA-256 (${hashShort}).`
+                    : `Frame ${smpte} captured — no hash computed in this browser.`);
+            }
+        }
+
+                async function downloadLatestContactStill() {
+            if (!latestCapturedDataURL) await captureArchivalStill(true);
+            const a = document.createElement('a');
+            a.href = latestCapturedDataURL;
+            a.download = `cinema_pavilion_contact_sheet_${Date.now()}.png`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            showCinemaToast("35MM PNG EXPORTED", "Downloaded Kodak 5219 sprocketed frame grab.");
+        }
+
+        function copyCinemaCapsule() {
+            const txt = document.getElementById('cinema-aeo-capsule').innerText;
+            const ta = document.createElement('textarea');
+            ta.value = txt;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            showCinemaToast("AEO CAPSULE COPIED", "The pavilion capsule, copied to clipboard.");
+        }
+
+        let toastTimeout = null;
+        function showCinemaToast(title, msg) {
+            const box = document.getElementById('cinema-toast');
+            document.getElementById('toast-title').innerText = title;
+            document.getElementById('toast-msg').innerText = msg;
+            box.classList.remove('translate-y-28', 'opacity-0');
+            if (toastTimeout) clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                box.classList.add('translate-y-28', 'opacity-0');
+            }, 3400);
+        }
+
+        // =====================================================================
+        // 6. MASTER 24FPS / 60HZ ANIMATION & OPTICAL WAVEFORM LOOP
+        // =====================================================================
+        const waveCanvas = document.getElementById('nle-optical-waveform');
+        const waveCtx = waveCanvas.getContext('2d');
+        let tick = 0;
+
+        function drawOpticalTrack() {
+            const w = waveCanvas.width = waveCanvas.clientWidth || 600;
+            const h = waveCanvas.height = waveCanvas.clientHeight || 28;
+            waveCtx.clearRect(0, 0, w, h);
+
+            // Draw cyan optical sound track waveform
+            waveCtx.strokeStyle = '#38BDF8';
+            waveCtx.lineWidth = 1.4;
+            waveCtx.beginPath();
+            for (let x = 0; x < w; x += 2) {
+                const amp = (h * 0.38) * Math.sin(x * 0.04 + tick * 0.08) * Math.cos(x * 0.015 - tick * 0.03);
+                const y = h / 2 + amp;
+                if (x === 0) waveCtx.moveTo(x, y);
+                else waveCtx.lineTo(x, y);
+            }
+            waveCtx.stroke();
+
+            // Playhead vertical cursor on optical track
+            const px = (timelineProgress / 100) * w;
+            waveCtx.strokeStyle = '#EF4444';
+            waveCtx.lineWidth = 2;
+            waveCtx.beginPath();
+            waveCtx.moveTo(px, 0);
+            waveCtx.lineTo(px, h);
+            waveCtx.stroke();
+        }
+
+        function animateCinema() {
+            requestAnimationFrame(animateCinema);
+            tick++;
+
+            if (isPlaying) {
+                timelineProgress = (timelineProgress + 0.035 * dollySpeed) % 100;
+                if (tick % 8 === 0) {
+                    document.getElementById('nle-timeline-scrubber').value = timelineProgress;
+                    updateSubtitleAndTimecodeFromProgress();
+                }
+            }
+
+            // Animate Procedural 3D Meshes per Short Film
+            if (filmGroup) {
+                filmGroup.rotation.y = Math.sin(tick * 0.004 * dollySpeed) * 0.28 + userOrbitY;
+                filmGroup.rotation.x = Math.cos(tick * 0.003 * dollySpeed) * 0.08 + userOrbitX;
+
+                dynamicMeshes.forEach(m => {
+                    if (m.userData.waveOffset !== undefined) {
+                        // Galvez Copper Waveforms
+                        const pos = m.geometry.attributes.position.array;
+                        for (let i = 0; i < pos.length; i += 3) {
+                            pos[i + 1] = Math.sin(i * 0.15 + tick * 0.09 + m.userData.waveOffset) * 18;
+                        }
+                        m.geometry.attributes.position.needsUpdate = true;
+                    } else if (m.userData.isTerrain) {
+                        // Rising Bayou Floodwater Wireframe
+                        const pos = m.geometry.attributes.position.array;
+                        for (let i = 0; i < pos.length; i += 3) {
+                            pos[i + 2] = Math.sin(pos[i] * 0.02 + tick * 0.05) * 12;
+                        }
+                        m.geometry.attributes.position.needsUpdate = true;
+                    } else if (m.userData.isWooferRing) {
+                        // 18-Inch Peavey Sub-Bass Excursion
+                        m.position.z = Math.sin(tick * 0.12 - m.userData.radius * 0.04) * 26;
+                    } else if (m.userData.isCore) {
+                        m.rotation.x += 0.015;
+                        m.rotation.y += 0.02;
+                    } else if (m.userData.isTapeReel) {
+                        // 30 IPS Studer A800 Reel Rotation
+                        m.rotation.z -= 0.025 * dollySpeed;
+                    }
+                });
+            }
+
+            if (rainParticles) {
+                rainParticles.rotation.y += 0.0008;
+            }
+
+            renderer.render(scene, camera);
+            drawOpticalTrack();
+        }
+
+        window.onload = function () {
+            initCinemaWebGL();
+            animateCinema();
+            // Seed the contact sheet with an initial captured frame
+            setTimeout(() => {
+                captureArchivalStill(true);
+            }, 300);
+        };
+    </script>
+</body>
+</html>
