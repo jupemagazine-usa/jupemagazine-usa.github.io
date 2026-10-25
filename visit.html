@@ -59,11 +59,15 @@
   ]
 }
 </script>
-<link rel="icon" href="favicon.ico" sizes="any">
-<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
-<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<!-- Icon links are root-relative (Round 11, 2026-10-25): the 404 page is
+     served at whatever missing path was requested, so relative icon
+     hrefs resolve under that path and 404 themselves on deep misses;
+     root-relative matches the template's /assets/scene3d.js precedent. -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <meta name="theme-color" content="#f6efdd">
 <style>
   /* THEME — Capital Command design tokens, read from the live app's own
