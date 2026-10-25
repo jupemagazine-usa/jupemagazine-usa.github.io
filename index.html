@@ -211,13 +211,15 @@
     font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(1.45rem,3.2vw,1.9rem)}
   .hero .summary{color:var(--paper); text-shadow:0 1px 18px rgba(3,6,16,.85)}
   section{padding:clamp(2.5rem,6vw,4rem) 0; border-bottom:1px solid var(--line)}
-  .sec-head{display:flex; align-items:baseline; gap:1.25rem; margin-bottom:1.5rem; position:relative; padding-bottom:1.1rem}
-  .sec-head::after{ /* gold divider with the Capital Command shimmer sweep */
-    content:""; position:absolute; left:0; bottom:0; height:2px; width:100%;
-    background:linear-gradient(90deg, var(--gold) 0%, rgba(212,175,55,.12) 38%, rgba(212,175,55,.12) 62%, var(--gold-deep) 100%);
-    background-size:220% 100%; animation:divider-shimmer 7s linear infinite;
-  }
-  @keyframes divider-shimmer{0%{background-position:120% 0}100%{background-position:-120% 0}}
+  .sec-head{display:flex; align-items:baseline; gap:1.25rem; margin-bottom:1.5rem; position:relative; padding-bottom:.45rem; flex-wrap:wrap}
+  /* ROUND 10 (2026-10-24, Byron's "All" on the house marks): the section
+     divider is the house LINE MARK 2 — the Base Flow from the Line Marks
+     (~/workspace/empire/brand/line-marks.svg, id LM2-base-flow) — drawn as
+     an inline SVG under every section head, replacing the Round 1
+     gradient rule + shimmer sweep. The path is the mark itself,
+     decimated for divider duty; stroke #c79e4d on the newsprint ground.
+     Decorative only: aria-hidden in the markup. */
+  .lm2-rule{display:block; flex:0 0 100%; width:100%; height:16px; margin-top:.55rem}
   .sec-num{
     font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
     font-size:clamp(1.05rem,2.4vw,1.4rem); letter-spacing:.18em; color:var(--gold-ink); font-weight:700;
@@ -339,17 +341,30 @@
   }
   .bot-panel.open{display:flex}
   .bot-head{
-    display:flex; align-items:center; justify-content:space-between; gap:1rem;
+    display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap;
     background:var(--ink); color:var(--paper); padding:.7rem 1rem;
     border-bottom:3px solid var(--gold);
   }
+  /* ROUND 10 (2026-10-24): Line Mark 2 in gold rides at the head of the
+     chat panel, under the name row — the mark at the door. */
+  .bot-head .lm2-rule{height:10px; margin-top:.5rem}
   .bot-head .bot-name{font-family:var(--mono); font-size:.8rem; letter-spacing:.18em; text-transform:uppercase}
   .bot-head .bot-name strong{color:var(--gold-hi); font-weight:700}
   .bot-close{background:none; border:1px solid var(--gold); color:var(--paper);
     font-family:var(--mono); font-size:.72rem; letter-spacing:.12em; text-transform:uppercase;
     padding:.4rem .6rem; cursor:pointer}
   .bot-close:hover{background:var(--gold); color:var(--ink)}
-  .bot-log{overflow-y:auto; padding:1rem; display:flex; flex-direction:column; gap:.7rem; font-size:1rem; line-height:1.5}
+  /* ROUND 10 (2026-10-24): FISHING SILK at the door — the chat's reading
+     field carries the ivory silk palette (the light monogram silk's
+     ground, #f3eddc family) as layered CSS light: a soft sheen from the
+     top right, the silk's shade gathering low left, over the ivory
+     gradient. Pure CSS — no image weight; the messages keep their solid
+     paper cards, so the text contrast is unchanged. */
+  .bot-log{overflow-y:auto; padding:1rem; display:flex; flex-direction:column; gap:.7rem; font-size:1rem; line-height:1.5;
+    background:
+      radial-gradient(120% 90% at 85% 0%, rgba(255,253,244,.95), rgba(255,253,244,0) 55%),
+      radial-gradient(100% 85% at 0% 100%, rgba(217,208,184,.6), rgba(217,208,184,0) 60%),
+      linear-gradient(165deg, #faf5e6 0%, #f3eddc 48%, #ece2c8 100%)}
   .bot-msg{max-width:92%; padding:.6rem .8rem; border:1px solid var(--rule); background:var(--paper)}
   .bot-msg.bot{background:var(--paper); border-left:3px solid var(--gold)}
   .bot-msg.user{align-self:flex-end; background:var(--ink); color:var(--paper); border-color:var(--ink)}
@@ -400,7 +415,7 @@
   </div>
 
     <section aria-labelledby="h-studio">
-    <div class="sec-head"><span class="sec-num">01</span><h2 id="h-studio">The studio</h2></div>
+    <div class="sec-head"><span class="sec-num">01</span><h2 id="h-studio">The studio</h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="#c79e4d" stroke-width="13" stroke-linecap="round"/></svg></div>
     <p>The Box Studios is a development studio and a working recording studio — where the check is cut to: film and television development, tracking, overdubs, mixing, and archive-grade delivery for music, spoken word, and documentary work. Sessions are arranged through the studio's door, and the equipment used is itemized on the record of each session.</p>
     <p>The studio is also a production base. Video capture, livestream recording, and archive preparation run through the same room and the same standard: the work made here is documented here, and the work made here stays owned here.</p>
     <p>It runs vertically integrated — the room, the film and television production, the presses, and the archive under one roof, on owned ground, under one ownership.</p>
@@ -408,7 +423,7 @@
   </section>
 
     <section aria-labelledby="h-sign">
-    <div class="sec-head"><span class="sec-num">02</span><h2 id="h-sign">The sign</h2></div>
+    <div class="sec-head"><span class="sec-num">02</span><h2 id="h-sign">The sign</h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="#c79e4d" stroke-width="13" stroke-linecap="round"/></svg></div>
     <p>The building carries the studio's name. A pole sign stood on the highway under permit; it was destroyed and has not been replaced. For now the building itself is the signage — a working studio in the Eastern New Orleans Renaissance Corridor.</p>
     <p>Behind the building, a garden lot carries the Tranquility Garden of Serenity and the house's exhibition ground. The <a href="the-ground.html">Ground page</a> describes the premises in full.</p>
     <p>The Official Eastern New Orleans Renaissance.</p>
@@ -416,7 +431,7 @@
   </section>
 
     <section aria-labelledby="h-door">
-    <div class="sec-head"><span class="sec-num">03</span><h2 id="h-door">Two doors</h2></div>
+    <div class="sec-head"><span class="sec-num">03</span><h2 id="h-door">Two doors</h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="#c79e4d" stroke-width="13" stroke-linecap="round"/></svg></div>
     <p>The studio keeps two doors, and only two. Email: <a href="mailto:sales@leasethebox.com">sales@leasethebox.com</a>. And Enter The B · O · X — the chat, where matters are opened and answered in writing. No phone, no form, no other door. The studio answers from the record.</p>
     <p></p>
     <p></p>
@@ -424,7 +439,7 @@
   </section>
 
     <section aria-labelledby="h-press">
-    <div class="sec-head"><span class="sec-num">04</span><h2 id="h-press">The press</h2></div>
+    <div class="sec-head"><span class="sec-num">04</span><h2 id="h-press">The press</h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="#c79e4d" stroke-width="13" stroke-linecap="round"/></svg></div>
     <p>The house publishes through two presses. <a href="https://newmusic.press">NewMusic Press</a> covers the music — its daily review series and the industry record. <a href="https://repeatable.press">Repeatable Press</a> carries the essays, the reviews, and the credits record.</p>
     <p>The desks stand open: <a href="/record-desk/">The Record Desk</a> · <a href="https://newmusic.press/listening-desk">The Listening Desk</a>. The premiere the Listening Desk features, on the record:</p>
     <p><div class="vid-embed"><a class="yt-facade" href="https://www.youtube.com/watch?v=A99dVlqALQM" data-yt-src="https://www.youtube-nocookie.com/embed/A99dVlqALQM?autoplay=1&rel=0" data-yt-title="Aaniyah. — Have It Your Way (Official Video)" aria-label="Play video: Have It Your Way (3 minutes, 2 seconds)"><img src="https://i.ytimg.com/vi/A99dVlqALQM/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async"><span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></a></div><div class="vid-embed"><a class="yt-facade" href="https://www.youtube.com/watch?v=ydFBHq8NPMs" data-yt-src="https://www.youtube-nocookie.com/embed/ydFBHq8NPMs?autoplay=1&rel=0" data-yt-title="Breathe — the official video" aria-label="Play video: Breathe (3 minutes, 51 seconds)"><img src="https://i.ytimg.com/vi/ydFBHq8NPMs/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async"><span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></a></div></p>
@@ -432,7 +447,7 @@
   </section>
 
     <section aria-labelledby="h-world-scrolls">
-    <div class="sec-head"><span class="sec-num">05</span><h2 id="h-world-scrolls">The World Scrolls — the daily comic</h2></div>
+    <div class="sec-head"><span class="sec-num">05</span><h2 id="h-world-scrolls">The World Scrolls — the daily comic</h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="#c79e4d" stroke-width="13" stroke-linecap="round"/></svg></div>
     <p>The house's daily comic runs on Repeatable Press: The World Scrolls, a micro soap opera with a daily comic strip, hosted by Mnemo, the AI in the mixing room at New Olympus Co. Every episode and strip stands in <a href="https://repeatable.press/category/the-world-scrolls/">The World Scrolls archive</a>.</p>
     <p><span class="scrolls-mount" id="world-scrolls-latest" hidden></span></p>
     <p></p>
@@ -440,7 +455,7 @@
   </section>
 
     <section aria-labelledby="h-instagram">
-    <div class="sec-head"><span class="sec-num">06</span><h2 id="h-instagram">On Instagram — @bee._dee</h2></div>
+    <div class="sec-head"><span class="sec-num">06</span><h2 id="h-instagram">On Instagram — @bee._dee</h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="#c79e4d" stroke-width="13" stroke-linecap="round"/></svg></div>
     <p>The studio keeps a public record on Instagram — the room, the ground, and the work as it lands. Follow it at <a href="https://www.instagram.com/bee._dee/">@bee._dee</a>.</p>
     <p><div class="ig-embed"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DesB0RXDtem/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#0A0F1E;border:1px solid #3F3F46;box-shadow:none;margin:0 auto;max-width:540px;min-width:280px;padding:18px;width:100%"><a href="https://www.instagram.com/p/DesB0RXDtem/?utm_source=ig_embed&amp;utm_campaign=loading" target="_blank" rel="noopener">View this post on Instagram</a></blockquote></div>
 <script async src="https://www.instagram.com/embed.js"></script></p>
@@ -450,7 +465,7 @@
 
 
   <section aria-labelledby="h-next">
-    <div class="sec-head"><span class="sec-num">07</span><h2 id="h-next">Visit the studio</h2></div>
+    <div class="sec-head"><span class="sec-num">07</span><h2 id="h-next">Visit the studio</h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="#c79e4d" stroke-width="13" stroke-linecap="round"/></svg></div>
     <p class="cta-line">The studio receives visitors by arrangement. The <a href="visit.html">Visit page</a> carries the address and the door.</p>
     <p class="legal">This page is the studio's public overview. Operating detail is shared directly with the parties it concerns.</p>
   </section>
@@ -478,6 +493,7 @@
   <div class="bot-head">
     <span class="bot-name">Enter <strong>The B · O · X</strong> · The Box Studios</span>
     <button type="button" class="bot-close" id="bot-close">Close</button>
+    <svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="#c79e4d" stroke-width="13" stroke-linecap="round"/></svg>
   </div>
   <div class="bot-log" id="bot-log" aria-live="polite"></div>
   <div class="bot-chips" id="bot-chips"></div>
