@@ -724,7 +724,11 @@ document.addEventListener('pointerover', function warm(e) {
   if (!launch || !panel || !log || !form || !input) return;
 
   var DESK = 'sales@leasethebox.com';
-  var PROMPT_URL = 'agent-connection-prompt.md';
+  /* Round 15 (2026-10-25): root-relative, like the icon links (Round 11)
+     and the nav (Round 13) — a relative prompt URL resolved under the
+     page's own path, so the agent chip 404'd from /room-desk/ and from
+     the 404 page at any depth. The file lives at the site root. */
+  var PROMPT_URL = '/agent-connection-prompt.md';
   var started = false;
   var inIntake = false;
   var step = 0;
