@@ -315,12 +315,12 @@
      frame — the section's stone lines the top edge, the frame lifts
      a breath as the hand arrives, and where the engine supports it a
      soft under-glow in the stone's own color warms the shadow. */
-  .panel-art{margin:2rem 0 0; max-width:44rem; border:1px solid var(--gold-deep); border-top:3px solid var(--jewel, var(--gold-deep)); background:linear-gradient(180deg, #fdfaf0 0%, var(--paper-card) 60%, #efe7d2 100%); padding:1.1rem 1.1rem .9rem; box-shadow:inset 0 1px 0 rgba(255,255,255,.7), inset 0 -3px 8px rgba(122,90,29,.10), 0 14px 34px rgba(29,26,20,.20), 0 3px 8px rgba(29,26,20,.14); transition:transform .6s cubic-bezier(.2,.7,.2,1), box-shadow .6s cubic-bezier(.2,.7,.2,1)}
+  .panel-art{margin:2rem 0 0; max-width:44rem; border:1px solid var(--gold-deep); border-top:3px solid var(--jewel, var(--gold-deep)); background:linear-gradient(180deg, #fdfaf0 0%, var(--paper-card) 60%, #efe7d2 100%); padding:1.1rem 1.1rem .9rem; box-shadow:inset 0 0 0 1px rgba(255,253,244,.9), inset 0 0 0 6px rgba(199,158,77,.30), inset 0 1px 0 rgba(255,255,255,.7), inset 0 -3px 8px rgba(122,90,29,.10), 0 14px 34px rgba(29,26,20,.20), 0 3px 8px rgba(29,26,20,.14); transition:transform .6s cubic-bezier(.2,.7,.2,1), box-shadow .6s cubic-bezier(.2,.7,.2,1)}
   @media (hover:hover) and (pointer:fine){
-    .panel-art:hover{transform:translateY(-3px); box-shadow:inset 0 1px 0 rgba(255,255,255,.7), inset 0 -3px 8px rgba(122,90,29,.10), 0 22px 44px rgba(29,26,20,.24), 0 5px 12px rgba(29,26,20,.16)}
+    .panel-art:hover{transform:translateY(-3px); box-shadow:inset 0 0 0 1px rgba(255,253,244,.9), inset 0 0 0 6px rgba(199,158,77,.30), inset 0 1px 0 rgba(255,255,255,.7), inset 0 -3px 8px rgba(122,90,29,.10), 0 22px 44px rgba(29,26,20,.24), 0 5px 12px rgba(29,26,20,.16)}
   }
   @supports (color: color-mix(in srgb, red 50%, blue)){
-    .panel-art{box-shadow:inset 0 1px 0 rgba(255,255,255,.7), inset 0 -3px 8px rgba(122,90,29,.10), 0 14px 34px rgba(29,26,20,.20), 0 3px 8px rgba(29,26,20,.14), 0 28px 60px -22px color-mix(in srgb, var(--jewel, #c79e4d) 45%, transparent)}
+    .panel-art{box-shadow:inset 0 0 0 1px rgba(255,253,244,.9), inset 0 0 0 6px rgba(199,158,77,.30), inset 0 1px 0 rgba(255,255,255,.7), inset 0 -3px 8px rgba(122,90,29,.10), 0 14px 34px rgba(29,26,20,.20), 0 3px 8px rgba(29,26,20,.14), 0 28px 60px -22px color-mix(in srgb, var(--jewel, #c79e4d) 45%, transparent)}
   }
   .panel-art:empty{display:none}
   .panel-art svg{display:block; width:100%; height:auto}
@@ -363,13 +363,22 @@
      quiet push-in, the way a frame is leaned toward. */
   .vid-embed .yt-facade img{width:100%; height:100%; object-fit:cover; display:block; transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
   .vid-embed .yt-facade:hover img{transform:scale(1.025)}
-  .vid-embed .yt-play{position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
-    width:4.25rem; height:3rem; background:rgba(29,26,20,.92); border:2px solid var(--gold);
-    display:grid; place-items:center; pointer-events:none; transition:background-color .15s ease}
-  .vid-embed .yt-play svg{width:1.5rem; height:1.5rem; fill:var(--gold-hi)}
-  .vid-embed .yt-facade:hover .yt-play, .vid-embed .yt-facade:focus-visible .yt-play{background:var(--gold)}
-  .vid-embed .yt-facade:hover .yt-play svg, .vid-embed .yt-facade:focus-visible .yt-play svg{fill:var(--ink)}
+  /* ROUND 27 (graphics): the play badge is re-struck as a seal — a
+     round gold striking with a pearl ring and a bevelled face, the
+     triangle cut in ink. Same press, same behaviour; a jewel now,
+     not a button. */
+  .vid-embed .yt-play{position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); z-index:3;
+    width:3.6rem; height:3.6rem; border-radius:50%;
+    background:radial-gradient(circle at 34% 30%, #FFE98A 0%, #F5B81D 46%, #DE980A 78%, #B26F04 100%);
+    border:2px solid #7A4C06;
+    box-shadow:0 0 0 3px rgba(255,244,214,.85), 0 12px 28px rgba(5,8,20,.50), inset 0 2px 5px rgba(255,246,216,.8), inset 0 -5px 9px rgba(122,76,6,.55);
+    display:grid; place-items:center; pointer-events:none; transition:filter .2s ease}
+  .vid-embed .yt-play svg{width:1.3rem; height:1.3rem; fill:#14100a; filter:drop-shadow(0 1px 0 rgba(255,244,214,.55))}
+  .vid-embed .yt-facade:hover .yt-play, .vid-embed .yt-facade:focus-visible .yt-play{filter:brightness(1.08)}
   .vid-embed .yt-facade:focus-visible{outline:2px solid var(--gold); outline-offset:3px}
+  /* ROUND 27: the poster's inner keyline — a hairline of light gold
+     inset in the frame, the mounted-print finish. */
+  .vid-embed .yt-facade::after{content:""; position:absolute; inset:9px; border:1px solid rgba(245,217,138,.5); pointer-events:none; z-index:2}
   /* ROUND 26 (Mother Test): the Instagram line rises to .8rem. */
   .ig-line{margin:0 0 .5rem; font-family:var(--mono); font-size:.8rem; letter-spacing:.14em; text-transform:uppercase; color:var(--zinc)}
   /* ROUND 26: Instagram's own card is received inside a house frame —
@@ -418,6 +427,9 @@
     transition:background-color .3s ease, color .3s ease, transform .15s ease, box-shadow .3s ease;
   }
   .bot-launch:active{transform:translateY(1px)}
+  /* ROUND 27: the door button carries the house lozenge before its
+     words — the same diamond that rides the wordmark and the rules. */
+  .bot-launch::before{content:""; display:inline-block; width:.5rem; height:.5rem; margin-right:.6rem; vertical-align:.05rem; background:linear-gradient(135deg, #FFE98A, #DE980A); transform:rotate(45deg); box-shadow:0 0 0 1.5px rgba(122,76,6,.85)}
   .bot-launch:hover{background:var(--gold); color:var(--ink)}
   .bot-launch:focus-visible{outline:2px solid var(--gold); outline-offset:3px}
   .bot-panel{
@@ -554,15 +566,37 @@
   </div>
 
     <section aria-labelledby="h-retired">
-    <div class="sec-head"><span class="sec-num">01</span><h2 id="h-retired">The retirement</h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="url(#silk-spectrum) #c79e4d" stroke-width="13" stroke-linecap="round"/></svg></div>
+    <div class="sec-head"><span class="sec-num">01</span><h2 id="h-retired">The retirement</h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="#c79e4d" stroke-width="27" stroke-linecap="round" opacity=".13"/><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="url(#silk-spectrum) #c79e4d" stroke-width="13" stroke-linecap="round"/><path d="M16 150.6 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/><path d="M1184 120.2 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/></svg></div>
     <p>Lease The Box — the service carried under that name — is retired as of October 23, 2026. It began as an email arrangement, and the studio's business does not build around it. Nothing under that name is offered.</p>
     <p>Work already arranged in writing stands on its own papers, untouched by this notice. The door that stands in its place is <a href="/enter-the-box.html">Enter The Box</a> — for right now: learn from the Black Owned Experience.</p>
     <p></p>
-    <figure class="panel-art"><svg class="art3d" viewBox="0 0 720 400" role="img" aria-label="Diagram in depth: a closed door with a blank plaque and a gold seal — the retired service, at rest."><defs><linearGradient id="z1-f" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b0f22"/><stop offset="1" stop-color="#050814"/></linearGradient><linearGradient id="z1-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f5a524"/><stop offset=".55" stop-color="#D4AF6A"/><stop offset="1" stop-color="#c79e4d"/></linearGradient><radialGradient id="z1-o" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#f5a524" stop-opacity=".5"/><stop offset="1" stop-color="#f5a524" stop-opacity="0"/></radialGradient></defs><style>.z1 .mv{transition:transform .6s cubic-bezier(.2,.7,.2,1)}.z1 .gl{animation:z1g 6s ease-in-out infinite}@keyframes z1g{0%,100%{opacity:.12}50%{opacity:.5}}</style><rect width="720" height="400" fill="url(#z1-f)"/><rect x="288" y="66" width="144" height="254" fill="#0b0f1e" stroke="#D4AF6A" stroke-width="2"/><rect x="306" y="88" width="108" height="86" fill="none" stroke="#c79e4d" stroke-opacity=".6"/><rect x="306" y="192" width="108" height="86" fill="none" stroke="#c79e4d" stroke-opacity=".6"/><rect x="312" y="40" width="96" height="18" fill="none" stroke="#3a3f55" stroke-width="2"/><circle cx="360" cy="330" r="25" fill="url(#z1-g)"/><circle cx="360" cy="330" r="17" fill="none" stroke="#050814" stroke-opacity=".55"/><ellipse class="gl" cx="351" cy="321" rx="8" ry="5" fill="#fff7dd" opacity=".2" transform="rotate(-32 351 321)"/><text x="28" y="374" font-family="'JetBrains Mono',monospace" font-size="14" letter-spacing="3" fill="#c79e4d">RETIRED — OCTOBER 23, 2026</text></svg></figure>
+    <figure class="panel-art"><svg viewBox="0 0 720 460" role="img" aria-label="Diagram in depth: a closed door with a blank plaque and a gold seal — the retired service, at rest." xmlns="http://www.w3.org/2000/svg"><defs>
+<linearGradient id="z1-f" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#10142C"/><stop offset="1" stop-color="#050814"/></linearGradient>
+<radialGradient id="z1-bg" cx="0.5" cy="0.42" r="0.75"><stop offset="0" stop-color="#F5B81D" stop-opacity="0.16"/><stop offset="1" stop-color="#F5B81D" stop-opacity="0"/></radialGradient>
+<linearGradient id="z1-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F5D98A"/><stop offset="0.55" stop-color="#C79E4D"/><stop offset="1" stop-color="#8A6414"/></linearGradient>
+<linearGradient id="z1-g24" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFF6D8"/><stop offset="0.22" stop-color="#FFE98A"/><stop offset="0.42" stop-color="#FFDF6B"/><stop offset="0.62" stop-color="#F5B81D"/><stop offset="0.82" stop-color="#DE980A"/><stop offset="1" stop-color="#B26F04"/></linearGradient>
+<linearGradient id="z1-face" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1C2444"/><stop offset="1" stop-color="#0A0E20"/></linearGradient>
+<linearGradient id="z1-face2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0E1330"/><stop offset="1" stop-color="#05070F"/></linearGradient>
+<linearGradient id="z1-top" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#26305A"/><stop offset="1" stop-color="#131A33"/></linearGradient>
+<filter id="z1-sh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/></filter>
+<filter id="z1-blur" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="7"/></filter>
+</defs><rect width="720" height="460" fill="url(#z1-f)"/><rect width="720" height="460" fill="url(#z1-bg)"/><ellipse cx="360" cy="382" rx="200" ry="13" fill="#000" opacity="0.45" filter="url(#z1-blur)"/><g filter="url(#z1-sh)">
+<rect x="102" y="70" width="516" height="292" fill="url(#z1-face)"/>
+<rect x="102" y="70" width="516" height="292" fill="none" stroke="#C79E4D" stroke-opacity="0.45" stroke-width="1.6"/>
+<polygon points="102,362 618,362 618,390 102,390" fill="url(#z1-face2)"/>
+<rect x="282" y="92" width="156" height="262" fill="#0A0E20" stroke="url(#z1-g24)" stroke-width="3.2"/>
+<rect x="294" y="104" width="132" height="238" fill="url(#z1-face)"/>
+<rect x="294" y="104" width="132" height="42" fill="#F5B81D" fill-opacity="0.13"/>
+<rect x="320" y="150" width="80" height="30" fill="none" stroke="url(#z1-g24)" stroke-width="2"/><circle cx="360" cy="238" r="7" fill="url(#z1-g24)"/><rect x="357" y="244" width="6" height="15" rx="3" fill="url(#z1-g24)"/>
+<g class="z-seal"><circle cx="468" cy="318" r="36" fill="url(#z1-g24)"/><circle cx="468" cy="318" r="36" fill="none" stroke="#7A4C06" stroke-width="3"/>
+<circle cx="468" cy="318" r="26" fill="none" stroke="#7A4C06" stroke-opacity="0.6" stroke-width="1.2"/>
+<path d="M468 308 l10 10 -10 10 -10 -10 Z" fill="#7A4C06" opacity="1"/>
+<polygon points="450,348 462,382 472,352" fill="url(#z1-g24)"/><polygon points="486,348 474,352 488,378" fill="url(#z1-g24)" opacity="0.7"/></g>
+</g><text x="46" y="422" font-family="ui-monospace,Menlo,monospace" font-size="15" letter-spacing="3" fill="#8A6414">RETIRED — OCTOBER 23, 2026</text><path d="M26 408 l7 7 -7 7 -7 -7 Z" fill="url(#z1-g24)"/></svg></figure>
   </section>
 
     <section aria-labelledby="h-">
-    <div class="sec-head"><span class="sec-num"></span><h2 id="h-"></h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="url(#silk-spectrum) #c79e4d" stroke-width="13" stroke-linecap="round"/></svg></div>
+    <div class="sec-head"><span class="sec-num"></span><h2 id="h-"></h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="#c79e4d" stroke-width="27" stroke-linecap="round" opacity=".13"/><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="url(#silk-spectrum) #c79e4d" stroke-width="13" stroke-linecap="round"/><path d="M16 150.6 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/><path d="M1184 120.2 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/></svg></div>
     <p></p>
     <p></p>
     <p></p>
@@ -570,7 +604,7 @@
   </section>
 
     <section aria-labelledby="h-">
-    <div class="sec-head"><span class="sec-num"></span><h2 id="h-"></h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="url(#silk-spectrum) #c79e4d" stroke-width="13" stroke-linecap="round"/></svg></div>
+    <div class="sec-head"><span class="sec-num"></span><h2 id="h-"></h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="#c79e4d" stroke-width="27" stroke-linecap="round" opacity=".13"/><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="url(#silk-spectrum) #c79e4d" stroke-width="13" stroke-linecap="round"/><path d="M16 150.6 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/><path d="M1184 120.2 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/></svg></div>
     <p></p>
     <p></p>
     <p></p>
@@ -578,7 +612,7 @@
   </section>
 
     <section aria-labelledby="h-">
-    <div class="sec-head"><span class="sec-num"></span><h2 id="h-"></h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="url(#silk-spectrum) #c79e4d" stroke-width="13" stroke-linecap="round"/></svg></div>
+    <div class="sec-head"><span class="sec-num"></span><h2 id="h-"></h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="#c79e4d" stroke-width="27" stroke-linecap="round" opacity=".13"/><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="url(#silk-spectrum) #c79e4d" stroke-width="13" stroke-linecap="round"/><path d="M16 150.6 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/><path d="M1184 120.2 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/></svg></div>
     <p></p>
     <p></p>
     <p></p>
@@ -586,7 +620,7 @@
   </section>
 
     <section aria-labelledby="h-">
-    <div class="sec-head"><span class="sec-num"></span><h2 id="h-"></h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="url(#silk-spectrum) #c79e4d" stroke-width="13" stroke-linecap="round"/></svg></div>
+    <div class="sec-head"><span class="sec-num"></span><h2 id="h-"></h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="#c79e4d" stroke-width="27" stroke-linecap="round" opacity=".13"/><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="url(#silk-spectrum) #c79e4d" stroke-width="13" stroke-linecap="round"/><path d="M16 150.6 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/><path d="M1184 120.2 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/></svg></div>
     <p></p>
     <p></p>
     <p></p>
@@ -594,7 +628,7 @@
   </section>
 
     <section aria-labelledby="h-">
-    <div class="sec-head"><span class="sec-num"></span><h2 id="h-"></h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="url(#silk-spectrum) #c79e4d" stroke-width="13" stroke-linecap="round"/></svg></div>
+    <div class="sec-head"><span class="sec-num"></span><h2 id="h-"></h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="#c79e4d" stroke-width="27" stroke-linecap="round" opacity=".13"/><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="url(#silk-spectrum) #c79e4d" stroke-width="13" stroke-linecap="round"/><path d="M16 150.6 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/><path d="M1184 120.2 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/></svg></div>
     <p></p>
     <p></p>
     <p></p>
@@ -603,7 +637,7 @@
 
 
   <section aria-labelledby="h-next">
-    <div class="sec-head"><span class="sec-num">02</span><h2 id="h-next">The doors</h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="url(#silk-spectrum) #c79e4d" stroke-width="13" stroke-linecap="round"/></svg></div>
+    <div class="sec-head"><span class="sec-num">02</span><h2 id="h-next">The doors</h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="#c79e4d" stroke-width="27" stroke-linecap="round" opacity=".13"/><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="url(#silk-spectrum) #c79e4d" stroke-width="13" stroke-linecap="round"/><path d="M16 150.6 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/><path d="M1184 120.2 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/></svg></div>
     <p class="cta-line">Email — <a href="mailto:sales@leasethebox.com">sales@leasethebox.com</a> — or Enter The B · O · X. Those are the studio's only two doors.</p>
     <p class="legal">This page is a notice of retirement. It states no terms and makes no offer.</p>
   </section>
@@ -632,7 +666,7 @@
   <div class="bot-head">
     <span class="bot-name"><img class="bos-mark" src="/assets/bos-logo.png" alt="Box OS" width="26" height="26" loading="lazy">Enter <strong>The B · O · X</strong> · The Box Studios</span>
     <button type="button" class="bot-close" id="bot-close">Close</button>
-    <svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="url(#silk-spectrum) #c79e4d" stroke-width="13" stroke-linecap="round"/></svg>
+    <svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="#c79e4d" stroke-width="27" stroke-linecap="round" opacity=".13"/><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="url(#silk-spectrum) #c79e4d" stroke-width="13" stroke-linecap="round"/><path d="M16 150.6 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/><path d="M1184 120.2 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/></svg>
   </div>
   <div class="bot-log" id="bot-log" aria-live="polite"></div>
   <div class="bot-chips" id="bot-chips"></div>
@@ -709,6 +743,7 @@
     '  col = mix(col, emerald, smoothstep(0.72, 1.04, fbm(uv * 1.25 - q * 1.8 + 9.3)) * 0.09);',
     '  col = mix(col, gold,  smoothstep(0.62, 0.95, f) * 0.80);',
     '  col = mix(col, goldhi, smoothstep(0.86, 1.05, f));',
+    '  col = mix(col, vec3(1.0, 0.957, 0.839), smoothstep(0.93, 1.02, f) * 0.38);',
     '  col *= 1.0 - 0.32 * dot(uv * 0.55, uv * 0.55);',
     '  gl_FragColor = vec4(col, 1.0);',
     '}'
