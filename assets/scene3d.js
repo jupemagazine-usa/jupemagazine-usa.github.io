@@ -32,7 +32,7 @@
     var key = new THREE.DirectionalLight(0xf5e7c8, 1.6);
     key.position.set(6, 10, 4);
     scene.add(key);
-    var rim = new THREE.DirectionalLight(GOLD, 0.5);
+    var rim = new THREE.DirectionalLight(0x0F52BA, 0.55);
     rim.position.set(-7, 3, -6);
     scene.add(rim);
 
@@ -101,6 +101,29 @@
       });
     }
 
+    /* ROUND 26 (2026-10-30) — THE GEMS. The couture color, cut and set
+       in the field: twenty-six octahedra in the house stone system
+       (amethyst · sapphire · ruby · emerald · topaz, cycled) drifting
+       among the gold and obsidian shards — clearcoat physical stones,
+       lit by the same key. Peridot stays Byron's personal mark and
+       does not ride the company field. */
+    var JEWELS = [0x9966CC, 0x0F52BA, 0xB3122E, 0x0B8A4B, 0xE8A33D];
+    var GEMS = 26;
+    var gemMesh = new THREE.InstancedMesh(new THREE.OctahedronGeometry(1, 0),
+      new THREE.MeshPhysicalMaterial({ color: 0xffffff, metalness: 0.1, roughness: 0.05, clearcoat: 1, flatShading: true }), GEMS);
+    var gems = [];
+    for (var gj = 0; gj < GEMS; gj++) {
+      gemMesh.setColorAt(gj, new THREE.Color(JEWELS[gj % JEWELS.length]));
+      gems.push({
+        x: (rand() - 0.5) * 15, y: rand() * 5.4 - 1.2, z: (rand() - 0.5) * 10 - 1,
+        rx: rand() * 3, ry: rand() * 3,
+        scale: 0.10 + rand() * 0.13,
+        spin: 0.2 + rand() * 0.45
+      });
+    }
+    if (gemMesh.instanceColor) gemMesh.instanceColor.needsUpdate = true;
+    scene.add(gemMesh);
+
     function size() {
       var w = Math.max(2, hero.clientWidth), h = Math.max(2, hero.clientHeight);
       renderer.setSize(w, h, false);
@@ -141,6 +164,15 @@
       goldMesh.count = gi; darkMesh.count = di;
       goldMesh.instanceMatrix.needsUpdate = true;
       darkMesh.instanceMatrix.needsUpdate = true;
+      for (var gk = 0; gk < gems.length; gk++) {
+        var gm = gems[gk];
+        dummy.position.set(gm.x, gm.y + Math.sin(t * gm.spin + gm.x) * 0.3, gm.z);
+        dummy.rotation.set(gm.rx + t * gm.spin * 0.5, gm.ry + t * gm.spin * 0.35, 0);
+        dummy.scale.setScalar(gm.scale);
+        dummy.updateMatrix();
+        gemMesh.setMatrixAt(gk, dummy.matrix);
+      }
+      gemMesh.instanceMatrix.needsUpdate = true;
       renderer.render(scene, camera);
     }
 

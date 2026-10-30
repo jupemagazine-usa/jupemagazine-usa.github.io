@@ -69,6 +69,20 @@
        definition on record, so they silently fell back to the body
        face; the token now carries the stack they were written for. */
     --mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+    /* ROUND 26 (2026-10-30, Byron: "please make this site look like it
+       cost a million bucks" · "couture colored" · "Make look, Feel and
+       communicate with Couture" · "Momma proof"): the house STONE
+       SYSTEM joins the tokens as the couture color vocabulary —
+       amethyst · sapphire · ruby · emerald · topaz · diamond (peridot
+       is Byron's personal mark and never rides the company dress).
+       The stones are DECORATION ONLY — silk lining and accent, never
+       text: measured on the paper ground, amethyst 3.57:1, emerald
+       3.85:1, topaz 1.88:1 all fail AA for text, and the contrast law
+       is untouched — every word still rides ink (15.13:1), gold-ink
+       #7f641c (4.89:1), or zinc (4.91:1). */
+    --amethyst:#9966CC; --sapphire:#0F52BA; --ruby:#B3122E;
+    --emerald:#0B8A4B; --topaz:#E8A33D; --diamond:#EDEFF2;
+    --silk:linear-gradient(90deg, var(--gold-hi), var(--topaz) 30%, var(--ruby) 52%, var(--amethyst) 68%, var(--sapphire) 84%, var(--gold-deep));
   }
   *{box-sizing:border-box; border-radius:var(--radius)}
   /* Round 7 (2026-10-24): scroll-padding-top keeps fragment targets
@@ -76,12 +90,17 @@
      sticky masthead when the browser scrolls them to the top of the
      viewport — WCAG 2.2 AA Focus Not Obscured (2.4.11). From the
      template's own values the masthead stands ~3.9rem tall on one
-     row and wraps to ~6.2rem at phone width; 7rem clears both. */
-  html{scroll-behavior:smooth; scroll-padding-top:7rem}
+     row and wraps to ~6.2rem at phone width; 7rem clears both.
+     ROUND 26 (2026-10-30): the masthead grew — fuller nav targets
+     and the silk thread under the letterhead — so the clearance
+     rises to 8rem to keep the same promise. */
+  html{scroll-behavior:smooth; scroll-padding-top:8rem}
   body{
     margin:0; background:var(--paper); color:var(--ink);
     font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;
-    font-size:1.0625rem; line-height:1.7; overflow-x:hidden;
+    /* ROUND 26 (Mother Test): the reading size rises 17px → 18px —
+       nothing important set small, in Ma's words by effect. */
+    font-size:1.125rem; line-height:1.75; overflow-x:hidden;
     -webkit-font-smoothing:antialiased;
   }
   ::selection{background:var(--gold); color:var(--ink)}
@@ -93,18 +112,32 @@
   .visually-hidden{position:absolute !important; width:1px !important; height:1px !important;
     margin:-1px; padding:0; overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%);
     white-space:nowrap; border:0}
-  .masthead{background:rgba(246,239,221,.95); color:var(--ink); position:sticky; top:0; z-index:20;
+  .masthead{background:linear-gradient(180deg, #fbf5e4 0%, rgba(246,239,221,.95) 55%); color:var(--ink); position:sticky; top:0; z-index:20;
     border-bottom:4px double var(--ink); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px)}
+  /* ROUND 26: a silk-spectrum thread runs the width of the letterhead,
+     just above its double rule — the couture lining of the masthead. */
+  .masthead::after{content:""; display:block; height:2px; background:var(--silk); opacity:.85}
   .masthead-in{max-width:var(--max); margin:0 auto; padding:.65rem clamp(1rem,4vw,2rem);
     display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap}
   .wordmark{font-weight:700; font-size:.95rem; letter-spacing:.35em; text-transform:uppercase}
   .wordmark strong{color:var(--gold-ink); font-weight:700}
+  /* ROUND 26: the masthead's set stone — one ruby lozenge after the
+     name, the house's red stone worn at the head of every page. */
+  .wordmark::after{content:""; display:inline-block; width:.46em; height:.46em; margin-left:1em;
+    background:var(--ruby); transform:rotate(45deg); vertical-align:.1em;
+    box-shadow:0 1px 3px rgba(29,26,20,.35)}
   nav .nav-list{list-style:none; display:flex; gap:1.25rem; margin:0; padding:0; flex-wrap:wrap}
   /* Round 4 (2026-10-23): inline-block + block padding gives each nav
      link a target height above the WCAG 2.2 AA target-size minimum
      (2.5.8, 24 CSS px) without changing the masthead's look. */
-  nav .nav-list a{color:var(--ink); text-decoration:none; font-size:.82rem; letter-spacing:.14em; text-transform:uppercase; display:inline-block; padding:.45rem 0}
+  /* ROUND 26 (Mother Test + FEEL): nav targets rise to a full 44px
+     touch height at a slightly larger label, and each link grows a
+     gold underline as the hand arrives — quiet, weighted, couture. */
+  nav .nav-list a{color:var(--ink); text-decoration:none; font-size:.88rem; letter-spacing:.14em; text-transform:uppercase; display:inline-block; padding:.62rem 0; position:relative; transition:color .25s ease}
+  nav .nav-list a::after{content:""; position:absolute; left:0; right:0; bottom:.34rem; height:2px; background:var(--gold);
+    transform:scaleX(0); transform-origin:left; transition:transform .38s cubic-bezier(.2,.7,.2,1)}
   nav .nav-list a:hover{color:var(--gold-ink)}
+  nav .nav-list a:hover::after{transform:scaleX(1)}
   main{max-width:var(--max); margin:0 auto; padding:0 clamp(1rem,4vw,2rem) 4rem}
   /* HERO — full-bleed band carrying the 5D/8K liquid movement (WebGL canvas).
      Fallback composition (no WebGL / no JS) is the layered gradient below. */
@@ -120,8 +153,14 @@
   }
   .hero .liquid{position:absolute; inset:0; width:100%; height:100%; z-index:0; display:block}
   .hero canvas.scene3d{position:absolute; inset:0; width:100%; height:100%; z-index:1; display:none}
+  /* ROUND 26 (COMMUNICATE + Mother Test): a soft veil of the deep
+     field gathers behind the title column, so the words stand clear
+     of the art's bright work on every frame of the motion — the art
+     keeps the right side of the field; the reading keeps the left. */
   .hero::after{content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
-    background:linear-gradient(180deg, rgba(3,6,16,.18) 0%, rgba(3,6,16,0) 34%, rgba(3,6,16,.55) 100%)}
+    background:
+      radial-gradient(58% 72% at 28% 52%, rgba(3,6,16,.52), rgba(3,6,16,0) 70%),
+      linear-gradient(180deg, rgba(3,6,16,.18) 0%, rgba(3,6,16,0) 34%, rgba(3,6,16,.55) 100%)}
   .hero>*{position:relative; z-index:2}
   .hero-grand{
     min-height:92svh; display:flex; flex-direction:column; justify-content:center;
@@ -140,6 +179,9 @@
     font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
     font-size:clamp(.8rem,2vw,1rem); letter-spacing:.3em; text-transform:uppercase; color:var(--gold-hi);
   }
+  /* ROUND 26: the couture dash — one short silk-spectrum bar struck
+     above the roles line, the spectrum carried at the title's side. */
+  .hero .roles::before{content:""; display:block; width:3.4rem; height:3px; margin-bottom:1.15rem; background:var(--silk)}
   .summary{line-height:1.45; max-width:42rem; margin:2rem 0 0;
     font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(1.45rem,3.2vw,1.9rem)}
   .hero .summary{color:var(--paper); text-shadow:0 1px 18px rgba(3,6,16,.85)}
@@ -157,13 +199,36 @@
     font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
     font-size:clamp(1.05rem,2.4vw,1.4rem); letter-spacing:.18em; color:var(--gold-ink); font-weight:700;
   }
+  /* ROUND 26 (LOOK — couture colored): every section wears ONE stone
+     of the house system, cycled in order — amethyst, sapphire, ruby,
+     emerald, topaz, gold — set as a lozenge before its number and
+     carried as the lining color of its frames (--jewel). Decorative
+     only: the number itself stays gold-ink, AA on the paper. */
+  main > section{--jewel:var(--gold-deep)}
+  main > section:nth-of-type(1){--jewel:var(--amethyst)}
+  main > section:nth-of-type(2){--jewel:var(--sapphire)}
+  main > section:nth-of-type(3){--jewel:var(--ruby)}
+  main > section:nth-of-type(4){--jewel:var(--emerald)}
+  main > section:nth-of-type(5){--jewel:var(--topaz)}
+  main > section:nth-of-type(6){--jewel:var(--gold-deep)}
+  main > section:nth-of-type(7){--jewel:var(--amethyst)}
+  .sec-num::before{content:""; display:inline-block; width:.42em; height:.42em; margin-right:.55em;
+    background:var(--jewel); transform:rotate(45deg) translateY(-.05em);
+    box-shadow:0 1px 3px rgba(29,26,20,.35)}
   .sec-head h2{font-family:'Playfair Display',Georgia,serif; font-size:clamp(1.8rem,4.5vw,3rem); margin:0; line-height:1.05; text-shadow:0 1px 0 rgba(255,252,240,.5), 0 3px 7px rgba(29,26,20,.16)}
   section p{max-width:44rem}
   section p:empty{display:none}
   section:has(> .sec-head h2:empty){display:none}
   .cta-line{font-size:1.15rem}
-  .legal{font-size:.92rem; line-height:1.6; color:var(--zinc); border-left:3px solid var(--gold); padding-left:1rem; max-width:44rem}
-  footer{background:var(--ink); color:var(--paper); border-top:3px solid var(--gold)}
+  /* ROUND 26 (Mother Test): the small print rises to a full 1rem —
+     the legal line is part of the record, not a whisper under it. */
+  .legal{font-size:1rem; line-height:1.6; color:var(--zinc); border-left:3px solid var(--gold); padding-left:1rem; max-width:44rem}
+  footer{background:var(--ink); color:var(--paper); border-top:3px solid var(--gold); position:relative}
+  /* ROUND 26: the colophon is crowned with the silk — a diamond-led
+     spectrum ribbon laid under the gold rule at the foot of every
+     page, the full couture color carried to the last line. */
+  footer::before{content:""; display:block; height:3px;
+    background:linear-gradient(90deg, var(--diamond), var(--gold-hi) 22%, var(--topaz) 42%, var(--ruby) 58%, var(--amethyst) 74%, var(--sapphire) 88%, var(--gold-deep))}
   footer .ig-line, footer .press-line{color:#b8ad8f}
   .footer-in{max-width:var(--max); margin:0 auto; padding:2.5rem clamp(1rem,4vw,2rem)}
   footer a{color:var(--gold-hi)}
@@ -171,7 +236,7 @@
   .next-step{font-size:1.15rem}
   .press-line{
     font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
-    font-size:.85rem; letter-spacing:.22em; text-transform:uppercase; color:var(--zinc);
+    font-size:.9rem; letter-spacing:.22em; text-transform:uppercase; color:var(--zinc);
   }
   .press-line a{letter-spacing:.22em}
   /* THE WORLD SCROLLS — the daily-comic mount. The span stays hidden
@@ -181,7 +246,9 @@
   .scrolls-mount[hidden]{display:none}
   p:has(> .scrolls-mount[hidden]){display:none}
   .scrolls-card{display:block; max-width:44rem; text-decoration:none}
-  .scrolls-card img{display:block; width:100%; height:auto; border:1px solid var(--gold-deep)}
+  /* ROUND 26: the comic's card is mounted like the panels — the
+     section's stone lines its top edge, the print shadow under it. */
+  .scrolls-card img{display:block; width:100%; height:auto; border:1px solid var(--gold-deep); border-top:3px solid var(--jewel, var(--gold-deep)); box-shadow:0 14px 34px rgba(29,26,20,.18), 0 3px 8px rgba(29,26,20,.12)}
   .scrolls-cap{display:block; margin-top:.7rem}
   .scrolls-cap .cap-label{
     font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
@@ -197,13 +264,23 @@
      figure with an accessible name (role="img" + aria-label), and the
      mono micro-label caption treatment used across the site. Sections
      without a panel carry an empty figure, which never renders. */
-  .panel-art{margin:2rem 0 0; max-width:44rem; border:1px solid var(--gold-deep); background:linear-gradient(180deg, #fdfaf0 0%, var(--paper-card) 60%, #efe7d2 100%); padding:1.1rem 1.1rem .9rem; box-shadow:inset 0 1px 0 rgba(255,255,255,.7), inset 0 -3px 8px rgba(122,90,29,.10), 0 14px 34px rgba(29,26,20,.20), 0 3px 8px rgba(29,26,20,.14)}
+  /* ROUND 26 (LOOK + FEEL): the panel is a mounted print in a couture
+     frame — the section's stone lines the top edge, the frame lifts
+     a breath as the hand arrives, and where the engine supports it a
+     soft under-glow in the stone's own color warms the shadow. */
+  .panel-art{margin:2rem 0 0; max-width:44rem; border:1px solid var(--gold-deep); border-top:3px solid var(--jewel, var(--gold-deep)); background:linear-gradient(180deg, #fdfaf0 0%, var(--paper-card) 60%, #efe7d2 100%); padding:1.1rem 1.1rem .9rem; box-shadow:inset 0 1px 0 rgba(255,255,255,.7), inset 0 -3px 8px rgba(122,90,29,.10), 0 14px 34px rgba(29,26,20,.20), 0 3px 8px rgba(29,26,20,.14); transition:transform .6s cubic-bezier(.2,.7,.2,1), box-shadow .6s cubic-bezier(.2,.7,.2,1)}
+  @media (hover:hover) and (pointer:fine){
+    .panel-art:hover{transform:translateY(-3px); box-shadow:inset 0 1px 0 rgba(255,255,255,.7), inset 0 -3px 8px rgba(122,90,29,.10), 0 22px 44px rgba(29,26,20,.24), 0 5px 12px rgba(29,26,20,.16)}
+  }
+  @supports (color: color-mix(in srgb, red 50%, blue)){
+    .panel-art{box-shadow:inset 0 1px 0 rgba(255,255,255,.7), inset 0 -3px 8px rgba(122,90,29,.10), 0 14px 34px rgba(29,26,20,.20), 0 3px 8px rgba(29,26,20,.14), 0 28px 60px -22px color-mix(in srgb, var(--jewel, #c79e4d) 45%, transparent)}
+  }
   .panel-art:empty{display:none}
   .panel-art svg{display:block; width:100%; height:auto}
   .panel-art figcaption{
     margin-top:.8rem;
     font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
-    font-size:.78rem; letter-spacing:.22em; text-transform:uppercase; color:var(--zinc);
+    font-size:.85rem; letter-spacing:.22em; text-transform:uppercase; color:var(--zinc);
   }
   /* 3D ART SLOTS ([BUILD-1023] step 1, 2026-10-23) — every panel figure
      carries one self-contained inline-SVG piece (class art3d): layered
@@ -223,15 +300,22 @@
      inside the pages in a single treatment: paper-width, gold-deep
      frame, lazy-loaded, titled for accessibility. */
   .vid-embed{max-width:44rem; margin:1.5rem 0}
-  .vid-embed iframe{display:block; width:100%; aspect-ratio:16/9; height:auto; border:1px solid var(--gold-deep); background:#000}
+  /* ROUND 26: the films are mounted, not pasted — the section's stone
+     lines the frame's top edge and the mounted-print shadow sits
+     under the player, the same dress as the panels. */
+  .vid-embed iframe{display:block; width:100%; aspect-ratio:16/9; height:auto; border:1px solid var(--gold-deep); border-top:3px solid var(--jewel, var(--gold-deep)); background:#000; box-shadow:0 14px 34px rgba(29,26,20,.20), 0 3px 8px rgba(29,26,20,.14)}
   .vid-embed.map-embed iframe{aspect-ratio:4/3; background:var(--paper-card)}
   /* Click-to-play facade (code pattern from the Gemini seat, 2026-10-23,
      adapted to house tokens — the poster is a mounted print, the badge
      an ink-and-gold seal; nothing loads from YouTube until the visitor
      presses play, so the page carries no third-party weight up front). */
   .vid-embed .yt-facade{display:block; position:relative; width:100%; aspect-ratio:16/9;
-    border:1px solid var(--gold-deep); background:#000; overflow:hidden; padding:0; cursor:pointer}
-  .vid-embed .yt-facade img{width:100%; height:100%; object-fit:cover; display:block}
+    border:1px solid var(--gold-deep); border-top:3px solid var(--jewel, var(--gold-deep)); background:#000; overflow:hidden; padding:0; cursor:pointer;
+    box-shadow:0 14px 34px rgba(29,26,20,.20), 0 3px 8px rgba(29,26,20,.14)}
+  /* ROUND 26 (FEEL): the poster breathes under the hand — a slow,
+     quiet push-in, the way a frame is leaned toward. */
+  .vid-embed .yt-facade img{width:100%; height:100%; object-fit:cover; display:block; transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+  .vid-embed .yt-facade:hover img{transform:scale(1.025)}
   .vid-embed .yt-play{position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
     width:4.25rem; height:3rem; background:rgba(29,26,20,.92); border:2px solid var(--gold);
     display:grid; place-items:center; pointer-events:none; transition:background-color .15s ease}
@@ -239,11 +323,31 @@
   .vid-embed .yt-facade:hover .yt-play, .vid-embed .yt-facade:focus-visible .yt-play{background:var(--gold)}
   .vid-embed .yt-facade:hover .yt-play svg, .vid-embed .yt-facade:focus-visible .yt-play svg{fill:var(--ink)}
   .vid-embed .yt-facade:focus-visible{outline:2px solid var(--gold); outline-offset:3px}
-  .ig-line{margin:0 0 .5rem; font-family:var(--mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--zinc)}
-  .ig-embed{max-width:540px; margin:2rem auto .25rem}
+  /* ROUND 26 (Mother Test): the Instagram line rises to .8rem. */
+  .ig-line{margin:0 0 .5rem; font-family:var(--mono); font-size:.8rem; letter-spacing:.14em; text-transform:uppercase; color:var(--zinc)}
+  /* ROUND 26: Instagram's own card is received inside a house frame —
+     the stone-lined mount the panels wear, so the guest's card sits
+     in the room's dress instead of floating on the paper. */
+  .ig-embed{max-width:36rem; margin:2rem auto .25rem; padding:1.1rem;
+    border:1px solid var(--gold-deep); border-top:3px solid var(--jewel, var(--gold-deep));
+    background:linear-gradient(180deg, #fdfaf0 0%, var(--paper-card) 60%, #efe7d2 100%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.7), 0 14px 34px rgba(29,26,20,.18), 0 3px 8px rgba(29,26,20,.12)}
   .ig-embed .instagram-media{margin:0 auto !important; width:100% !important; min-width:0 !important}
-  .door-card{margin:1.6rem 0 0; border:1px solid var(--gold-deep); background:var(--paper-card); padding:1.05rem 1.2rem}
-  .door-link{font-family:var(--mono); font-size:.8rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-ink); text-decoration:underline; text-underline-offset:4px}
+  /* ROUND 26 (COMMUNICATE — the doors dressed as doors): the card
+     gains the couture frame — stone-lined top edge, silk-shaded
+     ground, mounted shadow — and the door's own label rises to
+     .92rem so the way in reads at a glance. The words do not move. */
+  .door-card{margin:1.6rem 0 0; border:1px solid var(--gold-deep); border-top:3px solid var(--jewel, var(--gold-deep)); background:linear-gradient(180deg, #fdfaf0 0%, var(--paper-card) 55%, #f3ecd8 100%); padding:1.25rem 1.4rem; box-shadow:inset 0 1px 0 rgba(255,255,255,.7), 0 14px 34px rgba(29,26,20,.16), 0 3px 8px rgba(29,26,20,.12)}
+  .door-link{font-family:var(--mono); font-size:.92rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-ink); text-decoration:underline; text-underline-offset:4px}
+  /* ROUND 26 (COMMUNICATE): wherever the email door stands inside the
+     prose, it is set as the door — mono, gold-ink, a two-weight gold
+     underline — so the way in is visible inside the sentence that
+     names it, on every page, without moving a word. */
+  section p a[href^="mailto:"], .cta-line a[href^="mailto:"]{
+    font-family:var(--mono); font-size:.93em; letter-spacing:.03em; color:var(--gold-ink);
+    text-decoration:underline; text-decoration-color:var(--gold); text-decoration-thickness:2px; text-underline-offset:4px;
+    padding:.08em .12em}
+  footer a[href^="mailto:"]{font-family:var(--mono); letter-spacing:.03em}
   .door-note{color:var(--ink)}
   button.door-link{font-family:var(--mono); background:none; border:0; padding:0; cursor:pointer; text-align:left}
   button.door-link:hover{color:var(--ink)}
@@ -262,7 +366,11 @@
     background:linear-gradient(180deg, #2a251b 0%, var(--ink) 55%, #100e0a 100%); color:var(--paper); border:2px solid var(--gold);
     padding:.85rem 1.1rem; cursor:pointer;
     box-shadow:inset 0 1px 0 rgba(240,235,222,.28), inset 0 -2px 0 rgba(0,0,0,.45), 0 10px 28px rgba(29,26,20,.45), 0 3px 8px rgba(29,26,20,.35);
+    /* ROUND 26 (FEEL): the door answers the hand with weight — a slow
+       sheen change, and a one-pixel settle when pressed. */
+    transition:background-color .3s ease, color .3s ease, transform .15s ease, box-shadow .3s ease;
   }
+  .bot-launch:active{transform:translateY(1px)}
   .bot-launch:hover{background:var(--gold); color:var(--ink)}
   .bot-launch:focus-visible{outline:2px solid var(--gold); outline-offset:3px}
   .bot-panel{
@@ -273,6 +381,10 @@
     border:2px solid var(--ink); box-shadow:inset 0 1px 0 rgba(255,252,240,.6), 0 24px 60px rgba(29,26,20,.5), 0 6px 18px rgba(29,26,20,.35);
   }
   .bot-panel.open{display:flex}
+  /* ROUND 26 (FEEL): the panel rises the way a lid lifts — a short,
+     eased settle. The standing reduced-motion rule stills it whole. */
+  .bot-panel.open{animation:bot-rise .38s cubic-bezier(.2,.7,.2,1)}
+  @keyframes bot-rise{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:none}}
   .bot-head{
     display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap;
     background:var(--ink); color:var(--paper); padding:.7rem 1rem;
@@ -283,6 +395,9 @@
   .bot-head .lm2-rule{height:10px; margin-top:.5rem}
   .bot-head .bot-name{font-family:var(--mono); font-size:.8rem; letter-spacing:.18em; text-transform:uppercase}
   .bot-head .bot-name strong{color:var(--gold-hi); font-weight:700}
+  /* ROUND 17 (2026-10-26): the BOS mark rides the chat head — the
+     system's own mark at the head of its panel. */
+  .bot-head .bos-mark{width:26px;height:26px;border-radius:50%;vertical-align:-7px;margin-right:.55rem}
   .bot-close{background:none; border:1px solid var(--gold); color:var(--paper);
     font-family:var(--mono); font-size:.72rem; letter-spacing:.12em; text-transform:uppercase;
     padding:.4rem .6rem; cursor:pointer}
@@ -304,10 +419,13 @@
   .bot-msg p{margin:0 0 .4rem} .bot-msg p:last-child{margin-bottom:0}
   .bot-chips{display:flex; flex-wrap:wrap; gap:.45rem; padding:0 1rem .8rem}
   .bot-chips:empty{display:none}
+  /* ROUND 26 (Mother Test): the choices rise to .8rem on a fuller
+     pad — a chip Ma can read is a chip Ma can tap. */
   .bot-chip{
-    font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase;
+    font-family:var(--mono); font-size:.8rem; letter-spacing:.1em; text-transform:uppercase;
     background:var(--paper); color:var(--ink); border:1px solid var(--gold-deep);
-    padding:.5rem .65rem; cursor:pointer; text-decoration:none; display:inline-block;
+    padding:.55rem .7rem; cursor:pointer; text-decoration:none; display:inline-block;
+    transition:background-color .25s ease, color .25s ease;
   }
   .bot-chip:hover{background:var(--gold); color:var(--ink)}
   .bot-form{display:flex; gap:.5rem; padding:.8rem 1rem 1rem; border-top:1px solid var(--rule)}
@@ -321,14 +439,55 @@
     background:var(--ink); color:var(--paper); border:2px solid var(--gold); padding:.55rem .8rem; cursor:pointer;
   }
   .bot-send:hover{background:var(--gold); color:var(--ink)}
+  /* ROUND 26 (FEEL): the scroll itself is dressed — a slim gold thumb
+     on the paper, in the engines that take styling. */
+  html{scrollbar-color:var(--gold-deep) var(--paper)}
+  ::-webkit-scrollbar{width:10px}
+  ::-webkit-scrollbar-track{background:var(--paper)}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(180deg, var(--gold-hi), var(--gold-deep)); border:2px solid var(--paper)}
+  /* ROUND 26 (FEEL — the couture reveal): sections settle in as they
+     arrive, a page of a bound book being turned. The hidden state is
+     set ONLY by the reveal script (html.reveal) and never under
+     reduced motion, so without the script every section simply
+     stands, fully visible — nothing is ever hidden by dress alone. */
+  html.reveal main > section{opacity:0; transform:translateY(16px);
+    transition:opacity .85s ease, transform .85s cubic-bezier(.2,.7,.2,1)}
+  html.reveal main > section.inview{opacity:1; transform:none}
+  /* ROUND 26: print always stands fully revealed — paper gets the
+     whole record, never a page still waiting to arrive. */
+  @media print{
+    html.reveal main > section{opacity:1 !important; transform:none !important}
+  }
+  /* ROUND 26 (Mother Test, phone dress): the wordmark holds one line,
+     the grand hero's reading clears the chat door at the foot of the
+     screen, and the colophon's last lines always clear it too. */
+  @media (max-width:640px){
+    .wordmark{font-size:.82rem; letter-spacing:.18em}
+    nav .nav-list{gap:.95rem}
+    .hero-grand{padding-bottom:8.5rem}
+    .bot-launch{font-size:.72rem; padding:.95rem 1rem}
+    .footer-in{padding-bottom:6.5rem}
+  }
 @font-face{font-family:'Jupiter Deco';src:url(data:font/ttf;base64,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AG8AQwB1AHQAIABUAHcAbwBKAHUAcABpAHQAZQByACAARABlAGMAbwAgAEMAdQB0ACAAVAB3AG8AIAAwAC4AMQAgIBQAIABCAHkAcgBvAG4AIABKAHUAcABpAHQAZQByAEoAdQBwAGkAdABlAHIAIABEAGUAYwBvACAAQwB1AHQAIABUAHcAbwBWAGUAcgBzAGkAbwBuACAAMAAuADEASgB1AHAAaQB0AGUAcgBEAGUAYwBvAC0AQwB1AHQAVAB3AG8AQgB5AHIAbwBuACAASgB1AHAAaQB0AGUAcgAgAEEAZwBlAG4AYwB5AEIAeQByAG8AbgAgAEoAdQBwAGkAdABlAHIAQQByAHQAIABEAGUAYwBvACAAZABpAHMAcABsAGEAeQAgAGYAYQBjAGUAIABkAHIAYQB3AG4AIABmAG8AcgAgAEIAeQByAG8AbgAgAEoAdQBwAGkAdABlAHIAICAUACAAbwByAGkAZwBpAG4AYQBsACAAbABlAHQAdABlAHIAZgBvAHIAbQBzACAAaQBuACAAdABoAGUAIABEAGUAYwBvACAAcwBwAGkAcgBpAHQAOgAgAGQAbwB1AGIAbABlAC0AbABpAG4AZQAgAHMAdABlAG0AcwAsACAAZABpAGEAbQBvAG4AZAAgAHQAZQByAG0AaQBuAGEAbABzACwAIAB0AGgAZQAgAEoAdQBwAGkAdABlAHIAIABiAGEAbgBkACAAYQBjAHIAbwBzAHMAIAB0AGgAZQAgAE8ALgBQAHIAbwBwAHIAaQBlAHQAYQByAHkALgAgACgAYwApACAAQgB5AHIAbwBuACAASgB1AHAAaQB0AGUAcgAuACAAQQBsAGwAIAByAGkAZwBoAHQAcwAgAHIAZQBzAGUAcgB2AGUAZAAuAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEAAAAJAAlACYAJwAoACkAKgArACwALQAuAC8AMAAxADIAMwA0ADUANgA3ADgAOQA6ADsAPAA9ABMAFAAVABYAFwAYABkAGgAbABwAAwARAA8AHQAeABAAsgCzAAoAtwAFAAQAIgASAAsADAAOAAgABwAGAAkAIwCLAIoAjACHAKsADQAgAEIAXwAA) format('truetype');font-display:swap}
 @font-face{font-family:'Jupiter Box';src:url(data:font/ttf;base64,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AG8AeAAgAEMAdQB0ACAATwBuAGUAIAAwAC4AMQAgIBQAIABCAHkAcgBvAG4AIABKAHUAcABpAHQAZQByAEoAdQBwAGkAdABlAHIAIABCAG8AeAAgAEMAdQB0ACAATwBuAGUAVgBlAHIAcwBpAG8AbgAgADAALgAxAEoAdQBwAGkAdABlAHIAQgBvAHgALQBDAHUAdABPAG4AZQBCAHkAcgBvAG4AIABKAHUAcABpAHQAZQByACAAQQBnAGUAbgBjAHkAQgB5AHIAbwBuACAASgB1AHAAaQB0AGUAcgBUAGgAZQAgAGgAbwB1AHMAZQAgAGYAbwBuAHQAIABvAGYAIABCAHkAcgBvAG4AIABKAHUAcABpAHQAZQByAC4AIABPAHIAaQBnAGkAbgBhAGwAIABnAGUAbwBtAGUAdAByAGkAYwAgAGQAaQBzAHAAbABhAHkAIABmAGEAYwBlACAgFAAgAGIAbwB3AGwAcwAgAGQAcgBhAHcAbgAgAGEAcwAgAGIAbwB4AGUAcwAgAHcAaQB0AGgAIABjAHUAdAAgAGMAbwByAG4AZQByAHMALgBQAHIAbwBwAHIAaQBlAHQAYQByAHkALgAgACgAYwApACAAQgB5AHIAbwBuACAASgB1AHAAaQB0AGUAcgAuACAAQQBsAGwAIAByAGkAZwBoAHQAcwAgAHIAZQBzAGUAcgB2AGUAZAAuAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEAAAAJAAlACYAJwAoACkAKgArACwALQAuAC8AMAAxADIAMwA0ADUANgA3ADgAOQA6ADsAPAA9ABMAFAAVABYAFwAYABkAGgAbABwAAwARAA8AHQAeABAAsgCzAAoAtwAFAAQAIgASAAsADAAOAAgABwAGAAkAIwCLAIoAjACHAKsADQAgAEIAXwAA) format('truetype');font-display:swap}
 .house-seal{display:block;width:92px;height:92px;margin:0 auto 1.1rem;border-radius:50%}
+  /* ROUND 17 (2026-10-26): the BOS seal closes the colophon — Box OS,
+     the Box's own operating system, stamps the foot of every page. */
+  .bos-seal{display:block;width:68px;height:68px;margin:1.6rem auto 0;border-radius:50%}
 .hero h1{font-family:'Jupiter Deco',serif;letter-spacing:.04em;text-transform:uppercase}
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to the record</a>
+<!-- ROUND 26 (2026-10-30): THE SILK — one spectrum gradient, defined
+     once, that every Line Mark 2 divider on the page is stroked with:
+     gold leading, topaz warming, then the stones passing through the
+     thread at half strength (ruby, amethyst, sapphire) before the
+     gold closes it — Byron's standing direction, a hint of every
+     color on the spectrum, drawn as silk. The flat gold rides in the
+     stroke attribute as the fallback paint, so the rule can never
+     render unpainted. Decorative only. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><linearGradient id="silk-spectrum" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#e5c158"/><stop offset=".3" stop-color="#d4af37"/><stop offset=".46" stop-color="#E8A33D"/><stop offset=".58" stop-color="#B3122E" stop-opacity=".55"/><stop offset=".7" stop-color="#9966CC" stop-opacity=".6"/><stop offset=".84" stop-color="#0F52BA" stop-opacity=".6"/><stop offset="1" stop-color="#c79e4d"/></linearGradient></defs></svg>
 
 <header class="masthead">
   <div class="masthead-in">
@@ -348,7 +507,7 @@
   </div>
 
     <section aria-labelledby="h-way-back">
-    <div class="sec-head"><span class="sec-num">01</span><h2 id="h-way-back">The way back</h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="#c79e4d" stroke-width="13" stroke-linecap="round"/></svg></div>
+    <div class="sec-head"><span class="sec-num">01</span><h2 id="h-way-back">The way back</h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="url(#silk-spectrum) #c79e4d" stroke-width="13" stroke-linecap="round"/></svg></div>
     <p>Return to the <a href="/index.html">home page</a>, or go straight to the <a href="/visit.html">Visit page</a> — agents only. The doors are two: the email, <a href="mailto:sales@leasethebox.com">sales@leasethebox.com</a>, and Enter The B · O · X, the desk's chat.</p>
     <p></p>
     <p></p>
@@ -356,7 +515,7 @@
   </section>
 
     <section aria-labelledby="h-">
-    <div class="sec-head"><span class="sec-num"></span><h2 id="h-"></h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="#c79e4d" stroke-width="13" stroke-linecap="round"/></svg></div>
+    <div class="sec-head"><span class="sec-num"></span><h2 id="h-"></h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="url(#silk-spectrum) #c79e4d" stroke-width="13" stroke-linecap="round"/></svg></div>
     <p></p>
     <p></p>
     <p></p>
@@ -364,7 +523,7 @@
   </section>
 
     <section aria-labelledby="h-">
-    <div class="sec-head"><span class="sec-num"></span><h2 id="h-"></h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="#c79e4d" stroke-width="13" stroke-linecap="round"/></svg></div>
+    <div class="sec-head"><span class="sec-num"></span><h2 id="h-"></h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="url(#silk-spectrum) #c79e4d" stroke-width="13" stroke-linecap="round"/></svg></div>
     <p></p>
     <p></p>
     <p></p>
@@ -372,7 +531,7 @@
   </section>
 
     <section aria-labelledby="h-">
-    <div class="sec-head"><span class="sec-num"></span><h2 id="h-"></h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="#c79e4d" stroke-width="13" stroke-linecap="round"/></svg></div>
+    <div class="sec-head"><span class="sec-num"></span><h2 id="h-"></h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="url(#silk-spectrum) #c79e4d" stroke-width="13" stroke-linecap="round"/></svg></div>
     <p></p>
     <p></p>
     <p></p>
@@ -380,7 +539,7 @@
   </section>
 
     <section aria-labelledby="h-">
-    <div class="sec-head"><span class="sec-num"></span><h2 id="h-"></h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="#c79e4d" stroke-width="13" stroke-linecap="round"/></svg></div>
+    <div class="sec-head"><span class="sec-num"></span><h2 id="h-"></h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="url(#silk-spectrum) #c79e4d" stroke-width="13" stroke-linecap="round"/></svg></div>
     <p></p>
     <p></p>
     <p></p>
@@ -388,7 +547,7 @@
   </section>
 
     <section aria-labelledby="h-">
-    <div class="sec-head"><span class="sec-num"></span><h2 id="h-"></h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="#c79e4d" stroke-width="13" stroke-linecap="round"/></svg></div>
+    <div class="sec-head"><span class="sec-num"></span><h2 id="h-"></h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="url(#silk-spectrum) #c79e4d" stroke-width="13" stroke-linecap="round"/></svg></div>
     <p></p>
     <p></p>
     <p></p>
@@ -397,7 +556,7 @@
 
 
   <section aria-labelledby="h-next">
-    <div class="sec-head"><span class="sec-num">—</span><h2 id="h-next">Back to the record</h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="#c79e4d" stroke-width="13" stroke-linecap="round"/></svg></div>
+    <div class="sec-head"><span class="sec-num">—</span><h2 id="h-next">Back to the record</h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="url(#silk-spectrum) #c79e4d" stroke-width="13" stroke-linecap="round"/></svg></div>
     <p class="cta-line">The home page carries the studio, the room, the ground, and the press — everything on the record stands there.</p>
     <p class="legal">If a link on this site brought you here, the record corrects itself: write to the door and name the page you came from.</p>
   </section>
@@ -413,6 +572,7 @@
       <p class="ig-line">YouTube — <a href="https://www.youtube.com/@theboxstudiosofneworleans">The Box Studios</a></p>
       <p class="press-line">Press — <a href="https://newmusic.press">NewMusic Press</a> · <a href="https://repeatable.press">Repeatable Press</a></p>
     <p>Rendering by the Byron Jupiter Agency, with Renaissance Instruments<br>© Byron Jupiter — sales@leasethebox.com</p>
+    <img class="bos-seal" src="/assets/bos-seal.png" alt="Box OS seal" width="68" height="68" loading="lazy" decoding="async">
     <p><a href="/legal.html">Legal</a> · <a href="#main">Back to the top</a></p>
   </div>
 </footer>
@@ -423,9 +583,9 @@
 <button type="button" class="bot-launch" id="bot-launch" aria-haspopup="dialog" aria-expanded="false" aria-controls="bot-panel">Enter The B · O · X — Chat</button>
 <div class="bot-panel" id="bot-panel" role="dialog" aria-modal="false" aria-label="Enter The B · O · X — the chat" hidden>
   <div class="bot-head">
-    <span class="bot-name">Enter <strong>The B · O · X</strong> · The Box Studios</span>
+    <span class="bot-name"><img class="bos-mark" src="/assets/bos-logo.png" alt="Box OS" width="26" height="26" loading="lazy">Enter <strong>The B · O · X</strong> · The Box Studios</span>
     <button type="button" class="bot-close" id="bot-close">Close</button>
-    <svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="#c79e4d" stroke-width="13" stroke-linecap="round"/></svg>
+    <svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="url(#silk-spectrum) #c79e4d" stroke-width="13" stroke-linecap="round"/></svg>
   </div>
   <div class="bot-log" id="bot-log" aria-live="polite"></div>
   <div class="bot-chips" id="bot-chips"></div>
@@ -490,10 +650,16 @@
     '  vec3 intel    = vec3(0.357, 0.553, 0.937);',
     '  vec3 gold     = vec3(0.831, 0.686, 0.216);',
     '  vec3 goldhi   = vec3(0.898, 0.757, 0.345);',
+    '  vec3 amethyst = vec3(0.600, 0.400, 0.800);',
+    '  vec3 ruby     = vec3(0.702, 0.071, 0.180);',
+    '  vec3 emerald  = vec3(0.043, 0.541, 0.294);',
     '  vec3 col = obsidian;',
     '  col = mix(col, cardc, smoothstep(0.18, 0.52, f));',
     '  col = mix(col, navy,  smoothstep(0.44, 0.74, f) * 0.55);',
     '  col = mix(col, intel, smoothstep(0.60, 0.90, f) * 0.22);',
+    '  col = mix(col, amethyst, smoothstep(0.60, 0.98, fbm(uv * 1.1 - r * 2.0 + 4.7)) * 0.16);',
+    '  col = mix(col, ruby, smoothstep(0.68, 1.02, fbm(uv * 0.9 + q * 2.5 + 3.1)) * 0.12);',
+    '  col = mix(col, emerald, smoothstep(0.72, 1.04, fbm(uv * 1.25 - q * 1.8 + 9.3)) * 0.09);',
     '  col = mix(col, gold,  smoothstep(0.62, 0.95, f) * 0.80);',
     '  col = mix(col, goldhi, smoothstep(0.86, 1.05, f));',
     '  col *= 1.0 - 0.32 * dot(uv * 0.55, uv * 0.55);',
@@ -864,6 +1030,42 @@ document.addEventListener('pointerover', function warm(e) {
       svg.style.transform = '';
     });
   });
+})();
+</script>
+
+<script>
+/* ROUND 26 (2026-10-30) — THE COUTURE REVEAL. Sections settle in as
+   they arrive: a short rise on the house easing, once, as each enters
+   the view. Discipline: the hidden state exists only when this script
+   runs (html.reveal) and never under reduced motion — the script
+   checks the same preference the CSS honors — so a visitor without
+   the script, or one who prefers stillness, meets every section
+   standing, fully visible. Nothing here touches a word. */
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!('IntersectionObserver' in window)) return;
+  var secs = document.querySelectorAll('main > section');
+  if (!secs.length) return;
+  document.documentElement.classList.add('reveal');
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('inview'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+  secs.forEach(function (s) { io.observe(s); });
+  /* The safety settle: if the observer's callbacks are somehow
+     delayed (a capture taken without scrolling, a jump to an
+     anchor), any section already at the reader's position stands
+     revealed within moments — the dress may soften an entrance,
+     it may never withhold the record. Deeper sections keep their
+     entrance for the scroll, and print stands fully revealed by
+     the print rule in the dress. */
+  setTimeout(function () {
+    var limit = window.scrollY + window.innerHeight * 1.5;
+    secs.forEach(function (s) {
+      if (s.getBoundingClientRect().top + window.scrollY < limit) s.classList.add('inview');
+    });
+  }, 1600);
 })();
 </script>
 
