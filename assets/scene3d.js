@@ -160,6 +160,62 @@
       medallion.add(letterMesh);
     })();
 
+    /* — THE FIGURES (Round 30 — the figurative styling) — the Round 27
+       kit's silhouettes carried into the scene, struck flat in the
+       banner's treatment: a gold rim offset up-left, ink in front.
+       Outlines sampled from the kit's own path data (art3d_pieces.py
+       WOMAN_PROFILE / GOWN_FIGURE, verbatim), baked to polygons with
+       feet/base at y=0, y-up, world units. The gown figure stands at
+       the left of the medallion; her profile, mirrored to face it,
+       stands as a bust on a plinth at the right — legacy at the door,
+       a voice turned toward the house. They hold still; the field
+       moves around them. */
+    var GOWN_PTS = [[[0.0, 2.75], [-0.057, 2.746], [-0.111, 2.734], [-0.161, 2.715], [-0.207, 2.689], [-0.249, 2.657], [-0.286, 2.619], [-0.318, 2.576], [-0.344, 2.528], [-0.365, 2.475], [-0.38, 2.419], [-0.388, 2.36], [-0.389, 2.298], [-0.387, 2.257], [-0.382, 2.218], [-0.375, 2.18], [-0.367, 2.143], [-0.356, 2.108], [-0.344, 2.074], [-0.33, 2.042], [-0.314, 2.012], [-0.297, 1.985], [-0.278, 1.96], [-0.257, 1.937], [-0.235, 1.918], [0.235, 1.918], [0.257, 1.937], [0.278, 1.96], [0.297, 1.985], [0.314, 2.012], [0.33, 2.042], [0.344, 2.074], [0.356, 2.108], [0.367, 2.143], [0.375, 2.18], [0.382, 2.218], [0.387, 2.257], [0.389, 2.298], [0.388, 2.36], [0.38, 2.419], [0.365, 2.475], [0.344, 2.528], [0.318, 2.576], [0.286, 2.619], [0.249, 2.657], [0.207, 2.689], [0.161, 2.715], [0.111, 2.734], [0.057, 2.746], [0.0, 2.75]], [[-0.163, 1.954], [0.163, 1.954], [0.199, 1.737], [0.225, 1.718], [0.25, 1.696], [0.274, 1.673], [0.295, 1.647], [0.315, 1.619], [0.334, 1.59], [0.35, 1.558], [0.365, 1.525], [0.378, 1.49], [0.39, 1.453], [0.399, 1.415], [0.407, 1.375], [0.507, 0.0], [-0.507, 0.0], [-0.407, 1.375], [-0.399, 1.415], [-0.39, 1.453], [-0.378, 1.49], [-0.365, 1.525], [-0.35, 1.558], [-0.334, 1.59], [-0.315, 1.619], [-0.295, 1.647], [-0.274, 1.673], [-0.25, 1.696], [-0.225, 1.718], [-0.199, 1.737]]];
+    var PROFILE_PTS = [[[0.568, 1.925], [0.539, 1.996], [0.503, 2.06], [0.461, 2.118], [0.413, 2.168], [0.361, 2.211], [0.305, 2.246], [0.247, 2.273], [0.187, 2.291], [0.127, 2.3], [0.067, 2.3], [0.008, 2.29], [-0.049, 2.271], [-0.096, 2.25], [-0.138, 2.226], [-0.175, 2.198], [-0.207, 2.167], [-0.234, 2.134], [-0.256, 2.098], [-0.274, 2.06], [-0.287, 2.02], [-0.296, 1.979], [-0.3, 1.937], [-0.3, 1.894], [-0.296, 1.851], [-0.37, 1.654], [-0.378, 1.633], [-0.382, 1.613], [-0.383, 1.594], [-0.381, 1.577], [-0.377, 1.562], [-0.37, 1.549], [-0.362, 1.537], [-0.351, 1.528], [-0.339, 1.522], [-0.326, 1.518], [-0.311, 1.516], [-0.296, 1.518], [-0.304, 1.497], [-0.311, 1.476], [-0.315, 1.456], [-0.317, 1.437], [-0.318, 1.418], [-0.316, 1.401], [-0.313, 1.384], [-0.308, 1.369], [-0.301, 1.355], [-0.293, 1.342], [-0.283, 1.33], [-0.271, 1.32], [-0.279, 1.302], [-0.285, 1.284], [-0.288, 1.266], [-0.289, 1.248], [-0.287, 1.231], [-0.284, 1.216], [-0.278, 1.201], [-0.271, 1.187], [-0.261, 1.175], [-0.25, 1.164], [-0.237, 1.155], [-0.222, 1.148], [-0.226, 1.12], [-0.226, 1.093], [-0.223, 1.067], [-0.216, 1.043], [-0.205, 1.019], [-0.191, 0.997], [-0.174, 0.976], [-0.154, 0.957], [-0.132, 0.939], [-0.107, 0.924], [-0.079, 0.911], [-0.049, 0.901], [-0.026, 0.891], [-0.004, 0.881], [0.016, 0.87], [0.033, 0.858], [0.049, 0.845], [0.063, 0.831], [0.075, 0.816], [0.086, 0.799], [0.095, 0.781], [0.102, 0.761], [0.107, 0.739], [0.111, 0.716], [0.099, 0.395], [0.042, 0.376], [-0.018, 0.357], [-0.081, 0.337], [-0.145, 0.314], [-0.212, 0.29], [-0.281, 0.262], [-0.351, 0.231], [-0.422, 0.196], [-0.495, 0.155], [-0.568, 0.11], [-0.642, 0.058], [-0.716, 0.0], [0.963, 0.0], [0.902, 0.054], [0.844, 0.104], [0.788, 0.151], [0.736, 0.196], [0.687, 0.239], [0.642, 0.281], [0.601, 0.322], [0.564, 0.364], [0.532, 0.406], [0.506, 0.45], [0.484, 0.495], [0.469, 0.543], [0.457, 0.79], [0.489, 0.839], [0.519, 0.889], [0.546, 0.939], [0.571, 0.989], [0.592, 1.04], [0.611, 1.092], [0.626, 1.145], [0.639, 1.199], [0.648, 1.255], [0.653, 1.312], [0.655, 1.371], [0.654, 1.432], [0.651, 1.48], [0.647, 1.528], [0.642, 1.575], [0.637, 1.62], [0.631, 1.664], [0.625, 1.706], [0.617, 1.747], [0.609, 1.786], [0.6, 1.824], [0.59, 1.859], [0.58, 1.893], [0.568, 1.925]]];
+    var figRimMat = new THREE.MeshStandardMaterial({ color: 0xE9CB7E, metalness: 1.0, roughness: 0.30, envMapIntensity: 1.1, emissive: 0x2A1A04, side: THREE.DoubleSide });
+    var figInkMat = new THREE.MeshStandardMaterial({ color: 0x0A0E20, metalness: 0.55, roughness: 0.48, envMapIntensity: 0.55, side: THREE.DoubleSide });
+    function figureMesh(subpaths) {
+      var grp = new THREE.Group();
+      subpaths.forEach(function (pts) {
+        var shape = new THREE.Shape(pts.map(function (p) { return new THREE.Vector2(p[0], p[1]); }));
+        var geo = new THREE.ShapeGeometry(shape, 4);
+        var rimM = new THREE.Mesh(geo, figRimMat); rimM.position.set(-0.052, 0.052, -0.012);
+        grp.add(rimM); grp.add(new THREE.Mesh(geo, figInkMat));
+      });
+      return grp;
+    }
+    var shadowTex = new THREE.CanvasTexture(radialSprite([[0, 'rgba(0,0,0,0.55)'], [0.6, 'rgba(0,0,0,0.28)'], [1, 'rgba(0,0,0,0)']]));
+    function groundShadow(x, r) {
+      var sh = new THREE.Mesh(new THREE.CircleGeometry(r, 40),
+        new THREE.MeshBasicMaterial({ map: shadowTex, transparent: true, depthWrite: false }));
+      sh.rotation.x = -Math.PI / 2; sh.position.set(x, -2.0, 0.30); stage.add(sh);
+    }
+    var gownFig = figureMesh(GOWN_PTS);
+    gownFig.position.set(-3.02, -2.02, 0.30); stage.add(gownFig);
+    groundShadow(-3.02, 0.85);
+    /* a low gold breath behind her, so the ink reads against the field */
+    var gownGlow = new THREE.Sprite(new THREE.SpriteMaterial({
+      map: new THREE.CanvasTexture(radialSprite([[0, 'rgba(245,197,90,0.30)'], [0.5, 'rgba(245,181,26,0.10)'], [1, 'rgba(245,181,26,0)']])),
+      transparent: true, depthWrite: false, blending: THREE.AdditiveBlending
+    }));
+    gownGlow.scale.set(3.6, 3.6, 1); gownGlow.position.set(-3.02, 0.1, 0.02); stage.add(gownGlow);
+    var plinth = new THREE.Group();
+    var plinthBox = new THREE.Mesh(new THREE.BoxGeometry(1.15, 0.5, 0.20),
+      new THREE.MeshStandardMaterial({ color: 0x0A0E20, metalness: 0.6, roughness: 0.5, envMapIntensity: 0.4 }));
+    plinth.add(plinthBox);
+    plinth.add(new THREE.LineSegments(new THREE.EdgesGeometry(plinthBox.geometry),
+      new THREE.LineBasicMaterial({ color: GOLD })));
+    plinth.position.set(3.06, -1.77, 0.28); stage.add(plinth);
+    groundShadow(3.06, 0.95);
+    var profFig = figureMesh(PROFILE_PTS);
+    profFig.position.set(3.06, -1.52, 0.30); stage.add(profFig);
+    /* the sapphire silk glow behind her head — the banner's seat of colour */
+    var herGlow = new THREE.Sprite(new THREE.SpriteMaterial({
+      map: new THREE.CanvasTexture(radialSprite([[0, 'rgba(64,110,220,0.34)'], [0.5, 'rgba(15,82,186,0.14)'], [1, 'rgba(15,82,186,0)']])),
+      transparent: true, depthWrite: false, blending: THREE.AdditiveBlending
+    }));
+    herGlow.scale.set(2.9, 2.9, 1); herGlow.position.set(2.92, 0.48, 0.02); stage.add(herGlow);
+
     /* the pool of light it floats in */
     var poolTex = new THREE.CanvasTexture(radialSprite([[0, 'rgba(245,197,90,0.5)'], [0.55, 'rgba(245,181,26,0.16)'], [1, 'rgba(245,181,26,0)']]));
     var pool = new THREE.Mesh(new THREE.CircleGeometry(3.1, 48),
@@ -241,6 +297,11 @@
       if (camera.aspect < 0.8) { stage.position.set(1.02, 0.12, -1.4); stage.scale.setScalar(0.8); }
       else if (camera.aspect < 1.15) { stage.position.set(1.9, 0.05, -1.25); stage.scale.setScalar(0.92); }
       else { stage.position.set(2.42, 0, -1.15); stage.scale.setScalar(1); }
+      /* the figures draw in toward the medallion as the frame narrows */
+      var figIn = camera.aspect < 0.8 ? 0.62 : (camera.aspect < 1.15 ? 0.82 : 1);
+      gownFig.position.x = -3.02 * figIn; gownGlow.position.x = -3.02 * figIn;
+      profFig.position.x = 3.06 * figIn;
+      plinth.position.x = 3.06 * figIn; herGlow.position.x = 2.92 * figIn;
     }
     resize();
     window.addEventListener('resize', resize);
