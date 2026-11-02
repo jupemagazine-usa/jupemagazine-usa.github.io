@@ -10,7 +10,15 @@
    into liquid metal. Frames, couture-stone gems, shards and gold dust
    complete the field. Same discipline as ever: DPR cap 1.5, pause
    off-screen and when the tab hides, one still frame under reduced
-   motion, and the liquid carries the hero if this cannot boot. */
+   motion, and the liquid carries the hero if this cannot boot.
+   Round 31 (THE EXTREME PASS — sensory deepening): the studio the
+   metals reflect is painted at twice the grain, with a low sapphire
+   strip and a cream kicker added to its lights; a counter-orbital
+   dust ring turns against the field around the stage; the diamond
+   bead ring turns slowly so the beads glint; the key light breathes
+   and the pool of light answers it. No new requests, no new assets —
+   code only. Same discipline: DPR cap, pause off-screen, and every
+   new motion is posed in the reduced-motion still. */
 (function () {
   var canvas = document.getElementById('scene3d-hero');
   if (!canvas) return;
@@ -67,8 +75,9 @@
 
     /* — the studio: a painted environment the metals reflect — */
     (function () {
-      var c = document.createElement('canvas'); c.width = 1024; c.height = 512;
+      var c = document.createElement('canvas'); c.width = 2048; c.height = 1024;
       var x = c.getContext('2d');
+      x.scale(2, 2); /* painted in the 1024x512 studio space below, held at twice the grain (Round 31) */
       var sky = x.createLinearGradient(0, 0, 0, 512);
       sky.addColorStop(0, '#39406B'); sky.addColorStop(0.42, '#131A33');
       sky.addColorStop(0.62, '#0A0E20'); sky.addColorStop(1, '#04050C');
@@ -83,6 +92,8 @@
       softbox(268, 128, 90, 46, 'rgba(255,255,255,1)', 'rgba(255,255,255,0)');
       softbox(772, 108, 150, 76, 'rgba(226,234,255,0.85)', 'rgba(226,234,255,0)');
       softbox(512, 470, 330, 60, 'rgba(245,181,26,0.55)', 'rgba(245,181,26,0)');
+      softbox(512, 318, 300, 44, 'rgba(91,141,239,0.35)', 'rgba(91,141,239,0)'); /* a low sapphire strip behind (Round 31) */
+      softbox(896, 216, 96, 130, 'rgba(240,235,222,0.75)', 'rgba(240,235,222,0)'); /* a cream kicker, stage right (Round 31) */
       var tex = new THREE.CanvasTexture(c);
       tex.mapping = THREE.EquirectangularReflectionMapping;
       if ('colorSpace' in tex && THREE.SRGBColorSpace) tex.colorSpace = THREE.SRGBColorSpace;
@@ -288,6 +299,25 @@
       dust.name = 'dust'; world.add(dust);
     })();
 
+    /* — a counter-orbital dust ring around the stage (Round 31: depth
+       that turns against the field, so the eye reads the space) — */
+    (function () {
+      var n = 260, pos = new Float32Array(n * 3);
+      for (var i = 0; i < n; i++) {
+        var a = Math.random() * Math.PI * 2, r = 2.45 + Math.random() * 1.25;
+        pos[i * 3] = Math.cos(a) * r;
+        pos[i * 3 + 1] = 0.32 + (Math.random() - 0.5) * 0.55;
+        pos[i * 3 + 2] = Math.sin(a) * r * 0.42;
+      }
+      var g = new THREE.BufferGeometry();
+      g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+      var ring = new THREE.Points(g, new THREE.PointsMaterial({
+        color: 0xF5D98A, size: 0.035, transparent: true, opacity: 0.65,
+        blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true
+      }));
+      ring.name = 'dustRing'; stage.add(ring);
+    })();
+
     /* — stage & choreography (the standing discipline) — */
     function resize() {
       var w = hero.clientWidth, h = hero.clientHeight;
@@ -331,6 +361,13 @@
       });
       var dust = world.getObjectByName('dust');
       if (dust) dust.rotation.y = t * 0.006;
+      var dring = stage.getObjectByName('dustRing');
+      if (dring) dring.rotation.y = -t * 0.02; /* counter to the field (Round 31) */
+      beads.rotation.z = -t * 0.03; /* the bead ring turns, so the diamonds glint (Round 31) */
+      var breath = Math.sin(t * 0.7); /* the key light breathes; halo and pool answer (Round 31) */
+      key.intensity = 1.35 + breath * 0.12;
+      halo.material.opacity = 0.85 + breath * 0.07;
+      pool.material.opacity = 0.92 + Math.sin(t * 0.7 + 1.4) * 0.08;
       gems.rotation.y = t * 0.01;
       goldShards.rotation.y = t * 0.014;
       darkShards.rotation.y = -t * 0.009;
@@ -357,6 +394,13 @@
       gems.rotation.y = t * 0.01;
       goldShards.rotation.y = t * 0.014;
       darkShards.rotation.y = -t * 0.009;
+      var dring = stage.getObjectByName('dustRing'); /* the still poses every Round 31 motion */
+      if (dring) dring.rotation.y = -t * 0.02;
+      beads.rotation.z = -t * 0.03;
+      var breath = Math.sin(t * 0.7);
+      key.intensity = 1.35 + breath * 0.12;
+      halo.material.opacity = 0.85 + breath * 0.07;
+      pool.material.opacity = 0.92 + Math.sin(t * 0.7 + 1.4) * 0.08;
       camera.lookAt(0.4, 0.1, 0);
       renderer.render(scene, camera);
     }
