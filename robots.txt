@@ -40,5 +40,7 @@ User-agent: Omgilibot
 Disallow: /
 User-agent: ImagesiftBot
 Disallow: /
+User-agent: __usage_ai-training
+Disallow: /
 
 Sitemap: https://theboxstudiosofneworleans.com/sitemap.xml
