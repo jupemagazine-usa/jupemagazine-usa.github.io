@@ -272,9 +272,20 @@
   section p:empty{display:none}
   section:has(> .sec-head h2:empty){display:none}
   .cta-line{font-size:1.15rem}
+  /* ROUND 58 (FIX-1107 · FLAG-53-4): true lists in section bodies —
+     The Example page's eight aspects (§02) and its coverage (§05)
+     stand as real lists, the same words word for word: the section's
+     own jewel as the lozenge marker, at body size and measure. */
+  section ul.true-list{list-style:none; margin:0 0 1.5rem; padding:0; max-width:44rem}
+  section ul.true-list li{position:relative; padding-left:1.5rem; margin:0 0 .55rem}
+  section ul.true-list li::before{content:""; position:absolute; left:.1rem; top:.58em; width:.5rem; height:.5rem;
+    background:var(--jewel); transform:rotate(45deg); box-shadow:0 1px 3px rgba(29,26,20,.35)}
   /* ROUND 26 (Mother Test): the small print rises to a full 1rem —
-     the legal line is part of the record, not a whisper under it. */
-  .legal{font-size:1rem; line-height:1.6; color:var(--zinc); border-left:3px solid var(--gold); padding-left:1rem; max-width:44rem}
+     the legal line is part of the record, not a whisper under it.
+     ROUND 58 (FIX-1107 · FLAG-53-5): the legal line lifts first in
+     the small-type class — 1rem → 1.06rem (17px), the Ma size the
+     chat input and the door links already stand at, on every page. */
+  .legal{font-size:1.06rem; line-height:1.6; color:var(--zinc); border-left:3px solid var(--gold); padding-left:1rem; max-width:44rem}
   footer{background:var(--ink); color:var(--paper); border-top:3px solid var(--gold); position:relative}
   /* ROUND 26: the colophon is crowned with the silk — a diamond-led
      spectrum ribbon laid under the gold rule at the foot of every
@@ -655,8 +666,8 @@
 
     <section aria-labelledby="h-the-aspects">
     <div class="sec-head"><span class="sec-num">02</span><h2 id="h-the-aspects">The eight aspects</h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="#c79e4d" stroke-width="27" stroke-linecap="round" opacity=".13"/><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="url(#silk-spectrum) #c79e4d" stroke-width="13" stroke-linecap="round"/><path d="M16 150.6 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/><path d="M1184 120.2 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/></svg></div>
-    <p><strong>Roots</strong> — origin and lineage.<br><strong>Craft</strong> — the work itself, its skill and discipline.<br><strong>Character</strong> — how the work and its makers carry it.<br><strong>Ownership</strong> — rights and credits at full name.</p>
-    <p><strong>Business</strong> — value and doors opened.<br><strong>Family &amp; Generation</strong> — what passes forward to the young ones.<br><strong>Community</strong> — New Orleans, and who else rises.<br><strong>Fruits &amp; Future</strong> — what grows next.</p>
+    <p><ul class="true-list"><li><strong>Roots</strong> — origin and lineage.</li><li><strong>Craft</strong> — the work itself, its skill and discipline.</li><li><strong>Character</strong> — how the work and its makers carry it.</li><li><strong>Ownership</strong> — rights and credits at full name.</li></ul></p>
+    <p><ul class="true-list"><li><strong>Business</strong> — value and doors opened.</li><li><strong>Family &amp; Generation</strong> — what passes forward to the young ones.</li><li><strong>Community</strong> — New Orleans, and who else rises.</li><li><strong>Fruits &amp; Future</strong> — what grows next.</li></ul></p>
     <p>Eight aspects — and every one of them a place to stand for somebody's work, at full credit.</p>
     <figure class="panel-art"></figure>
   </section>
@@ -679,9 +690,9 @@
 
     <section aria-labelledby="h-coverage">
     <div class="sec-head"><span class="sec-num">05</span><h2 id="h-coverage">Coverage — the house, held</h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="#c79e4d" stroke-width="27" stroke-linecap="round" opacity=".13"/><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="url(#silk-spectrum) #c79e4d" stroke-width="13" stroke-linecap="round"/><path d="M16 150.6 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/><path d="M1184 120.2 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/></svg></div>
-    <p><strong>Roots</strong> — covered: the Room and the Ground, the origin of the house.<br><strong>Craft</strong> — covered: the working room, and the Voice of Tomorrow's vocals, arranged, produced and performed by her.<br><strong>Character</strong> — in the growing: the next championing owed.<br><strong>Ownership</strong> — covered: her rights stay hers, named at full credit.</p>
-    <p><strong>Business</strong> — in the growing: the next championing owed.<br><strong>Family &amp; Generation</strong> — covered: the daily comic, repeating into the young ones' hands.<br><strong>Community</strong> — covered: the two presses, publishing every day.<br><strong>Fruits &amp; Future</strong> — covered: the books, each one a door.<br><br>The three points of view hold it together: the Roots laid the ground, the Present stands in the work now, the Rising receives the record and carries it forward.</p>
-    <p>A person or work is HELD when every aspect covers it and more than one generation holds it. This house stands as the example. Each work here keeps growing its own coverage — a gap is not a failure; a gap names the next championing owed. The ledger of this practice is the Generational Redundancy Platform — its Champion Wall, its coverage record, and the daily Redundancy Connection — kept at the desk. The door to it is the studio's door: <a href="mailto:sales@leasethebox.com">sales@leasethebox.com</a>, or Enter The B · O · X.</p>
+    <p><ul class="true-list"><li><strong>Roots</strong> — covered: the Room and the Ground, the origin of the house.</li><li><strong>Craft</strong> — covered: the working room, and the Voice of Tomorrow's vocals, arranged, produced and performed by her.</li><li><strong>Character</strong> — in the growing: the next championing owed.</li><li><strong>Ownership</strong> — covered: her rights stay hers, named at full credit.</li></ul></p>
+    <p><ul class="true-list"><li><strong>Business</strong> — in the growing: the next championing owed.</li><li><strong>Family &amp; Generation</strong> — covered: the daily comic, repeating into the young ones' hands.</li><li><strong>Community</strong> — covered: the two presses, publishing every day.</li><li><strong>Fruits &amp; Future</strong> — covered: the books, each one a door.</li></ul></p>
+    <p>The three points of view hold it together: the Roots laid the ground, the Present stands in the work now, the Rising receives the record and carries it forward.<br><br>A person or work is HELD when every aspect covers it and more than one generation holds it. This house stands as the example. Each work here keeps growing its own coverage — a gap is not a failure; a gap names the next championing owed. The ledger of this practice is the Generational Redundancy Platform — its Champion Wall, its coverage record, and the daily Redundancy Connection — kept at the desk. The door to it is the studio's door: <a href="mailto:sales@leasethebox.com">sales@leasethebox.com</a>, or Enter The B · O · X.</p>
     <figure class="panel-art"></figure>
   </section>
 

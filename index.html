@@ -300,9 +300,20 @@
   section p:empty{display:none}
   section:has(> .sec-head h2:empty){display:none}
   .cta-line{font-size:1.15rem}
+  /* ROUND 58 (FIX-1107 · FLAG-53-4): true lists in section bodies —
+     The Example page's eight aspects (§02) and its coverage (§05)
+     stand as real lists, the same words word for word: the section's
+     own jewel as the lozenge marker, at body size and measure. */
+  section ul.true-list{list-style:none; margin:0 0 1.5rem; padding:0; max-width:44rem}
+  section ul.true-list li{position:relative; padding-left:1.5rem; margin:0 0 .55rem}
+  section ul.true-list li::before{content:""; position:absolute; left:.1rem; top:.58em; width:.5rem; height:.5rem;
+    background:var(--jewel); transform:rotate(45deg); box-shadow:0 1px 3px rgba(29,26,20,.35)}
   /* ROUND 26 (Mother Test): the small print rises to a full 1rem —
-     the legal line is part of the record, not a whisper under it. */
-  .legal{font-size:1rem; line-height:1.6; color:var(--zinc); border-left:3px solid var(--gold); padding-left:1rem; max-width:44rem}
+     the legal line is part of the record, not a whisper under it.
+     ROUND 58 (FIX-1107 · FLAG-53-5): the legal line lifts first in
+     the small-type class — 1rem → 1.06rem (17px), the Ma size the
+     chat input and the door links already stand at, on every page. */
+  .legal{font-size:1.06rem; line-height:1.6; color:var(--zinc); border-left:3px solid var(--gold); padding-left:1rem; max-width:44rem}
   footer{background:var(--ink); color:var(--paper); border-top:3px solid var(--gold); position:relative}
   /* ROUND 26: the colophon is crowned with the silk — a diamond-led
      spectrum ribbon laid under the gold rule at the foot of every

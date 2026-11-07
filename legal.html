@@ -272,9 +272,20 @@
   section p:empty{display:none}
   section:has(> .sec-head h2:empty){display:none}
   .cta-line{font-size:1.15rem}
+  /* ROUND 58 (FIX-1107 · FLAG-53-4): true lists in section bodies —
+     The Example page's eight aspects (§02) and its coverage (§05)
+     stand as real lists, the same words word for word: the section's
+     own jewel as the lozenge marker, at body size and measure. */
+  section ul.true-list{list-style:none; margin:0 0 1.5rem; padding:0; max-width:44rem}
+  section ul.true-list li{position:relative; padding-left:1.5rem; margin:0 0 .55rem}
+  section ul.true-list li::before{content:""; position:absolute; left:.1rem; top:.58em; width:.5rem; height:.5rem;
+    background:var(--jewel); transform:rotate(45deg); box-shadow:0 1px 3px rgba(29,26,20,.35)}
   /* ROUND 26 (Mother Test): the small print rises to a full 1rem —
-     the legal line is part of the record, not a whisper under it. */
-  .legal{font-size:1rem; line-height:1.6; color:var(--zinc); border-left:3px solid var(--gold); padding-left:1rem; max-width:44rem}
+     the legal line is part of the record, not a whisper under it.
+     ROUND 58 (FIX-1107 · FLAG-53-5): the legal line lifts first in
+     the small-type class — 1rem → 1.06rem (17px), the Ma size the
+     chat input and the door links already stand at, on every page. */
+  .legal{font-size:1.06rem; line-height:1.6; color:var(--zinc); border-left:3px solid var(--gold); padding-left:1rem; max-width:44rem}
   footer{background:var(--ink); color:var(--paper); border-top:3px solid var(--gold); position:relative}
   /* ROUND 26: the colophon is crowned with the silk — a diamond-led
      spectrum ribbon laid under the gold rule at the foot of every
@@ -666,7 +677,7 @@
 
     <section aria-labelledby="h-information-only">
     <div class="sec-head"><span class="sec-num">02</span><h2 id="h-information-only">Information only — no offer</h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="#c79e4d" stroke-width="27" stroke-linecap="round" opacity=".13"/><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="url(#silk-spectrum) #c79e4d" stroke-width="13" stroke-linecap="round"/><path d="M16 150.6 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/><path d="M1184 120.2 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/></svg></div>
-    <p>Everything on this site is general information about the studio. Nothing on this site is an offer, a lease, a rate, a quote, or a contract, and nothing published here creates any obligation on either side.</p>
+    <p>Everything on this site is general information about the studio. Nothing on this site is an offer, a lease, a quote, or a contract, and nothing published here creates any obligation on either side. The one exception is The Rate Card page, where the house's settled prices stand published as they stand: fees price the work, never the hour; every work is packaged as a unit and quoted by scope; the standard is one-tenth of a gram of gold, converted at the spot price at the time of purchase or publication, with a floor of one dollar under everything; the apps are $9.99, one time; and work carried by the agency bears its fee of $100 to $1,000 per transaction and element, stated before the work begins. Those prices stand as published — and every arrangement is still made in writing, through the doors.</p>
     <p>That is especially true of the space: this site describes it and invites inquiries only. Any use of it exists only under a written agreement signed by both parties. Recording and production work is arranged the same way — in writing, through the doors, before any session.</p>
     <p>Reading this site, or writing to the studio, does not by itself make anyone a client, a tenant, or a partner of the studio.</p>
     <figure class="panel-art"><svg viewBox="0 0 720 440" role="img" aria-label="Diagram in depth: an open book on paper, its pages spreading at a touch." xmlns="http://www.w3.org/2000/svg"><defs>
