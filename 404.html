@@ -352,7 +352,15 @@
      ground, mounted shadow — and the door's own label rises to
      .92rem so the way in reads at a glance. The words do not move. */
   .door-card{margin:1.6rem 0 0; border:1px solid var(--gold-deep); border-top:3px solid var(--jewel, var(--gold-deep)); background:linear-gradient(180deg, #fdfaf0 0%, var(--paper-card) 55%, #f3ecd8 100%); padding:1.25rem 1.4rem; box-shadow:inset 0 1px 0 rgba(255,255,255,.7), 0 14px 34px rgba(29,26,20,.16), 0 3px 8px rgba(29,26,20,.12)}
-  .door-link{font-family:var(--mono); font-size:1rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-ink); text-decoration:underline; text-underline-offset:4px}
+  /* ROUND 53 (MA PROOF — the standalone doors' tap): the door links
+     that stand alone as a page's one action — the Give link on Home
+     and Donors, the chat button on Enter The Box and Room Desk —
+     stood at 1rem with no padding: a ~28px-tall tap. The label rises
+     to the chat input's Ma-size (1.06rem, 17px), and the link and
+     button forms take inline-block padding so the tap stands ~47px.
+     No words move. */
+  .door-link{font-family:var(--mono); font-size:1.06rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-ink); text-decoration:underline; text-underline-offset:4px}
+  a.door-link{display:inline-block; padding:.55rem .3rem}
   /* ROUND 26 (COMMUNICATE): wherever the email door stands inside the
      prose, it is set as the door — mono, gold-ink, a two-weight gold
      underline — so the way in is visible inside the sentence that
@@ -363,7 +371,7 @@
     padding:.08em .12em}
   footer a[href^="mailto:"]{font-family:var(--mono); letter-spacing:.03em}
   .door-note{color:var(--ink)}
-  button.door-link{font-family:var(--mono); background:none; border:0; padding:0; cursor:pointer; text-align:left}
+  button.door-link{font-family:var(--mono); background:none; border:0; padding:.55rem .3rem; display:inline-block; cursor:pointer; text-align:left}
   button.door-link:hover{color:var(--ink)}
   .foot-bot{font:inherit; color:var(--gold-hi); background:none; border:0; padding:0; cursor:pointer; text-decoration:underline; text-underline-offset:3px; text-decoration-color:var(--gold)}
   .foot-bot:hover{color:var(--paper)}
@@ -569,7 +577,7 @@
 <header class="masthead">
   <div class="masthead-in">
     <div class="wordmark">The <strong>Box</strong> Studios · New Orleans</div>
-    <nav aria-label="Site"><ul class="nav-list"><li><a href="/">Home</a></li><li><a href="/the-room.html">The Room</a></li><li><a href="/room-desk/">Room Desk</a></li><li><a href="/the-ground.html">The Ground</a></li><li><a href="/visit.html">Visit</a></li><li><a href="/enter-the-box.html">Enter The Box</a></li><li><a href="/generational-redundancy.html">The Example</a></li><li><a href="/legal.html">Legal</a></li><li><a href="/pay.html">Pay</a></li><li><a href="/donors.html">Donors</a></li><li><a href="/rates.html">Rates</a></li></ul></nav>
+    <nav aria-label="Site"><ul class="nav-list"><li><a href="/">Home</a></li><li><a href="/the-room.html">The Room</a></li><li><a href="/room-desk/">Room Desk</a></li><li><a href="/the-ground.html">The Ground</a></li><li><a href="/step-and-repeat.html">Step and Repeat</a></li><li><a href="/visit.html">Visit</a></li><li><a href="/enter-the-box.html">Enter The Box</a></li><li><a href="/generational-redundancy.html">The Example</a></li><li><a href="/legal.html">Legal</a></li><li><a href="/pay.html">Pay</a></li><li><a href="/donors.html">Donors</a></li><li><a href="/rates.html">Rates</a></li></ul></nav>
   </div>
 </header>
 
