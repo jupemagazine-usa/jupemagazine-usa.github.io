@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://theboxstudiosofneworleans.com/the-producer</loc>
+    <image:image>
+      <image:loc>https://byronjupiter.com/__l5e/assets-v1/c1fd16e6-a029-479f-8d48-e97e43ecffbb/byron-press-rooftop-la.webp</image:loc>
+      <image:title>Byron Jupiter — rooftop, golden hour, New Orleans</image:title>
+      <image:caption>Official press photograph of Byron Jupiter, New Orleans record producer, executive producer, chief audio engineer, and archivist, in a tan trench coat on a rooftop at golden hour with the skyline behind him.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://byronjupiter.com/__l5e/assets-v1/98ae418a-3217-4342-b0f7-33ad384e06bb/gallery-5V4A0390.jpg</image:loc>
+      <image:title>Byron Jupiter at the console — The Box Studios, New Orleans</image:title>
+      <image:caption>Byron Jupiter working at the recording console at The Box Studios of New Orleans.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://byronjupiter.com/__l5e/assets-v1/6a309e87-a53a-481c-8bb0-f3d70a373f26/gallery-5V4A0668.jpg</image:loc>
+      <image:title>Byron Jupiter in the control room — The Box Studios, New Orleans</image:title>
+      <image:caption>Byron Jupiter in the control room during a recording session at The Box Studios of New Orleans.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://byronjupiter.com/__l5e/assets-v1/7a977a2e-fcb0-477a-9e04-1651dcfc9cd2/hero-alley-portrait.jpg</image:loc>
+      <image:title>Byron Jupiter — brick alley portrait, New Orleans</image:title>
+      <image:caption>Portrait of Byron Jupiter, New Orleans record producer, recording engineer, and archivist, photographed in a brick alleyway in New Orleans, Louisiana.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://byronjupiter.com/__l5e/assets-v1/e46a767d-cf39-4dcc-9eee-7397008b83b5/byron-stairwell.jpg</image:loc>
+      <image:title>Byron Jupiter — stairwell portrait, New Orleans</image:title>
+      <image:caption>Byron Jupiter photographed in a New Orleans stairwell, from the portrait series on the producer behind The Box Studios.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://byronjupiter.com/__l5e/assets-v1/94ccace9-44ac-461f-b930-3ecefe824abc/byron-stoop.jpg</image:loc>
+      <image:title>Byron Jupiter — the stoop, New Orleans</image:title>
+      <image:caption>Byron Jupiter seated on a New Orleans stoop, part of the documentary portrait series accompanying the Byron Jupiter Archive.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://byronjupiter.com/__l5e/assets-v1/c74166ac-2913-4bc9-b488-8db616db050e/meticulous-storefront.webp</image:loc>
+      <image:title>Byron Jupiter outside a New Orleans storefront</image:title>
+      <image:caption>Byron Jupiter photographed on the street outside a New Orleans storefront, from the archive's press photography set.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://byronjupiter.com/__l5e/assets-v1/0cc7a9c0-b428-4d06-9c54-7ad3a2099bfc/meticulous-cap-portrait.webp</image:loc>
+      <image:title>Byron Jupiter — M.E.T.A. Accession cap portrait</image:title>
+      <image:caption>Byron Jupiter wearing the M.E.T.A. Accession cap from the Meticulous Melodic Music collection.</image:caption>
+    </image:image>
+  </url>
+</urlset>
