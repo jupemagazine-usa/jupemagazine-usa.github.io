@@ -412,7 +412,7 @@
   .door-card{margin:1.6rem 0 0; border:1px solid var(--gold-deep); border-top:3px solid var(--jewel, var(--gold-deep)); background:linear-gradient(180deg, #fdfaf0 0%, var(--paper-card) 55%, #f3ecd8 100%); padding:1.25rem 1.4rem; box-shadow:inset 0 1px 0 rgba(255,255,255,.7), 0 14px 34px rgba(29,26,20,.16), 0 3px 8px rgba(29,26,20,.12)}
   /* ROUND 53 (MA PROOF — the standalone doors' tap): the door links
      that stand alone as a page's one action — the Give link on Home
-     and Donors, the chat button on Enter The Box and Room Desk —
+     and Donors, the chat button on Enter The Box —
      stood at 1rem with no padding: a ~28px-tall tap. The label rises
      to the chat input's Ma-size (1.06rem, 17px), and the link and
      button forms take inline-block padding so the tap stands ~47px.
@@ -635,7 +635,7 @@
 <header class="masthead">
   <div class="masthead-in">
     <div class="wordmark">The <strong>Box</strong> Studios · New Orleans</div>
-    <nav aria-label="Site"><ul class="nav-list"><li><a href="/">Home</a></li><li><a href="/the-room.html">The Room</a></li><li><a href="/room-desk/">Room Desk</a></li><li><a href="/the-ground.html">The Ground</a></li><li><a href="/step-and-repeat.html">Step and Repeat</a></li><li><a href="/visit.html">Visit</a></li><li><a href="/enter-the-box.html">Enter The Box</a></li><li><a href="/generational-redundancy.html">The Example</a></li><li><a href="/legal.html">Legal</a></li><li><a href="/pay.html">Pay</a></li><li><a href="/donors.html">Donors</a></li><li><a href="/rates.html">Rates</a></li></ul></nav>
+    <nav aria-label="Site"><ul class="nav-list"><li><a href="/">Home</a></li><li><a href="/the-room.html">The Room</a></li><li><a href="/the-ground.html">The Ground</a></li><li><a href="/step-and-repeat.html">Step and Repeat</a></li><li><a href="/visit.html">Visit</a></li><li><a href="/enter-the-box.html">Enter The Box</a></li><li><a href="/generational-redundancy.html">The Example</a></li><li><a href="/legal.html">Legal</a></li><li><a href="/pay.html">Pay</a></li><li><a href="/donors.html">Donors</a></li><li><a href="/rates.html">Rates</a></li></ul></nav>
   </div>
 </header>
 
@@ -1072,8 +1072,8 @@ document.addEventListener('pointerover', function warm(e) {
   var DESK = 'sales@leasethebox.com';
   /* Round 15 (2026-10-25): root-relative, like the icon links (Round 11)
      and the nav (Round 13) — a relative prompt URL resolved under the
-     page's own path, so the agent chip 404'd from /room-desk/ and from
-     the 404 page at any depth. The file lives at the site root. */
+     page's own path, so the agent chip 404'd from any directory page
+     and from the 404 page at any depth. The file lives at the site root. */
   var PROMPT_URL = '/agent-connection-prompt.md';
   var started = false;
   var inIntake = false;
