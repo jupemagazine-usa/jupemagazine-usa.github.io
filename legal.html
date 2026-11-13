@@ -342,6 +342,26 @@
     font-family:'Cormorant Garamond',Georgia,serif; font-size:1.5rem; line-height:1.25; color:var(--ink);
   }
   .scrolls-card:hover .cap-title{color:var(--gold-ink)}
+  /* REPEATABLE PRESS — the press embed mount (§10). Same grammar as
+     the Scrolls mount: hidden until the feed script fills it; if the
+     feed fails, the paragraph collapses and the section's standing
+     archive line carries the section alone. The latest three stories
+     stand as text cards — title, date, and the opening line — each
+     linked to its story on the press. */
+  .press-mount[hidden]{display:none}
+  p:has(> .press-mount[hidden]){display:none}
+  .press-list{display:block; max-width:44rem}
+  .press-card{display:block; text-decoration:none; padding:.9rem 0 .9rem 1rem; border-left:3px solid var(--jewel, var(--gold-deep)); margin:0 0 .4rem}
+  .press-card .cap-label{
+    font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+    font-size:.8rem; letter-spacing:.22em; text-transform:uppercase; color:var(--zinc);
+  }
+  .press-card .cap-title{
+    display:block; margin-top:.15rem;
+    font-family:'Cormorant Garamond',Georgia,serif; font-size:1.5rem; line-height:1.25; color:var(--ink);
+  }
+  .press-card:hover .cap-title{color:var(--gold-ink)}
+  .press-card .cap-excerpt{display:block; margin-top:.3rem; font-size:1rem; line-height:1.5; color:var(--ink)}
   /* ROUND 2 PANELS — designed graphics drawn locally in the Capital
      Command system: gold line art on the card field, an inline SVG
      figure with an accessible name (role="img" + aria-label), and the
@@ -732,7 +752,7 @@ a.panel-link:hover .panel-art figcaption{color:var(--gold-ink)}
 
     <section aria-labelledby="h-information-only">
     <div class="sec-head"><span class="sec-num">02</span><h2 id="h-information-only">Information only — no offer</h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="#c79e4d" stroke-width="27" stroke-linecap="round" opacity=".13"/><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="url(#silk-spectrum) #c79e4d" stroke-width="13" stroke-linecap="round"/><path d="M16 150.6 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/><path d="M1184 120.2 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/></svg></div>
-    <p>Everything on this site is general information about the studio. Nothing on this site is an offer, a lease, a quote, or a contract, and nothing published here creates any obligation on either side. The one exception is The Rate Card page, where the house's settled prices stand published as they stand: fees price the work, never the hour; every work is packaged as a unit and quoted by scope; the standard is one-tenth of a gram of gold, converted at the spot price at the time of purchase or publication, with a floor of one dollar under everything; the apps are $9.99, one time; and work carried by the agency bears its fee of $100 to $1,000 per transaction and element, stated before the work begins. Those prices stand as published — and every arrangement is still made in writing, through the doors.</p>
+    <p>Everything on this site is general information about the studio. Nothing on this site is an offer, a lease, a quote, or a contract, and nothing published here creates any obligation on either side. The one exception is The Rate Card page, where the museum's settled prices stand published as they stand: fees price the work, never the hour; every work is packaged as a unit and quoted by scope; the standard is one-tenth of a gram of gold, converted at the spot price at the time of purchase or publication, with a floor of one dollar under everything; the apps are $9.99, one time; and work carried by the agency bears its fee of $100 to $1,000 per transaction and element, stated before the work begins. Those prices stand as published — and every arrangement is still made in writing, through the doors.</p>
     <p>That is especially true of the space: this site describes it and invites inquiries only. Any use of it exists only under a written agreement signed by both parties. Recording and production work is arranged the same way — in writing, through the doors, before any session.</p>
     <p>Reading this site, or writing to the studio, does not by itself make anyone a client, a tenant, or a partner of the studio.</p>
     <figure class="panel-art"><svg viewBox="0 0 720 440" role="img" aria-label="Diagram in depth: an open book on paper, its pages spreading at a touch." xmlns="http://www.w3.org/2000/svg"><defs>
@@ -857,6 +877,22 @@ a.panel-link:hover .panel-art figcaption{color:var(--gold-ink)}
     <p></p>
     <figure class="panel-art"></figure>
   </section>
+
+  
+    <div class="sec-head"><span class="sec-num"></span><h2 id="h-"></h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="#c79e4d" stroke-width="27" stroke-linecap="round" opacity=".13"/><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="url(#silk-spectrum) #c79e4d" stroke-width="13" stroke-linecap="round"/><path d="M16 150.6 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/><path d="M1184 120.2 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/></svg></div>
+    <p></p>
+    <p></p>
+    <p></p>
+    <figure class="panel-art"></figure>
+  
+
+  
+    <div class="sec-head"><span class="sec-num"></span><h2 id="h-"></h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="#c79e4d" stroke-width="27" stroke-linecap="round" opacity=".13"/><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="url(#silk-spectrum) #c79e4d" stroke-width="13" stroke-linecap="round"/><path d="M16 150.6 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/><path d="M1184 120.2 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/></svg></div>
+    <p></p>
+    <p></p>
+    <p></p>
+    <figure class="panel-art"></figure>
+  
 
 
   <section aria-labelledby="h-next">
@@ -1101,6 +1137,72 @@ a.panel-link:hover .panel-art figcaption{color:var(--gold-ink)}
     mount.appendChild(a);
     mount.hidden = false;
   }).catch(function () { /* the standing archive link carries the section */ });
+})();
+</script>
+
+<script>
+/* REPEATABLE PRESS — the house's press publication, embedded live.
+   At view time the section asks the press's own record for its three
+   newest stories and stands them as cards: the date, the title, and
+   the opening line, each linked to the story on the press. If the
+   feed is unreachable or empty, the mount stays hidden and the
+   section's standing archive line carries the section alone. */
+(function () {
+  var mount = document.getElementById('repeatable-press-latest');
+  if (!mount || !window.fetch) return;
+  var FEED = 'https://repeatable.press/wp-json/wp/v2/posts?per_page=3';
+  function plainText(html) {
+    var d = document.createElement('div');
+    d.innerHTML = html || '';
+    return (d.textContent || d.innerText || '').replace(/\s+/g, ' ').trim();
+  }
+  function excerptOf(html) {
+    var t = plainText(html);
+    if (t.length > 180) t = t.slice(0, 177).replace(/\s+\S*$/, '') + '\u2026';
+    return t;
+  }
+  function dateOf(iso) {
+    var d = new Date(iso);
+    if (isNaN(d)) return '';
+    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  }
+  fetch(FEED).then(function (res) {
+    if (!res.ok) throw new Error('feed');
+    return res.json();
+  }).then(function (posts) {
+    if (!posts || !posts.length) return;
+    var list = document.createElement('span');
+    list.className = 'press-list';
+    var made = 0;
+    posts.forEach(function (post) {
+      var title = plainText(post.title && post.title.rendered);
+      if (!title || !post.link) return;
+      var a = document.createElement('a');
+      a.className = 'press-card';
+      a.href = post.link;
+      var lab = document.createElement('span');
+      lab.className = 'cap-label';
+      var dt = dateOf(post.date);
+      lab.textContent = dt ? ('From the press \u00B7 ' + dt) : 'From the press';
+      var tit = document.createElement('span');
+      tit.className = 'cap-title';
+      tit.textContent = title;
+      a.appendChild(lab);
+      a.appendChild(tit);
+      var ex = excerptOf(post.excerpt && post.excerpt.rendered);
+      if (ex) {
+        var exEl = document.createElement('span');
+        exEl.className = 'cap-excerpt';
+        exEl.textContent = ex;
+        a.appendChild(exEl);
+      }
+      list.appendChild(a);
+      made++;
+    });
+    if (!made) return;
+    mount.appendChild(list);
+    mount.hidden = false;
+  }).catch(function () { /* the standing archive line carries the section */ });
 })();
 </script>
 

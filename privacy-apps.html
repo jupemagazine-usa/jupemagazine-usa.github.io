@@ -342,6 +342,26 @@
     font-family:'Cormorant Garamond',Georgia,serif; font-size:1.5rem; line-height:1.25; color:var(--ink);
   }
   .scrolls-card:hover .cap-title{color:var(--gold-ink)}
+  /* REPEATABLE PRESS — the press embed mount (§10). Same grammar as
+     the Scrolls mount: hidden until the feed script fills it; if the
+     feed fails, the paragraph collapses and the section's standing
+     archive line carries the section alone. The latest three stories
+     stand as text cards — title, date, and the opening line — each
+     linked to its story on the press. */
+  .press-mount[hidden]{display:none}
+  p:has(> .press-mount[hidden]){display:none}
+  .press-list{display:block; max-width:44rem}
+  .press-card{display:block; text-decoration:none; padding:.9rem 0 .9rem 1rem; border-left:3px solid var(--jewel, var(--gold-deep)); margin:0 0 .4rem}
+  .press-card .cap-label{
+    font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+    font-size:.8rem; letter-spacing:.22em; text-transform:uppercase; color:var(--zinc);
+  }
+  .press-card .cap-title{
+    display:block; margin-top:.15rem;
+    font-family:'Cormorant Garamond',Georgia,serif; font-size:1.5rem; line-height:1.25; color:var(--ink);
+  }
+  .press-card:hover .cap-title{color:var(--gold-ink)}
+  .press-card .cap-excerpt{display:block; margin-top:.3rem; font-size:1rem; line-height:1.5; color:var(--ink)}
   /* ROUND 2 PANELS — designed graphics drawn locally in the Capital
      Command system: gold line art on the card field, an inline SVG
      figure with an accessible name (role="img" + aria-label), and the
@@ -706,7 +726,7 @@ a.panel-link:hover .panel-art figcaption{color:var(--gold-ink)}
 
     <section aria-labelledby="h-data-not-collected">
     <div class="sec-head"><span class="sec-num">01</span><h2 id="h-data-not-collected">Data not collected</h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="#c79e4d" stroke-width="27" stroke-linecap="round" opacity=".13"/><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="url(#silk-spectrum) #c79e4d" stroke-width="13" stroke-linecap="round"/><path d="M16 150.6 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/><path d="M1184 120.2 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/></svg></div>
-    <p>Apps published by Byron Jupiter — including The Arcade House, the Family Encyclopedia, and the reader and site apps of the house — are built to keep your information yours.</p>
+    <p>Apps published by Byron Jupiter — including The Arcade House, the Family Encyclopedia, and the reader and site apps of the museum — are built to keep your information yours.</p>
     <p>These apps do not collect personal data. They create no accounts, run no advertising, include no analytics or tracking, and send nothing you do in the app to us or to anyone else.</p>
     <p></p>
     <figure class="panel-art"><svg viewBox="0 0 720 440" role="img" aria-label="Diagram in depth: a closed ledger on paper, clasped with a gold seal — nothing written in it, nothing taken from it." xmlns="http://www.w3.org/2000/svg"><defs>
@@ -765,7 +785,7 @@ a.panel-link:hover .panel-art figcaption{color:var(--gold-ink)}
     <p>Reader and site apps display the public pages and public feeds of our own websites. They ask the site only for what any visitor's browser asks for. Saved pages are kept on your device for reading without a connection.</p>
     <p></p>
     <p></p>
-    <figure class="panel-art"><svg viewBox="0 0 720 440" role="img" aria-label="Diagram in depth: an open book on paper with a red marker — the house's sites, read as any visitor reads them." xmlns="http://www.w3.org/2000/svg"><defs>
+    <figure class="panel-art"><svg viewBox="0 0 720 440" role="img" aria-label="Diagram in depth: an open book on paper with a red marker — the museum's sites, read as any visitor reads them." xmlns="http://www.w3.org/2000/svg"><defs>
 <linearGradient id="v3-f" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FBF7EA"/><stop offset="1" stop-color="#EDE4CC"/></linearGradient>
 <radialGradient id="v3-bg" cx="0.5" cy="0.42" r="0.75"><stop offset="0" stop-color="#F5B81D" stop-opacity="0.13"/><stop offset="1" stop-color="#F5B81D" stop-opacity="0"/></radialGradient>
 <linearGradient id="v3-g24" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFF6D8"/><stop offset="0.22" stop-color="#FFE98A"/><stop offset="0.42" stop-color="#FFDF6B"/><stop offset="0.62" stop-color="#F5B81D"/><stop offset="0.82" stop-color="#DE980A"/><stop offset="1" stop-color="#B26F04"/></linearGradient>
@@ -812,7 +832,7 @@ a.panel-link:hover .panel-art figcaption{color:var(--gold-ink)}
 
     <section aria-labelledby="h-apps-in-preparation">
     <div class="sec-head"><span class="sec-num">05</span><h2 id="h-apps-in-preparation">Apps in preparation</h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="#c79e4d" stroke-width="27" stroke-linecap="round" opacity=".13"/><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="url(#silk-spectrum) #c79e4d" stroke-width="13" stroke-linecap="round"/><path d="M16 150.6 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/><path d="M1184 120.2 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/></svg></div>
-    <p>Other apps of the house are still in preparation. This page states the practices of the apps offered under it, and claims no practice for an app that has not stated its own.</p>
+    <p>Other apps of the museum are still in preparation. This page states the practices of the apps offered under it, and claims no practice for an app that has not stated its own.</p>
     <p>If an app in preparation ever needs information to do its work, what it needs and why will be stated in the app itself, and its practice will be added to this page before that app is offered.</p>
     <p></p>
     <figure class="panel-art"><svg viewBox="0 0 720 440" role="img" aria-label="Diagram in depth: three sheets on paper, fanned — the apps in preparation, each to state its own practice before it is offered." xmlns="http://www.w3.org/2000/svg"><defs>
@@ -891,6 +911,22 @@ a.panel-link:hover .panel-art figcaption{color:var(--gold-ink)}
     <p></p>
     <figure class="panel-art"></figure>
   </section>
+
+  
+    <div class="sec-head"><span class="sec-num"></span><h2 id="h-"></h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="#c79e4d" stroke-width="27" stroke-linecap="round" opacity=".13"/><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="url(#silk-spectrum) #c79e4d" stroke-width="13" stroke-linecap="round"/><path d="M16 150.6 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/><path d="M1184 120.2 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/></svg></div>
+    <p></p>
+    <p></p>
+    <p></p>
+    <figure class="panel-art"></figure>
+  
+
+  
+    <div class="sec-head"><span class="sec-num"></span><h2 id="h-"></h2><svg class="lm2-rule" viewBox="0 112 1200 76" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="#c79e4d" stroke-width="27" stroke-linecap="round" opacity=".13"/><path d="M 0 163.6 L 34.3 168.4 L 68.6 171.9 L 102.9 173.7 L 137.1 173.8 L 171.4 172.1 L 205.7 168.7 L 240 164 L 274.3 158.2 L 308.6 151.8 L 342.9 145.2 L 377.1 139 L 411.4 133.6 L 445.7 129.5 L 480 126.9 L 514.3 126 L 548.6 126.9 L 582.9 129.5 L 617.1 133.7 L 651.4 139.1 L 685.7 145.3 L 720 151.8 L 754.3 158.3 L 788.6 164 L 822.9 168.8 L 857.1 172.1 L 891.4 173.8 L 925.7 173.7 L 960 171.9 L 994.3 168.4 L 1028.6 163.5 L 1062.9 157.6 L 1097.1 151.1 L 1131.4 144.6 L 1165.7 138.5 L 1200 133.2" fill="none" stroke="url(#silk-spectrum) #c79e4d" stroke-width="13" stroke-linecap="round"/><path d="M16 150.6 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/><path d="M1184 120.2 l13 13 -13 13 -13 -13 Z" fill="#c79e4d" opacity=".85"/></svg></div>
+    <p></p>
+    <p></p>
+    <p></p>
+    <figure class="panel-art"></figure>
+  
 
 
   <section aria-labelledby="h-next">
@@ -1135,6 +1171,72 @@ a.panel-link:hover .panel-art figcaption{color:var(--gold-ink)}
     mount.appendChild(a);
     mount.hidden = false;
   }).catch(function () { /* the standing archive link carries the section */ });
+})();
+</script>
+
+<script>
+/* REPEATABLE PRESS — the house's press publication, embedded live.
+   At view time the section asks the press's own record for its three
+   newest stories and stands them as cards: the date, the title, and
+   the opening line, each linked to the story on the press. If the
+   feed is unreachable or empty, the mount stays hidden and the
+   section's standing archive line carries the section alone. */
+(function () {
+  var mount = document.getElementById('repeatable-press-latest');
+  if (!mount || !window.fetch) return;
+  var FEED = 'https://repeatable.press/wp-json/wp/v2/posts?per_page=3';
+  function plainText(html) {
+    var d = document.createElement('div');
+    d.innerHTML = html || '';
+    return (d.textContent || d.innerText || '').replace(/\s+/g, ' ').trim();
+  }
+  function excerptOf(html) {
+    var t = plainText(html);
+    if (t.length > 180) t = t.slice(0, 177).replace(/\s+\S*$/, '') + '\u2026';
+    return t;
+  }
+  function dateOf(iso) {
+    var d = new Date(iso);
+    if (isNaN(d)) return '';
+    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  }
+  fetch(FEED).then(function (res) {
+    if (!res.ok) throw new Error('feed');
+    return res.json();
+  }).then(function (posts) {
+    if (!posts || !posts.length) return;
+    var list = document.createElement('span');
+    list.className = 'press-list';
+    var made = 0;
+    posts.forEach(function (post) {
+      var title = plainText(post.title && post.title.rendered);
+      if (!title || !post.link) return;
+      var a = document.createElement('a');
+      a.className = 'press-card';
+      a.href = post.link;
+      var lab = document.createElement('span');
+      lab.className = 'cap-label';
+      var dt = dateOf(post.date);
+      lab.textContent = dt ? ('From the press \u00B7 ' + dt) : 'From the press';
+      var tit = document.createElement('span');
+      tit.className = 'cap-title';
+      tit.textContent = title;
+      a.appendChild(lab);
+      a.appendChild(tit);
+      var ex = excerptOf(post.excerpt && post.excerpt.rendered);
+      if (ex) {
+        var exEl = document.createElement('span');
+        exEl.className = 'cap-excerpt';
+        exEl.textContent = ex;
+        a.appendChild(exEl);
+      }
+      list.appendChild(a);
+      made++;
+    });
+    if (!made) return;
+    mount.appendChild(list);
+    mount.hidden = false;
+  }).catch(function () { /* the standing archive line carries the section */ });
 })();
 </script>
 
