@@ -719,6 +719,36 @@ a.panel-link:hover .panel-art figcaption{color:var(--gold-ink)}
       -webkit-text-fill-color:currentColor;
     }
   }
+  /* ROUND 80 (2026-11-14, Byron's word — "Awesome spectrum the
+     navigation system too"): the silk spectrum moves into the
+     navigation — the masthead's nav links and the footer's link
+     row carry the same --silk thread in their letters, under the
+     same @supports guard Rounds 77 and 78 set; where the guard
+     fails, the standing ink and gold stand. Hover keeps its
+     standing signals: a nav link restores its solid gold-ink and
+     keeps its gold underline sweep, and a footer link restores
+     its solid gold-ink. The wordmark, the skip-link chip,
+     buttons, and form labels keep their standing dress.
+     Nothing else moves. */
+  @supports ((-webkit-background-clip:text) or (background-clip:text)){
+    nav .nav-list a{
+      background:var(--silk);
+      -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent; color:transparent;
+    }
+    nav .nav-list a:hover{
+      -webkit-text-fill-color:var(--gold-ink); color:var(--gold-ink);
+    }
+    footer a{
+      background:var(--silk);
+      -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent; color:transparent;
+    }
+    footer a:hover{
+      -webkit-text-fill-color:var(--gold-ink); color:var(--gold-ink);
+    }
+  }
+
   .hero .roles{font-family:'Jupiter Roman',serif}
 </style>
 </head>

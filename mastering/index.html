@@ -90,6 +90,25 @@ footer .sig{color:var(--cream)}
       -webkit-text-fill-color:transparent; color:transparent;
     }
   }
+  /* ROUND 80 (2026-11-14, Byron's word — "Awesome spectrum the
+     navigation system too"): the spectrum moves into this page's
+     navigation — the house bar (the mark that is the way home,
+     and its links) and the doors at the foot carry the same stops
+     Round 77 set in the title, in their letters, under the same
+     guard; where the guard fails, the standing gold stands.
+     Hover restores the standing solid cream, the house bar's own
+     hover dress. Nothing else moves. */
+  @supports ((-webkit-background-clip:text) or (background-clip:text)){
+    .house-bar a, .doors a{
+      background:linear-gradient(90deg,#e5c158,#E8A33D 30%,#B3122E 52%,#9966CC 68%,#0F52BA 84%,#c5a059);
+      -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent; color:transparent;
+    }
+    .house-bar a:hover, .doors a:hover{
+      -webkit-text-fill-color:var(--cream); color:var(--cream);
+    }
+  }
+
 </style>
 </head>
 <body>
