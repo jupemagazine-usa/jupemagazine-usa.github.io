@@ -51,6 +51,22 @@ footer .copy{font-size:.85rem;margin-top:.15rem}
 .law{border:1px solid var(--gold-ink);background:#fdf6da;padding:.7rem 1rem;font-size:.88rem}
 .hidden{display:none}
 </style>
+<style>
+  /* ROUND 77 (2026-11-14, Byron's word — "Add the spectrum text to
+     the fonts" · "The entire site"): the silk spectrum moves into the
+     display type itself — this page's title carries the full spectrum
+     in its letters, in the same stops the house --silk thread runs on
+     the main pages. This page carries no roles line. Nothing else
+     moves. */
+  @supports ((-webkit-background-clip:text) or (background-clip:text)){
+    h1{
+      background:linear-gradient(90deg,#e5c158,#E8A33D 30%,#B3122E 52%,#9966CC 68%,#0F52BA 84%,#c5a059);
+      -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent; color:transparent;
+      text-shadow:none;
+    }
+  }
+</style>
 </head>
 <body>
 <header>
