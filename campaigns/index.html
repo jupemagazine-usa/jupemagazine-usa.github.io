@@ -66,6 +66,20 @@ footer .copy{font-size:.85rem;margin-top:.15rem}
       text-shadow:none;
     }
   }
+  /* ROUND 78 (2026-11-14, Byron's word — "And the body of the text
+     in the box studios text"): the spectrum moves into this page's
+     body copy — the card notes that carry the page's prose — in the
+     same stops Round 77 set in the title, under the same guard;
+     where the guard fails, the standing ink stands. The header, the
+     form and its labels, and the board keep their standing dress.
+     Nothing else moves. */
+  @supports ((-webkit-background-clip:text) or (background-clip:text)){
+    main .card p, main p.small{
+      background:linear-gradient(90deg,#e5c158,#E8A33D 30%,#B3122E 52%,#9966CC 68%,#0F52BA 84%,#c5a059);
+      -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent; color:transparent;
+    }
+  }
 </style>
 </head>
 <body>

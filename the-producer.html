@@ -836,6 +836,32 @@ a.panel-link:hover .panel-art figcaption{color:var(--gold-ink)}
       text-shadow:none;
     }
   }
+  /* ROUND 78 (2026-11-14, Byron's word — "And the body of the text
+     in the box studios text"): the silk spectrum moves into the body
+     copy. The paragraphs and list items of the content sections
+     carry the same --silk thread in their letters, under the same
+     @supports guard Round 77 set for the hero titles; where the
+     guard fails, the standing ink stands. Chrome stays out — nav,
+     buttons, form labels, the hero (its summary and roles lines),
+     the door card, the call-to-action line, the legal note,
+     captions, the press and comic mount cards, and the footer keep
+     their standing dress. Links inside the body copy keep their
+     standing ink and gold underline, and the small zinc registry
+     note keeps its zinc. Nothing else moves. */
+  @supports ((-webkit-background-clip:text) or (background-clip:text)){
+    main section p:not(.cta-line):not(.legal):not(.door-card):not(:has(.press-mount)):not(:has(.scrolls-mount)),
+    main section li{
+      background:var(--silk);
+      -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent; color:transparent;
+    }
+    main section p a:not([class]), main section li a:not([class]){
+      -webkit-text-fill-color:var(--ink);
+    }
+    main section p [style*="color"]{
+      -webkit-text-fill-color:currentColor;
+    }
+  }
   .hero .roles{font-family:'Jupiter Roman',serif}
 </style>
 </head>

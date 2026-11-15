@@ -76,6 +76,20 @@ footer .sig{color:var(--cream)}
       text-shadow:none;
     }
   }
+  /* ROUND 78 (2026-11-14, Byron's word — "And the body of the text
+     in the box studios text"): the spectrum moves into this page's
+     body copy — the panel paragraphs and the note — in the same
+     stops Round 77 set in the title, under the same guard; where
+     the guard fails, the standing muted tone stands. The header,
+     the tool and its labels, the doors, and the footer keep their
+     standing dress. Nothing else moves. */
+  @supports ((-webkit-background-clip:text) or (background-clip:text)){
+    main p{
+      background:linear-gradient(90deg,#e5c158,#E8A33D 30%,#B3122E 52%,#9966CC 68%,#0F52BA 84%,#c5a059);
+      -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent; color:transparent;
+    }
+  }
 </style>
 </head>
 <body>
