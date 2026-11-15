@@ -178,7 +178,43 @@
         ::-webkit-scrollbar { width: 5px; height: 5px; }
         ::-webkit-scrollbar-track { background: #030306; }
         ::-webkit-scrollbar-thumb { background: #FF5500; border-radius: 2px; }
-    </style>
+    
+  /* ROUND 79 (2026-11-14, Byron's word — "Full sweep" and "Awesome
+     spectrum the navigation system too"): the silk spectrum comes to
+     the desks. The display titles trade their own gradients for the
+     house silk (spelled out — this page carries no --silk of its
+     own), the body copy of the content sections takes the same
+     thread, and the navigation takes it too, all under the
+     @supports guard Rounds 77-78 set on the main pages; where the
+     guard fails, the standing dress stands. Chrome stays out —
+     masthead furniture, transport controls, forms, labels, toasts,
+     and the footer keep their standing dress, and the paragraphs
+     that carry their own ground keep it too. No copy, face, layout,
+     link, or function moves. */
+  @supports ((-webkit-background-clip:text) or (background-clip:text)){
+    .sonic-gradient-text{
+      background:linear-gradient(90deg,#e5c158,#E8A33D 30%,#B3122E 52%,#9966CC 68%,#0F52BA 84%,#c5a059);
+      -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent; color:transparent;
+    }
+    main section p:not(#cert-split-notes){
+      background:linear-gradient(90deg,#e5c158,#E8A33D 30%,#B3122E 52%,#9966CC 68%,#0F52BA 84%,#c5a059);
+      -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent; color:transparent;
+    }
+    main section p strong[class*="text-"]{
+      -webkit-text-fill-color:currentColor;
+    }
+    header nav a:not([class*="text-[#FF5500]"]){
+      background:linear-gradient(90deg,#e5c158,#E8A33D 30%,#B3122E 52%,#9966CC 68%,#0F52BA 84%,#c5a059);
+      -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent; color:transparent;
+    }
+    header nav a:not([class*="text-[#FF5500]"]):hover{
+      -webkit-text-fill-color:#ffffff; color:#ffffff;
+    }
+  }
+</style>
 </head>
 <body class="selection:bg-[#FF5500] selection:text-black">
     <div class="analog-grain"></div>

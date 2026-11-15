@@ -224,7 +224,37 @@
         ::-webkit-scrollbar { width: 5px; height: 5px; }
         ::-webkit-scrollbar-track { background: #040406; }
         ::-webkit-scrollbar-thumb { background: #E5A93C; border-radius: 2px; }
-    </style>
+    
+  /* ROUND 79 (2026-11-14, Byron's word — "Full sweep" and "Awesome
+     spectrum the navigation system too"): the silk spectrum comes to
+     the desks. The display titles trade their own gradients for the
+     house silk (spelled out — this page carries no --silk of its
+     own), and the body copy of the content sections takes the same
+     thread, under the @supports guard Rounds 77-78 set on the main
+     pages; where the guard fails, the standing dress stands. This
+     page carries no nav bar, drawer, breadcrumb, or footer link —
+     its ribbon is a telemetry ticker, not navigation — so there is
+     no navigation text to treat; the masthead wordmark rides with
+     the title. The live cinema subtitle stays out: its pale-gold
+     line and black shadow stack are a legibility device over moving
+     film, and the capsule that carries its own ground keeps it.
+     Chrome stays out — masthead furniture, transport controls,
+     forms, labels, toasts, and the footer keep their standing
+     dress. No copy, face, layout, link, or function moves. */
+  @supports ((-webkit-background-clip:text) or (background-clip:text)){
+    h1[class*="bg-gradient-to-r"],
+    #site-footer h2 span[class*="bg-gradient-to-r"]{
+      background:linear-gradient(90deg,#e5c158,#E8A33D 30%,#B3122E 52%,#9966CC 68%,#0F52BA 84%,#c5a059);
+      -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent; color:transparent;
+    }
+    main section p:not(#live-cinema-subtitle):not(#cinema-aeo-capsule){
+      background:linear-gradient(90deg,#e5c158,#E8A33D 30%,#B3122E 52%,#9966CC 68%,#0F52BA 84%,#c5a059);
+      -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent; color:transparent;
+    }
+  }
+</style>
 </head>
 <body class="selection:bg-[#E5A93C] selection:text-black">
     <!-- 35mm Film Grain Overlay -->
