@@ -823,7 +823,87 @@ a.panel-link:hover .panel-art figcaption{color:var(--gold-ink)}
     }
   }
 
-  .hero .roles{font-family:'Jupiter Roman',serif}
+    /* ROUND 81 (2026-11-14, Byron's word — "Do something amazing
+     with the box studios and news orleans like a news feed"): the
+     signature news feed comes home. One dark silk band rides
+     directly beneath the masthead, above the hero — the house
+     name in Jupiter Box over a single moving line in Jupiter
+     Roman, the same device that runs under the SCALE OF LOVE
+     Newsfeed Edition films. The letters carry the same --silk
+     thread under the same @supports guard Rounds 77–80 set;
+     where the guard fails, the standing gold stands on the dark
+     ground. The feed pauses under the hand, and stands still as
+     a readable list for reduced motion. Nothing else moves. */
+  .newsfeed{
+    position:relative; overflow:hidden; text-align:center;
+    background:linear-gradient(180deg,#05080f 0%,var(--obsidian) 100%);
+    color:var(--gold-hi);
+    padding:1.05rem clamp(1rem,4vw,2rem) 1.1rem;
+  }
+  .newsfeed::before,.newsfeed::after{
+    content:""; position:absolute; left:0; right:0; height:2px; background:var(--silk);
+  }
+  .newsfeed::before{top:0}
+  .newsfeed::after{bottom:0}
+  .newsfeed-name{
+    font-family:'Jupiter Box',Georgia,serif; font-weight:400;
+    font-size:clamp(1.05rem,3.4vw,1.6rem); letter-spacing:.32em;
+    margin:0 0 .55rem; color:var(--gold-hi);
+  }
+  .newsfeed-window{
+    overflow:hidden;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);
+  }
+  .newsfeed-track{
+    display:flex; width:max-content;
+    animation:newsfeed-scroll 80s linear infinite;
+  }
+  .newsfeed:hover .newsfeed-track{animation-play-state:paused}
+  .newsfeed-set{display:flex; align-items:center; flex:none}
+  .nf-item{
+    font-family:'Jupiter Roman',Georgia,serif; font-size:.95rem;
+    letter-spacing:.18em; text-transform:uppercase; white-space:nowrap;
+    color:var(--gold-hi); text-decoration:none;
+  }
+  .nf-dia{
+    flex:none; width:.42em; height:.42em; margin:0 1.3em;
+    background:var(--ruby); transform:rotate(45deg);
+    box-shadow:0 1px 3px rgba(0,0,0,.45);
+  }
+  a.nf-item:hover{text-decoration:underline; text-underline-offset:3px}
+  @supports ((-webkit-background-clip:text) or (background-clip:text)){
+    .newsfeed-name{
+      background:var(--silk);
+      -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent; color:transparent;
+    }
+    .nf-item{
+      background:var(--silk);
+      -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent; color:transparent;
+    }
+    a.nf-item:hover{
+      -webkit-text-fill-color:var(--gold-hi); color:var(--gold-hi);
+      background:none;
+    }
+  }
+  @keyframes newsfeed-scroll{
+    from{transform:translateX(0)}
+    to{transform:translateX(-50%)}
+  }
+  @media (max-width:560px){
+    .newsfeed-name{font-size:.85rem; letter-spacing:.18em; line-height:1.5}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .newsfeed-track{animation:none; width:auto}
+    .newsfeed-set{flex:1 1 auto; min-width:0; flex-wrap:wrap; justify-content:center; row-gap:.4rem}
+    .newsfeed-set[aria-hidden="true"]{display:none}
+    .newsfeed-window{-webkit-mask-image:none; mask-image:none}
+    .nf-item{white-space:normal}
+  }
+
+.hero .roles{font-family:'Jupiter Roman',serif}
 </style>
 </head>
 <body>
@@ -844,6 +924,37 @@ a.panel-link:hover .panel-art figcaption{color:var(--gold-ink)}
     <nav aria-label="Site"><ul class="nav-list"><li><a href="/">Home</a></li><li><a href="/the-room.html">The Room</a></li><li><a href="/the-producer.html">The Producer</a></li><li><a href="/the-ground.html">The Ground</a></li><li><a href="/step-and-repeat.html">Step and Repeat</a></li><li><a href="/visit.html">Visit</a></li><li><a href="/enter-the-box.html">Enter The Box</a></li><li><a href="/generational-redundancy.html">The Example</a></li><li><a href="/legal.html">Legal</a></li><li><a href="/pay.html">Pay</a></li><li><a href="/donors.html">Donors</a></li><li><a href="/rates.html">Rates</a></li></ul></nav>
   </div>
 </header>
+
+<!-- ROUND 81 (2026-11-14): THE NEWS FEED — the signature feed
+     of the Newsfeed Edition films, brought home: the house name
+     over one moving line of the record, on the dark silk ground. -->
+<div class="newsfeed">
+  <p class="newsfeed-name">THE BOX STUDIOS — NEW ORLEANS</p>
+  <div class="newsfeed-window">
+    <div class="newsfeed-track">
+      <div class="newsfeed-set">
+        <span class="nf-item">SCALE OF LOVE — THE NEW COLLECTION — LIVE NOVEMBER 13, 2026 — GOOD DELIVERY</span><span class="nf-dia" aria-hidden="true"></span>
+        <span class="nf-item">COMPOSITION &amp; PHONOGRAM — BYRON JUPITER — PUBLISHING — GOOD DELIVERY (BMI)</span><span class="nf-dia" aria-hidden="true"></span>
+        <a class="nf-item" href="https://www.youtube.com/@theboxstudiosofneworleans">THE NEWSFEED EDITIONS — SEVEN FILMS — PUBLIC ON THE CHANNEL</a><span class="nf-dia" aria-hidden="true"></span>
+        <span class="nf-item">VIBE OUT — NOVEMBER 20, 2026 — CONSUMERS TOGETHER</span><span class="nf-dia" aria-hidden="true"></span>
+        <span class="nf-item">THE BOX STUDIOS IS A MUSEUM — NEW ORLEANS</span><span class="nf-dia" aria-hidden="true"></span>
+        <span class="nf-item">THE ALMANAC — THE ALGORITHM — LITERACY — LITERATURE — SCIENCE — TECHNOLOGY</span><span class="nf-dia" aria-hidden="true"></span>
+        <span class="nf-item">FINANCIAL PEACE AND PROSPERITY</span><span class="nf-dia" aria-hidden="true"></span>
+        <span class="nf-item">BYRONJUPITER.COM — CONTACT@BYRONJUPITER.COM</span><span class="nf-dia" aria-hidden="true"></span>
+      </div>
+      <div class="newsfeed-set" aria-hidden="true">
+        <span class="nf-item">SCALE OF LOVE — THE NEW COLLECTION — LIVE NOVEMBER 13, 2026 — GOOD DELIVERY</span><span class="nf-dia" aria-hidden="true"></span>
+        <span class="nf-item">COMPOSITION &amp; PHONOGRAM — BYRON JUPITER — PUBLISHING — GOOD DELIVERY (BMI)</span><span class="nf-dia" aria-hidden="true"></span>
+        <span class="nf-item">THE NEWSFEED EDITIONS — SEVEN FILMS — PUBLIC ON THE CHANNEL</span><span class="nf-dia" aria-hidden="true"></span>
+        <span class="nf-item">VIBE OUT — NOVEMBER 20, 2026 — CONSUMERS TOGETHER</span><span class="nf-dia" aria-hidden="true"></span>
+        <span class="nf-item">THE BOX STUDIOS IS A MUSEUM — NEW ORLEANS</span><span class="nf-dia" aria-hidden="true"></span>
+        <span class="nf-item">THE ALMANAC — THE ALGORITHM — LITERACY — LITERATURE — SCIENCE — TECHNOLOGY</span><span class="nf-dia" aria-hidden="true"></span>
+        <span class="nf-item">FINANCIAL PEACE AND PROSPERITY</span><span class="nf-dia" aria-hidden="true"></span>
+        <span class="nf-item">BYRONJUPITER.COM — CONTACT@BYRONJUPITER.COM</span><span class="nf-dia" aria-hidden="true"></span>
+      </div>
+    </div>
+  </div>
+</div>
 
 <main id="main">
   <div class="hero hero-grand">
