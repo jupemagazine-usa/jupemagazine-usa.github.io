@@ -903,6 +903,28 @@ a.panel-link:hover .panel-art figcaption{color:var(--gold-ink)}
     .nf-item{white-space:normal}
   }
 
+  /* ROUND 85 (2026-11-16, Byron: "Turn the white fonts into a a feed"):
+     the hero's white summary becomes a vertical feed — its own clauses,
+     verbatim, each its own item with a small gold diamond and a fine
+     hairline, in the same hero position over the same dark art. The
+     markup is seated home-only by the hero_feed hook (hooks.py) from
+     home.json's hero_feed list; these rules match nothing elsewhere.
+     Without JavaScript, and under prefers-reduced-motion, every item
+     stands at full strength; JavaScript only adds the cycling
+     highlight (one item full white, the rest resting dimmer). */
+  .hero-feed{list-style:none; padding:0}
+  .hero-feed-item{position:relative; padding:.5em 0 .5em 1.35em; line-height:1.35;
+    border-bottom:1px solid rgba(212,175,55,.30); transition:opacity .6s ease}
+  .hero-feed-item:last-child{border-bottom:0}
+  .hero-feed-item::before{content:""; position:absolute; left:.05em; top:50%;
+    width:.42em; height:.42em; margin-top:-.21em; background:var(--gold);
+    transform:rotate(45deg); box-shadow:0 1px 6px rgba(3,6,16,.8)}
+  .hero-feed.feed-live .hero-feed-item{opacity:.42}
+  .hero-feed.feed-live .hero-feed-item.is-active{opacity:1}
+  @media (prefers-reduced-motion: reduce){
+    .hero-feed .hero-feed-item{opacity:1 !important; transition:none}
+  }
+
 .hero .roles{font-family:'Jupiter Roman',serif}
 </style>
 </head>
@@ -963,7 +985,13 @@ a.panel-link:hover .panel-art figcaption{color:var(--gold-ink)}
     <canvas class="scene3d" id="scene3d-hero" aria-hidden="true"></canvas>
     <h1>The Box Studios</h1>
     <p class="roles">Publishing — Compositions & Phonograms — Books — Apps — Films</p>
-    <p class="summary">A museum of music and media in the Eastern New Orleans Renaissance Corridor — one room where the work is made, and a system around it that publishes it, licenses it, and keeps it: compositions and phonograms, books and their tools, apps, and films, all carried in one registry and reached through two doors only.</p>
+    <ul class="summary hero-feed">
+    <li class="hero-feed-item">A museum of music and media in the Eastern New Orleans Renaissance Corridor</li>
+    <li class="hero-feed-item">One room where the work is made</li>
+    <li class="hero-feed-item">A system around it that publishes it, licenses it, and keeps it</li>
+    <li class="hero-feed-item">Compositions and phonograms, books and their tools, apps, and films</li>
+    <li class="hero-feed-item">All carried in one registry and reached through two doors only</li>
+  </ul>
   </div>
 
     <section aria-labelledby="h-studio">
@@ -1899,6 +1927,36 @@ document.addEventListener('pointerover', function warm(e) {
       if (s.getBoundingClientRect().top + window.scrollY < limit) s.classList.add('inview');
     });
   }, 1600);
+})();
+</script>
+
+<script>
+/* ROUND 85 — THE HERO FEED. The hero summary's clauses cycle: one item
+   stands at full white while the rest rest dimmer, looping. The script
+   only adds the highlight classes; every item is in the page and fully
+   readable without it, and reduced motion never starts the cycle. */
+(function () {
+  var feed = document.querySelector('.hero-feed');
+  if (!feed) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var items = feed.querySelectorAll('.hero-feed-item');
+  if (!items || items.length < 2) return;
+  var i = 0, timer = null;
+  feed.classList.add('feed-live');
+  items[0].classList.add('is-active');
+  function step() {
+    items[i].classList.remove('is-active');
+    i = (i + 1) % items.length;
+    items[i].classList.add('is-active');
+  }
+  function play() { if (!timer) timer = setInterval(step, 2600); }
+  function pause() { if (timer) { clearInterval(timer); timer = null; } }
+  feed.addEventListener('mouseenter', pause);
+  feed.addEventListener('mouseleave', play);
+  feed.addEventListener('focusin', pause);
+  feed.addEventListener('focusout', play);
+  document.addEventListener('visibilitychange', function () { if (document.hidden) pause(); else play(); });
+  play();
 })();
 </script>
 
