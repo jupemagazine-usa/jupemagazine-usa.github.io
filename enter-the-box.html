@@ -786,6 +786,65 @@ nav .nav-list a.give-nav::after{left:.85rem; right:.85rem}
 .trust-line{font-family:var(--mono); font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:#b8ad8f}
 .give-honest{color:#d8d2c0; line-height:1.55; margin:1.05rem 0 0; max-width:44rem}
 </style>
+
+<style>
+  /* ROUND 88 (2026-11-16, Byron: "Improve the text quality and fonts
+     on all the hero pages"): a typography-quality pass on the hero —
+     no word changes, no face changes, nothing outside the hero text
+     treatment. The audit it answers, from the built pages themselves:
+     (1) The faces the hero names for its reading text — Cormorant
+     Garamond for the summary, Playfair Display, JetBrains Mono — are
+     loaded nowhere on the main pages (no font link, no @font-face;
+     only the three Jupiter faces are embedded), so the summary has
+     always rendered in the Georgia fallback at weight 400, and on the
+     grand heroes .hero-grand .summary cuts it to 1.18rem: a light
+     serif at small size over moving art. (2) The kicker stands at
+     .92rem in single-weight Jupiter Roman with .3em tracking and no
+     shadow at all, and wraps across the medallion's bright centre.
+     (3) The spectrum headline has carried text-shadow:none since
+     Round 77 — a clipped gradient cannot take a text shadow without
+     muddying — so its letters have had no halo over the art, and
+     background-clip:text renders without subpixel smoothing.
+     (4) The Round 26 veil gathers at 28%/.52 while the medallion's
+     bright work sits centre-right, behind the reading lines.
+     The pass: the veil deepened and widened over the text column
+     (the art still shows at the field's right and edges); the
+     summary sturdier and larger with a tight dark edge in its shadow;
+     the kicker larger with a deep-field halo and its tracking eased
+     at phone width; the spectrum letters given a drop-shadow halo —
+     a filter follows the clipped letters' own shape, where a text
+     shadow cannot — and balanced wrapping on headline and kicker.
+     Smoothing and text-rendering are set on the hero itself. The
+     Round 85 home feed rides the same treatment: its list carries
+     the summary class, so the sturdier weight, size, and shadow
+     inherit to every feed item, and its cycling is untouched. */
+  .hero{
+    -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    text-rendering:optimizeLegibility;
+  }
+  .hero::after{content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:
+      radial-gradient(72% 62% at 34% 46%, rgba(3,6,16,.66), rgba(3,6,16,0) 72%),
+      linear-gradient(96deg, rgba(3,6,16,.60) 0%, rgba(3,6,16,.38) 46%, rgba(3,6,16,.10) 78%, rgba(3,6,16,0) 94%),
+      radial-gradient(58% 72% at 28% 52%, rgba(3,6,16,.52), rgba(3,6,16,0) 70%),
+      linear-gradient(180deg, rgba(3,6,16,.34) 0%, rgba(3,6,16,0) 30%, rgba(3,6,16,.55) 100%)}
+  .hero h1{text-wrap:balance;
+    filter:drop-shadow(0 2px 16px rgba(3,6,16,.55)) drop-shadow(0 1px 3px rgba(3,6,16,.6))}
+  .hero .roles{
+    letter-spacing:.26em; text-wrap:balance;
+    text-shadow:0 1px 3px rgba(3,6,16,.95), 0 2px 16px rgba(3,6,16,.88), 0 0 36px rgba(3,6,16,.55);
+  }
+  .hero .summary{
+    font-weight:600; line-height:1.52; letter-spacing:.006em;
+    text-shadow:0 1px 2px rgba(3,6,16,.92), 0 2px 20px rgba(3,6,16,.88), 0 0 46px rgba(3,6,16,.5);
+  }
+  .hero-grand .roles{font-size:clamp(1rem,2.6vw,1.22rem)}
+  .hero-grand .summary{font-size:clamp(1.32rem,4.4vw,1.58rem); max-width:44rem}
+  @media (max-width:560px){
+    .hero .roles{letter-spacing:.18em}
+    .hero-grand .roles{font-size:.95rem}
+  }
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to the record</a>

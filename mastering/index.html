@@ -118,6 +118,20 @@ footer .sig{color:var(--cream)}
 .trust-seal{width:26px; height:26px; border-radius:50%; vertical-align:-8px; margin-right:.35em}
 .trust-line{font-size:.85rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted)}
 </style>
+
+<style>
+  /* ROUND 88 (2026-11-16, Byron: "Improve the text quality and fonts
+     on all the hero pages"): Mastering carries no .hero band — its
+     header stands on the flat deep field, so its type fights no art.
+     It shares only the spectrum headline's trait (text-shadow:none,
+     as a clipped gradient requires), so it takes only the matching
+     piece of the pass: smoothing on, and a drop-shadow halo for the
+     spectrum letters, which follows their clipped shape. */
+  body{-webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    text-rendering:optimizeLegibility}
+  h1{text-wrap:balance;
+    filter:drop-shadow(0 2px 12px rgba(3,6,16,.45)) drop-shadow(0 1px 2px rgba(3,6,16,.5))}
+</style>
 </head>
 <body>
 <nav class="house-bar" aria-label="The Box Studios">
