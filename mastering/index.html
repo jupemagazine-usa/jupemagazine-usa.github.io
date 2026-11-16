@@ -109,12 +109,18 @@ footer .sig{color:var(--cream)}
     }
   }
 
+/* ROUND 86 (2026-11-16): the giving door reaches this page's own
+   chrome \u2014 a Donate item in the house links, dressed as a gold
+   chip, and the support line among its doors. */
+.house-links a.give-nav{border:1px solid var(--gold); padding:.45rem .75rem}
+.doors a.give-door{font-weight:700}
+.trust-line{font-size:.85rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted)}
 </style>
 </head>
 <body>
 <nav class="house-bar" aria-label="The Box Studios">
   <a class="house-mark" href="/">The Box Studios &middot; New Orleans</a>
-  <span class="house-links"><a href="/">Home</a><a href="/the-room.html">The Room</a><a href="/visit.html">Visit</a><a href="/rates.html">Rates</a><a href="/legal.html">Legal</a></span>
+  <span class="house-links"><a href="/">Home</a><a href="/the-room.html">The Room</a><a href="/visit.html">Visit</a><a href="/rates.html">Rates</a><a href="/legal.html">Legal</a><a class="give-nav" href="https://www.paypal.com/donate/?hosted_button_id=77MVAMJ3YXMRQ">Donate</a></span>
 </nav>
 <header>
   <div class="kicker">The Box Studios · New Orleans</div>
@@ -196,10 +202,11 @@ footer .sig{color:var(--cream)}
   </div>
 </main>
 <div class="doors">
-  <p><strong style="color:var(--cream)">The doors.</strong> This tool stands in the house; everything else begins at the studio's two doors — write to <a href="mailto:sales@leasethebox.com">sales@leasethebox.com</a>, or open <a href="/enter-the-box.html">Enter The B · O · X</a>. <a href="/">Back to the studio home</a>.</p>
+  <p><strong style="color:var(--cream)">The doors.</strong> This tool stands in the house; everything else begins at the studio's two doors — write to <a href="mailto:sales@leasethebox.com">sales@leasethebox.com</a>, or open <a href="/enter-the-box.html">Enter The B · O · X</a>. <a href="/">Back to the studio home</a>. <a class="give-door" href="https://www.paypal.com/donate/?hosted_button_id=77MVAMJ3YXMRQ">Support the studio — Give through PayPal</a>.</p>
 </div>
 <footer>
   <p class="sig">Rendering by the Byron Jupiter Agency, with Renaissance Instruments</p>
+  <p class="trust-line">Secure connection — giving and payment run through PayPal</p>
   <p>© Byron Jupiter — sales@leasethebox.com</p>
 </footer>
 <script>
