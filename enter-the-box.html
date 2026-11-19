@@ -191,8 +191,30 @@
   .masthead::after{content:""; display:block; height:2px; background:var(--silk); opacity:.85}
   .masthead-in{max-width:var(--max); margin:0 auto; padding:.65rem clamp(1rem,4vw,2rem);
     display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap}
-  .wordmark{font-weight:700; font-size:.95rem; letter-spacing:.35em; text-transform:uppercase}
-  .wordmark strong{color:var(--gold-ink); font-weight:700}
+  /* ROUND 100 (2026-11-19, Byron: "Instead of the black font the reads
+     The Box Studios at the top of the site use the logo inspired fonts
+     and colors"): the masthead wordmark takes the working logo's dress —
+     the colorful modernized edition of Nelle's original (gold script
+     "The," multicolour neon "BOX," pink-purple "Studios"). The name is
+     set in Jupiter Box — the display cut whose O is true (Deco's O is
+     slashed; Roman is the furniture cut) — in the logo's per-word
+     colors: THE in the logo's gold, carried at text grade by
+     --gold-ink (4.89:1 on the paper ground); BOX in the multicolour
+     spectrum through the house --silk clip, the hero headline's own
+     mechanism; STUDIOS and the NEW ORLEANS tail in the logo's
+     pink-to-purple, its stops deepened one shade so the lightest
+     still clears AA on paper (#b02a78 5.1:1, #833ab4 5.6:1). Where
+     background-clip is unsupported, each word falls back to its solid
+     text-grade color. The ruby lozenge after the name stands. */
+  .wordmark{font-family:'Jupiter Box',serif; font-weight:700; font-size:.95rem; letter-spacing:.35em; text-transform:uppercase}
+  .wordmark .wm-the{color:var(--gold-ink)}
+  .wordmark .wm-box{color:var(--gold-ink)}
+  .wordmark .wm-studios{color:#9c2f80}
+  .wordmark .wm-city{color:#9c2f80}
+  @supports ((-webkit-background-clip:text) or (background-clip:text)){
+    .wordmark .wm-box{background:var(--silk); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent}
+    .wordmark .wm-studios,.wordmark .wm-city{background:linear-gradient(90deg,#b02a78,#833ab4); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent}
+  }
   /* ROUND 26: the masthead's set stone — one ruby lozenge after the
      name, the house's red stone worn at the head of every page. */
   .wordmark::after{content:""; display:inline-block; width:.46em; height:.46em; margin-left:1em;
@@ -860,7 +882,7 @@ nav .nav-list a.give-nav::after{left:.85rem; right:.85rem}
 
 <header class="masthead">
   <div class="masthead-in">
-    <div class="wordmark">The <strong>Box</strong> Studios · New Orleans</div>
+    <div class="wordmark"><span class="wm-the">The</span> <span class="wm-box">Box</span> <span class="wm-studios">Studios</span> <span class="wm-city">· New Orleans</span></div>
     <nav aria-label="Site"><ul class="nav-list"><li><a href="/">Home</a></li><li><a href="/the-room.html">The Room</a></li><li><a href="/the-producer.html">The Producer</a></li><li><a href="/the-ground.html">The Ground</a></li><li><a href="/step-and-repeat.html">Step and Repeat</a></li><li><a href="/visit.html">Visit</a></li><li><a href="/enter-the-box.html">Enter The Box</a></li><li><a href="/generational-redundancy.html">The Example</a></li><li><a href="/legal.html">Legal</a></li><li><a href="/pay.html">Pay</a></li><li><a href="/donors.html">Donors</a></li><li><a href="/brpi.html">BRPI</a></li><li><a href="/rates.html">Rates</a></li><li><a class="give-nav" href="https://www.paypal.com/donate/?hosted_button_id=77MVAMJ3YXMRQ">Donate</a></li></ul></nav>
   </div>
 </header>
