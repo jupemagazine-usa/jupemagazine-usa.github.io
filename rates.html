@@ -887,6 +887,38 @@ nav .nav-list a.give-nav::after{left:.85rem; right:.85rem}
     .hero-grand .roles{font-size:.95rem}
   }
 </style>
+<style>
+  /* ROUND 120 (2026-11-27, Byron: "The navigation is overtaken tho
+     iOS screen on the box studios site needs improvement"): the
+     spectrum nav grew to twenty doors, and at phone width it wrapped
+     six to seven rows inside the sticky masthead — measured in
+     headless Chromium at 324px tall on 390x844 and 371px on
+     375x667, over half the small phone's screen, pinned there for
+     the whole scroll. The phone masthead is now one slim bar — the
+     wordmark and a Menu door — and the spectrum nav rides behind
+     that door in its full dress: closed until called, open under
+     the bar, closed again on a link, on Escape, or on the door
+     itself. Nothing is covered and nothing is trapped; the desktop
+     masthead is untouched. Without JavaScript the nav stands open
+     and the door hides (the noscript rule beside this block) — no
+     door without a key. scroll-padding-top falls to match the slim
+     bar, so fragment targets clear it again. */
+  .nav-toggle{display:none}
+  @media (max-width:640px){
+    .nav-toggle{display:inline-flex; align-items:center; min-height:44px;
+      font-family:var(--mono); font-size:.8rem; letter-spacing:.18em;
+      text-transform:uppercase; color:var(--gold-ink); background:none;
+      border:1px solid var(--gold-deep); padding:.5rem .85rem; cursor:pointer}
+    .nav-toggle::before{content:""; width:.5rem; height:.5rem; margin-right:.55rem;
+      background:linear-gradient(135deg, #FFE98A, #DE980A); transform:rotate(45deg);
+      box-shadow:0 0 0 1.5px rgba(122,76,6,.85)}
+    .masthead #site-nav{display:none; flex-basis:100%}
+    .masthead #site-nav.open{display:block; border-top:1px solid rgba(29,26,20,.18); max-height:calc(100vh - 7.5rem); overflow-y:auto}
+    .masthead #site-nav .nav-list{padding:.25rem 0 .35rem}
+    html{scroll-padding-top:5.75rem}
+  }
+</style>
+<noscript><style>@media (max-width:640px){.masthead #site-nav{display:block}.nav-toggle{display:none!important}}</style></noscript>
 </head>
 <body>
 <a class="skip" href="#main">Skip to the record</a>
@@ -903,7 +935,8 @@ nav .nav-list a.give-nav::after{left:.85rem; right:.85rem}
 <header class="masthead">
   <div class="masthead-in">
     <div class="wordmark"><span class="wm-the">The</span> <span class="wm-box">Box</span> <span class="wm-studios">Studios</span> <span class="wm-city">· New Orleans</span></div>
-    <nav aria-label="Site"><ul class="nav-list"><li><a href="/">Home</a></li><li><a href="/the-room.html">The Room</a></li><li><a href="/the-producer.html">The Producer</a></li><li><a href="/the-ground.html">The Ground</a></li><li><a href="/step-and-repeat.html">Step and Repeat</a></li><li><a href="/visit.html">Visit</a></li><li><a href="/enter-the-box.html">Enter The Box</a></li><li><a href="/generational-redundancy.html">The Example</a></li><li><a href="/legal.html">Legal</a></li><li><a href="/pay.html">Pay</a></li><li><a href="/donors.html">Donors</a></li><li><a href="/brpi.html">BRPI</a></li><li><a href="/voice-of-tomorrow.html">Voice of Tomorrow</a></li><li><a href="/sweet-vanilla.html">Sweet Vanilla</a></li><li><a href="/before-the-show.html">Before the Show</a></li><li><a href="/wimi.html">WIMI</a></li><li><a href="/robot-holiday.html">Southern Circuitry</a></li><li><a href="/tribute.html">Tribute</a></li><li><a href="/rates.html">Rates</a></li><li><a class="give-nav" href="https://www.paypal.com/donate/?hosted_button_id=77MVAMJ3YXMRQ">Donate</a></li></ul></nav>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" aria-label="Site"><ul class="nav-list"><li><a href="/">Home</a></li><li><a href="/the-room.html">The Room</a></li><li><a href="/the-producer.html">The Producer</a></li><li><a href="/the-ground.html">The Ground</a></li><li><a href="/step-and-repeat.html">Step and Repeat</a></li><li><a href="/visit.html">Visit</a></li><li><a href="/enter-the-box.html">Enter The Box</a></li><li><a href="/generational-redundancy.html">The Example</a></li><li><a href="/legal.html">Legal</a></li><li><a href="/pay.html">Pay</a></li><li><a href="/donors.html">Donors</a></li><li><a href="/brpi.html">BRPI</a></li><li><a href="/voice-of-tomorrow.html">Voice of Tomorrow</a></li><li><a href="/sweet-vanilla.html">Sweet Vanilla</a></li><li><a href="/before-the-show.html">Before the Show</a></li><li><a href="/wimi.html">WIMI</a></li><li><a href="/robot-holiday.html">Southern Circuitry</a></li><li><a href="/tribute.html">Tribute</a></li><li><a href="/rates.html">Rates</a></li><li><a class="give-nav" href="https://www.paypal.com/donate/?hosted_button_id=77MVAMJ3YXMRQ">Donate</a></li></ul></nav>
   </div>
 </header>
 
@@ -1758,5 +1791,13 @@ document.addEventListener('pointerover', function warm(e) {
 <script type="module" src="/assets/scene3d.js"></script>
 
 <!-- Rendered by the House Site Builder v1.0.0 - official record copy -->
+<script>
+/* ROUND 120: the phone menu door — see the Round 120 style block in the head. */
+(function(){var b=document.querySelector('.nav-toggle'),n=document.getElementById('site-nav');if(!b||!n)return;
+function close(){n.classList.remove('open');b.setAttribute('aria-expanded','false')}
+b.addEventListener('click',function(){var open=n.classList.toggle('open');b.setAttribute('aria-expanded',open?'true':'false')});
+n.addEventListener('click',function(e){if(e.target.closest('a'))close()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});})();
+</script>
 </body>
 </html>
