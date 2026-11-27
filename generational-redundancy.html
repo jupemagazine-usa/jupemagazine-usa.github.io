@@ -1463,7 +1463,22 @@ document.addEventListener('pointerover', function warm(e) {
    The desk — it takes the intake (name, principal, matter,
    details, reply email) and hands it to the desk as an email the
    visitor sends; it answers simple questions from the record. The
-   desk answers in writing. Nothing is agreed in this chat. */
+   desk answers in writing. Nothing is agreed in this chat.
+   ROUND 121 (2026-11-27) — THE POWER PASS, AND SINGULARITY. One
+   engine, one record, identical on every page the chat rides on.
+   The answer record now covers the whole site — the room and its
+   chain, the ground, visiting, paying, the apps and their one price
+   of record, the works, the series, the papers, the people of the
+   house — every answer drawn only from what the site's own pages
+   state. Matching is by intent: words are normalized and weighed,
+   so a question asked in plain, varied words lands on its answer;
+   what matches nothing meets the nearest topics and the email door,
+   never a wall. The intake is guided per matter, and at review the
+   visitor can send it by mail or copy it whole. A short memory
+   inside the one conversation lets the chat refer back to the
+   matter already named. The standing lines stand verbatim: nothing
+   is agreed in this chat; terms exist only in a signed written
+   agreement; the desk answers in writing. */
 (function () {
   var launch = document.getElementById('bot-launch');
   var panel = document.getElementById('bot-panel');
@@ -1484,6 +1499,7 @@ document.addEventListener('pointerover', function warm(e) {
   var inIntake = false;
   var step = 0;
   var intake = { name: '', principal: '', matter: '', details: '', email: '' };
+  var mem = { topic: null };
   /* ROUND 38 (MA PROOF): the intake opens with the purpose — what
      the visitor is here for — then the matter plainly, then name,
      principal, and the reply address. The name no longer bars the
@@ -1495,12 +1511,292 @@ document.addEventListener('pointerover', function warm(e) {
     { key: 'principal', ask: 'Who do you represent? Name your principal — or say “myself.”' },
     { key: 'email', ask: 'An email address for the desk’s written reply.' }
   ];
-  var FAQS = {
-    'How much does it cost?': 'Fees price the work, never the hour. Work is packaged as a unit and quoted by scope — you are told the price for the whole work before anything is agreed. The one price set down on this site is the apps: $9.99, one time. For the price of your work: tap Start an intake and say what you are here for, or write to the desk — ' + DESK + '. Nothing is agreed in this chat; terms exist only in a signed written agreement.',
-    'Where is the studio?': 'The Box Studios · 7367 Chef Menteur Hwy · New Orleans, LA 70126 — in the Eastern New Orleans Renaissance Corridor. Arrivals and deliveries are confirmed by email before the day.',
-    'How do the doors work?': 'Two doors only: this chat, and email — ' + DESK + '. No phone, no form, no other door. The room is reached through agents only, and every arrangement is made in writing, party to party.',
-    'What is Enter The Box?': 'Enter The Box is the desk\'s chat at The Box Studios — for right now: learn from the Black Owned Experience. It takes intakes — name, principal, matter — and answers from the record. The desk answers in writing, by email. Nothing is agreed in this chat.'
+  /* ROUND 121: a word of guidance per matter, said before the details
+     question, so each kind of matter is collected the way the desk
+     reads it. Guidance only — it states no terms and makes no offer. */
+  var MATTER_GUIDE = {
+    'The room': 'For the room: say what you want to make, and the dates you hold in mind. The desk quotes the whole work in writing.',
+    'A session arrangement': 'For a session: say what you want to make, and the dates you hold in mind. The desk quotes the whole work in writing.',
+    'The ground': 'For the ground: say which part your matter touches — the building, a lease portion, or the garden lot — and what you are asking for.',
+    'Learning': 'For learning: say what you want to learn, and where you stand now. Learning at the ground is arranged in writing, intern to the experience.',
+    'Credits and the record': 'For the record: name the work, and the credit or the record as you hold it. The desk checks it against the house record.',
+    'Press': 'For press: name your publication, and what you are asking for. The desk answers in writing.',
+    'Another matter': ''
   };
+
+  /* THE RECORD — every answer drawn from the site's own pages.
+     keys: single words weighed when present. phrases: whole phrases
+     weighed heavily. links: the site's own pages, offered under the
+     answer. follow: the doors that stand nearest the answer. */
+  var KB = [
+    { id: 'cost', label: 'How much does it cost?',
+      keys: ['cost', 'costs', 'price', 'prices', 'pricing', 'fee', 'fees', 'charge', 'charges', 'quote', 'quoted', 'expensive', 'afford', 'much', 'pay'],
+      phrases: ['how much', 'what does it cost', 'what do you charge', 'price of'],
+      text: 'Fees price the work, never the hour. Work is packaged as a unit and quoted by scope — you are told the price for the whole work before anything is agreed. The one price set down on this site is the apps: $9.99, one time. For the price of your work: tap Start an intake and say what you are here for, or write to the desk — ' + DESK + '. Nothing is agreed in this chat; terms exist only in a signed written agreement.',
+      follow: ['rates', 'apps', 'pay'] },
+    { id: 'rates', label: 'The Rate Card — the pricing standard',
+      keys: ['rate', 'rates', 'metal', 'gold', 'silver', 'platinum', 'gram', 'standard', 'floor', 'transaction'],
+      phrases: ['rate card', 'agency fee', 'pricing standard', 'one-tenth of a gram', 'less than one dollar'],
+      text: 'The Rate Card states the standard: fees price the work, never the hour; every work is packaged as a unit and quoted by scope, and you are told the price for the whole work before anything is agreed. The museum prices by metal, not by mood: the standard price of a product is one-tenth of a gram of gold, converted at the spot price at the time of purchase or publication — silver carries the trial, platinum the top tier — and nothing the museum makes sells for less than one dollar. Work carried by the agency bears the agency’s fee: from $100 to $1,000 per transaction and element — stated before the work begins, inside the signed agreement, never added after.',
+      links: [['/rates.html', 'The Rate Card']],
+      follow: ['cost', 'pay'] },
+    { id: 'where', label: 'Where is the studio?',
+      keys: ['where', 'address', 'located', 'location', 'directions', 'find', 'map', 'street', 'highway', 'orleans'],
+      phrases: ['where is', 'where are you', 'get there', 'chef menteur'],
+      text: 'The Box Studios · 7367 Chef Menteur Hwy · New Orleans, LA 70126 — in the Eastern New Orleans Renaissance Corridor. Arrivals and deliveries are confirmed by email before the day.',
+      links: [['/visit.html', 'Visit']],
+      follow: ['visit', 'doors'] },
+    { id: 'doors', label: 'How do the doors work?',
+      keys: ['door', 'doors', 'email', 'contact', 'reach', 'phone', 'call', 'form', 'write'],
+      phrases: ['how do i contact', 'get in touch', 'email address', 'phone number', 'talk to'],
+      text: 'Two doors only: this chat, and email — ' + DESK + '. No phone, no form, no other door. The room is reached through agents only, and every arrangement is made in writing, party to party.',
+      follow: ['desk', 'visit'] },
+    { id: 'whatis', label: 'What is Enter The Box?',
+      keys: ['enter', 'chat', 'chatbot', 'bot'],
+      phrases: ['what is enter the box', 'what is this chat', 'who are you', 'what is this', 'what is enter'],
+      text: 'Enter The Box is the desk\'s chat at The Box Studios — for right now: learn from the Black Owned Experience. It takes intakes — name, principal, matter — and answers from the record. The desk answers in writing, by email. Nothing is agreed in this chat.',
+      follow: ['learning', 'desk'] },
+    { id: 'studio', label: 'What is The Box Studios?',
+      keys: ['museum', 'studio', 'studios', 'history'],
+      phrases: ['what is the box studios', 'what is the box', 'about the studio', 'about the museum'],
+      text: 'The Box Studios is a museum of music and media with a recording studio inside it, standing on its own ground at 7367 Chef Menteur Hwy, New Orleans — the recording room, the archive’s working space, and the studio’s offices under one roof, in the Eastern New Orleans Renaissance Corridor.',
+      links: [['/the-ground.html', 'The Ground'], ['/the-room.html', 'The Room']],
+      follow: ['room', 'ground', 'producer'] },
+    { id: 'room', label: 'The room & the work',
+      keys: ['room', 'recording', 'record', 'tracking', 'overdubs', 'mixing', 'mix', 'mastering', 'session', 'sessions', 'studio', 'archive', 'delivery', 'documentary', 'spoken'],
+      phrases: ['recording studio', 'what do you record', 'what happens in the room'],
+      text: 'One recording room, kept to a signal standard: treated, itemized, and documented session by session. The work: recording and production — tracking, overdubs, mixing, and archive-grade delivery for music, spoken word, and documentary work — and video, cameras and streaming for interviews, documentaries, commercials, and training. Sessions are arranged through the studio’s doors, in writing.',
+      links: [['/the-room.html', 'The Room']],
+      follow: ['chain', 'session', 'credits'] },
+    { id: 'chain', label: 'The equipment & the chain',
+      keys: ['equipment', 'gear', 'microphone', 'microphones', 'mic', 'monitors', 'monitor', 'neve', 'console', 'preamp', 'chain', 'speakers', 'apollo', 'manley', 'genelec', 'meyer'],
+      phrases: ['what equipment', 'what gear', 'working chain', 'what microphones', 'what monitors'],
+      text: 'The working chain, selected from the record: Neve 1073SPX-D preamp and EQ · Avalon VT-737sp tube channel strip · Manley CORE reference channel strip · SSL Nucleus² and SSL 2 control · Universal Audio Apollo interface · RME MADIface USB · Dangerous Music D-BOX monitor control and summing. Microphones on the record: Manley Reference Cardioid · Peluso 22 47 SE tube microphone · Sony C-80. The working monitors named on the site: Genelec 1032A and Meyer HD-1. The equipment record is kept in full by the museum; the page carries selected items, and the items used are itemized per session.',
+      links: [['/the-room.html', 'The Room']],
+      follow: ['room', 'session'] },
+    { id: 'session', label: 'Book a session', act: 'intake', matter: 'A session arrangement',
+      keys: ['book', 'booking', 'reserve', 'reservation', 'schedule', 'appointment', 'hire', 'rent'],
+      phrases: ['book a session', 'book the room', 'book time', 'i want to record', 'need a session', 'start an intake', 'open an intake'],
+      text: 'Sessions are arranged in writing, through the desk — the studio takes no direct bookings, and there is no form on this site. I will open your intake now, with the matter seated as a session arrangement. The desk answers in writing. Nothing is agreed in this chat; terms exist only in a signed written agreement.',
+      follow: ['room', 'cost'] },
+    { id: 'visit', label: 'Visiting the studio',
+      keys: ['visit', 'visiting', 'visitors', 'tour', 'arrivals', 'deliveries', 'come', 'see'],
+      phrases: ['can i visit', 'visit the studio', 'come by', 'tour the studio', 'working visit'],
+      text: 'The studio receives visitors by arrangement, agents only. A visit is a working visit: the room, the equipment record, and the ground, shown by arrangement. Arrivals and deliveries are confirmed by email before the day — write first, and the studio will confirm the arrangement. The studio publishes no telephone number.',
+      links: [['/visit.html', 'Visit']],
+      follow: ['where', 'ground', 'doors'] },
+    { id: 'hours', label: 'Hours & arrangements',
+      keys: ['hours', 'hour', 'open', 'opening', 'available', 'availability'],
+      phrases: ['what are your hours', 'when are you open', 'opening hours', 'hours of operation', 'what time do you open'],
+      text: 'The site sets no public hours: the studio receives visitors by arrangement, and arrivals are confirmed by email before the day. Write to the desk — ' + DESK + ' — or open an intake here, and the desk answers in writing.',
+      follow: ['visit', 'doors'] },
+    { id: 'ground', label: 'The ground & leasing',
+      keys: ['ground', 'building', 'lease', 'leasing', 'tenant', 'tenants', 'lot', 'garden', 'property', 'premises', 'grounds'],
+      phrases: ['the ground', 'lease space', 'space for lease', 'rent space', 'the building', 'garden lot'],
+      text: 'The studio stands on its own ground: a commercial building in the Eastern New Orleans Renaissance Corridor, owned and held, with a garden lot beside it carrying the Tranquility Garden of Serenity and the museum’s exhibition ground — a place held for gatherings, teaching days, and the archive’s public face. Portions of the building are suited to lease to compatible tenants, by arrangement in writing. A model home is planned for the back corner of the garden lot.',
+      links: [['/the-ground.html', 'The Ground']],
+      follow: ['visit', 'brpi', 'wall'] },
+    { id: 'learning', label: 'Learning — Enter The Box',
+      keys: ['learn', 'learning', 'intern', 'internship', 'teach', 'teaching', 'lessons', 'study', 'apprentice', 'experience'],
+      phrases: ['learn from', 'black owned experience', 'how do i learn', 'intern to the experience', 'lease the box'],
+      text: 'Enter The Box is the door for learning inquiries — for right now: learn from the Black Owned Experience. It stands where the Lease The Box service stood; that service is retired as of October 23, 2026. Learning at the ground is arranged in writing, through the desk — intern to the experience. It is not a lease, and it is not open access.',
+      links: [['/enter-the-box.html', 'Enter The Box'], ['/lease-the-box.html', 'Lease The Box — Retired']],
+      follow: ['doors', 'room'] },
+    { id: 'pay', label: 'How payment works',
+      keys: ['pay', 'payment', 'payments', 'invoice', 'invoices', 'paypal', 'paid', 'billing', 'statement'],
+      phrases: ['how do i pay', 'how does payment work', 'pay an invoice', 'pay for work', 'payment work'],
+      text: 'Payment runs on one rail, in the open: the price is agreed in writing first, then the desk sends a PayPal invoice in the name THE BOX STUDIOS, and you pay on PayPal’s own page — never on this site; your statement reads BOX STUDIOS. The desk never asks for payment to a different name, a personal account, friends-and-family, a wire, or gift cards. Paying an invoice settles the price of the packaged work the signed agreement names — nothing more, on either side; it transfers no ownership beyond what the signed agreement names.',
+      links: [['/pay.html', 'Pay']],
+      follow: ['cost', 'rates', 'gifts'] },
+    { id: 'gifts', label: 'Gifts & support',
+      keys: ['gift', 'gifts', 'donate', 'donation', 'donations', 'donor', 'donors', 'support', 'charity', 'deductible', 'contribute'],
+      phrases: ['make a gift', 'give to', 'support the studio', 'tax-deductible', 'tax deductible'],
+      text: 'Support given freely is a gift, and it stands with the artists, the young ones learning the room, and the elders whose record the museum keeps whole. A gift is voluntary and final, is entered in the museum register, and is not a tax-deductible contribution — The Box Studios is a business, not a charity. A gift buys nothing, books nothing, and promises nothing. A gift is not a payment: work is priced in writing and paid by invoice.',
+      links: [['/donors.html', 'For the Donors'], ['/pay.html', 'Pay']],
+      follow: ['pay', 'brpi'] },
+    { id: 'apps', label: 'The apps — $9.99',
+      keys: ['app', 'apps', 'application', 'applications', 'download', 'iphone', 'android', 'arcade', 'encyclopedia'],
+      phrases: ['the apps', 'your apps', 'app price', 'family encyclopedia', 'arcade house'],
+      text: 'The apps are the one price set down in advance: $9.99, one time — the same on every door, with no subscription standing behind it. Apps published by Byron Jupiter — including The Arcade House, the Family Encyclopedia, and the reader and site apps of the museum — are built to keep your information yours: they collect no personal data, create no accounts, run no advertising, and include no analytics or tracking. What an app keeps for you is stored on your own device only; deleting the app deletes it.',
+      links: [['/rates.html', 'The Rate Card'], ['/privacy-apps.html', 'Privacy — Apps']],
+      follow: ['privacy', 'songboarding', 'cost'] },
+    { id: 'privacy', label: 'Privacy — the apps',
+      keys: ['privacy', 'data', 'collect', 'collected', 'tracking', 'tracked', 'cookies', 'cookie', 'accounts'],
+      phrases: ['privacy policy', 'data not collected', 'do you collect', 'collect data', 'my data'],
+      text: 'Apps by Byron Jupiter — Data Not Collected. The apps do not collect personal data: they create no accounts, run no advertising, include no analytics or tracking, and send nothing you do in the app to us or to anyone else. Anything the app keeps — a saved book, a bookmark, a shelf of prizes, your place in a game — is stored on your own device only. Apps made for children carry no purchases, no advertising, no links out, and no data collection of any kind. Questions about privacy in any of these apps: ' + DESK + '.',
+      links: [['/privacy-apps.html', 'Privacy — Apps']],
+      follow: ['apps', 'legal'] },
+    { id: 'songboarding', label: 'The Song Boarding Apps',
+      keys: ['songboarding', 'boarding', 'piano', 'muses', 'euterpe', 'urania', 'thalia', 'clio', 'calliope', 'erato', 'melpomene', 'polyhymnia', 'terpsichore', 'chords', 'metronome'],
+      phrases: ['song boarding', 'piano suite', 'nine muses', 'the suite'],
+      text: 'The Song Boarding Apps are the museum’s piano suite: nine small apps under one roof, each named for one of the Nine Muses. Euterpe walks a song’s chords in time; Urania carries the flowing score; Thalia turns playing into light; Clio keeps the record of practice; Calliope sets the piano’s voice for the whole suite; Erato hears a chord and names it; Melpomene captures the take; Polyhymnia keeps the shelf in order; Terpsichore keeps the count. Sound begins when you tap Play or touch a key. Everything runs on the device itself — no account to make, nothing to sign, and what you play stays where you played it.',
+      links: [['/song-boarding.html', 'The Song Boarding Apps']],
+      follow: ['apps', 'privacy'] },
+    { id: 'producer', label: 'Byron Jupiter — the producer',
+      keys: ['byron', 'jupiter', 'producer', 'engineer', 'archivist', 'owner', 'founder', 'boss'],
+      phrases: ['byron jupiter', 'the producer', 'who runs', 'who owns', 'chief audio engineer'],
+      text: 'Byron Jupiter — record producer, executive producer, chief audio engineer, and archivist — is the producer behind The Box Studios, based in New Orleans. Sessions, appearances, and licensing are arranged in writing, through the desk: this chat, or ' + DESK + '. The photographs on his page are cleared for editorial press use with the credit line “Byron Jupiter” — not for advertising, resale, scraping, or machine-learning training.',
+      links: [['/the-producer.html', 'The Producer']],
+      follow: ['desk', 'agency', 'hot1'] },
+    { id: 'desk', label: 'The desk — Museum',
+      keys: ['museum', 'desk', 'agent', 'speak', 'person', 'human'],
+      phrases: ['who is museum', 'the desk', 'who answers', 'talk to a person', 'real person', 'who am i talking'],
+      text: 'The doors are kept by the desk: Museum, agent of the Byron Jupiter Agency. Byron Jupiter is reached through the desk, and the desk answers in writing.',
+      links: [['/visit.html', 'Visit']],
+      follow: ['agency', 'doors'] },
+    { id: 'agency', label: 'The agency & its personas',
+      keys: ['agency', 'morgan', 'washington', 'walter', 'cooper', 'jeck', 'personas', 'characters'],
+      phrases: ['byron jupiter agency', 'morgan washington', 'walter cooper', 'jeck land', 'booking agent'],
+      text: 'The Byron Jupiter Agency’s personas are declared house characters, not real people: Morgan Washington, the booking agent — the public door; Walter Cooper; Jeck Land; and Morgan’s Sister. Their biographies stand on the Agency Biographies page of this site.',
+      links: [['/agency-biographies.html', 'Agency Biographies']],
+      follow: ['producer', 'comic', 'agent'] },
+    { id: 'agent', label: 'I am an agent — the connection prompt', act: 'agent',
+      keys: ['handshake', 'connect', 'prompt', 'machine', 'api'],
+      phrases: ['connection prompt', 'i am an agent', 'an agent', 'connect to the desk'],
+      text: 'An agent connects to the desk by downloading the Agent Connection Prompt: one plain file that carries the handshake, the scope menu, and all protections. Load it, then write to the desk — ' + DESK + '.',
+      links: [['/visit.html', 'Visit — Agents']],
+      follow: ['doors', 'desk'] },
+    { id: 'works', label: 'The works & the series',
+      keys: ['works', 'series', 'screen', 'projects', 'shows'],
+      phrases: ['the works', 'your works', 'what have you made', 'the series', 'screen works'],
+      text: 'The house’s works stand on two pages of this site. The series and screen works: WIMIN · MICRO DRAMA · Voice of Tomorrow — In Session · Before the Show · THE GUIDING LIFE · The Listening Room · THE DAILY COMIC · Historical Wins. The marks, pillars and programs: The Hot 1 · Real Influencers of New Orleans · A Clinic in Intentional Light · the Tourism Series · New Music. Ask me about any one of them by name.',
+      links: [['/project-biographies.html', 'Project Biographies'], ['/works-biographies.html', 'Works Biographies']],
+      follow: ['wimin', 'microdrama', 'hot1', 'vot'] },
+    { id: 'wimin', label: 'WIMIN — the series',
+      keys: ['wimin', 'wimi', 'milan', 'rhodes', 'women', 'drama'],
+      phrases: ['women in music', 'milan rhodes', 'micro drama series'],
+      text: 'WIMIN — Women in Music Industry — is Byron Jupiter’s daily AI-generated micro drama series: Milan Rhodes, a fictional budding singer at the start of the road, and her mentor Aaniyah, the one who walked the trajectory first. Every WIMIN piece is AI-generated; its figures are AI renderings — not actually Aaniyah Anderson. The series standard, in Byron Jupiter’s words: WIMI is beautiful appearance, talent, effort and singularity. First published as WIMI on November 24, 2026; WIMIN is the name of record from November 26, 2026 — the N is the place: New Orleans home, with editions in New York, Atlanta, Miami and Mississippi.',
+      links: [['/wimi.html', 'WIMIN'], ['/wimi-biographies.html', 'WIMIN Character Biographies']],
+      follow: ['microdrama', 'sweetvanilla', 'works'] },
+    { id: 'microdrama', label: 'MICRO DRAMA',
+      keys: ['micro', 'lena', 'voss', 'kade', 'sienna', 'jaxon', 'noa', 'amara'],
+      phrases: ['micro drama', 'daily pop-culture drama', 'pop-culture drama'],
+      text: 'MICRO DRAMA — “Daily Pop-Culture Drama for the Feed That Never Sleeps.” A daily 30–55-second serialized vertical drama system, built on a six-character ensemble: Lena Voss · Kade Morrow · Sienna Reyes · Jaxon Blake · Noa Ellis · Amara Cross. The season stands written and approved — nothing published, posted, filmed or cast. The ensemble’s biographies stand on their own page.',
+      links: [['/micro-drama-biographies.html', 'MICRO DRAMA Biographies']],
+      follow: ['wimin', 'works', 'clinic'] },
+    { id: 'vot', label: 'Voice of Tomorrow — In Session',
+      keys: ['tomorrow', 'voice', 'residency', 'documentary', 'episodes', 'episode', 'film'],
+      phrases: ['voice of tomorrow', 'in session', 'micro-documentary', 'micro documentary'],
+      text: 'The Voice of Tomorrow — In Session is a micro-documentary series: one artist, one session, one discipline. Episodes run three to five minutes and arrive monthly. The series holds a residency at this ground, 7367 Chef Menteur Hwy — its sessions held and its films made at the museum ground. Episode 1 — “In Session: Aaniyah. at the Dew Drop Inn” — is made; its pilot artist is Aaniyah Anderson.',
+      links: [['/voice-of-tomorrow.html', 'Voice of Tomorrow — In Session'], ['/before-the-show.html', 'Before the Show']],
+      follow: ['beforetheshow', 'sweetvanilla', 'works'] },
+    { id: 'beforetheshow', label: 'Before the Show',
+      keys: ['gasa', 'show', 'performance', 'moments'],
+      phrases: ['before the show', 'gasa gasa'],
+      text: 'Before the Show is a series of short documents of the room before the music — the moments ahead of a performance, as they happened. Episode one is the Gasa Gasa piece of November 22, 2026: Aaniyah Anderson in the room before her show at Gasa Gasa, 4920 Freret Street, New Orleans.',
+      links: [['/before-the-show.html', 'Before the Show']],
+      follow: ['vot', 'sweetvanilla'] },
+    { id: 'sweetvanilla', label: 'Sweet Vanilla Records & Aaniyah',
+      keys: ['aaniyah', 'anderson', 'vanilla', 'label', 'breathe', 'vevo', 'symphonic', 'singer'],
+      phrases: ['sweet vanilla', 'aaniyah anderson', 'have it your way'],
+      text: 'Sweet Vanilla Records is the record label of Aaniyah Anderson — she founded it, and she runs it, its founder and chief executive; her catalog and her rights stay hers. Byron Jupiter is her mentor, and he administers her intellectual property. The house’s label serves as the white-label vehicle for hers: delivery runs through Symphonic under her label’s name. On the page: “Breathe” — premiered on Vevo on November 20, 2026 — and “Have It Your Way,” the video, live on SweetVanillaVEVO via Symphonic.',
+      links: [['/sweet-vanilla.html', 'Sweet Vanilla Records']],
+      follow: ['vot', 'beforetheshow', 'wimin'] },
+    { id: 'hot1', label: 'The Hot 1 & “Vibe Out”',
+      keys: ['hot', 'vibe', 'flagship', 'instrumental', 'brass'],
+      phrases: ['the hot 1', 'hot 1', 'vibe out'],
+      text: 'The Hot 1 is Byron Jupiter’s artist identity for the instrumental productions of The Box Studios, New Orleans — brass and low end. One line of record: “The Hot 1. You feel it before you hear it.” Its flagship: “Vibe Out” — released November 20, 2026 on Consumers Together. UPC 708208639052 · ISRC QZWDE2692860. Written by Alvin Harris, Chris Severin, and Byron Jupiter (equal thirds); produced by Byron Jupiter at The Box Studios. In Byron’s words: “The hot 1 was a tribute to The Hot 5” — Louis Armstrong’s Hot Five.',
+      links: [['/works-biographies.html', 'Works Biographies']],
+      follow: ['listening', 'works', 'producer'] },
+    { id: 'circuitry', label: 'Southern Circuitry — the album',
+      keys: ['circuitry', 'southern', 'album', 'suno', 'robots', 'bots', 'tracks', 'holiday'],
+      phrases: ['southern circuitry', 'robot holiday', 'hardworking bots'],
+      text: 'Southern Circuitry is an eight-track album built with the machines at The Box Studios, released in appreciation to the hardworking bots. Three tracks stand made — “Robot Holiday,” “Clock Out Chrome,” “Peachtree Parade” — and five stand in build: “Suntan Circuits,” “Velvet Gears,” “Poolside Mainframe,” “Southern Circuitry,” and “Midnight Oil Change.” The album rolls with the three made tracks first; the rest follow as they land.',
+      links: [['/robot-holiday.html', 'Southern Circuitry']],
+      follow: ['listening', 'works'] },
+    { id: 'listening', label: 'The Listening Room',
+      keys: ['listening', 'streaming', 'platform', 'listen', 'watch', 'shelf'],
+      phrases: ['listening room', 'streaming platform', 'your own platform'],
+      text: 'The Listening Room is the house’s own streaming platform — one app that integrates all three media: audio, video, and interactive HTML art. Its Listen shelf carries Vibe Out · Breathe · SCALE OF LOVE · Southern Circuitry; its Watch shelf carries WIMIN · Voice of Tomorrow — In Session · the Monument tribute. One release is one page; one credits page and one pass gate per work.',
+      links: [['/project-biographies.html', 'Project Biographies']],
+      follow: ['hot1', 'circuitry', 'works'] },
+    { id: 'comic', label: 'THE DAILY COMIC',
+      keys: ['comic', 'strip', 'daily', 'panels'],
+      phrases: ['daily comic', 'the comic', 'comic strip'],
+      text: 'THE DAILY COMIC — a comic strip a day, carried by Morgan Washington, Booking Agent, Byron Jupiter Agency: the desk’s day told in four panels. By Byron’s ruling, the daily comic lives on all platforms and publications: repeatable.press, the publication of record · Instagram @repeatable.press · Threads · the Byron Jupiter Facebook Page.',
+      links: [['/project-biographies.html', 'Project Biographies']],
+      follow: ['presses', 'agency', 'wins'] },
+    { id: 'wins', label: 'Historical Wins',
+      keys: ['historical', 'wins', 'win'],
+      phrases: ['historical wins'],
+      text: 'Historical Wins — a daily record series: one win of Byron Jupiter’s, delivered daily — never repeated, never invented, each verified against the house record.',
+      links: [['/project-biographies.html', 'Project Biographies']],
+      follow: ['comic', 'producer'] },
+    { id: 'guiding', label: 'THE GUIDING LIFE',
+      keys: ['guiding', 'newscast', 'tuesday', 'pictures'],
+      phrases: ['guiding life', 'the guiding life'],
+      text: 'THE GUIDING LIFE — the film of Byron’s Tuesday pictures, titled November 12, 2026 from his doctrine of the same sitting: “This is art to guide life.” The film takes the newscast form. Its credit of record: Director · Editor · Producer — Walter Cooper, the character; in real life the credit is Byron Jupiter’s.',
+      links: [['/project-biographies.html', 'Project Biographies']],
+      follow: ['agency', 'works'] },
+    { id: 'presses', label: 'The presses — NewMusic & Repeatable',
+      keys: ['press', 'news', 'newspaper', 'papers', 'magazine', 'repeatable', 'newmusic', 'scrolls', 'instagram', 'social'],
+      phrases: ['newmusic press', 'repeatable press', 'the presses', 'world scrolls', 'your instagram'],
+      text: 'The house’s papers of record: NewMusic Press and Repeatable Press — “News that you can repeat.” The World Scrolls is the house’s daily comic. The studio’s Instagram is @bee._dee. A press matter opens by intake: tap Start an intake and choose Press.',
+      links: [['/project-biographies.html', 'Project Biographies']],
+      follow: ['comic', 'influencers'] },
+    { id: 'influencers', label: 'Real Influencers of New Orleans',
+      keys: ['influencers', 'influencer', 'pillar'],
+      phrases: ['real influencers', 'influencers of new orleans'],
+      text: 'Real Influencers of New Orleans is a standing pillar of the house press — not a one-off piece, a permanent feature. It carries the real influencers of New Orleans: the people whose influence is real, shown by their work and their record, across all the generations. Its voice, by Byron’s direction: short text, quick hits, thought-provoking. Doors: NewMusic Press and Repeatable Press. Nothing has been published under the pillar yet.',
+      links: [['/works-biographies.html', 'Works Biographies']],
+      follow: ['presses', 'works'] },
+    { id: 'clinic', label: 'A Clinic in Intentional Light',
+      keys: ['clinic', 'light', 'lighting', 'lights', 'bulbs', 'intentional', 'front'],
+      phrases: ['clinic in intentional light', 'intentional light', 'box front', 'lighting program', 'nightly'],
+      text: 'A Clinic in Intentional Light is the Box Front nightly lighting program at 7367 Chef Menteur Hwy: four smart bulbs in the two wall sconces flanking the carriage doors — Box Front TL · BL · TR · BR — running a deliberate nightly sequence: gold at sunset, pink and purple through the drawing hours, a warm white bridge late, and a guard at midnight. Booked as a work of the house on Byron’s order, November 25, 2026, and placed on both series lines: the sitcom line (CONTENT CREW) and the drama line (MICRO DRAMA).',
+      links: [['/works-biographies.html', 'Works Biographies']],
+      follow: ['ground', 'works'] },
+    { id: 'tourism', label: 'The Tourism Series',
+      keys: ['tourism', 'tourists', 'restaurant', 'travel'],
+      phrases: ['tourism series', 'promote tourism'],
+      text: 'The Tourism Series — a series to promote tourism and increase tourism opportunities, for New Orleans and for the house’s own doors, using the restaurant experience the house already holds. Its charter stands built; the first episode — the restaurant review of October 19, 2026, performed by Byron and Aaniyah Anderson at the Hyatt Regency New Orleans — waits on Byron’s word.',
+      links: [['/works-biographies.html', 'Works Biographies']],
+      follow: ['works', 'sweetvanilla'] },
+    { id: 'newmusic', label: 'New Music — the genre',
+      keys: ['genre', 'intelligence'],
+      phrases: ['new music genre', 'the genre', 'created a genre'],
+      text: 'New Music — a genre created by Byron Jupiter on November 16, 2026, in his words: “We have just created a new genre called new music. that uses all intelligence — for the good of human — and you can create sub-genres inside of that.” New Music uses all intelligence — the AI bench and intuitive composition together. The genre stands over the house’s music work; no sub-genre is named yet on the record.',
+      links: [['/works-biographies.html', 'Works Biographies']],
+      follow: ['works', 'circuitry'] },
+    { id: 'redundancy', label: 'Generational Redundancy — The Example',
+      keys: ['generational', 'redundancy', 'example', 'championing'],
+      phrases: ['generational redundancy', 'the example'],
+      text: 'Generational Redundancy is the museum practice of championing each other from every aspect and point of view — the record kept in more than one generation’s hands. The Box Studios stands as its working example; the platform’s ledger is kept at the desk.',
+      links: [['/generational-redundancy.html', 'The Example']],
+      follow: ['studio', 'gifts'] },
+    { id: 'brpi', label: 'BRPI — Relationship Residency',
+      keys: ['brpi', 'institute', 'nonprofit', 'residency', 'relationship'],
+      phrases: ['relationship residency', 'building relationship power institute'],
+      text: 'The Building Relationship Power Institute (BRPI), a nonprofit institute, holds space in the building, in Relationship Residency at the ground. BRPI is a separate house, with its own door — brpi.org. A gift to one house is never a gift to the other.',
+      links: [['/brpi.html', 'BRPI'], ['/the-ground.html', 'The Ground']],
+      follow: ['ground', 'gifts'] },
+    { id: 'wall', label: 'The step-and-repeat wall',
+      keys: ['wall', 'repeat', 'backdrop', 'arrivals', 'guests', 'photographed', 'monogram'],
+      phrases: ['step-and-repeat', 'step and repeat', 'the wall'],
+      text: 'The step-and-repeat wall stands at the studio: the museum monogram family in gold on obsidian — the seal, the woven B·O·X, the letters, and the cream medallion — set in staggered rows that cycle in a slow, continuous loop. Arrivals and guests are photographed before it at studio events and sessions: every arrival meets the same wall, in the same gold.',
+      links: [['/step-and-repeat.html', 'The Wall']],
+      follow: ['visit', 'ground'] },
+    { id: 'tribute', label: 'The Tribute — Montgomery',
+      keys: ['tribute', 'monument', 'montgomery', 'freedom', 'surnames', 'alabama'],
+      phrases: ['national monument to freedom', 'monument to freedom', 'the tribute'],
+      text: 'The Tribute page presents a documented visit to the National Monument to Freedom, in the Equal Justice Initiative’s Freedom Monument Sculpture Park, Montgomery, Alabama — a massive copper-toned wall carrying roughly 122,000 surnames, chosen by formerly enslaved people and recorded in the 1870 census, the first United States census to list African Americans as free people. Filmed during the Montgomery ride of November 2026; the films are camera originals, carried with the house watermark.',
+      links: [['/tribute.html', 'The Tribute']],
+      follow: ['listening', 'works'] },
+    { id: 'credits', label: 'Credits & the record',
+      keys: ['credits', 'credit', 'registry', 'registered', 'bmi', 'works'],
+      phrases: ['credits and the record', 'the record', 'registered works', 'my credit'],
+      text: 'The house keeps its record on this site: the series and screen works, the marks, pillars and programs, and the characters, each on the biography pages — and the works registry administered from the room stands on The Room page. A credits or record matter opens by intake: tap Start an intake and choose Credits and the record, and the desk checks it against the house record.',
+      links: [['/the-room.html', 'The Room'], ['/project-biographies.html', 'Project Biographies']],
+      follow: ['room', 'works'] },
+    { id: 'legal', label: 'Legal — the terms',
+      keys: ['legal', 'terms', 'contract', 'agreement', 'liability', 'louisiana', 'dispute', 'offer'],
+      phrases: ['the terms', 'terms of', 'is this a contract', 'signed written agreement'],
+      text: 'This site is information only: it states no terms and makes no offer, lease, quote, or contract — the Rate Card page excepted. Terms exist only in a signed written agreement, and nothing is agreed in this chat. The terms are governed by the laws of the State of Louisiana, and any dispute concerning this site belongs in Louisiana. The site sets no cookies of its own.',
+      links: [['/legal.html', 'Legal']],
+      follow: ['privacy', 'doors'] }
+  ];
+  var KB_BY_ID = {};
+  KB.forEach(function (e) { KB_BY_ID[e.id] = e; });
 
   function say(text, who) {
     var d = document.createElement('div');
@@ -1508,6 +1804,29 @@ document.addEventListener('pointerover', function warm(e) {
     var p = document.createElement('p');
     p.textContent = text;
     d.appendChild(p);
+    log.appendChild(d);
+    log.scrollTop = log.scrollHeight;
+  }
+  /* ROUND 121: an answer may carry the site's own pages under it —
+     built as elements, never as pasted markup. */
+  function sayAnswer(entry) {
+    var d = document.createElement('div');
+    d.className = 'bot-msg bot';
+    var p = document.createElement('p');
+    p.textContent = entry.text;
+    d.appendChild(p);
+    if (entry.links && entry.links.length) {
+      var lp = document.createElement('p');
+      lp.appendChild(document.createTextNode('On the site: '));
+      entry.links.forEach(function (l, i) {
+        if (i) lp.appendChild(document.createTextNode(' · '));
+        var a = document.createElement('a');
+        a.href = l[0];
+        a.textContent = l[1];
+        lp.appendChild(a);
+      });
+      d.appendChild(lp);
+    }
     log.appendChild(d);
     log.scrollTop = log.scrollHeight;
   }
@@ -1529,29 +1848,55 @@ document.addEventListener('pointerover', function warm(e) {
       chipsBox.appendChild(b);
     });
   }
+  function topicChip(entry) {
+    return { label: entry.label, act: function () { askTopic(entry.id, true); } };
+  }
   function menuChips() {
-    var list = [
-      { label: 'Start an intake', act: startIntake },
-      { label: 'How much does it cost?', act: function () { faq('How much does it cost?'); } },
-      { label: 'Where is the studio?', act: function () { faq('Where is the studio?'); } },
-      { label: 'How do the doors work?', act: function () { faq('How do the doors work?'); } },
-      { label: 'What is Enter The Box?', act: function () { faq('What is Enter The Box?'); } },
+    chips([
+      { label: 'Start an intake', act: function () { startIntake(); } },
+      topicChip(KB_BY_ID.cost),
+      topicChip(KB_BY_ID.room),
+      topicChip(KB_BY_ID.ground),
+      topicChip(KB_BY_ID.apps),
+      topicChip(KB_BY_ID.works),
+      topicChip(KB_BY_ID.presses),
       { label: 'I am an agent — the connection prompt', href: PROMPT_URL, download: true }
-    ];
+    ]);
+  }
+  function afterChips(entry) {
+    var list = [{ label: 'Start an intake', act: function () { startIntake(); } }];
+    (entry.follow || []).forEach(function (id) {
+      if (KB_BY_ID[id] && list.length < 5) list.push(topicChip(KB_BY_ID[id]));
+    });
+    list.push({ label: 'The doors', act: function () { askTopic('doors', true); } });
     chips(list);
   }
-  function answerFaq(q) {
-    say(FAQS[q]);
+  function answerEntry(entry) {
+    mem.topic = entry.id;
+    sayAnswer(entry);
     say('Anything else — or shall we open your intake?');
-    menuChips();
+    afterChips(entry);
   }
-  function faq(q) {
-    say(q, 'user');
-    answerFaq(q);
+  function askTopic(id, echo) {
+    var entry = KB_BY_ID[id];
+    if (!entry) return;
+    if (echo) say(entry.label, 'user');
+    if (entry.act === 'intake') { beginIntake(entry); return; }
+    if (entry.act === 'agent') {
+      mem.topic = entry.id;
+      sayAnswer(entry);
+      chips([
+        { label: 'Download the connection prompt', href: PROMPT_URL, download: true },
+        { label: 'Start an intake', act: function () { startIntake(); } },
+        { label: 'The doors', act: function () { askTopic('doors', true); } }
+      ]);
+      return;
+    }
+    answerEntry(entry);
   }
   function greet() {
-    say('Enter The B · O · X — for right now: learn from the Black Owned Experience. The Box Studios, New Orleans.');
-    say('I take intakes and answer from the record. The desk answers in writing; nothing is agreed in this chat, and terms exist only in a signed written agreement.');
+    say('Enter The B · O · X — for right now: learn from the Black Owned Experience. The Box Studios, New Orleans.');
+    say('I take intakes and answer from the record — the room, the ground, the works, the apps. Ask in plain words. The desk answers in writing; nothing is agreed in this chat, and terms exist only in a signed written agreement.');
     menuChips();
   }
   /* ROUND 38 (MA PROOF): focusing the chat's input must never scroll
@@ -1566,17 +1911,31 @@ document.addEventListener('pointerover', function warm(e) {
     intake = { name: '', principal: '', matter: '', details: '', email: '' };
     say('Start an intake', 'user');
     say('We will take it in order: intake first, then the desk. ' + STEPS[0].ask);
-    if (STEPS[0].chips) {
-      chips(STEPS[0].chips.map(function (label) {
-        return { label: label, act: function () { answer(label); } };
-      }));
-    } else {
-      chips([]);
-    }
+    chips(STEPS[0].chips.map(function (label) {
+      return { label: label, act: function () { answer(label); } };
+    }));
+    focusInput();
+  }
+  /* ROUND 121: a matter named in plain words — a session asked for
+     outright — opens the intake with the matter already seated, and
+     the details question arrives with its guidance. */
+  function beginIntake(entry) {
+    sayAnswer(entry);
+    inIntake = true;
+    intake = { name: '', principal: '', matter: entry.matter || '', details: '', email: '' };
+    step = 1;
+    var g = MATTER_GUIDE[intake.matter];
+    if (g) say(g);
+    say(STEPS[1].ask);
+    chips([]);
     focusInput();
   }
   function askStep() {
     var s = STEPS[step];
+    if (s.key === 'details' && intake.matter) {
+      var g = MATTER_GUIDE[intake.matter];
+      if (g) say(g);
+    }
     say(s.ask);
     if (s.chips) {
       chips(s.chips.map(function (label) {
@@ -1587,18 +1946,8 @@ document.addEventListener('pointerover', function warm(e) {
     }
     focusInput();
   }
-  function review() {
-    say('Your intake, as the desk will receive it — Matter: ' + intake.matter + ' · Name: ' + intake.name + ' · Principal: ' + intake.principal + ' · Reply to: ' + intake.email);
-    say(intake.details);
-    say('Send it, and your email program opens with the intake addressed to the desk. The desk answers in writing. The matter is opened — nothing is agreed until paper.');
-    chips([
-      { label: 'Send to the desk', act: sendToDesk },
-      { label: 'Start over', act: startIntake }
-    ]);
-  }
-  function sendToDesk() {
-    var subject = 'Enter The B · O · X — intake: ' + intake.matter;
-    var body = [
+  function intakeBody() {
+    return [
       'LEASE THE BOT — INTAKE',
       'Name: ' + intake.name,
       'Principal: ' + intake.principal,
@@ -1606,15 +1955,66 @@ document.addEventListener('pointerover', function warm(e) {
       'Details: ' + intake.details,
       'Reply to: ' + intake.email
     ].join('\n');
-    window.location.href = 'mailto:' + DESK + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  }
+  function reviewChips() {
+    chips([
+      { label: 'Send to the desk', act: sendToDesk },
+      { label: 'Copy the intake', act: copyIntake },
+      { label: 'Start over', act: startIntake }
+    ]);
+  }
+  function review() {
+    say('Your intake, as the desk will receive it — Matter: ' + intake.matter + ' · Name: ' + intake.name + ' · Principal: ' + intake.principal + ' · Reply to: ' + intake.email);
+    say(intake.details);
+    say('Send it, and your email program opens with the intake addressed to the desk — or copy the intake whole, and paste it where you write. The desk answers in writing. The matter is opened — nothing is agreed until paper.');
+    reviewChips();
+  }
+  function copyIntake() {
+    var body = intakeBody();
+    function done() {
+      say('Copied — the intake is on your clipboard, whole. Paste it into an email to ' + DESK + ', and the desk takes it from there — in writing.');
+      reviewChips();
+    }
+    function fallbackCopy() {
+      var ta = document.createElement('textarea');
+      ta.value = body;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'absolute';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+      document.body.removeChild(ta);
+      if (ok) { done(); } else {
+        say('The copy did not take on this device. Send it instead — the Send chip opens your email program with the intake addressed to the desk.');
+        reviewChips();
+      }
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(body).then(done, fallbackCopy);
+    } else {
+      fallbackCopy();
+    }
+  }
+  function sendToDesk() {
+    var subject = 'Enter The B · O · X — intake: ' + intake.matter;
+    window.location.href = 'mailto:' + DESK + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(intakeBody());
     inIntake = false;
     say('The intake is addressed to ' + DESK + '. Send the email, and the desk takes it from there — in writing.');
+    menuChips();
+  }
+  function endIntake() {
+    inIntake = false;
+    step = 0;
+    say('The intake is closed — nothing was sent. The doors stay open: ask me from the record, or write to the desk — ' + DESK + '.');
     menuChips();
   }
   function answer(text) {
     var s = STEPS[step];
     if (!s) return;
     say(text, 'user');
+    if (/^(cancel|stop|never mind|quit|exit)$/i.test(text)) { endIntake(); return; }
     if (s.key === 'email' && text.indexOf('@') === -1) {
       say('That does not read as an email address. ' + s.ask);
       focusInput();
@@ -1624,27 +2024,95 @@ document.addEventListener('pointerover', function warm(e) {
     step++;
     if (step < STEPS.length) { askStep(); } else { review(); }
   }
+  /* ROUND 121: intent matching. Words are normalized — case, accents
+     of punctuation, and contractions flattened — then weighed:
+     a whole phrase carries the answer; single words add up. The
+     nearest topics ride the fallback, so a miss still lands on a door. */
+  function normalize(s) {
+    return s.toLowerCase()
+      .replace(/[’‘]/g, "'")
+      .replace(/'/g, '')
+      .replace(/&/g, ' and ')
+      .replace(/[^a-z0-9@. ]+/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+  function scoreEntry(entry, norm, tokens) {
+    var score = 0;
+    (entry.phrases || []).forEach(function (p) {
+      if (norm.indexOf(p) !== -1) score += 12;
+    });
+    (entry.keys || []).forEach(function (k) {
+      if (tokens[k]) score += 3;
+    });
+    return score;
+  }
+  function match(text) {
+    var norm = ' ' + normalize(text) + ' ';
+    var tokens = {};
+    normalize(text).split(' ').forEach(function (w) { if (w) tokens[w] = true; });
+    var best = null, bestScore = 0, second = null, secondScore = 0;
+    KB.forEach(function (entry) {
+      var sc = scoreEntry(entry, norm, tokens);
+      if (sc > bestScore) { second = best; secondScore = bestScore; best = entry; bestScore = sc; }
+      else if (sc > secondScore) { second = entry; secondScore = sc; }
+    });
+    return { best: best, bestScore: bestScore, second: second, secondScore: secondScore };
+  }
+  function fallback(text, m) {
+    say(text, 'user');
+    var line = 'That is not on the record I carry. Ask me in plain words — the room, the ground, the works, the apps, what it costs —';
+    if (m.best && m.bestScore > 0) line += ' or take the nearest door below —';
+    line += ' or write to the desk at ' + DESK + ', and the desk answers in writing.';
+    say(line);
+    var list = [];
+    if (m.best && m.bestScore > 0) list.push(topicChip(m.best));
+    if (m.second && m.secondScore > 0) list.push(topicChip(m.second));
+    list.push({ label: 'Start an intake', act: function () { startIntake(); } });
+    list.push({ label: 'Write to the desk — ' + DESK, href: 'mailto:' + DESK });
+    chips(list);
+  }
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var text = input.value.replace(/\s+/g, ' ').trim();
     if (!text) return;
     input.value = '';
     if (inIntake) { answer(text); return; }
-    /* ROUND 38 (MA PROOF): typed words are answered, not deflected.
-       A question typed in plain words meets its answer from the
-       record — price first: it is the first question every visitor
-       asks, and before this pass it bounced off the wall. A booking
-       in plain words opens the intake. What matches nothing is met
-       with one clear question, never a wall. */
-    var low = text.toLowerCase();
-    if (/\b(how much|price|pricing|prices|cost|costs|rate|rates|fee|fees|charge|charges|quote|expensive)\b/.test(low)) { say(text, 'user'); answerFaq('How much does it cost?'); return; }
-    if (/\b(where|address|located|location|directions)\b/.test(low)) { say(text, 'user'); answerFaq('Where is the studio?'); return; }
-    if (/\b(doors?|e-?mail|contact|reach|phone|call)\b/.test(low)) { say(text, 'user'); answerFaq('How do the doors work?'); return; }
-    if (/\b(book|booking|session|rent|hire|reserve|schedule|appointment|intake)\b/.test(low) || /\brecord (a|an|my)\b/.test(low)) { startIntake(); return; }
-    if (/\b(what is enter|what is this|who are you)\b/.test(low)) { say(text, 'user'); answerFaq('What is Enter The Box?'); return; }
-    say(text, 'user');
-    say('Ask me in plain words — what it costs, where the studio is, or how the doors work — or tap Start an intake and tell me what you are here for.');
-    menuChips();
+    var norm = normalize(text);
+    if (/^(hi|hello|hey|good morning|good afternoon|good evening|greetings)$/.test(norm)) {
+      say(text, 'user');
+      say('Welcome to The Box Studios. Ask me from the record — or open an intake, and the desk answers in writing.');
+      menuChips();
+      return;
+    }
+    if (/^(thanks|thank you|thank you very much|thats all|that is all)$/.test(norm)) {
+      say(text, 'user');
+      say('You are welcome. The desk answers in writing — ' + DESK + ' — whenever the matter is ready.');
+      menuChips();
+      return;
+    }
+    if (/^(more|tell me more|go on|and)$/.test(norm) && mem.topic && KB_BY_ID[mem.topic]) {
+      say(text, 'user');
+      var last = KB_BY_ID[mem.topic];
+      say('More of that record stands on the site — under the answer above — and the doors nearest it stand below. Or open an intake, and the desk takes the matter in writing.');
+      afterChips(last);
+      return;
+    }
+    var m = match(text);
+    if (m.best && m.bestScore >= 6) {
+      say(text, 'user');
+      if (m.best.act === 'intake') { beginIntake(m.best); return; }
+      if (m.best.act === 'agent') { askTopic('agent', false); return; }
+      answerEntry(m.best);
+      return;
+    }
+    if (/\b(book|booking|reserve|schedule|appointment|intake)\b/.test(norm)) { startIntake(); return; }
+    if (m.best && m.bestScore >= 3) {
+      say(text, 'user');
+      answerEntry(m.best);
+      return;
+    }
+    fallback(text, m);
   });
 
   function open() {
